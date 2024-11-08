@@ -1,2 +1,2 @@
 # PoEDataVisualizer
-Visualizing Path of Exile item pricing trends
+Visualizing Path of Exile item pricing trends.
