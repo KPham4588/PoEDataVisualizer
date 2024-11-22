@@ -21,8 +21,7 @@ public final class APIResultData {
             this.encoding = connection.getContentEncoding();
 
             while (reader.ready()) {
-                char nextChar = (char) reader.read();
-                builder.append(nextChar);
+                builder.append(reader.readLine());
             }
             this.content = builder.toString();
         }
