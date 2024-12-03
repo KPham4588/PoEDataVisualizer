@@ -1,3 +1,5 @@
+package com.PhamKornbluhGroup;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,22 +12,28 @@ public final class APIResultData {
     private String encoding;
     private String content;
 
-    APIResultData(HttpURLConnection connection) {
+    public APIResultData() {
+    }
+
+    public void initResultData(HttpURLConnection connection) {
         StringBuilder builder = new StringBuilder();
         //b responseStream autocloses
         //b reader autocloses
-        try (InputStream responseStream = (InputStream) connection.getContent();
+        try (InputStream responseStream = (InputStream) connection.getContent(); // TODO: see if better --> connection.getInputStream()
              BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8));) {
             this.responseCode = connection.getResponseCode();
             this.responseMessage = connection.getResponseMessage();
             this.encoding = connection.getContentEncoding();
 
-            while (reader.ready()) {
-                builder.append(reader.readLine());
+            String line;
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
             }
             this.content = builder.toString();
         }
         catch (Exception e) {
+            System.out.println("Failure in initResultData for APIResultData object. Message = " + e.getMessage());
+            // TODO - Add logging & fix Exception to multi-catch block of all possible exceptions
         }
     }
 
@@ -56,4 +64,5 @@ public final class APIResultData {
     private void setContent(String content) {
         this.content = content;
     }
+
 }
