@@ -19,13 +19,9 @@
     <orderEntry type="library" name="Maven: software.amazon.awssdk:checksums-spi:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:checksums:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.29.20" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:retries:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.4" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.29.20" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth-aws-eventstream:2.29.20" level="project" />
-    <orderEntry type="library" name="Maven: software.amazon.eventstream:eventstream:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth-spi:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:identity-spi:2.29.20" level="project" />
@@ -54,5 +50,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-transport-native-unix-common:4.1.115.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-transport-classes-epoll:4.1.115.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-resolver:4.1.115.Final" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:auth:2.29.20" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:profiles:2.29.20" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth-aws-eventstream:2.29.20" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.eventstream:eventstream:1.0.1" level="project" />
   </component>
 </module>
