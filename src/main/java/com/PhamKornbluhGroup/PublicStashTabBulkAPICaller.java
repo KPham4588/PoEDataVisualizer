@@ -3,8 +3,10 @@ package com.PhamKornbluhGroup;
 import java.io.FileWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
 public class PublicStashTabBulkAPICaller {
+
     public APIResultData callAndPrintResults() {
         //b GGG Get URL
         HttpURLConnection connection = null;
@@ -15,11 +17,9 @@ public class PublicStashTabBulkAPICaller {
 
             //b Configure connection
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authorization", "Bearer " + SecretsHelper.GetGGGBearerTokenFromSecretsManager());
+            connection.setRequestProperty("Authorization", SecretsHelper.formatGGGBearerToken(SecretsHelper.getGGGBearerToken()));
             // TODO: Determine if the following 2 properties are needed
-            // connection.setRequestProperty("User-Agent", userAgent);
             // connection.setRequestProperty("Content-Type","application/json");
-
 
             //b Connect here. Disconnect happens in finally block
             connection.connect();
@@ -28,6 +28,7 @@ public class PublicStashTabBulkAPICaller {
         }
         catch (Exception e) {
             // TODO: Add Logging
+            System.out.println(e.getMessage() + Arrays.toString(e.getStackTrace()));
         }
         finally {
             try {
@@ -39,8 +40,6 @@ public class PublicStashTabBulkAPICaller {
             }
         }
 
-
-        // Write output to args[1] filepath
         //b writer auto-closes
         this.writeResults(resultData);
 
@@ -48,11 +47,13 @@ public class PublicStashTabBulkAPICaller {
     }
 
     private void writeResults(APIResultData resultData) {
+        // TODO: Fix hard-coded filepath
           try (FileWriter writer = new FileWriter("C:\\Users\\Public\\Documents\\APIResult.txt")) {
             writer.write(resultData.getContent());
         }
         catch (Exception e) {
             System.out.println("Failure to write API Result Data. Error Message = " + e.getMessage());
+            System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
         }
     }
 

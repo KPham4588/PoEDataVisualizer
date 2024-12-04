@@ -64,5 +64,4 @@ public final class APIResultData {
     private void setContent(String content) {
         this.content = content;
     }
-
 }

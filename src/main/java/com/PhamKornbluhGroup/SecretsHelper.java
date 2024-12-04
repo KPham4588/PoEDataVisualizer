@@ -7,17 +7,14 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueReques
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
 import software.amazon.awssdk.services.secretsmanager.model.SecretsManagerException;
 
+import java.util.Arrays;
+
 public class SecretsHelper {
     // If you need more information about configurations or implementing the sample
     // code, visit the AWS docs:
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
-    public static String GetGGGBearerTokenFromSecretsManager() {
-        // call getAWSSecret with the proper secret name
-        return "";
-    }
-
-    private static String getGGGBearerToken() {
+    public static String getGGGBearerToken() {
         String tokenName = "GGGBearerToken";
         Region region = Region.of("us-east-1");
 
@@ -36,25 +33,28 @@ public class SecretsHelper {
                                          //.credentialsProvider(DefaultCredentialsProvider.create())
                                          .build()) {
 
-
             //b Send the token request to AWS through the client
             GetSecretValueResponse getSecretValueResponse = requestClient.getSecretValue(tokenRequest);
 
             //b Retrieve the secret token value
-                //b Attempt #1 - Get String
+            //b Attempt #1 - Get String
             String secret = getSecretValueResponse.secretString();
-                //b Attempt #2 - If String is null, get using binary array
+            //b Attempt #2 - If String is null, get using binary array
             if (secret == null) {
                 byte[] secretBinary = getSecretValueResponse.secretBinary().asByteArray();
                 secret = new String(secretBinary);
             }
             return secret;
         }
-        catch (SecretsManagerException e) {
+        catch (Exception e) {
             // For a list of exceptions thrown, see
             // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-            System.err.println("Error retrieving the secret: " + e.awsErrorDetails().errorMessage());
+            System.err.println("Error retrieving the secret: " + e.getMessage());
         }
         return "TOKEN_DEFAULT_RETURN";
+    }
+
+    public static String formatGGGBearerToken(String gggBearerToken) {
+        return "Bearer " + gggBearerToken.substring(19,59);
     }
 }
