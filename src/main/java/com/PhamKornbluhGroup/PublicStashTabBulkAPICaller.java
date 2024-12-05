@@ -17,8 +17,8 @@ public class PublicStashTabBulkAPICaller {
 
             //b Configure connection
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authorization", SecretsHelper.formatGGGBearerToken(SecretsHelper.getGGGBearerToken()));
-            connection.setRequestProperty("User-Agent", SecretsHelper.formatGGGBearerTokenUserAgent(SecretsHelper.GGGBearerTokenUserAgent()));
+            connection.setRequestProperty("Authorization", SecretsHelper.getFormattedGGGBearerToken());
+            connection.setRequestProperty("User-Agent", SecretsHelper.getFormattedGGGBearerTokenUserAgent());
             // TODO: Determine if the following 2 properties are needed
             // connection.setRequestProperty("Content-Type","application/json");
 

@@ -11,22 +11,26 @@ public class SecretsHelper {
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
     /** TODO:
-     *      #1 - Make formatting methods private
-     *      #2 - Update Method names to include formatting
-     *      #3 - Update Method logic to include formatting
+     *      #1 - Make formatting methods private                            -- COMPLETE
+     *      #2 - Update Method names to include formatting                  -- COMPLETE
+     *      #3 - Update Method logic to include formatting                  -- COMPLETE
      *      #4 - Return String[] with both Key/Value
      *      #5 - Add hardcoded substring comments to formatting methods
      *      #6 - Consider using Jackson for parsing
      */
 
-    public static String getGGGBearerToken() {
+    public static String getFormattedGGGBearerToken() {
         String tokenName = "GGGBearerToken";
-        return getSecretManagerSecret(tokenName);
+        String secret = getSecretManagerSecret(tokenName);
+        String formattedSecret = formatGGGBearerToken(secret);
+        return formattedSecret;
     }
 
-    public static String GGGBearerTokenUserAgent() {
+    public static String getFormattedGGGBearerTokenUserAgent() {
         String tokenName = "GGGBearerToken_User-Agent";
-        return getSecretManagerSecret(tokenName);
+        String secret = getSecretManagerSecret(tokenName);
+        String formattedSecret = formatGGGBearerTokenUserAgent(secret);
+        return formattedSecret;
     }
 
     private static String getSecretManagerSecret(String tokenName) {
@@ -68,11 +72,11 @@ public class SecretsHelper {
         return "TOKEN_DEFAULT_RETURN";
     }
 
-    public static String formatGGGBearerToken(String gggBearerToken) {
+    private static String formatGGGBearerToken(String gggBearerToken) {
         return "Bearer " + gggBearerToken.substring(19,59);
     }
 
-    public static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
+    private static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
         return gggBearerToken.substring(15,80);
     }
 }
