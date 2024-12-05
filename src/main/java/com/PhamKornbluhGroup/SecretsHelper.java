@@ -10,27 +10,22 @@ public class SecretsHelper {
     // code, visit the AWS docs:
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
-    /** TODO:
-     *      #1 - Make formatting methods private                            -- COMPLETE
-     *      #2 - Update Method names to include formatting                  -- COMPLETE
-     *      #3 - Update Method logic to include formatting                  -- COMPLETE
-     *      #4 - Return String[] with both Key/Value
-     *      #5 - Add hardcoded substring comments to formatting methods
-     *      #6 - Consider using Jackson for parsing
-     */
-
-    public static String getFormattedGGGBearerToken() {
+    public static String[] getFormattedGGGBearerToken() {
         String tokenName = "GGGBearerToken";
         String secret = getSecretManagerSecret(tokenName);
         String formattedSecret = formatGGGBearerToken(secret);
-        return formattedSecret;
+
+        String[] keyValue = new String[] {"Authorization", formattedSecret};
+        return keyValue;
     }
 
-    public static String getFormattedGGGBearerTokenUserAgent() {
+    public static String[] getFormattedGGGBearerTokenUserAgent() {
         String tokenName = "GGGBearerToken_User-Agent";
         String secret = getSecretManagerSecret(tokenName);
         String formattedSecret = formatGGGBearerTokenUserAgent(secret);
-        return formattedSecret;
+
+        String[] keyValue = new String[] {"User-Agent", formattedSecret};
+        return keyValue;
     }
 
     private static String getSecretManagerSecret(String tokenName) {
@@ -73,10 +68,14 @@ public class SecretsHelper {
     }
 
     private static String formatGGGBearerToken(String gggBearerToken) {
+        // Token returns a json object. Substring can be replaced with json parser
+        // TODO: Consider using Jackson for parsing
         return "Bearer " + gggBearerToken.substring(19,59);
     }
 
     private static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
+        // Token returns a json object. Substring can be replaced with json parser
+        // TODO: Consider using Jackson for parsing
         return gggBearerToken.substring(15,80);
     }
 }
