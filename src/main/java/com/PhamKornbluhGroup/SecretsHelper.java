@@ -12,7 +12,7 @@ public class SecretsHelper {
 
     public static String[] getFormattedGGGBearerToken() {
         String tokenName = "GGGBearerToken";
-        String secret = getSecretManagerSecret(tokenName);
+        String secret = getSecretsManagerSecret(tokenName);
         String formattedSecret = formatGGGBearerToken(secret);
 
         String[] keyValue = new String[] {"Authorization", formattedSecret};
@@ -21,23 +21,21 @@ public class SecretsHelper {
 
     public static String[] getFormattedGGGBearerTokenUserAgent() {
         String tokenName = "GGGBearerToken_User-Agent";
-        String secret = getSecretManagerSecret(tokenName);
+        String secret = getSecretsManagerSecret(tokenName);
         String formattedSecret = formatGGGBearerTokenUserAgent(secret);
 
         String[] keyValue = new String[] {"User-Agent", formattedSecret};
         return keyValue;
     }
 
-    private static String getSecretManagerSecret(String tokenName) {
+    private static String getSecretsManagerSecret(String tokenName) {
         Region region = Region.of("us-east-1");
 
-        //b Create a token request object
         GetSecretValueRequest tokenRequest =
                 GetSecretValueRequest.builder()
                                      .secretId(tokenName)
                                      .build();
 
-        //b Create a client which can send the token request to AWS.
         // Try-With-Resources Auto-Closes the client
         try (SecretsManagerClient requestClient =
                      SecretsManagerClient.builder()
@@ -46,10 +44,8 @@ public class SecretsHelper {
                                          //.credentialsProvider(DefaultCredentialsProvider.create())
                                          .build()) {
 
-            //b Send the token request to AWS through the client
             GetSecretValueResponse getSecretValueResponse = requestClient.getSecretValue(tokenRequest);
 
-            //b Retrieve the secret token value
             //b Attempt #1 - Get String
             String secret = getSecretValueResponse.secretString();
             //b Attempt #2 - If String is null, get using binary array
@@ -67,6 +63,9 @@ public class SecretsHelper {
         return "TOKEN_DEFAULT_RETURN";
     }
 
+    // TODO: After using JSON parsing, can combine both of these methods into a single method:
+    //  #1 formatGGGBearerToken
+    //  #2 formatGGGBearerTokenUserAgent
     private static String formatGGGBearerToken(String gggBearerToken) {
         // Token returns a json object. Substring can be replaced with json parser
         // TODO: Consider using Jackson for parsing

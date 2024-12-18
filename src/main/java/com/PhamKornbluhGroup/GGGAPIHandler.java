@@ -5,17 +5,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 
-public class PublicStashTabBulkAPICaller {
+public class GGGAPIHandler {
 
     public APIResultData callAndPrintResults() {
-        //b GGG Get URL
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();
         try {
             URL url = new URL("https://api.pathofexile.com/public-stash-tabs/pc");
             connection = (HttpURLConnection) url.openConnection();
 
-            //b Configure connection
             connection.setRequestMethod("GET");
 
             String[] gggBearerToken = SecretsHelper.getFormattedGGGBearerToken();
@@ -49,12 +47,12 @@ public class PublicStashTabBulkAPICaller {
         //b writer auto-closes
         this.writeResults(resultData);
 
-    return resultData;
+        return resultData;
     }
 
     private void writeResults(APIResultData resultData) {
         // TODO: Fix hard-coded filepath
-          try (FileWriter writer = new FileWriter("C:\\Users\\Public\\Documents\\APIResult.txt")) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\Public\\Documents\\APIResult.txt")) {
             writer.write(resultData.getContent());
         }
         catch (Exception e) {

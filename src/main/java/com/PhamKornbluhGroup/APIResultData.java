@@ -17,10 +17,8 @@ public final class APIResultData {
 
     public void initResultData(HttpURLConnection connection) {
         StringBuilder builder = new StringBuilder();
-        //b responseStream autocloses
-        //b reader autocloses
         try (InputStream responseStream = (InputStream) connection.getContent(); // TODO: see if better --> connection.getInputStream()
-             BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8));) {
+             BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8))) {
             this.responseCode = connection.getResponseCode();
             this.responseMessage = connection.getResponseMessage();
             this.encoding = connection.getContentEncoding();
