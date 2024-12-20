@@ -1,0 +1,60 @@
+name: Checkstyle for JBR 17
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-and-check:
+    runs-on: ubuntu-latest  # Change to windows-latest or macos-latest as needed
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Install and Setup JetBrains Runtime (Linux)
+      - name: Install and Setup JetBrains Runtime (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        env:
+          JBR_URL_Linux_X64: 'https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-17.0.12-linux-x64-b1207.37.tar.gz'
+        run: |
+          mkdir -p "$HOME/.jdks/jbr17"
+          wget -q -O - "$JBR_URL_Linux_X64" | tar -xzf - --strip-components=1 -C "$HOME/.jdks/jbr17"
+          echo "JAVA_HOME=$HOME/.jdks/jbr17" >> $GITHUB_ENV
+          echo "PATH=$HOME/.jdks/jbr17/bin:$PATH" >> $GITHUB_ENV
+
+      # Install and Setup JetBrains Runtime (Windows)
+      - name: Install and Setup JetBrains Runtime (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        env:
+          JBR_URL_Windows_X64: 'https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-17.0.12-windows-x64-b1207.37.tar.gz'
+        run: |
+          choco install wget -y
+          mkdir -p "$HOME/.jdks/jbr17"
+          wget -q -O - "$JBR_URL_Windows_X64" | tar -xzf - --strip-components=1 -C "$HOME/.jdks/jbr17"
+          echo "JAVA_HOME=$HOME/.jdks/jbr17" >> $GITHUB_ENV
+          echo "PATH=$HOME/.jdks/jbr17/bin:$PATH" >> $GITHUB_ENV
+
+      # Set up Maven
+      - name: Set up Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'jetbrains'
+          java-version: '17'
+
+      # Run Checkstyle
+      - name: Run Checkstyle
+        run: mvn validate
+        env:
+          MAVEN_OPTS: -Dcheckstyle.config.location=google_checks.xml  # Path to your Checkstyle config
+
+      # Run Tests
+      - name: Run Tests
+        run: mvn test
