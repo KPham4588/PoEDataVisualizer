@@ -52,6 +52,23 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>auth</artifactId>
         </dependency>
+
+        <!-- Jackson JSON Parsing Tools -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version> 2.13.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.13.3</version>
+        </dependency>
     </dependencies>
 
     <!-- Build Section -->

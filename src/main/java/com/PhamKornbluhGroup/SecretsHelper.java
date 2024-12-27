@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
@@ -67,9 +69,18 @@ public class SecretsHelper {
     //  #1 formatGGGBearerToken
     //  #2 formatGGGBearerTokenUserAgent
     private static String formatGGGBearerToken(String gggBearerToken) {
-        // Token returns a json object. Substring can be replaced with json parser
-        // TODO: Consider using Jackson for parsing
-        return "Bearer " + gggBearerToken.substring(19,59);
+        String token = "";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(gggBearerToken);
+            token = node.get("GGGBearerToken").asText();
+        }
+        catch (Exception e) {
+            // TODO: Add Logging
+            // TODO: Specify which exceptions
+            System.out.println(e.getMessage());
+        }
+        return token;
     }
 
     private static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
