@@ -13,7 +13,7 @@ public class SecretsHelper {
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
     public static String[] getFormattedGGGBearerToken() {
-        //p For this method to work, the name of the secret must be the same as the value of the secret's key
+        //p For this method to work, the name of the secret must be the same as the secret's key
         String tokenName = "GGGBearerToken";
         String secret = getSecretsManagerSecret(tokenName);
         String formattedSecret = parseJsonToken(secret, tokenName);
