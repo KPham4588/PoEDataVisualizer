@@ -13,18 +13,20 @@ public class SecretsHelper {
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
     public static String[] getFormattedGGGBearerToken() {
+        //p For this method to work, the name of the secret must be the same as the value of the secret's key
         String tokenName = "GGGBearerToken";
         String secret = getSecretsManagerSecret(tokenName);
-        String formattedSecret = formatGGGBearerToken(secret);
+        String formattedSecret = parseJsonToken(secret, tokenName);
 
         String[] keyValue = new String[] {"Authorization", formattedSecret};
         return keyValue;
     }
 
     public static String[] getFormattedGGGBearerTokenUserAgent() {
+        //p For this method to work, the name of the secret must be the same as the secret's key
         String tokenName = "GGGBearerToken_User-Agent";
         String secret = getSecretsManagerSecret(tokenName);
-        String formattedSecret = formatGGGBearerTokenUserAgent(secret);
+        String formattedSecret = parseJsonToken(secret, tokenName);
 
         String[] keyValue = new String[] {"User-Agent", formattedSecret};
         return keyValue;
@@ -98,5 +100,20 @@ public class SecretsHelper {
             System.out.println(e.getMessage());
         }
         return token;
+    }
+
+    private static String parseJsonToken(String jsonToken, String key) {
+        String parsedToken = "";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(jsonToken);
+            parsedToken = node.get(key).asText();
+        }
+        catch (Exception e) {
+            // TODO: Add Logging
+            // TODO: Specify which exceptions
+            System.out.println(e.getMessage());
+        }
+        return parsedToken;
     }
 }
