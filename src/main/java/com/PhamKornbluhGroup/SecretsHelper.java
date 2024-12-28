@@ -83,9 +83,20 @@ public class SecretsHelper {
         return token;
     }
 
-    private static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
+    private static String formatGGGBearerTokenUserAgent(String gggUserAgentToken) {
         // Token returns a json object. Substring can be replaced with json parser
         // TODO: Consider using Jackson for parsing
-        return gggBearerToken.substring(15,80);
+        String token = "";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(gggUserAgentToken);
+            token = node.get("User-Agent").asText();
+        }
+        catch (Exception e) {
+            // TODO: Add Logging
+            // TODO: Specify which exceptions
+            System.out.println(e.getMessage());
+        }
+        return token;
     }
 }
