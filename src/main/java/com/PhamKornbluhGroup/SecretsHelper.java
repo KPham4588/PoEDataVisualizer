@@ -67,41 +67,6 @@ public class SecretsHelper {
         return "TOKEN_DEFAULT_RETURN";
     }
 
-    // TODO: After using JSON parsing, can combine both of these methods into a single method:
-    //  #1 formatGGGBearerToken
-    //  #2 formatGGGBearerTokenUserAgent
-    private static String formatGGGBearerToken(String gggBearerToken) {
-        String token = "";
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode node = mapper.readTree(gggBearerToken);
-            token = node.get("GGGBearerToken").asText();
-        }
-        catch (Exception e) {
-            // TODO: Add Logging
-            // TODO: Specify which exceptions
-            System.out.println(e.getMessage());
-        }
-        return token;
-    }
-
-    private static String formatGGGBearerTokenUserAgent(String gggUserAgentToken) {
-        // Token returns a json object. Substring can be replaced with json parser
-        // TODO: Consider using Jackson for parsing
-        String token = "";
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode node = mapper.readTree(gggUserAgentToken);
-            token = node.get("User-Agent").asText();
-        }
-        catch (Exception e) {
-            // TODO: Add Logging
-            // TODO: Specify which exceptions
-            System.out.println(e.getMessage());
-        }
-        return token;
-    }
-
     private static String parseJsonToken(String jsonToken, String key) {
         String parsedToken = "";
         try {
