@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PhamKornbluhGroup" />
+        <module name="POEDataVisualizer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="PhamKornbluhGroup" target="17" />
+      <module name="POEDataVisualizer" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

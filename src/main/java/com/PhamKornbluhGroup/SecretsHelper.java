@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
@@ -11,18 +13,20 @@ public class SecretsHelper {
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
     public static String[] getFormattedGGGBearerToken() {
+        //p For this method to work, the name of the secret must be the same as the secret's key
         String tokenName = "GGGBearerToken";
         String secret = getSecretsManagerSecret(tokenName);
-        String formattedSecret = formatGGGBearerToken(secret);
+        String formattedSecret = parseJsonToken(secret, tokenName);
 
         String[] keyValue = new String[] {"Authorization", formattedSecret};
         return keyValue;
     }
 
     public static String[] getFormattedGGGBearerTokenUserAgent() {
+        //p For this method to work, the name of the secret must be the same as the secret's key
         String tokenName = "GGGBearerToken_User-Agent";
         String secret = getSecretsManagerSecret(tokenName);
-        String formattedSecret = formatGGGBearerTokenUserAgent(secret);
+        String formattedSecret = parseJsonToken(secret, tokenName);
 
         String[] keyValue = new String[] {"User-Agent", formattedSecret};
         return keyValue;
@@ -63,18 +67,18 @@ public class SecretsHelper {
         return "TOKEN_DEFAULT_RETURN";
     }
 
-    // TODO: After using JSON parsing, can combine both of these methods into a single method:
-    //  #1 formatGGGBearerToken
-    //  #2 formatGGGBearerTokenUserAgent
-    private static String formatGGGBearerToken(String gggBearerToken) {
-        // Token returns a json object. Substring can be replaced with json parser
-        // TODO: Consider using Jackson for parsing
-        return "Bearer " + gggBearerToken.substring(19,59);
-    }
-
-    private static String formatGGGBearerTokenUserAgent(String gggBearerToken) {
-        // Token returns a json object. Substring can be replaced with json parser
-        // TODO: Consider using Jackson for parsing
-        return gggBearerToken.substring(15,80);
+    private static String parseJsonToken(String jsonToken, String key) {
+        String parsedToken = "";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(jsonToken);
+            parsedToken = node.get(key).asText();
+        }
+        catch (Exception e) {
+            // TODO: Add Logging
+            // TODO: Specify which exceptions
+            System.out.println(e.getMessage());
+        }
+        return parsedToken;
     }
 }
