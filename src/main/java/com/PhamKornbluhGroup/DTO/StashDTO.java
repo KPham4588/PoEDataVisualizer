@@ -10,7 +10,6 @@ public class StashDTO {
     private String league; // Ex: "Standard" //p NOTE: Avoiding enums since there were hundreds of temp/void leagues
     private ItemDTO[] items;
 
-
     private enum StashType {
         PREMIUM_STASH // PremiumStash
     }

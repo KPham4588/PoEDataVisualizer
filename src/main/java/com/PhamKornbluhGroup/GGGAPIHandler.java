@@ -60,5 +60,4 @@ public class GGGAPIHandler {
             System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
         }
     }
-
 }
