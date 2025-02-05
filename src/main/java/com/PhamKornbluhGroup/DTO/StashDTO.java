@@ -14,7 +14,4 @@ public class StashDTO {
     private enum StashType {
         PREMIUM_STASH // PremiumStash
     }
-
-
-    // Ex: ""
 }
