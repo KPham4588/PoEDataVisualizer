@@ -4,14 +4,41 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.*;
 import java.util.Iterator;
 
 public class runner {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
-// 
+//        printJson(json);
+
+        //b These can be used to save and load HashSet<String>
+//        placeAndSaveKnownFields();
+//        getAndPrintKnownFiles();
+
+
+
+
+    }
+
+    public static void printJson(String json) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.readTree(json);
+
+        Iterator<String> iterator = rootNode.fieldNames();
+
+        System.out.println(rootNode.toPrettyString());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+
+
+
+    public static String returnTestJSON() {
         String json = """
                         {
                            "id": "c5956c281ee71cb55b4737c85524e9094700bab32b425fea1a32aaba4c76f7e8",
@@ -1508,25 +1535,8 @@ public class runner {
                            ]
                          }
                 """; // String json
-        printJson(json);
+        return json;
     }
-
-    public static void printJson(String json) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(json);
-
-        Iterator<String> iterator = rootNode.fieldNames();
-
-        System.out.println(rootNode.toPrettyString());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-    }
-
-
 
 
 }
