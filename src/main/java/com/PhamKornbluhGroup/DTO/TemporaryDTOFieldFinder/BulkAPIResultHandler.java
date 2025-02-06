@@ -32,7 +32,7 @@ public class BulkAPIResultHandler {
         try {
             //W START HERE
             String pageCode = BulkAPIUtils.getPageCode();
-            String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs/pc?id=%s", pageCode);
+            String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageCode);
 
             URL url = new URL(requestURL);
             connection = (HttpURLConnection) url.openConnection();

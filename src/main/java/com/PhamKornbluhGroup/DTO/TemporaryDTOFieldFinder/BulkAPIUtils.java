@@ -30,11 +30,12 @@ public class BulkAPIUtils {
     }
 
     public static String getPageCode() {
-        File filePath = new File("C:\\Users\\Public\\Documents\\APIData\\pageID.txt");
+        File filePath = new File("C:\\Users\\Public\\APIData\\pageID.txt");
+        String pageCode = "";
         try (FileReader fileReader = new FileReader(filePath);
             BufferedReader codeReader = new BufferedReader(fileReader)) {
 
-            String pageCode = codeReader.readLine();
+            pageCode = codeReader.readLine();
             return pageCode;
         }
         catch (Exception e) {
@@ -45,7 +46,7 @@ public class BulkAPIUtils {
     }
 
     public static void savePageCode(String code) {
-        try (FileWriter writer = new FileWriter("C:\\Users\\Public\\Documents\\APIData\\pageID.txt")) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\Public\\APIData\\pageID.txt")) {
             writer.write(code);
         }
         catch (Exception e) {
@@ -57,7 +58,7 @@ public class BulkAPIUtils {
     private static File locateAPIResultsFilePath() {
         int pageNumber = 1;
         while (pageNumber < 1000) {
-            File filePath = new File(String.format("C:\\Users\\Public\\Documents\\APIData\\APIResult%s.txt", pageNumber));
+            File filePath = new File(String.format("C:\\Users\\Public\\APIData\\APIResult%s.txt", pageNumber));
             if (!filePath.exists()) {
                 return filePath;
             }
