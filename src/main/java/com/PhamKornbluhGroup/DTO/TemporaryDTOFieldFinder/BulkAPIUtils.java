@@ -17,7 +17,7 @@ public class BulkAPIUtils {
         }
     }
 
-    public static void saveKnownFields() throws Exception {
+    public static void saveKnownFields() {
         try (FileOutputStream fileOut = new FileOutputStream("knownFields.txt");
              ObjectOutputStream objectSaver = new ObjectOutputStream(fileOut)) {
 
@@ -57,9 +57,9 @@ public class BulkAPIUtils {
     private static File locateAPIResultsFilePath() {
         int pageNumber = 1;
         while (pageNumber < 1000) {
-            File currentFile = new File(String.format("C:\\Users\\Public\\Documents\\APIData\\APIResult%s.txt", pageNumber));
-            if (!currentFile.exists()) {
-                return currentFile;
+            File filePath = new File(String.format("C:\\Users\\Public\\Documents\\APIData\\APIResult%s.txt", pageNumber));
+            if (!filePath.exists()) {
+                return filePath;
             }
             pageNumber++;
         }
@@ -83,7 +83,7 @@ public class BulkAPIUtils {
 
 
     //b Can use this method to prove that saving functionality works on HashSet<String>
-    public static void examplePlaceAndSaveKnownFields() throws Exception {
+    public static void examplePlaceAndSaveKnownFields() {
         HashSet<String> knownFields = BulkAPIUtils.knownFields;
 
         knownFields.add("Bob");
