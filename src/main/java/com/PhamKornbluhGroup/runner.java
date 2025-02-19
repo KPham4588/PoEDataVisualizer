@@ -11,7 +11,7 @@ public class runner {
     public static void main(String[] args) throws Exception {
 
         BulkAPIResultHandler handler = new BulkAPIResultHandler();
-        handler.getAndSaveOnePOEApiResult();
+        handler.getBulkPOEApiResults(10);
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
 //        printJson(json);
