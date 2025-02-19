@@ -1,6 +1,6 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DTO.TemporaryDTOFieldFinder.BulkAPIResultHandler;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIResultHandler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,7 @@ public class runner {
     public static void main(String[] args) throws Exception {
 
         BulkAPIResultHandler handler = new BulkAPIResultHandler();
-        handler.callAndPrintResults();
+        handler.getAndSaveOnePOEApiResult();
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
 //        printJson(json);

@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO.TemporaryDTOFieldFinder;
+package com.PhamKornbluhGroup.TemporaryDTOFieldFinder;
 
 import com.PhamKornbluhGroup.APIResultData;
 
@@ -29,24 +29,23 @@ public class BulkAPIUtils {
         }
     }
 
-    public static String getPageCode() {
-        File filePath = new File("C:\\Users\\Public\\APIData\\pageID.txt");
-        String pageCode = "";
+    public static String getChangeId() {
+        File filePath = new File("C:\\Users\\Public\\APIData\\ChangeId.txt");
         try (FileReader fileReader = new FileReader(filePath);
             BufferedReader codeReader = new BufferedReader(fileReader)) {
 
-            pageCode = codeReader.readLine();
-            return pageCode;
+            String changeId = codeReader.readLine();
+            return changeId;
         }
         catch (Exception e) {
-            System.out.println("Failure to read API Page ID. Error Message = " + e.getMessage());
+            System.out.println("Failure to read API Page Change ID. Error Message = " + e.getMessage());
             System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
         }
         return "";
     }
 
-    public static void savePageCode(String code) {
-        try (FileWriter writer = new FileWriter("C:\\Users\\Public\\APIData\\pageID.txt")) {
+    public static void saveChangeId(String code) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\Public\\APIData\\ChangeId.txt")) {
             writer.write(code);
         }
         catch (Exception e) {
@@ -77,29 +76,4 @@ public class BulkAPIUtils {
             System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
         }
     }
-
-
-
-
-
-
-    //b Can use this method to prove that saving functionality works on HashSet<String>
-    public static void examplePlaceAndSaveKnownFields() {
-        HashSet<String> knownFields = BulkAPIUtils.knownFields;
-
-        knownFields.add("Bob");
-
-        System.out.println("HERE'S THE INITIAL SET");
-        System.out.println(knownFields);
-
-        BulkAPIUtils.saveKnownFields();
-    }
-
-    //b Can use this method to prove that loading functionality works on HashSet<String>
-    public static void exampleGetAndPrintKnownFiles() throws Exception {
-        BulkAPIUtils.getKnownFields();
-
-        System.out.println(BulkAPIUtils.knownFields);
-    }
-
 }

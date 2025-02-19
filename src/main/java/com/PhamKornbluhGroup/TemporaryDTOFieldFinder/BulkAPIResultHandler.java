@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO.TemporaryDTOFieldFinder;
+package com.PhamKornbluhGroup.TemporaryDTOFieldFinder;
 
 import com.PhamKornbluhGroup.APIResultData;
 import com.PhamKornbluhGroup.SecretsHelper;
@@ -26,13 +26,26 @@ import java.util.Arrays;
  */
 public class BulkAPIResultHandler {
 
-    public APIResultData callAndPrintResults() {
+    public void getAndSaveOnePOEApiResult() {
+        this.getAndSavePOEDataToLocalFile("");
+    }
+    public void getAndSaveOnePOEApiResult(String changeId) {
+        this.getAndSavePOEDataToLocalFile(changeId);
+    }
+
+    private void getAndSavePOEDataToLocalFile(String changeId) {
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();
+
+        String pageChangeId = changeId;
+        // If no specific changeId is passed in, get pageChangeId from local file
+        if (pageChangeId.isBlank()) {
+            pageChangeId = BulkAPIUtils.getChangeId();
+        }
+
         try {
             //W START HERE
-            String pageCode = BulkAPIUtils.getPageCode();
-            String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageCode);
+            String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageChangeId);
 
             URL url = new URL(requestURL);
             connection = (HttpURLConnection) url.openConnection();
@@ -66,8 +79,6 @@ public class BulkAPIResultHandler {
 
         //b writer auto-closes
         BulkAPIUtils.saveAPIResults(resultData);
-
-        return resultData;
     }
 
 }
