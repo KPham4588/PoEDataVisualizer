@@ -1,38 +1,129 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIResultHandler;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 public class runner {
     public static void main(String[] args) throws Exception {
 
-        BulkAPIResultHandler handler = new BulkAPIResultHandler();
-        handler.getBulkPOEApiResults(10);
+        //p NEW
+//        BulkAPIResultHandler handler = new BulkAPIResultHandler();
+//        handler.getBulkPOEApiResults(10);
+
+        //p OLD
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
 //        printJson(json);
 
+//        printJson(returnTestJSON());
+
+//        String exampleJson = returnTestJSON();
+//        traverseJson(exampleJson);
+
+        JSONParsingTool tool = new JSONParsingTool();
+        APIResultData apiResultData = new APIResultData();
+        apiResultData.setContent(returnTestJSON());
+        tool.traverseJson(apiResultData);
+        tool.printElements();
     }
 
     public static void printJson(String json) throws JsonProcessingException {
+        //p Create initial rootNode
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(json);
 
-        Iterator<String> iterator = rootNode.fieldNames();
+        //p
+        JsonNode allItemsNode = rootNode.findValue("items");
+        Iterator<JsonNode> itemsIterator = allItemsNode.elements();
 
-        System.out.println(rootNode.toPrettyString());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        while (itemsIterator.hasNext()) {
+            System.out.println("---------------- LEVEL 1 ----------------");
+            JsonNode nextItem = itemsIterator.next();
+            //p Top-Level Field Names
+            Iterator<String> itemPropertiesIterator = nextItem.fieldNames();
+
+            while (itemPropertiesIterator.hasNext()) {
+                System.out.println("---------------- LEVEL 2 ----------------");
+                String nextProperty = itemPropertiesIterator.next();
+                JsonNode nextPropertyNode = nextItem.findValue(nextProperty);
+                System.out.println(nextProperty + " " + nextPropertyNode);
+
+                Iterator<JsonNode> nextNodeIterator = nextPropertyNode.elements();
+                while (nextNodeIterator.hasNext()) {
+                    System.out.println("---------------- LEVEL 3 ----------------");
+                    JsonNode nextPropertyNextAgain = nextNodeIterator.next();
+                    System.out.println(nextPropertyNextAgain.toPrettyString());
+
+                    Iterator<JsonNode> level4Iterator = nextPropertyNode.elements();
+                    while (level4Iterator.hasNext()) {
+                        System.out.println("---------------- LEVEL 4 ----------------");
+                        JsonNode level4PropertyNode = level4Iterator.next();
+                        System.out.println(level4PropertyNode.toPrettyString());
+
+                    }
+
+                }
+//            }
+            }
+            System.out.println();
+            System.out.println();
+            System.out.println();
+
+
+            //p Print JSON
+//        System.out.println(rootNode.toPrettyString());
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+
+            //p Read top-level values of the root
+//        ObjectMapper mapper = new ObjectMapper();
+//        JsonNode rootNode = mapper.readTree(json);
+//        Iterator<String> iterator = rootNode.fieldNames();
+//        while (iterator.hasNext()) {
+//            String next = iterator.next();
+//            System.out.print(next + " ");
+//            System.out.println(rootNode.findValue(next));
+//        }
         }
     }
 
+    public static void traverseJson(String json) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.readTree(json);
+
+        //b Tokens:
+        //p JsonToken.START_OBJECT (Denotes the beginning of our element)
+        //p START_OBJECT / END_OBJECT
+        //p START_ARRAY / END_ARRAY
+        //b FIELD_NAME
+        //b VALUE_STRING (Type)
+        //r NULL at the end
+        int nullCounts = 0;
+
+        try (JsonParser parser = rootNode.traverse()) {
+            for (int i = 0; i < 2300; i++) {
+                String name = parser.nextFieldName();
+                System.out.println("1 FieldName = " + name);
+                System.out.println("2 CurrentName = " + parser.currentName());
+                System.out.println("3 Token = " + parser.currentToken());
+                System.out.println();
+                if (parser.currentToken() == null) {
+                    nullCounts++;
+                }
+            }
+        }
+        catch (Exception e) {
+        }
+        System.out.println(nullCounts);
+
+    }
 
 
     public static String returnTestJSON() {
@@ -47,6 +138,7 @@ public class runner {
                            "items": [
                              {
                                "verified": false,
+                               "fakeFieldInsideItems": true,
                                "w": 1,
                                "h": 3,
                                "icon": "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvV2VhcG9ucy9PbmVIYW5kV2VhcG9ucy9XYW5kcy9XYW5kMyIsInciOjEsImgiOjMsInNjYWxlIjoxfV0/6322bd53f5/Wand3.png",
@@ -1529,7 +1621,9 @@ public class runner {
                                "inventoryId": "Stash14",
                                "socketedItems": []
                              }
-                           ]
+                           ],
+                           "fakenewField": "Yeppers",
+                           "secondNewFakeField": "Thats True"
                          }
                 """; // String json
         return json;

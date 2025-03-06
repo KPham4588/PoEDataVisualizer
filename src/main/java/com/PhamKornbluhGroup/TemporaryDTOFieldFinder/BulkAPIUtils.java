@@ -8,6 +8,46 @@ import java.util.HashSet;
 
 public class BulkAPIUtils {
     public static HashSet<String> knownFields = new HashSet<>();
+    public static HashSet<String> newFields = new HashSet<>();
+
+    public static void compareKnownFieldsAndUpdate(HashSet<String> currentFields, String pageChangeID) {
+        for (String nextElement : currentFields) {
+            if (!knownFields.contains(nextElement)) {
+                //TODO: Remove this printLn when not needed anymore
+                System.out.println(nextElement + " is new!");
+                newFields.add(nextElement);
+                knownFields.add(nextElement);
+            }
+        }
+        saveKnownFields();
+        saveNewFieldChangeLog(pageChangeID);
+    }
+
+    private static void saveNewFieldChangeLog(String pageChangeID) {
+        File filePath = locateNewSaveFieldChangeLogFilePath();
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write("PAGE CHANGE ID = " + pageChangeID + "\r\n\r\n");
+            for (String element : newFields) {
+                writer.write(element + "\r\n");
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Failure to write New Field Change Log. Error Message = " + e.getMessage());
+            System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
+        }
+    }
+
+    private static File locateNewSaveFieldChangeLogFilePath() {
+        int pageNumber = 1;
+        while (pageNumber < 1000) {
+            File filePath = new File(String.format("C:\\Users\\Public\\APIData\\ChangeLog\\Change%s.txt", pageNumber));
+            if (!filePath.exists()) {
+                return filePath;
+            }
+            pageNumber++;
+        }
+        return new File("");
+    }
 
     public static void getKnownFields() throws Exception {
         try (FileInputStream fileInput = new FileInputStream("knownFields.txt");
@@ -32,7 +72,7 @@ public class BulkAPIUtils {
     public static String getChangeId() {
         File filePath = new File("C:\\Users\\Public\\APIData\\ChangeId.txt");
         try (FileReader fileReader = new FileReader(filePath);
-            BufferedReader codeReader = new BufferedReader(fileReader)) {
+             BufferedReader codeReader = new BufferedReader(fileReader)) {
 
             String changeId = codeReader.readLine();
             return changeId;
