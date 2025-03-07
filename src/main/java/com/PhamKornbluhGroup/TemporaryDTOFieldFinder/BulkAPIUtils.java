@@ -65,6 +65,7 @@ public class BulkAPIUtils {
         }
         saveKnownFields();
         saveNewFieldChangeLog(pageChangeID);
+        newFields.clear();
     }
 
     public static void saveFirstUncheckedAPIResult(String filePath, int nextUncheckedNumber) {

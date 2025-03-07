@@ -13,7 +13,7 @@ public class BulkJSONTester {
         // TODO: This allows an easier time re-checking without re-running the Bulk grabber
 
         BulkAPIResultHandler handler = new BulkAPIResultHandler();
-        ArrayList<APIResultData> APIResultList = handler.getBulkPOEApiResults(500);
+        ArrayList<APIResultData> APIResultList = handler.getBulkPOEApiResults(150);
 
         JSONParsingTool traverser = new JSONParsingTool();
 

@@ -43,6 +43,7 @@ public class JSONParsingTool {
             System.out.println(e.getMessage());
         }
         BulkAPIUtils.compareKnownFieldsAndUpdate(currentJsonFields, apiResultData.getPageChangeID());
+        currentJsonFields.clear();
     }
 
     public void printElements() {
