@@ -36,8 +36,8 @@ public class BulkAPIUtils {
         }
     }
 
-    public static void saveAPIResults(APIResultData resultData) {
-        File filePath = locateAPIResultsFilePath();
+    public static void saveAPIResults(APIResultData resultData) throws Exception {
+        File filePath = locateNextFilePathNumber("C:\\Users\\Public\\APIData\\APIResult.txt");
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(resultData.getContent());
         }
@@ -67,8 +67,8 @@ public class BulkAPIUtils {
     private BulkAPIUtils() {
     }
 
-    private static void saveNewFieldChangeLog(String pageChangeID) {
-        File filePath = locateNewSaveFieldChangeLogFilePath();
+    private static void saveNewFieldChangeLog(String pageChangeID) throws Exception {
+        File filePath = locateNextFilePathNumber("C:\\Users\\Public\\APIData\\ChangeLog\\Change.txt");
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write("PAGE CHANGE ID = " + pageChangeID + "\r\n\r\n");
             for (String element : newFields) {
@@ -106,22 +106,21 @@ public class BulkAPIUtils {
         }
     }
 
-    private static File locateAPIResultsFilePath() {
-        int pageNumber = 1;
-        while (pageNumber < 1000) {
-            File filePath = new File(String.format("C:\\Users\\Public\\APIData\\APIResult%s.txt", pageNumber));
-            if (!filePath.exists()) {
-                return filePath;
-            }
-            pageNumber++;
-        }
-        return new File("");
-    }
 
-    private static File locateNewSaveFieldChangeLogFilePath() {
+
+    private static File locateNextFilePathNumber(String documentFilePath) throws Exception {
+        int indexOfFileType = documentFilePath.lastIndexOf(".");
+        if (indexOfFileType == -1) {
+            throw new StringIndexOutOfBoundsException("documentFilePath must include filetype suffix, like \"[FILE_NAME].txt\"");
+        }
+
         int pageNumber = 1;
-        while (pageNumber < 1000) {
-            File filePath = new File(String.format("C:\\Users\\Public\\APIData\\ChangeLog\\Change%s.txt", pageNumber));
+        while (pageNumber < 10000) {
+            StringBuilder builder = new StringBuilder(documentFilePath);
+            // Add page number right before ".txt", ".notes", etc
+            builder.insert(indexOfFileType, pageNumber);
+
+            File filePath = new File(builder.toString());
             if (!filePath.exists()) {
                 return filePath;
             }

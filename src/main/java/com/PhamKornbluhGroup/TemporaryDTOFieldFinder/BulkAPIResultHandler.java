@@ -25,7 +25,7 @@ import java.util.Arrays;
  Step 5 - Compare saved map against new map, printing the differences to another file (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
  */
 public class BulkAPIResultHandler {
-    public void getBulkPOEApiResults(int numberOfResults) throws InterruptedException {
+    public void getBulkPOEApiResults(int numberOfResults) throws Exception {
         String changeID = BulkAPIUtils.getChangeId();
 
         for (int i = 0; i < numberOfResults; i++) {
@@ -36,17 +36,17 @@ public class BulkAPIResultHandler {
         BulkAPIUtils.saveChangeId(changeID);
     }
 
-    public APIResultData getAndSaveOnePOEAPIResult() {
+    public APIResultData getAndSaveOnePOEAPIResult() throws Exception {
         APIResultData data = this.getAndSavePOEDataToLocalFile("");
         return data;
 
     }
-    public APIResultData getAndSaveOnePOEAPIResult(String changeId) {
+    public APIResultData getAndSaveOnePOEAPIResult(String changeId) throws Exception {
         APIResultData data = this.getAndSavePOEDataToLocalFile(changeId);
         return data;
     }
 
-    private APIResultData getAndSavePOEDataToLocalFile(String changeId) {
+    private APIResultData getAndSavePOEDataToLocalFile(String changeId) throws Exception {
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();
 
