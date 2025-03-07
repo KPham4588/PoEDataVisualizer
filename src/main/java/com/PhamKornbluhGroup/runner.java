@@ -22,7 +22,7 @@ public class runner {
 //        tool.traverseJson(apiResultData);
 //        tool.printElements();
 
-        BulkJSONTester.run();
+        BulkJSONTester.run(150);
     }
 
     public static String returnTestJSON() {
