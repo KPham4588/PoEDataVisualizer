@@ -58,6 +58,7 @@ public final class APIResultData {
     public int getResponseCode() {
         return responseCode;
     }
+
     public void setResponseCode(int responseCode) {
         this.responseCode = responseCode;
     }
@@ -65,6 +66,7 @@ public final class APIResultData {
     public String getResponseMessage() {
         return responseMessage;
     }
+
     public void setResponseMessage(String responseMessage) {
         this.responseMessage = responseMessage;
     }
@@ -72,6 +74,7 @@ public final class APIResultData {
     public String getEncoding() {
         return encoding;
     }
+
     public void setEncoding(String encoding) {
         this.encoding = encoding;
     }
@@ -79,6 +82,7 @@ public final class APIResultData {
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -86,6 +90,7 @@ public final class APIResultData {
     public String getPageChangeID() {
         return pageChangeID;
     }
+
     public void setPageChangeID(String pageChangeID) {
         this.pageChangeID = pageChangeID;
     }

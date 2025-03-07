@@ -28,15 +28,17 @@ class JSONItemHelper {
     private void start() {
         index++;
     }
+
     private void end() {
         elements.set(index, "");
         index--;
     }
+
     private void fieldName(String string) {
         elements.set(index, string);
     }
 
-    public String getFieldPath() {
+    String getFieldPath() {
         StringBuilder builder = new StringBuilder();
 
         builder.append(elements.get(0));

@@ -4,7 +4,6 @@ import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool
 
 public class runner {
     public static void main(String[] args) throws Exception {
-
         //p This gets gets and saves 10 API result files
 //        BulkAPIResultHandler handler = new BulkAPIResultHandler();
 //        handler.getBulkPOEApiResults(10);
@@ -1524,5 +1523,4 @@ public class runner {
                 """; // String json
         return json;
     }
-
 }

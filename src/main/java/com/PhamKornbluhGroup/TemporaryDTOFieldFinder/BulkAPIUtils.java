@@ -11,6 +11,9 @@ public class BulkAPIUtils {
     private static HashSet<String> newFields = new HashSet<>();
     private static boolean initialized = false;
 
+    private BulkAPIUtils() {
+    }
+
     public static String getChangeId() {
         File filePath = new File("C:\\Users\\Public\\APIData\\ChangeId.txt");
         try (FileReader fileReader = new FileReader(filePath);
@@ -64,9 +67,6 @@ public class BulkAPIUtils {
         saveNewFieldChangeLog(pageChangeID);
     }
 
-    private BulkAPIUtils() {
-    }
-
     private static void saveNewFieldChangeLog(String pageChangeID) throws Exception {
         File filePath = locateNextFilePathNumber("C:\\Users\\Public\\APIData\\ChangeLog\\Change.txt");
         try (FileWriter writer = new FileWriter(filePath)) {
@@ -105,8 +105,6 @@ public class BulkAPIUtils {
             e.printStackTrace();
         }
     }
-
-
 
     private static File locateNextFilePathNumber(String documentFilePath) throws Exception {
         int indexOfFileType = documentFilePath.lastIndexOf(".");

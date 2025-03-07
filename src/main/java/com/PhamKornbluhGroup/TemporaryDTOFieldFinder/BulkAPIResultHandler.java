@@ -8,21 +8,21 @@ import java.net.URL;
 import java.util.Arrays;
 
 /**
- Process #1
- #1 - Run the API, using changeID retrieved from file. Save to APIResults/APIResult1.txt
- (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
- #2 - Update the changeID
- #3 - Repeat until APIresult100.txt is done
- #4 - Update the file with changeID from APIResult100.txt
-
- 2707364413-2673472354-2598988668-2887209023-2794820282
-
- Process #2
- Step 1 - Create initial hashSet by grabbing from knownFields.txt file. If this step throws exception, initialize empty Hashset
- Step 2 - Make a new map, which will then take in all fields (Formatted with Level 0 --> Level 1 --> Level N)
- Step 3 - Start with APIResult1.txt, (handle via stream, to avoid memory overload??) Go breadth-first adding elements labeled in this format (Items). Later on (Items --> sockets).. Later on (Items --> sockets --> group). Add to new map
- Step 4 - Repeat for all 100 files
- Step 5 - Compare saved map against new map, printing the differences to another file (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
+ * Process #1
+ * #1 - Run the API, using changeID retrieved from file. Save to APIResults/APIResult1.txt
+ * (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
+ * #2 - Update the changeID
+ * #3 - Repeat until APIresult100.txt is done
+ * #4 - Update the file with changeID from APIResult100.txt
+ *
+ * 2707364413-2673472354-2598988668-2887209023-2794820282
+ *
+ * Process #2
+ * Step 1 - Create initial hashSet by grabbing from knownFields.txt file. If this step throws exception, initialize empty Hashset
+ * Step 2 - Make a new map, which will then take in all fields (Formatted with Level 0 --> Level 1 --> Level N)
+ * Step 3 - Start with APIResult1.txt, (handle via stream, to avoid memory overload??) Go breadth-first adding elements labeled in this format (Items). Later on (Items --> sockets).. Later on (Items --> sockets --> group). Add to new map
+ * Step 4 - Repeat for all 100 files
+ * Step 5 - Compare saved map against new map, printing the differences to another file (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
  */
 public class BulkAPIResultHandler {
     public void getBulkPOEApiResults(int numberOfResults) throws Exception {
@@ -41,6 +41,7 @@ public class BulkAPIResultHandler {
         return data;
 
     }
+
     public APIResultData getAndSaveOnePOEAPIResult(String changeId) throws Exception {
         APIResultData data = this.getAndSavePOEDataToLocalFile(changeId);
         return data;
@@ -88,12 +89,10 @@ public class BulkAPIResultHandler {
                 System.out.println("Got exception when closing API connection. Error = " + e.getMessage());
             }
         }
-
         //b writer auto-closes
         BulkAPIUtils.saveAPIResults(resultData);
 
         return resultData;
     }
-
 }
 
