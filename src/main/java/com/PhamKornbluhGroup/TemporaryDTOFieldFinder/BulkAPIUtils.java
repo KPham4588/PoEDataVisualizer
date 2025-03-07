@@ -67,6 +67,51 @@ public class BulkAPIUtils {
         saveNewFieldChangeLog(pageChangeID);
     }
 
+    public static void saveFirstUncheckedAPIResult(String filePath, int nextUncheckedNumber) {
+        try (FileWriter writer = new FileWriter("firstUncheckedAPIResult.txt")) {
+            writer.write(filePath + "\r\n");
+            writer.write(nextUncheckedNumber);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static PageNumberFilePath getFirstUncheckedAPIResult() throws Exception {
+        PageNumberFilePath path = new PageNumberFilePath();
+
+        File file = new File("firstUncheckedAPIResult.txt");
+        if (!file.exists()) {
+            // If there's no file, return with just an empty array
+            //TODO: Start logging this
+            return path;
+        }
+        try (FileInputStream fileInput = new FileInputStream(file);
+             InputStreamReader inputReader = new InputStreamReader(fileInput);
+             BufferedReader bufferedReader = new BufferedReader(inputReader)) {
+
+            path.setFilePath(bufferedReader.readLine());
+            path.setPageNumber(Integer.parseInt(bufferedReader.readLine()));
+        }
+        return path;
+    }
+
+    static File locateNextFilePathNumber(String documentFilePath) throws Exception {
+        PageNumberFilePath path = new PageNumberFilePath(documentFilePath);
+
+        int pageNumber = 1;
+        while (pageNumber < 10000) {
+            path.setPageNumber(pageNumber);
+
+            File filePath = new File(path.toString());
+            if (!filePath.exists()) {
+                return filePath;
+            }
+            pageNumber++;
+        }
+        return new File("");
+    }
+
     private static void saveNewFieldChangeLog(String pageChangeID) throws Exception {
         File filePath = locateNextFilePathNumber("C:\\Users\\Public\\APIData\\ChangeLog\\Change.txt");
         try (FileWriter writer = new FileWriter(filePath)) {
@@ -104,52 +149,5 @@ public class BulkAPIUtils {
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    //r Move up with other public methods
-    public static PageNumberFilePath getFirstUncheckedAPIResult() throws Exception {
-        PageNumberFilePath path = new PageNumberFilePath();
-
-        File file = new File("firstUncheckedAPIResult.txt");
-        if (!file.exists()) {
-            // If there's no file, return with just an empty array
-            //TODO: Start logging this
-            return path;
-        }
-        try (FileInputStream fileInput = new FileInputStream(file);
-             InputStreamReader inputReader = new InputStreamReader(fileInput);
-             BufferedReader bufferedReader = new BufferedReader(inputReader)) {
-
-            path.setFilePath(bufferedReader.readLine());
-            path.setPageNumber(Integer.parseInt(bufferedReader.readLine()));
-        }
-        return path;
-    }
-
-    //r Move up with other public methods
-    public static void saveFirstUncheckedAPIResult(String filePath, int nextUncheckedNumber) {
-        try (FileWriter writer = new FileWriter("firstUncheckedAPIResult.txt")) {
-            writer.write(filePath + "\r\n");
-            writer.write(nextUncheckedNumber);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static File locateNextFilePathNumber(String documentFilePath) throws Exception {
-        PageNumberFilePath path = new PageNumberFilePath(documentFilePath);
-
-        int pageNumber = 1;
-        while (pageNumber < 10000) {
-            path.setPageNumber(pageNumber);
-
-            File filePath = new File(path.toString());
-            if (!filePath.exists()) {
-                return filePath;
-            }
-            pageNumber++;
-        }
-        return new File("");
     }
 }
