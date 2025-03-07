@@ -52,7 +52,7 @@ public class BulkAPIUtils {
 
     public static void compareKnownFieldsAndUpdate(HashSet<String> currentFields, String pageChangeID) throws Exception {
         if (!initialized) {
-            BulkAPIUtils.getKnownFields();
+            BulkAPIUtils.loadKnownFields();
         }
 
         for (String nextElement : currentFields) {
@@ -81,14 +81,14 @@ public class BulkAPIUtils {
         }
     }
 
-    private static void getKnownFields() throws Exception {
+    private static void loadKnownFields() throws Exception {
         File file = new File("knownfields.txt");
         if (!file.exists()) {
-            // If there's no file, return with just an empty list
+            // If there's no file, keep knownFields list empty, and return
             //TODO: Start logging this
             return;
         }
-        try (FileInputStream fileInput = new FileInputStream("knownFields.txt");
+        try (FileInputStream fileInput = new FileInputStream(file);
              ObjectInputStream objectGetter = new ObjectInputStream(fileInput)) {
             knownFields = (HashSet<String>) objectGetter.readObject();
         }
@@ -106,19 +106,45 @@ public class BulkAPIUtils {
         }
     }
 
-    private static File locateNextFilePathNumber(String documentFilePath) throws Exception {
-        int indexOfFileType = documentFilePath.lastIndexOf(".");
-        if (indexOfFileType == -1) {
-            throw new StringIndexOutOfBoundsException("documentFilePath must include filetype suffix, like \"[FILE_NAME].txt\"");
+    //r Move up with other public methods
+    public static PageNumberFilePath getFirstUncheckedAPIResult() throws Exception {
+        PageNumberFilePath path = new PageNumberFilePath();
+
+        File file = new File("firstUncheckedAPIResult.txt");
+        if (!file.exists()) {
+            // If there's no file, return with just an empty array
+            //TODO: Start logging this
+            return path;
         }
+        try (FileInputStream fileInput = new FileInputStream(file);
+             InputStreamReader inputReader = new InputStreamReader(fileInput);
+             BufferedReader bufferedReader = new BufferedReader(inputReader)) {
+
+            path.setFilePath(bufferedReader.readLine());
+            path.setPageNumber(Integer.parseInt(bufferedReader.readLine()));
+        }
+        return path;
+    }
+
+    //r Move up with other public methods
+    public static void saveFirstUncheckedAPIResult(String filePath, int nextUncheckedNumber) {
+        try (FileWriter writer = new FileWriter("firstUncheckedAPIResult.txt")) {
+            writer.write(filePath + "\r\n");
+            writer.write(nextUncheckedNumber);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static File locateNextFilePathNumber(String documentFilePath) throws Exception {
+        PageNumberFilePath path = new PageNumberFilePath(documentFilePath);
 
         int pageNumber = 1;
         while (pageNumber < 10000) {
-            StringBuilder builder = new StringBuilder(documentFilePath);
-            // Add page number right before ".txt", ".notes", etc
-            builder.insert(indexOfFileType, pageNumber);
+            path.setPageNumber(pageNumber);
 
-            File filePath = new File(builder.toString());
+            File filePath = new File(path.toString());
             if (!filePath.exists()) {
                 return filePath;
             }

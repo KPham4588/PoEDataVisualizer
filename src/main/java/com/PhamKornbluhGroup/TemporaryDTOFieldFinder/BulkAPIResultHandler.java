@@ -5,6 +5,7 @@ import com.PhamKornbluhGroup.SecretsHelper;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -25,15 +26,20 @@ import java.util.Arrays;
  * Step 5 - Compare saved map against new map, printing the differences to another file (Check if File0 exists, if it does Check File1, and so on. Create a new one that doesnt exist yet)
  */
 public class BulkAPIResultHandler {
-    public void getBulkPOEApiResults(int numberOfResults) throws Exception {
+    public ArrayList<APIResultData> getBulkPOEApiResults(int numberOfResults) throws Exception {
+        ArrayList<APIResultData> resultDataList = new ArrayList<>();
+
         String changeID = BulkAPIUtils.getChangeId();
 
         for (int i = 0; i < numberOfResults; i++) {
             APIResultData nextResult = this.getAndSaveOnePOEAPIResult(changeID);
+            resultDataList.add(nextResult);
+
             changeID = nextResult.getPageChangeID();
             Thread.sleep(550);
         }
         BulkAPIUtils.saveChangeId(changeID);
+        return resultDataList;
     }
 
     public APIResultData getAndSaveOnePOEAPIResult() throws Exception {

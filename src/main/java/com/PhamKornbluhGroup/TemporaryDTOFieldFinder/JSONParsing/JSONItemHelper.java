@@ -8,7 +8,7 @@ class JSONItemHelper {
     private int index = -1;
     private ArrayList<String> elements = new ArrayList<>();
 
-    public JSONItemHelper() {
+    JSONItemHelper() {
         for (int i = 0; i < 50; i++) {
             elements.add("");
         }

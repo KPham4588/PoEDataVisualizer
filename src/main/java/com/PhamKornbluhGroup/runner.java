@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup;
 
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIUtils;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.BulkJSONTester;
 import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool;
 
 public class runner {
@@ -14,11 +16,13 @@ public class runner {
 //        printJson(json);
 
         //p This is the new logic to parse JSON by passing in the data
-        JSONParsingTool tool = new JSONParsingTool();
-        APIResultData apiResultData = new APIResultData();
-        apiResultData.setContent(returnTestJSON());
-        tool.traverseJson(apiResultData);
-        tool.printElements();
+//        JSONParsingTool tool = new JSONParsingTool();
+//        APIResultData apiResultData = new APIResultData();
+//        apiResultData.setContent(returnTestJSON());
+//        tool.traverseJson(apiResultData);
+//        tool.printElements();
+
+        BulkJSONTester.run();
     }
 
     public static String returnTestJSON() {
