@@ -36,8 +36,6 @@ public class BulkAPIResultHandler {
         BulkAPIUtils.saveChangeId(changeID);
     }
 
-
-
     public APIResultData getAndSaveOnePOEAPIResult() {
         APIResultData data = this.getAndSavePOEDataToLocalFile("");
         return data;
@@ -59,7 +57,6 @@ public class BulkAPIResultHandler {
         }
 
         try {
-            //W START HERE
             String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageChangeId);
 
             URL url = new URL(requestURL);

@@ -1,130 +1,26 @@
 package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.util.Iterator;
 
 public class runner {
     public static void main(String[] args) throws Exception {
 
-        //p NEW
+        //p This gets gets and saves 10 API result files
 //        BulkAPIResultHandler handler = new BulkAPIResultHandler();
 //        handler.getBulkPOEApiResults(10);
 
-        //p OLD
+        //p This is the old way that we got and saved 1 API Result file
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
 //        printJson(json);
 
-//        printJson(returnTestJSON());
-
-//        String exampleJson = returnTestJSON();
-//        traverseJson(exampleJson);
-
+        //p This is the new logic to parse JSON by passing in the data
         JSONParsingTool tool = new JSONParsingTool();
         APIResultData apiResultData = new APIResultData();
         apiResultData.setContent(returnTestJSON());
         tool.traverseJson(apiResultData);
         tool.printElements();
     }
-
-    public static void printJson(String json) throws JsonProcessingException {
-        //p Create initial rootNode
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(json);
-
-        //p
-        JsonNode allItemsNode = rootNode.findValue("items");
-        Iterator<JsonNode> itemsIterator = allItemsNode.elements();
-
-        while (itemsIterator.hasNext()) {
-            System.out.println("---------------- LEVEL 1 ----------------");
-            JsonNode nextItem = itemsIterator.next();
-            //p Top-Level Field Names
-            Iterator<String> itemPropertiesIterator = nextItem.fieldNames();
-
-            while (itemPropertiesIterator.hasNext()) {
-                System.out.println("---------------- LEVEL 2 ----------------");
-                String nextProperty = itemPropertiesIterator.next();
-                JsonNode nextPropertyNode = nextItem.findValue(nextProperty);
-                System.out.println(nextProperty + " " + nextPropertyNode);
-
-                Iterator<JsonNode> nextNodeIterator = nextPropertyNode.elements();
-                while (nextNodeIterator.hasNext()) {
-                    System.out.println("---------------- LEVEL 3 ----------------");
-                    JsonNode nextPropertyNextAgain = nextNodeIterator.next();
-                    System.out.println(nextPropertyNextAgain.toPrettyString());
-
-                    Iterator<JsonNode> level4Iterator = nextPropertyNode.elements();
-                    while (level4Iterator.hasNext()) {
-                        System.out.println("---------------- LEVEL 4 ----------------");
-                        JsonNode level4PropertyNode = level4Iterator.next();
-                        System.out.println(level4PropertyNode.toPrettyString());
-
-                    }
-
-                }
-//            }
-            }
-            System.out.println();
-            System.out.println();
-            System.out.println();
-
-
-            //p Print JSON
-//        System.out.println(rootNode.toPrettyString());
-//        System.out.println();
-//        System.out.println();
-//        System.out.println();
-
-            //p Read top-level values of the root
-//        ObjectMapper mapper = new ObjectMapper();
-//        JsonNode rootNode = mapper.readTree(json);
-//        Iterator<String> iterator = rootNode.fieldNames();
-//        while (iterator.hasNext()) {
-//            String next = iterator.next();
-//            System.out.print(next + " ");
-//            System.out.println(rootNode.findValue(next));
-//        }
-        }
-    }
-
-    public static void traverseJson(String json) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(json);
-
-        //b Tokens:
-        //p JsonToken.START_OBJECT (Denotes the beginning of our element)
-        //p START_OBJECT / END_OBJECT
-        //p START_ARRAY / END_ARRAY
-        //b FIELD_NAME
-        //b VALUE_STRING (Type)
-        //r NULL at the end
-        int nullCounts = 0;
-
-        try (JsonParser parser = rootNode.traverse()) {
-            for (int i = 0; i < 2300; i++) {
-                String name = parser.nextFieldName();
-                System.out.println("1 FieldName = " + name);
-                System.out.println("2 CurrentName = " + parser.currentName());
-                System.out.println("3 Token = " + parser.currentToken());
-                System.out.println();
-                if (parser.currentToken() == null) {
-                    nullCounts++;
-                }
-            }
-        }
-        catch (Exception e) {
-        }
-        System.out.println(nullCounts);
-
-    }
-
 
     public static String returnTestJSON() {
         String json = """
@@ -1628,6 +1524,5 @@ public class runner {
                 """; // String json
         return json;
     }
-
 
 }
