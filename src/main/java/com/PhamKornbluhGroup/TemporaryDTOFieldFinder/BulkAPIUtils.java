@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class BulkAPIUtils {
-    private static HashSet<String> knownFields = new HashSet<>();
+    public static HashSet<String> knownFields = new HashSet<>();
     private static HashSet<String> newFields = new HashSet<>();
     private static boolean initialized = false;
 
@@ -55,17 +55,23 @@ public class BulkAPIUtils {
             BulkAPIUtils.loadKnownFields();
         }
 
+        boolean foundNewElement = false;
+
         for (String nextElement : currentFields) {
             if (!knownFields.contains(nextElement)) {
                 //TODO: Remove this printLn when not needed anymore
                 System.out.println(nextElement + " is new!");
+                foundNewElement = true;
                 newFields.add(nextElement);
                 knownFields.add(nextElement);
             }
         }
-        saveKnownFields();
-        saveNewFieldChangeLog(pageChangeID);
-        newFields.clear();
+
+        if (foundNewElement) {
+            saveKnownFields();
+            saveNewFieldChangeLog(pageChangeID);
+            newFields.clear();
+        }
     }
 
     public static void saveFirstUncheckedAPIResult(String filePath, int nextUncheckedNumber) {
@@ -127,7 +133,7 @@ public class BulkAPIUtils {
         }
     }
 
-    private static void loadKnownFields() throws Exception {
+    public static void loadKnownFields() throws Exception {
         File file = new File("knownfields.txt");
         if (!file.exists()) {
             // If there's no file, keep knownFields list empty, and return

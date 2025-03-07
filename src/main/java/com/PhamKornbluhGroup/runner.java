@@ -22,7 +22,13 @@ public class runner {
 //        tool.traverseJson(apiResultData);
 //        tool.printElements();
 
-        BulkJSONTester.run(150);
+//        BulkJSONTester.run(150);
+        BulkAPIUtils.loadKnownFields();
+        BulkAPIUtils.knownFields.stream().sorted().forEach(System.out::println);
+//        for (String element : BulkAPIUtils.knownFields) {
+//            System.out.println(element);
+//        }
+
     }
 
     public static String returnTestJSON() {
