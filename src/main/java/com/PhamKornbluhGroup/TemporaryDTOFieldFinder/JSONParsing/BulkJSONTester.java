@@ -25,6 +25,7 @@ public class BulkJSONTester {
                 APIResultData nextResult = APIResultList.get(j);
                 traverser.traverseJson(nextResult);
             }
+            //TODO: Might be able to delete this. I thought we passed a static arraylist, but it looks like its not
             APIResultList.clear();
 //        BulkAPIUtils.saveFirstUncheckedAPIResult();
         }
