@@ -14,28 +14,22 @@ class JSONItemHelper {
         }
     }
 
-    void handleToken(JsonToken token, String string) {
+    void handleToken(JsonToken token, String name) {
         switch (token) {
             //b JsonToken.START_OBJECT (Moving 1 layer deeper)
-            case START_OBJECT -> start();
+            case START_OBJECT -> {
+                index++;
+            }
             //b JsonToken.END_OBJECT (Moving 1 layer higher)
-            case END_OBJECT -> end();
+            case END_OBJECT -> {
+                elements.set(index, "");
+                index--;
+            }
             //b Updating current level with new value
-            case FIELD_NAME -> fieldName(string);
+            case FIELD_NAME -> {
+                elements.set(index, name);
+            }
         }
-    }
-
-    private void start() {
-        index++;
-    }
-
-    private void end() {
-        elements.set(index, "");
-        index--;
-    }
-
-    private void fieldName(String string) {
-        elements.set(index, string);
     }
 
     String getFieldPath() {

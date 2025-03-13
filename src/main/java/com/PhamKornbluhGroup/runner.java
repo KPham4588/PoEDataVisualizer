@@ -22,13 +22,21 @@ public class runner {
 //        tool.traverseJson(apiResultData);
 //        tool.printElements();
 
-        BulkJSONTester.run(100);
+//        BulkJSONTester.run(100);
 
 //        BulkAPIUtils.loadKnownFields();
 //        BulkAPIUtils.knownFields.stream().sorted().forEach(System.out::println);
 ////        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
+
+        JSONParsingTool traverser = new JSONParsingTool();
+
+        for (int j = 0; j < 25; j++) {
+            APIResultData nextResult = new APIResultData();
+            nextResult.setContent(returnTestJSON());
+            traverser.traverseJson(nextResult);
+        }
 
     }
 
@@ -93,6 +101,10 @@ public class runner {
                                  {
                                    "name": "Critical Strike Chance",
                                    "values": [
+                                     [
+                                       "8.00%",
+                                       0
+                                     ],
                                      [
                                        "8.00%",
                                        0

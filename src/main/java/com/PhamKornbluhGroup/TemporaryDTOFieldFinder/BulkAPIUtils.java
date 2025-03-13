@@ -68,8 +68,8 @@ public class BulkAPIUtils {
         }
 
         if (foundNewElement) {
-            saveKnownFields();
-            saveNewFieldChangeLog(pageChangeID);
+//            saveKnownFields();
+//            saveNewFieldChangeLog(pageChangeID);
             newFields.clear();
         }
     }
