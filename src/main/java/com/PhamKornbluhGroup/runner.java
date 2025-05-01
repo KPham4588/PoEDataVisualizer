@@ -26,7 +26,7 @@ public class runner {
 
 //        BulkAPIUtils.loadKnownFields();
 //        BulkAPIUtils.knownFields.stream().sorted().forEach(System.out::println);
-////        for (String element : BulkAPIUtils.knownFields) {
+//        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
 
