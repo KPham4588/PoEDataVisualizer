@@ -11,7 +11,6 @@ public enum FactionID {
     FactionID(String factionID) {
         this.factionID = factionID;
     }
-    
     public String getFactionID() {
         return factionID;
     }

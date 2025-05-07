@@ -21,11 +21,9 @@ public enum FrameType {
         this.value = value;
         this.information = information;
     }
-
     public long getValue() {
         return value;
     }
-
     public String getInformation() {
         return information;
     }
