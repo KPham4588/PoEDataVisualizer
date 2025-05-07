@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public enum FrameType {
     ZERO(0L, "Normal frame"),

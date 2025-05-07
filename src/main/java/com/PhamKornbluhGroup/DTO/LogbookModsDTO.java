@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public class LogbookModsDTO {
     private String areaName;    // Called "name" in Dev Docs   // Description "area name" in Dev Docs

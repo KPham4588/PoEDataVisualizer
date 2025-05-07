@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public class IncubatedItemDTO {
     private String incubatedItemName; // Called "name" in Dev Docs

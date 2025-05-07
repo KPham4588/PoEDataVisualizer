@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public enum DisplayMode {
     ZERO(0L, "Name should be followed by values"), // Name should be followed by values

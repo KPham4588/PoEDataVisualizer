@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public class ResultDTO {
     private String nextChangeId; // pagination code

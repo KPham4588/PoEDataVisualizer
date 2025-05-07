@@ -1,4 +1,4 @@
-package com.PhamKornbluhGroup.DTO2;
+package com.PhamKornbluhGroup.DTO;
 
 public class ScourgedDTO {
     private long scourgedTier;     // Called "tier" in Dev Docs      // 1-3 for items, 1-10 for maps
