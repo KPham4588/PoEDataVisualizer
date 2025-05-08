@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.Arrays;
 
 public class GGGAPIHandler {
-
     public APIResultData callAndPrintResults() {
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();

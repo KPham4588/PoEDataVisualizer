@@ -1,17 +1,46 @@
 package com.PhamKornbluhGroup;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.*;
-import java.util.Iterator;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIUtils;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.BulkJSONTester;
+import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool;
 
 public class runner {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        //p This gets gets and saves 10 API result files
+//        BulkAPIResultHandler handler = new BulkAPIResultHandler();
+//        handler.getBulkPOEApiResults(10);
+
+        //p This is the old way that we got and saved 1 API Result file
 //        GGGAPIHandler handler = new GGGAPIHandler();
 //        handler.callAndPrintResults();
-// 
+//        printJson(json);
+
+        //p This is the new logic to parse JSON by passing in the data
+//        JSONParsingTool tool = new JSONParsingTool();
+//        APIResultData apiResultData = new APIResultData();
+//        apiResultData.setContent(returnTestJSON());
+//        tool.traverseJson(apiResultData);
+//        tool.printElements();
+
+//        BulkJSONTester.run(100);
+
+//        BulkAPIUtils.loadKnownFields();
+//        BulkAPIUtils.knownFields.stream().sorted().forEach(System.out::println);
+//        for (String element : BulkAPIUtils.knownFields) {
+//            System.out.println(element);
+//        }
+
+        JSONParsingTool traverser = new JSONParsingTool();
+
+        for (int j = 0; j < 25; j++) {
+            APIResultData nextResult = new APIResultData();
+            nextResult.setContent(returnTestJSON());
+            traverser.traverseJson(nextResult);
+        }
+
+    }
+
+    public static String returnTestJSON() {
         String json = """
                         {
                            "id": "c5956c281ee71cb55b4737c85524e9094700bab32b425fea1a32aaba4c76f7e8",
@@ -23,6 +52,7 @@ public class runner {
                            "items": [
                              {
                                "verified": false,
+                               "fakeFieldInsideItems": true,
                                "w": 1,
                                "h": 3,
                                "icon": "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvV2VhcG9ucy9PbmVIYW5kV2VhcG9ucy9XYW5kcy9XYW5kMyIsInciOjEsImgiOjMsInNjYWxlIjoxfV0/6322bd53f5/Wand3.png",
@@ -71,6 +101,10 @@ public class runner {
                                  {
                                    "name": "Critical Strike Chance",
                                    "values": [
+                                     [
+                                       "8.00%",
+                                       0
+                                     ],
                                      [
                                        "8.00%",
                                        0
@@ -1505,28 +1539,11 @@ public class runner {
                                "inventoryId": "Stash14",
                                "socketedItems": []
                              }
-                           ]
+                           ],
+                           "fakenewField": "Yeppers",
+                           "secondNewFakeField": "Thats True"
                          }
                 """; // String json
-        printJson(json);
+        return json;
     }
-
-    public static void printJson(String json) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(json);
-
-        Iterator<String> iterator = rootNode.fieldNames();
-
-        System.out.println(rootNode.toPrettyString());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-    }
-
-
-
-
 }

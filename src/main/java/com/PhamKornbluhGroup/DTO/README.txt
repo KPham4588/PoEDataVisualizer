@@ -16,20 +16,40 @@ R::::::R     R:::::R e::::::::eeeeeeeea:::::aaaa::::::a d:::::::::::::::::d     
 R::::::R     R:::::R  ee:::::::::::::e a::::::::::aa:::a d:::::::::ddd::::d     M::::::M               M::::::ME::::::::::::::::::::E
 RRRRRRRR     RRRRRRR    eeeeeeeeeeeeee  aaaaaaaaaa  aaaa  ddddddddd   ddddd     MMMMMMMM               MMMMMMMMEEEEEEEEEEEEEEEEEEEEEE
 -------------------------------------------------------------------------------------------------------------------------------------
-Structure goes like this:
-stash/
-├── StashDTO.java          # Represents the main Stash data transfer object
-└── item/
-    ├── ItemDTO.java       # Represents individual item data
-    ├── SocketsDTO.java    # Represents socket-related data in the item
-    ├── PropertiesDTO.java # Represents properties associated with the item
-    └── ExtendedDTO.java   # Represents extended details for the item
+Object Hierarchy:
 
-TODO: IM GOING TO NEED TO REVISIT ALL OF MY EXAMPLES FOR ALL DTO CLASSES, TO REMOVE QUOTATIONS MARKS WHEN DISCUSSING INTS
-
-
-
-
-
-
-
+ResultDTO
+└── PublicStashChangeDTO
+    └── ItemDTO
+        ├── ItemSocketDTO
+        ├── ItemDTO                         // (Same as Parent ItemDTO)
+        ├── properties (ItemPropertyDTO)
+        │   ├── ItemPropertyValuesDTO
+        │   └── DisplayMode (ENUM)
+        ├── notableProperties (ItemPropertyDTO)
+        │   ├── ItemPropertyValuesDTO
+        │   └── DisplayMode (ENUM)
+        ├── requirements (ItemPropertyDTO)
+        │   ├── ItemPropertyValuesDTO
+        │   └── DisplayMode (ENUM)
+        ├── additionalProperties (ItemPropertyDTO)
+        │   ├── ItemPropertyValuesDTO
+        │   └── DisplayMode (ENUM)
+        ├── nextLevelRequirements (ItemPropertyDTO)
+        │   ├── ItemPropertyValuesDTO
+        │   └── DisplayMode (ENUM)
+        ├── RewardsDTO
+        ├── LogbookModsDTO
+        │   └── FactionDTO
+        │       └── FactionID (ENUM)
+        ├── UltimatumModsDTO
+        ├── IncubatedItemDTO
+        ├── ScourgedDTO
+        ├── CrucibleDTO
+        │   └── CrucibleNodeDTO
+        ├── FrameType (ENUM)
+        ├── HybridDTO
+        │   └── properties (ItemPropertyDTO)
+        │       ├── ItemPropertyValuesDTO
+        │       └── DisplayMode (ENUM)
+        └── ExtendedDTO
