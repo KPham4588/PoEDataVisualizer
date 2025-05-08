@@ -6,11 +6,27 @@ import java.net.URL;
 import java.util.Arrays;
 
 public class GGGAPIHandler {
-    public APIResultData callAndPrintResults() {
+
+    public APIResultData getAndSaveOnePOEAPIResult() throws Exception {
+        APIResultData data = this.getAndSavePOEDataToLocalFile("");
+        return data;
+    }
+
+    public APIResultData getAndSaveOnePOEAPIResult(String changeId) throws Exception {
+        APIResultData data = this.getAndSavePOEDataToLocalFile(changeId);
+        return data;
+    }
+    
+    private APIResultData getAndSavePOEDataToLocalFile(String changeId) {
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();
+
+        String pageChangeId = changeId;
+
         try {
-            URL url = new URL("https://api.pathofexile.com/public-stash-tabs/pc");
+            String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageChangeId);
+
+            URL url = new URL(requestURL);
             connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
@@ -20,10 +36,7 @@ public class GGGAPIHandler {
 
             String[] gggUserAgent = SecretsHelper.getFormattedGGGBearerTokenUserAgent();
             connection.setRequestProperty(gggUserAgent[0], gggUserAgent[1]);
-
-            // TODO: Determine if the following 2 properties are needed
-            // connection.setRequestProperty("Content-Type","application/json");
-
+            
             //b Connect here. Disconnect happens in finally block
             connection.connect();
 
