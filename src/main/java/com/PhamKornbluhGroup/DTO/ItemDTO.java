@@ -14,7 +14,7 @@ public class ItemDTO {
     private String stackSizeText;                              // Optional
     private String league;                                     // Optional
     private String id; // a unique 64 digit hexadecimal string // Optional
-    private Object influences;                                 // Optional   //w WHAT IS GOING ON HERE //r Are other influences missing? Conq? Warlord?
+    private Object influences;                                 // Optional   //w WHAT IS GOING ON HERE //p Are other conqueror influences missing? Warlord? Redeemer? Hunter? Crusader?
     private boolean elder;       // always true if present     // Optional   //w Is this part of influences??
     private boolean shaper;      // always true if present     // Optional   //w Is this part of influences??
     private boolean searing;     // always true if present     // Optional   //w Is this part of influences??
@@ -60,30 +60,30 @@ public class ItemDTO {
     private String[] explicitMods;                                 // Optional
     private String[] craftedMods;                                  // Optional
     private String[] fracturedMods;                                // Optional
-    private String[] crucibleMods; // only allocated mods are included // Optional
+    private String[] crucibleMods;  // only allocated mods are included // Optional
     private String[] cosmeticMods;                                 // Optional
-    private String[] veiledMods;   // random video identifier      // Optional
-    private boolean veiled;        // always true if present       // Optional
+    private String[] veiledMods;    // random video identifier      // Optional
+    private boolean veiled;         // always true if present       // Optional
     private String descrText;                                      // Optional
     private String[] flavourText;                                  // Optional
     private Object[] flavourTextParsed; //p Can be either an array of Strings or Objects // Optional
     private String flavourTextNote; // user-generated text         // Optional
     private String prophecyText;                                   // Optional
-    private boolean isRelic; // always true if present             // Optional
+    private boolean isRelic;        // always true if present      // Optional
     private int foilVariation;                                     // Optional
-    private boolean replica; // always true if present             // Optional
-    private boolean foreseeing; // always true if present          // Optional
+    private boolean replica;        // always true if present      // Optional
+    private boolean foreseeing;     // always true if present      // Optional
     private IncubatedItemDTO incubatedItem;                        // Optional
     private ScourgedDTO scourged;                                  // Optional
     private CrucibleDTO crucible;                                  // Optional
-    private boolean ruthless; // always true if present            // Optional
+    private boolean ruthless;       // always true if present      // Optional
     private FrameType frameType;                                   // Optional
     private String artFilename;                                    // Optional
     private HybridDTO hybrid;                                      // Optional
-    private ExtendedDTO extended; // only present in the Public Stash API   // Optional
+    private ExtendedDTO extended;   // only present in the Public Stash API   // Optional
     private long x;                                                // Optional
     private long y;                                                // Optional
     private String inventoryId;                                    // Optional
     private long socket;                                           // Optional
-    private String colour; // S, D, I, or G                        // Optional
+    private String colour;          // S, D, I, or G               // Optional
 }
