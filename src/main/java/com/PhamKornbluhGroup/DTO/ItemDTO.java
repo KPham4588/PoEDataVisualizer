@@ -1,6 +1,9 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class ItemDTO {
+    private int dbID;
+    private int publicStashChangeID;
+    private int parentItemID;
     private boolean verified;
     private long w;
     private long h;

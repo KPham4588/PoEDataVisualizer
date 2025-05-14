@@ -1,6 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class PublicStashChangeDTO {
+    private int dbID;
+    private int resultID;
     private String id;           // a unique 64 digit hexadecimal string
     private boolean isPublic;    // Called "public" in Dev Docs           //p if false then optional properties will be null
     private String accountName;                                               //p Optional
