@@ -1,6 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class CrucibleNodeDTO {
+    private int dbID;
+    private int crucibleID;
     private long skill;          // mod hash                                       // Optional
     private long tier;           // mod tier                                       // Optional
     private String icon;                                                           // Optional

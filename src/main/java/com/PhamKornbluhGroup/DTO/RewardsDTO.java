@@ -3,6 +3,8 @@ package com.PhamKornbluhGroup.DTO;
 import java.util.HashMap;
 
 public class RewardsDTO {
+    private int dbID;
+    private int itemID;
     private String label;
     private HashMap<String, Integer> rewards;
         // Key = A string representing the type of reward

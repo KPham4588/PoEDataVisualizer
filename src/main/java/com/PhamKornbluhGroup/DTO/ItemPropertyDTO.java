@@ -1,6 +1,9 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class ItemPropertyDTO {
+    private int dbID;
+    private int itemID;
+    private int hybridID;
     private String name;
     private ItemPropertyValuesDTO[] values;
     private DisplayMode displayMode;                        // Optional
