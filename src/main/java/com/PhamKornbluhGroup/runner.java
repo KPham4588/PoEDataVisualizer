@@ -1,9 +1,5 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIUtils;
-import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.BulkJSONTester;
-import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing.JSONParsingTool;
-
 public class runner {
     public static void main(String[] args) throws Exception {
         //p This gets gets and saves 10 API result files
@@ -16,7 +12,7 @@ public class runner {
 //        printJson(json);
 
         //p This is the new logic to parse JSON by passing in the data
-//        JSONParsingTool tool = new JSONParsingTool();
+//        DeprecatedJSONParsingTool tool = new DeprecatedJSONParsingTool();
 //        APIResultData apiResultData = new APIResultData();
 //        apiResultData.setContent(returnTestJSON());
 //        tool.traverseJson(apiResultData);
@@ -30,7 +26,7 @@ public class runner {
 //            System.out.println(element);
 //        }
 
-        JSONParsingTool traverser = new JSONParsingTool();
+        DeprecatedJSONParsingTool traverser = new DeprecatedJSONParsingTool();
 
         for (int j = 0; j < 25; j++) {
             APIResultData nextResult = new APIResultData();

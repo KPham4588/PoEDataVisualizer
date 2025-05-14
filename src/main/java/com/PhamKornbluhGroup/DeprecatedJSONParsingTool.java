@@ -1,18 +1,15 @@
-package com.PhamKornbluhGroup.TemporaryDTOFieldFinder.JSONParsing;
+package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.APIResultData;
-import com.PhamKornbluhGroup.TemporaryDTOFieldFinder.BulkAPIUtils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class JSONParsingTool {
+public class DeprecatedJSONParsingTool {
     private HashSet<String> currentJsonFields = new HashSet<>();
 
     public void traverseJson(APIResultData apiResultData) throws Exception {
@@ -20,13 +17,12 @@ public class JSONParsingTool {
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(json);
-        JSONItemHelper helper = new JSONItemHelper();
 
         HashMap<String, String[]> fieldsAndValues = new HashMap<>();
 
         try (JsonParser parser = rootNode.traverse()) {
             JsonToken currentToken;
-            String currentValue = "";
+            StringBuilder currentValue = new StringBuilder();
 
             /*
              * Tokens we care about are:
@@ -43,28 +39,21 @@ public class JSONParsingTool {
                     {
                         while (!currentToken.name().equalsIgnoreCase("FIELD_NAME"))
                         {
-                            currentValue += parser.getValueAsString();
+                            currentValue.append(parser.getValueAsString());
                         }
                     }
                     else if (currentToken.name().equalsIgnoreCase("START_ARRAY"))
                     {
                         while (!currentToken.name().equalsIgnoreCase("FIELD_NAME"))
                         {
-                            currentValue += parser.getValueAsString();
+                            currentValue.append(parser.getValueAsString());
                         }
                     }
-                }
-
-                helper.handleToken(currentToken, currentName);
-
-                String newFieldPath = helper.getFieldPath();
-                if (!newFieldPath.isBlank()) {
-                    fieldsAndValues.put(newFieldPath, new String[]{ currentToken.name(), currentValue});
                 }
             }
         }
         catch (Exception e) {
-            System.out.println("Exception in traverseJSON method of JSONParsingTool");
+            System.out.println("Exception in traverseJSON method of DeprecatedJSONParsingTool");
             System.out.println(e.getStackTrace());
             System.out.println(e.getMessage());
         }
