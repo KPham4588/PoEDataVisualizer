@@ -7,6 +7,8 @@ import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
 
+import java.util.Properties;
+
 public class SecretsHelper {
     // If you need more information about configurations or implementing the sample
     // code, visit the AWS docs:
@@ -80,5 +82,11 @@ public class SecretsHelper {
             System.out.println(e.getMessage());
         }
         return parsedToken;
+    }
+
+    public static Properties getDBInformation() {
+        // TODO: Implement
+        Properties prop = new Properties();
+        return new Properties();
     }
 }
