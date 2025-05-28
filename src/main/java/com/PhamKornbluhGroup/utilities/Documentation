@@ -1,0 +1,17 @@
+/*
+=================================================================================================
+          Session Pool Documentation
+-------------------------------------------------------------------------------------------------
+                                   Declared Methods:
+
+* private SessionPool()
+    Default constructor with a private modifier to prevent external access.
+
+* public static SqlSession getSession();
+    Creates a unique static session for MyBatis connectivity (singleton).
+
+* public static void close(AutoCloseable resource);
+    Method to close a resource or session.
+
+=================================================================================================
+*/
