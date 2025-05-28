@@ -16,7 +16,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="mappers/FactionIDMapper.xml"/>
+        <!-- <mapper resource="mappers/FactionIDMapper.xml"/> -->
+        <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
     </mappers>
 
 </configuration>
