@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO">
+    <resultMap type = "com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO" id = "ItemPropertyValuesDTOMap" autoMapping = "false">
+        <id column = "dbId" property = "dbId"/>
+        <result column = "itemPropertyId" property = "itemPropertyId"/>
+        <result column = "value" property = "value"/>
+        <result column = "valueType" property = "valueType"/>
+    </resultMap>
+
+    <select id = "getEntityById"> resultMap = "IItemPropertyValuesDTO"
+        <![CDATA[
+			SELECT *
+			FROM ItemPropertyValues
+			WHERE dbId = #{dbId}
+		]]>
+    </select>
+
+    <insert id = "saveEntity" useGeneratedKeys = "true" keyProperty = "dbId">
+        <![CDATA[
+			INSERT INTO ItemPropertyValues
+			(itemPropertyId, value, valueType)
+			VALUES (#{itemPropertyId}, #{value}, #{valueType})
+		]]>
+    </insert>
+
+    <delete id = "removeEntity">
+        <![CDATA[
+			DELETE FROM ItemPropertyValues
+			 WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+    <update id = "updateEntity">
+        <![CDATA[
+			UPDATE ItemPropertyValues
+			SET itemPropertyId = #{itemPropertyId},
+			value = #{value},
+			valueType = #{valueType},
+			WHERE dbId = #{dbId},
+		]]>
+    </update>
+
+</mapper>
