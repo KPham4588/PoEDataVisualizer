@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO">
+
     <resultMap type = "com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO" id = "ItemPropertyValuesDTOMap" autoMapping = "false">
         <id column = "dbId" property = "dbId"/>
         <result column = "itemPropertyId" property = "itemPropertyId"/>
@@ -20,7 +21,7 @@
     <insert id = "saveEntity" useGeneratedKeys = "true" keyProperty = "dbId">
         <![CDATA[
 			INSERT INTO ItemPropertyValues
-			(itemPropertyId, value, valueType)
+			    (itemPropertyId, value, valueType)
 			VALUES (#{itemPropertyId}, #{value}, #{valueType})
 		]]>
     </insert>
@@ -28,7 +29,7 @@
     <delete id = "removeEntity">
         <![CDATA[
 			DELETE FROM ItemPropertyValues
-			 WHERE dbId = #{dbId}
+			WHERE dbId = #{dbId}
 		]]>
     </delete>
 
@@ -36,8 +37,8 @@
         <![CDATA[
 			UPDATE ItemPropertyValues
 			SET itemPropertyId = #{itemPropertyId},
-			value = #{value},
-			valueType = #{valueType},
+			    value = #{value},
+			    valueType = #{valueType},
 			WHERE dbId = #{dbId},
 		]]>
     </update>
