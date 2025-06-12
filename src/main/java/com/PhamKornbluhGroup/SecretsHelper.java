@@ -86,7 +86,35 @@ public class SecretsHelper {
 
     public static Properties getDBInformation() {
         // TODO: Implement
-        Properties prop = new Properties();
-        return new Properties();
+        Properties props = new Properties();
+        props.setProperty("username", getDBUserName());
+        props.setProperty("password", getDBPassword());
+        props.setProperty("driver", getDBDriver());
+        props.setProperty("url", getDBURL());
+        return props;
+    }
+
+    private static String getDBUserName() {
+        String secretName = "rds!db-441d80e3-7441-46d3-a3dc-4c068869ffcb";
+        String secret = getSecretsManagerSecret(secretName);
+        return parseJsonToken(secret, "username");
+    }
+
+    private static String getDBPassword() {
+        String secretName = "rds!db-441d80e3-7441-46d3-a3dc-4c068869ffcb";
+        String secret = getSecretsManagerSecret(secretName);
+        return parseJsonToken(secret, "password");
+    }
+
+    private static String getDBDriver() {
+        String secretName = "poe-oracle_driver_and_url";
+        String secret = getSecretsManagerSecret(secretName);
+        return parseJsonToken(secret, "driver");
+    }
+
+    private static String getDBURL() {
+        String secretName = "poe-oracle_driver_and_url";
+        String secret = getSecretsManagerSecret(secretName);
+        return parseJsonToken(secret, "url");
     }
 }
