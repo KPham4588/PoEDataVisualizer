@@ -1,7 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class ExtendedDTO {
-    private int dbID;
+    private int dbId;
     private int itemId;
     private String category;        // Deprecated   // Optional
     private String[] subcategories; // Deprecated   // Optional

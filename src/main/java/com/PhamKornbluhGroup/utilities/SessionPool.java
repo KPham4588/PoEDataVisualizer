@@ -21,10 +21,14 @@ public class SessionPool {
     }
 
     public static SqlSession getSession() {
-        // TODO: FIX THIS AND IMPLEMENT
         Properties databaseSecrets = SecretsHelper.getDBInformation();
+        // Session never gets closed
 
-        // Update / Make sure not to create extra unneeded builders
+        /** TODO: UPDATE -- Since we're using the Singleton, we should check to see if session has already been initialized
+         * If it has, we should return the pre-existing object, not overwrite it with a new one */
+
+        //r SESSION MUST BE CLOSED BY THE CALLER DOWNSTREAM
+        // Other Notes:    Update / Make sure not to create extra unneeded builders
         try {
             reader = Resources.getResourceAsReader(MYBATIS_URI);
             factory = new SqlSessionFactoryBuilder().build(reader, databaseSecrets);
@@ -38,6 +42,7 @@ public class SessionPool {
             close(reader);
         }
         return session;
+
     }
 
     public static void close(AutoCloseable resource) {
@@ -45,6 +50,7 @@ public class SessionPool {
             try {
                 resource.close();
             }
+            // TODO: Add a better multi-catch and implement logging
             catch (NullPointerException | IOException e) {
                 System.out.println(e.getMessage());
             }

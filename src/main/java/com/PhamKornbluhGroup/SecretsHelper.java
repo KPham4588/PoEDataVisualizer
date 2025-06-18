@@ -85,7 +85,8 @@ public class SecretsHelper {
     }
 
     public static Properties getDBInformation() {
-        // TODO: Implement
+        // username, password, driver, and url are exact strings that will be used to match variables in the mybatisconfig.xml
+        // If we change in one place, must change in the other place as well
         Properties props = new Properties();
         props.setProperty("username", getDBUserName());
         props.setProperty("password", getDBPassword());
