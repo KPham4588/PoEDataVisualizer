@@ -39,8 +39,9 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- Secret Manager -->
+
     <dependencies>
+        <!-- Secret Manager -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>secretsmanager</artifactId>
@@ -74,6 +75,13 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.5.10</version>
+        </dependency>
+
+        <!-- JDBC Driver https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.3.0</version>
         </dependency>
     </dependencies>
 

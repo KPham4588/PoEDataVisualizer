@@ -23,14 +23,14 @@
     <select id="getEntityById" resultMap="CrucibleNodeDTOMap">
         <![CDATA[
             SELECT *
-            FROM CrucibleNode
+            FROM `poe-oracle`.CrucibleNode
             WHERE dbId = #{dbId}
         ]]>
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
-            INSERT INTO CrucibleNode
+            INSERT INTO `poe-oracle`.CrucibleNode
                 (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
                 stats, reminderText, orbit, orbitIndex, out, in)
             VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},

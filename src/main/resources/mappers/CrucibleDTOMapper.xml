@@ -19,7 +19,7 @@
     <select id="getEntityById" resultMap="CrucibleDTOMap">
         <![CDATA[
 			SELECT *
-			FROM Crucible
+			FROM `poe-oracle`.Crucible
 			WHERE dbId = #{dbId}
 		]]>
     </select>

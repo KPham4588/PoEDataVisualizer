@@ -1,15 +1,22 @@
 package com.PhamKornbluhGroup;
 
+import com.PhamKornbluhGroup.utilities.DBHelper;
+
 public class runner {
     public static void main(String[] args) throws Exception {
+
+        //p This is the old way that we got and saved 1 API Result file
+        //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
+        //GGGAPIHandler handler = new GGGAPIHandler();
+        //handler.getAndSaveOnePOEAPIResult();
+
+        DBHelper helper = new DBHelper();
+        helper.getEntityById(1);
+        helper.saveCrucibleNode();
+
         //p This gets gets and saves 10 API result files
 //        BulkAPIResultHandler handler = new BulkAPIResultHandler();
 //        handler.getBulkPOEApiResults(10);
-
-        //p This is the old way that we got and saved 1 API Result file
-//        GGGAPIHandler handler = new GGGAPIHandler();
-//        handler.callAndPrintResults();
-//        printJson(json);
 
         //p This is the new logic to parse JSON by passing in the data
 //        DeprecatedJSONParsingTool tool = new DeprecatedJSONParsingTool();
@@ -25,15 +32,6 @@ public class runner {
 //        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
-
-        DeprecatedJSONParsingTool traverser = new DeprecatedJSONParsingTool();
-
-        for (int j = 0; j < 25; j++) {
-            APIResultData nextResult = new APIResultData();
-            nextResult.setContent(returnTestJSON());
-            traverser.traverseJson(nextResult);
-        }
-
     }
 
     public static String returnTestJSON() {
