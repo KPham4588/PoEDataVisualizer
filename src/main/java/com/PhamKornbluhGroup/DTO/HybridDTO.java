@@ -1,8 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
 public class HybridDTO {
-    private int dbID;
-    private int itemID;
+    private int dbId;
+    private int itemId;
     private boolean isVaalGem;            // Optional
     private String baseTypeName;
     private ItemPropertyDTO[] properties; // Optional

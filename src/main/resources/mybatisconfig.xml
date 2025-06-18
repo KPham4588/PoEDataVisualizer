@@ -6,17 +6,19 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <!-- This will use SecretsManager, not local file references -->
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
+                <!-- Properties are set via SessionPool Properties file config -->
                 <property name="username" value="${username}"/>
                 <property name="password" value="${password}"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
         <!-- <mapper resource="mappers/FactionIDMapper.xml"/> -->
+        <!-- <mapper resource="mappers/CrucibleDTOMapper.xml"/> -->
+        <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
     </mappers>
 

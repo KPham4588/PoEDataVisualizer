@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO">
+
+    <resultMap type="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" id="CrucibleNodeDTOMap" autoMapping="false">
+        <id column="dbId" property="dbId"/>
+        <result column="crucibleId" property="crucibleId"/>
+        <result column="skill" property="skill"/>
+        <result column="tier" property="tier"/>
+        <result column="icon" property="icon"/>
+        <result column="allocated" property="allocated"/>
+        <result column="isNotable" property="isNotable"/>
+        <result column="isReward" property="isReward"/>
+        <result column="stats" property="stats"/>
+        <result column="reminderText" property="reminderText"/>
+        <result column="orbit" property="orbit"/>
+        <result column="orbitIndex" property="orbitIndex"/>
+        <result column="out" property="out"/>
+        <result column="in" property="in"/>
+    </resultMap>
+
+    <select id="getEntityById" resultMap="CrucibleNodeDTOMap">
+        <![CDATA[
+            SELECT *
+            FROM CrucibleNode
+            WHERE dbId = #{dbId}
+        ]]>
+    </select>
+
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        <![CDATA[
+            INSERT INTO CrucibleNode
+                (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
+                stats, reminderText, orbit, orbitIndex, out, in)
+            VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},
+                #{isNotable}, #{isReward}, #{stats}, #{reminderText},
+                #{orbit}, #{orbitIndex}, #{out}, #{in})
+        ]]>
+    </insert>
+
+    <delete id="removeEntity">
+        <![CDATA[
+            DELETE FROM CrucibleNode
+            WHERE dbId = #{dbId}
+        ]]>
+    </delete>
+
+    <update id="updateEntity">
+        <![CDATA[
+            UPDATE CrucibleNode
+            SET crucibleId = #{crucibleId},
+                skill = #{skill},
+                tier = #{tier},
+                icon = #{icon},
+                allocated = #{allocated},
+                isNotable = #{isNotable},
+                isReward = #{isReward},
+                stats = #{stats},
+                reminderText = #{reminderText},
+                orbit = #{orbit},
+                orbitIndex = #{orbitIndex},
+                out = #{out},
+                in = #{in}
+            WHERE db_id = #{dbId}
+        ]]>
+    </update>
+
+</mapper>
