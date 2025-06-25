@@ -32,7 +32,7 @@
         <![CDATA[
             INSERT INTO `poe-oracle`.CrucibleNode
                 (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
-                stats, reminderText, orbit, orbitIndex, out, in)
+                stats, reminderText, orbit, orbitIndex, `out`, `in`)
             VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},
                 #{isNotable}, #{isReward}, #{stats}, #{reminderText},
                 #{orbit}, #{orbitIndex}, #{out}, #{in})
@@ -41,14 +41,14 @@
 
     <delete id="removeEntity">
         <![CDATA[
-            DELETE FROM CrucibleNode
+            DELETE FROM `poe-oracle`.CrucibleNode
             WHERE dbId = #{dbId}
         ]]>
     </delete>
 
     <update id="updateEntity">
         <![CDATA[
-            UPDATE CrucibleNode
+            UPDATE `poe-oracle`.CrucibleNode
             SET crucibleId = #{crucibleId},
                 skill = #{skill},
                 tier = #{tier},
