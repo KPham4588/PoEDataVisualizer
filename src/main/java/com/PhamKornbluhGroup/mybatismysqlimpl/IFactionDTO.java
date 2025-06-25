@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IFactionDTO extends IBaseDAO<IFactionDTO> {
+import com.PhamKornbluhGroup.DTO.FactionDTO;
+
+public interface IFactionDTO extends IBaseDAO<FactionDTO> {
 }

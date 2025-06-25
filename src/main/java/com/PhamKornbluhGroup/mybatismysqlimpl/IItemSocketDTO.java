@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IItemSocketDTO extends IBaseDAO<IItemSocketDTO> {
+import com.PhamKornbluhGroup.DTO.ItemSocketDTO;
+
+public interface IItemSocketDTO extends IBaseDAO<ItemSocketDTO> {
 }

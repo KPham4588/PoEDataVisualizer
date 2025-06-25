@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface ILogbookModsDTO extends IBaseDAO<ILogbookModsDTO> {
+import com.PhamKornbluhGroup.DTO.LogbookModsDTO;
+
+public interface ILogbookModsDTO extends IBaseDAO<LogbookModsDTO> {
 }

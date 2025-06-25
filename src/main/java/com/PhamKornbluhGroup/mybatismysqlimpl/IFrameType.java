@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IFrameType extends IBaseDAO<IFrameType> {
+import com.PhamKornbluhGroup.DTO.FrameType;
+
+public interface IFrameType extends IBaseDAO<FrameType> {
 }

@@ -13,14 +13,14 @@
     <select id = "getEntityById"> resultMap = "IItemPropertyValuesDTO"
         <![CDATA[
 			SELECT *
-			FROM ItemPropertyValues
+			FROM `poe-oracle`.ItemPropertyValues
 			WHERE dbId = #{dbId}
 		]]>
     </select>
 
     <insert id = "saveEntity" useGeneratedKeys = "true" keyProperty = "dbId">
         <![CDATA[
-			INSERT INTO ItemPropertyValues
+			INSERT INTO `poe-oracle`.ItemPropertyValues
 			    (itemPropertyId, value, valueType)
 			VALUES (#{itemPropertyId}, #{value}, #{valueType})
 		]]>
@@ -28,14 +28,14 @@
 
     <delete id = "removeEntity">
         <![CDATA[
-			DELETE FROM ItemPropertyValues
+			DELETE FROM `poe-oracle`.ItemPropertyValues
 			WHERE dbId = #{dbId}
 		]]>
     </delete>
 
     <update id = "updateEntity">
         <![CDATA[
-			UPDATE ItemPropertyValues
+			UPDATE `poe-oracle`.ItemPropertyValues
 			SET itemPropertyId = #{itemPropertyId},
 			    value = #{value},
 			    valueType = #{valueType},

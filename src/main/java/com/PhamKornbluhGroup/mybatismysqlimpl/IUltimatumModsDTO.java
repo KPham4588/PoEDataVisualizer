@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IUltimatumModsDTO extends IBaseDAO<IUltimatumModsDTO> {
+import com.PhamKornbluhGroup.DTO.UltimatumModsDTO;
+
+public interface IUltimatumModsDTO extends IBaseDAO<UltimatumModsDTO> {
 }

@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IItemPropertyValuesDTO extends IBaseDAO<IItemPropertyValuesDTO> {
+import com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO;
+
+public interface IItemPropertyValuesDTO extends IBaseDAO<ItemPropertyValuesDTO> {
 }

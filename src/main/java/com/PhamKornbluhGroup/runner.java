@@ -1,6 +1,6 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.utilities.DBHelper;
+import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
 
 public class runner {
     public static void main(String[] args) throws Exception {
@@ -10,9 +10,10 @@ public class runner {
         //GGGAPIHandler handler = new GGGAPIHandler();
         //handler.getAndSaveOnePOEAPIResult();
 
-        DBHelper helper = new DBHelper();
-        helper.getEntityById(1);
-        helper.saveCrucibleNode();
+        CrucibleNodeDAO helper = new CrucibleNodeDAO();
+        //helper.getEntityById(1);
+        //helper.saveCrucibleNode();
+        helper.deleteCrucibleNodeById(6);
 
         //p This gets gets and saves 10 API result files
 //        BulkAPIResultHandler handler = new BulkAPIResultHandler();
