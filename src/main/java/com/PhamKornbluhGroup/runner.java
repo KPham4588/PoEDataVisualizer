@@ -2,18 +2,24 @@ package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
 
+import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
+
 public class runner {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
+        testObjectToBeUpdated.setIcon("NewIconJustUpdated");
+        testObjectToBeUpdated.setDbId(5);
+
+        CrucibleNodeDAO dao = new CrucibleNodeDAO();
+        dao.updateCrucibleNode(testObjectToBeUpdated);
+        //dao.deleteCrucibleNodeById(5);
+        //dao.getEntityById(1);
+        //dao.saveCrucibleNode();
 
         //p This is the old way that we got and saved 1 API Result file
         //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
         //GGGAPIHandler handler = new GGGAPIHandler();
         //handler.getAndSaveOnePOEAPIResult();
-
-        CrucibleNodeDAO helper = new CrucibleNodeDAO();
-        //helper.getEntityById(1);
-        //helper.saveCrucibleNode();
-        helper.deleteCrucibleNodeById(6);
 
         //p This gets gets and saves 10 API result files
 //        BulkAPIResultHandler handler = new BulkAPIResultHandler();

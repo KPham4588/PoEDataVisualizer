@@ -60,9 +60,9 @@
                 reminderText = #{reminderText},
                 orbit = #{orbit},
                 orbitIndex = #{orbitIndex},
-                out = #{out},
-                in = #{in}
-            WHERE db_id = #{dbId}
+                `out` = #{out},
+                `in` = #{in}
+            WHERE dbId = #{dbId}
         ]]>
     </update>
 
