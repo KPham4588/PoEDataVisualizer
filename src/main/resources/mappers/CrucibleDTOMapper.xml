@@ -9,18 +9,37 @@
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
         <result property="layout" column="layout"/>
+        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>
 
         <!-- Here's where the association goes-->
-        <collection property="nodes" javaType="hashmap" ofType="com.PhamKornbluhGroup.DTO.CrucibleDTO" resultMap="CrucibleNodeDTOMap"> </collection>
+        <!-- <collection property="nodes" javaType="hashmap" ofType="com.PhamKornbluhGroup.DTO.CrucibleDTO" resultMap="CrucibleNodeDTOMap"> </collection> -->
             <!-- -->
     </resultMap>
 
-
     <select id="getEntityById" resultMap="CrucibleDTOMap">
         <![CDATA[
-			SELECT *
-			FROM `poe-oracle`.Crucible
-			WHERE dbId = #{dbId}
+        SELECT
+            Crucible.dbid,
+            Crucible.itemId,
+            Crucible.layout,
+            CrucibleNode.dbid AS nodeDbId,
+            CrucibleNode.crucibleId,
+            CrucibleNode.skill,
+            CrucibleNode.tier,
+            CrucibleNode.icon,
+            CrucibleNode.allocated,
+            CrucibleNode.isNotable,
+            CrucibleNode.isReward,
+            CrucibleNode.stats,
+            CrucibleNode.reminderText,
+            CrucibleNode.orbit,
+            CrucibleNode.orbitIndex,
+            CrucibleNode.`out`,
+            CrucibleNode.`in`
+        FROM `poe-oracle`.Crucible AS Crucible
+        INNER JOIN `poe-oracle`.CrucibleNode AS CrucibleNode
+        ON Crucible.dbId = CrucibleNode.crucibleId
+        WHERE Crucible.dbId = 1
 		]]>
     </select>
 

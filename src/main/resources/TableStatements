@@ -1,4 +1,4 @@
--- Crucible Node
+------------- Crucible Node -------------
 
 CREATE TABLE IF NOT EXISTS `poe-oracle`.`CrucibleNode` (
   `dbId` INT NOT NULL,
@@ -15,5 +15,14 @@ CREATE TABLE IF NOT EXISTS `poe-oracle`.`CrucibleNode` (
   `orbitIndex` BIGINT NULL,
   `out` TEXT NULL,
   `in` TEXT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+------------- Crucible -------------
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`Crucible` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `layout` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`dbId`)
 );

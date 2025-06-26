@@ -4,10 +4,10 @@
 <mapper namespace = "com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO">
 
     <resultMap type = "com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO" id = "ItemPropertyValuesDTOMap" autoMapping = "false">
-        <id column = "dbId" property = "dbId"/>
-        <result column = "itemPropertyId" property = "itemPropertyId"/>
-        <result column = "value" property = "value"/>
-        <result column = "valueType" property = "valueType"/>
+        <id property = "dbId" column = "dbId"/>
+        <result property = "itemPropertyId" column = "itemPropertyId"/>
+        <result property = "value" column = "value"/>
+        <result property = "valueType" column = "valueType"/>
     </resultMap>
 
     <select id = "getEntityById"> resultMap = "IItemPropertyValuesDTO"

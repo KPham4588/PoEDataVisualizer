@@ -3,21 +3,21 @@
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO">
 
-    <resultMap type="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" id="CrucibleNodeDTOMap" autoMapping="false">
-        <id column="dbId" property="dbId"/>
-        <result column="crucibleId" property="crucibleId"/>
-        <result column="skill" property="skill"/>
-        <result column="tier" property="tier"/>
-        <result column="icon" property="icon"/>
-        <result column="allocated" property="allocated"/>
-        <result column="isNotable" property="isNotable"/>
-        <result column="isReward" property="isReward"/>
-        <result column="stats" property="stats"/>
-        <result column="reminderText" property="reminderText"/>
-        <result column="orbit" property="orbit"/>
-        <result column="orbitIndex" property="orbitIndex"/>
-        <result column="out" property="out"/>
-        <result column="in" property="in"/>
+    <resultMap id="CrucibleNodeDTOMap" type="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="crucibleId" column="crucibleId"/>
+        <result property="skill" column="skill"/>
+        <result property="tier" column="tier"/>
+        <result property="icon" column="icon"/>
+        <result property="allocated" column="allocated"/>
+        <result property="isNotable" column="isNotable"/>
+        <result property="isReward" column="isReward"/>
+        <result property="stats" column="stats"/>
+        <result property="reminderText" column="reminderText"/>
+        <result property="orbit" column="orbit"/>
+        <result property="orbitIndex" column="orbitIndex"/>
+        <result property="out" column="out"/>
+        <result property="in" column="in"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="CrucibleNodeDTOMap">

@@ -1,7 +1,9 @@
 package com.PhamKornbluhGroup;
 
+import com.PhamKornbluhGroup.DAO.CrucibleDAO;
 import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
 
+import com.PhamKornbluhGroup.DTO.CrucibleDTO;
 import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 
 public class runner {
@@ -9,12 +11,15 @@ public class runner {
         CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
         testObjectToBeUpdated.setIcon("NewIconJustUpdated");
         testObjectToBeUpdated.setDbId(5);
-
         CrucibleNodeDAO dao = new CrucibleNodeDAO();
         dao.updateCrucibleNode(testObjectToBeUpdated);
-        //dao.deleteCrucibleNodeById(5);
-        //dao.getEntityById(1);
-        //dao.saveCrucibleNode();
+//        dao.deleteCrucibleNodeById(5);
+//        dao.getEntityById(1);
+//        dao.saveCrucibleNode();
+
+        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(1);
+        System.out.println(testObject.toString());
+
 
         //p This is the old way that we got and saved 1 API Result file
         //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");

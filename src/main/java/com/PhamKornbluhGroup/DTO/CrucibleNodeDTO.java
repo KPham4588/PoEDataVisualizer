@@ -124,6 +124,26 @@ public class CrucibleNodeDTO {
         return in;
     }
 
+    @Override
+    public String toString() {
+        return "CrucibleNodeDTO{" +
+                "dbId=" + dbId +
+                ", crucibleId=" + crucibleId +
+                ", skill=" + skill +
+                ", tier=" + tier +
+                ", icon='" + icon + '\'' +
+                ", allocated=" + allocated +
+                ", isNotable=" + isNotable +
+                ", isReward=" + isReward +
+                ", stats='" + stats + '\'' +
+                ", reminderText='" + reminderText + '\'' +
+                ", orbit=" + orbit +
+                ", orbitIndex=" + orbitIndex +
+                ", out='" + out + '\'' +
+                ", in='" + in + '\'' +
+                '}';
+    }
+
     public void setIn(String in) {
         this.in = in;
     }
