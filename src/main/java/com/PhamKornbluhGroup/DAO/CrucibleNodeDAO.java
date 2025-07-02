@@ -4,8 +4,12 @@ import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CrucibleNodeDAO {
+
+    private final static Logger CrucibleNodeDAOLogger = LogManager.getLogger(CrucibleNodeDAO.class);
 
     public void insertCrucibleNode(CrucibleNodeDTO insertObject) {
         SqlSession session = SessionPool.getSession();
@@ -22,10 +26,10 @@ public class CrucibleNodeDAO {
         System.out.println("Attempting to get CrucibleNodeDTO object with ID " + id);
         CrucibleNodeDTO newNode = mapper.getEntityById(id);
         if (newNode != null) {
-            System.out.println("Success!");
+            CrucibleNodeDAOLogger.trace("Success!");
         }
         else {
-            System.out.println("Failure!");
+            CrucibleNodeDAOLogger.trace("Failure!");
         }
         return newNode;
     }

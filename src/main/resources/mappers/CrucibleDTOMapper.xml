@@ -39,7 +39,7 @@
         FROM `poe-oracle`.Crucible AS Crucible
         INNER JOIN `poe-oracle`.CrucibleNode AS CrucibleNode
         ON Crucible.dbId = CrucibleNode.crucibleId
-        WHERE Crucible.dbId = 1
+        WHERE Crucible.dbId = #{dbId}
 		]]>
     </select>
 

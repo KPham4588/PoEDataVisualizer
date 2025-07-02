@@ -7,6 +7,7 @@ import com.PhamKornbluhGroup.DTO.CrucibleDTO;
 import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 
 public class runner {
+
     public static void main(String[] args) {
         CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
         testObjectToBeUpdated.setIcon("NewIconJustUpdated");
@@ -17,7 +18,7 @@ public class runner {
 //        dao.getEntityById(1);
 //        dao.saveCrucibleNode();
 
-        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(1);
+        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
         System.out.println(testObject.toString());
 
 
