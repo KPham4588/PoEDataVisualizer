@@ -9,14 +9,12 @@ import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 public class runner {
 
     public static void main(String[] args) {
-        CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
-        testObjectToBeUpdated.setIcon("NewIconJustUpdated");
-        testObjectToBeUpdated.setDbId(5);
+        org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
+        //CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
+        //testObjectToBeUpdated.setIcon("NewIconJustUpdated");
+        //testObjectToBeUpdated.setDbId(5);
         CrucibleNodeDAO dao = new CrucibleNodeDAO();
-        dao.updateCrucibleNode(testObjectToBeUpdated);
-//        dao.deleteCrucibleNodeById(5);
-//        dao.getEntityById(1);
-//        dao.saveCrucibleNode();
+        //dao.updateCrucibleNode(testObjectToBeUpdated);
 
         CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
         System.out.println(testObject.toString());

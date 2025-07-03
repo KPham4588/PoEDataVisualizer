@@ -14,28 +14,16 @@
         <!-- This is our primary location for logging -->
         <File name="MAIN" fileName="logs/main.log">
             <PatternLayout pattern="%p - %m%n"/>
-            <!-- Presumably a different way of using Patterns -->
-            <!-- <JsonTemplateLayout/> -->
         </File>
-
-        <File name="FileDesignedToFail" fileName="logs/fail.log">
-             <JsonTemplateLayout/>
-        </File>
-
     </Appenders>
-
-    <!-- -->
 
     <!-- Here's where we set logging  -->
     <Loggers>
-
-        <!-- Right now we want one logger, logging everything, so we go TRACE or maybe Integer.MAX_VALUE if this is valid -->
+        <!-- Right now we want one logger, logging everything, so we go TRACE -->
+        <Logger name="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO" level="ALL" />
         <Root level="INFO">
-            <AppenderRef ref="CONSOLE" level="TRACE"/>
-            <AppenderRef ref="MAIN" level="TRACE"/>
-            <AppenderRef ref="FileDesignedToFail"/>
+            <AppenderRef ref="CONSOLE" level="ALL"/>
+            <AppenderRef ref="MAIN" level="ALL"/>
         </Root>
-
     </Loggers>
-
 </Configuration>
