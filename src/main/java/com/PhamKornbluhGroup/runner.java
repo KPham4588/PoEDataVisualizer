@@ -9,7 +9,6 @@ import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 public class runner {
 
     public static void main(String[] args) {
-        org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
         //CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
         //testObjectToBeUpdated.setIcon("NewIconJustUpdated");
         //testObjectToBeUpdated.setDbId(5);

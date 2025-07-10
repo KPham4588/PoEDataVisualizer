@@ -9,11 +9,12 @@
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
         <result property="layout" column="layout"/>
-        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>
+<!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>-->
 
-        <!-- Here's where the association goes-->
-        <!-- <collection property="nodes" javaType="hashmap" ofType="com.PhamKornbluhGroup.DTO.CrucibleDTO" resultMap="CrucibleNodeDTOMap"> </collection> -->
-            <!-- -->
+
+        <!-- If this is confused by the getentitybyID then we might need to put in the mapper namespace before the query-->
+        <collection property="nodes" javaType="ArrayList" column="id" ofType="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" select="getEntityById"/>
+
     </resultMap>
 
     <select id="getEntityById" resultMap="CrucibleDTOMap">
@@ -22,6 +23,7 @@
             Crucible.dbid,
             Crucible.itemId,
             Crucible.layout,
+            -- All of the CrucibleNode fields below link to the associated Arraylist "nodes" property, mapped via the CrucibleNodeDTOMapper Resultmap
             CrucibleNode.dbid AS nodeDbId,
             CrucibleNode.crucibleId,
             CrucibleNode.skill,
@@ -35,7 +37,8 @@
             CrucibleNode.orbit,
             CrucibleNode.orbitIndex,
             CrucibleNode.`out`,
-            CrucibleNode.`in`
+            CrucibleNode.`in`,
+            CrucibleNode.`crucibleNodeIndex`
         FROM `poe-oracle`.Crucible AS Crucible
         INNER JOIN `poe-oracle`.CrucibleNode AS CrucibleNode
         ON Crucible.dbId = CrucibleNode.crucibleId

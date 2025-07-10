@@ -15,6 +15,7 @@ public class CrucibleNodeDTO {
     private long orbitIndex;     // the node's position within the column          // Optional
     private String out;          // node identifiers of nodes this one connects to
     private String in;           // node identifiers of nodes connected to this one
+    private String crucibleNodeIndex; // In documentation, this is the key for the "nodes" hashmap, and is the string value of the node index
 
     public int getDbId() {
         return dbId;

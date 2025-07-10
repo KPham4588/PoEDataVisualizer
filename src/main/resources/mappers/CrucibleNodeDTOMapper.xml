@@ -18,6 +18,7 @@
         <result property="orbitIndex" column="orbitIndex"/>
         <result property="out" column="out"/>
         <result property="in" column="in"/>
+        <result property="crucibleNodeIndex" column="crucibleNodeIndex"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="CrucibleNodeDTOMap">
@@ -32,10 +33,10 @@
         <![CDATA[
             INSERT INTO `poe-oracle`.CrucibleNode
                 (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
-                stats, reminderText, orbit, orbitIndex, `out`, `in`)
+                stats, reminderText, orbit, orbitIndex, `out`, `in`, `crucibleNodeIndex`)
             VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},
                 #{isNotable}, #{isReward}, #{stats}, #{reminderText},
-                #{orbit}, #{orbitIndex}, #{out}, #{in})
+                #{orbit}, #{orbitIndex}, #{out}, #{in}, #{crucibleNodeIndex})
         ]]>
     </insert>
 
@@ -61,7 +62,8 @@
                 orbit = #{orbit},
                 orbitIndex = #{orbitIndex},
                 `out` = #{out},
-                `in` = #{in}
+                `in` = #{in},
+                `crucibleNodeIndex` = #{crucibleNodeIndex}
             WHERE dbId = #{dbId}
         ]]>
     </update>
