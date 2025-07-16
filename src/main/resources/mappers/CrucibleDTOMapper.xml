@@ -20,28 +20,10 @@
     <select id="getEntityById" resultMap="CrucibleDTOMap">
         <![CDATA[
         SELECT
-            Crucible.dbid,
-            Crucible.itemId,
-            Crucible.layout,
-            -- All of the CrucibleNode fields below link to the associated Arraylist "nodes" property, mapped via the CrucibleNodeDTOMapper Resultmap
-            CrucibleNode.dbid AS nodeDbId,
-            CrucibleNode.crucibleId,
-            CrucibleNode.skill,
-            CrucibleNode.tier,
-            CrucibleNode.icon,
-            CrucibleNode.allocated,
-            CrucibleNode.isNotable,
-            CrucibleNode.isReward,
-            CrucibleNode.stats,
-            CrucibleNode.reminderText,
-            CrucibleNode.orbit,
-            CrucibleNode.orbitIndex,
-            CrucibleNode.`out`,
-            CrucibleNode.`in`,
-            CrucibleNode.`crucibleNodeIndex`
+            Crucible.dbId as dbId,
+            Crucible.itemId as itemId,
+            Crucible.layout as layout
         FROM `poe-oracle`.Crucible AS Crucible
-        INNER JOIN `poe-oracle`.CrucibleNode AS CrucibleNode
-        ON Crucible.dbId = CrucibleNode.crucibleId
         WHERE Crucible.dbId = #{dbId}
 		]]>
     </select>

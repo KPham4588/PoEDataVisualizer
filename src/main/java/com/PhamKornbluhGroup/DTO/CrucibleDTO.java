@@ -17,4 +17,37 @@ public class CrucibleDTO {
                 ", nodes=" + nodes +
                 '}';
     }
+
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getLayout() {
+        return layout;
+    }
+
+    public void setLayout(String layout) {
+        this.layout = layout;
+    }
+
+    public ArrayList<CrucibleNodeDTO> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(ArrayList<CrucibleNodeDTO> nodes) {
+        this.nodes = nodes;
+    }
 }
+

@@ -29,6 +29,31 @@
         ]]>
     </select>
 
+    <select id="getCrucibleNodesByCrucibleId" resultMap="CrucibleNodeDTOMap">
+        <![CDATA[
+            SELECT
+            CrucibleNode.dbId AS nodeDbId,
+            CrucibleNode.crucibleId as crucibleId,
+            CrucibleNode.skill as skill,
+            CrucibleNode.tier as tier,
+            CrucibleNode.icon as icon,
+            CrucibleNode.allocated as allocated,
+            CrucibleNode.isNotable as isNotable,
+            CrucibleNode.isReward as isReward,
+            CrucibleNode.stats as stats,
+            CrucibleNode.reminderText as reminderText,
+            CrucibleNode.orbit as orbit,
+            CrucibleNode.orbitIndex as orbitIndex,
+            CrucibleNode.`out` as `out`,
+            CrucibleNode.`in` as `in`,
+            CrucibleNode.`crucibleNodeIndex` as crucibleNodeIndex
+        FROM `poe-oracle`.CrucibleNode AS CrucibleNode
+        INNER JOIN `poe-oracle`.Crucible AS Crucible
+        ON Crucible.dbId = CrucibleNode.crucibleId
+        WHERE Crucible.dbId = #{dbId}
+        ]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
             INSERT INTO `poe-oracle`.CrucibleNode
