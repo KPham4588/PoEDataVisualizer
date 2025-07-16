@@ -6,14 +6,15 @@ import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
 import com.PhamKornbluhGroup.DTO.CrucibleDTO;
 import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+
 public class runner {
 
     public static void main(String[] args) {
         //CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
         //testObjectToBeUpdated.setIcon("NewIconJustUpdated");
         //testObjectToBeUpdated.setDbId(5);
-        CrucibleNodeDAO dao = new CrucibleNodeDAO();
-        //dao.updateCrucibleNode(testObjectToBeUpdated);
 
         CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
         System.out.println(testObject.toString());
