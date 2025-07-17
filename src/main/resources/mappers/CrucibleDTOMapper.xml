@@ -10,23 +10,17 @@
         <result property="itemId" column="itemId"/>
         <result property="layout" column="layout"/>
 <!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>-->
-
-
-        <!-- If this is confused by the getentitybyID then we might need to put in the mapper namespace before the query-->
-        <!-- testing removal of this from the collection == select="getEntityById"-->
         <collection property="nodes" column="dbId" javaType="ArrayList" ofType="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.getEntityByCrucibleId"/>
-<!--            <result column="nodes"/>-->
-<!--        </collection>-->
 
     </resultMap>
 
     <select id="getEntityById" resultMap="CrucibleDTOMap">
         <![CDATA[
         SELECT
-            Crucible.dbId,
-            Crucible.itemId,
-            Crucible.layout
-        FROM `poe-oracle`.Crucible AS Crucible
+            dbId,
+            itemId,
+            layout
+        FROM `poe-oracle`.Crucible
         WHERE Crucible.dbId = #{dbId}
 		]]>
     </select>
