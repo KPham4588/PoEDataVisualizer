@@ -28,19 +28,33 @@ public class CrucibleDAO {
     public CrucibleDTO getCrucibleById(int id) {
         SqlSession session = SessionPool.getSession();
         ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
-        System.out.println("Attempting to get CrucibleDTO object with ID " + id);
+        System.out.println("NEWNEW Attempting to get CrucibleDTO object with ID " + id);
         CrucibleDTO newNode = mapper.getEntityById(id);
-        CrucibleNodeDAO crucibleNodeDao = new CrucibleNodeDAO();
-        List<CrucibleNodeDTO> nodes = crucibleNodeDao.getCrucibleNodesByCrucibleId(id);
         if (newNode != null) {
-            CrucibleDAOLogger.trace("Success!");
-            newNode.setNodes((ArrayList<CrucibleNodeDTO>) nodes);
+            CrucibleDAOLogger.trace("NEWNEW Success!");
         }
         else {
-            CrucibleDAOLogger.error("Failure!");
+            CrucibleDAOLogger.error("NEWNEW Failure!");
         }
         return newNode;
     }
+
+//    public CrucibleDTO getCrucibleById(int id) {
+//        SqlSession session = SessionPool.getSession();
+//        ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
+//        System.out.println("Attempting to get CrucibleDTO object with ID " + id);
+//        CrucibleDTO newNode = mapper.getEntityById(id);
+//        CrucibleNodeDAO crucibleNodeDao = new CrucibleNodeDAO();
+//        List<CrucibleNodeDTO> nodes = crucibleNodeDao.getCrucibleNodesByCrucibleId(id);
+//        if (newNode != null) {
+//            CrucibleDAOLogger.trace("Success!");
+//            newNode.setNodes((ArrayList<CrucibleNodeDTO>) nodes);
+//        }
+//        else {
+//            CrucibleDAOLogger.error("Failure!");
+//        }
+//        return newNode;
+//    }
 
     //P UPDATES NEEDED -- THIS IS COPIED FROM CRUCIBLENODEDTO
     public void updateCrucible(CrucibleDTO updateObject) {

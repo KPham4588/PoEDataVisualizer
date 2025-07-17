@@ -20,7 +20,6 @@
     <orderEntry type="library" name="Maven: software.amazon.awssdk:checksums:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:sdk-core:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:retries:2.29.20" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth-spi:2.29.20" level="project" />
     <orderEntry type="library" name="Maven: software.amazon.awssdk:http-auth:2.29.20" level="project" />
@@ -58,5 +57,11 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.10" level="project" />
+    <orderEntry type="library" name="Maven: com.mysql:mysql-connector-j:9.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:4.29.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.25.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.25.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:2.0.17" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.17" level="project" />
   </component>
 </module>

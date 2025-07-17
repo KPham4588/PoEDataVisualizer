@@ -19,6 +19,9 @@ public class runner {
         CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
         System.out.println(testObject.toString());
 
+        System.out.println();
+        System.out.println();
+        System.out.println("Reached the end of main without exception");
 
         //p This is the old way that we got and saved 1 API Result file
         //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
