@@ -37,20 +37,6 @@ public class CrucibleNodeDAO {
         return newNode;
     }
 
-    List<CrucibleNodeDTO> getCrucibleNodesByCrucibleId (int id) {
-        SqlSession session = SessionPool.getSession();
-        ICrucibleNodeDTO mapper = session.getMapper(ICrucibleNodeDTO.class);
-        System.out.println("Attempting to get multiple CrucibleNodeDTO objects with crucible ID " + id);
-        ArrayList<CrucibleNodeDTO> nodes = (ArrayList<CrucibleNodeDTO>) mapper.getCrucibleNodesByCrucibleId(id);
-        if (nodes != null) {
-            CrucibleNodeDAOLogger.trace("got multiple CrucibleNodes!");
-        }
-        else {
-            CrucibleNodeDAOLogger.trace("Failed to get the list of CrucibleNodeDTO!");
-        }
-        return nodes;
-    }
-
     public void updateCrucibleNode(CrucibleNodeDTO updateObject) {
         SqlSession session = SessionPool.getSession();
         ICrucibleNodeDTO mapper = session.getMapper(ICrucibleNodeDTO.class);
