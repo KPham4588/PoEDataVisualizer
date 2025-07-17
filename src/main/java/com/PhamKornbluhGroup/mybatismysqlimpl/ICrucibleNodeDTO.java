@@ -1,8 +1,8 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
+
 import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 
-import java.util.List;
-
 public interface ICrucibleNodeDTO extends IBaseDAO<CrucibleNodeDTO> {
-    List<CrucibleNodeDTO> getEntityByCrucibleId(int id);
+    // Keeping this within MyBatis Config, only able to be used within the parent Crucible ResultMap Query "getEntityById"
+    // List<CrucibleNodeDTO> getEntityByCrucibleId(int id);
 }
