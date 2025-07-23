@@ -20,10 +20,10 @@
     </environments>
 
     <mappers>
-        <!-- <mapper resource="mappers/FactionIDMapper.xml"/> -->
         <mapper resource="mappers/CrucibleDTOMapper.xml"/>
         <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
+        <mapper resource="mappers/ScourgedDTOMapper.xml"/>
     </mappers>
 
 </configuration>

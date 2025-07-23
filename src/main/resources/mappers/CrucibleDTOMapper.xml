@@ -28,7 +28,7 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO `poe-oracle`.Crucible
-			(itemId, layout)
+			    (itemId, layout)
 			VALUES (#{itemId}, #{layout})
 		]]>
     </insert>
@@ -37,7 +37,7 @@
         <![CDATA[
 			UPDATE `poe-oracle`.Crucible
 			SET itemId = #{itemId},
-			layout = #{layout}
+			    layout = #{layout}
 			WHERE dbId = #{dbId}
 		]]>
     </update>
