@@ -24,7 +24,7 @@
     <select id="getEntityById" resultMap="CrucibleNodeDTOMap">
         <![CDATA[
             SELECT *
-            FROM `poe-oracle`.CrucibleNode
+            FROM CrucibleNode
             WHERE dbId = #{dbId}
         ]]>
     </select>
@@ -32,16 +32,16 @@
     <select id="getEntityByCrucibleId" resultMap="CrucibleNodeDTOMap">
         <![CDATA[
             SELECT *
-            FROM `poe-oracle`.CrucibleNode
+            FROM CrucibleNode
             WHERE crucibleId = #{dbId}
         ]]>
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
-            INSERT INTO `poe-oracle`.CrucibleNode
+            INSERT INTO CrucibleNode
                 (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
-                stats, reminderText, orbit, orbitIndex, `out`, `in`, `crucibleNodeIndex`)
+                stats, reminderText, orbit, orbitIndex, `out`, `in`, crucibleNodeIndex)
             VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},
                 #{isNotable}, #{isReward}, #{stats}, #{reminderText},
                 #{orbit}, #{orbitIndex}, #{out}, #{in}, #{crucibleNodeIndex})
@@ -50,14 +50,14 @@
 
     <delete id="removeEntity">
         <![CDATA[
-            DELETE FROM `poe-oracle`.CrucibleNode
+            DELETE FROM CrucibleNode
             WHERE dbId = #{dbId}
         ]]>
     </delete>
 
     <update id="updateEntity">
         <![CDATA[
-            UPDATE `poe-oracle`.CrucibleNode
+            UPDATE CrucibleNode
             SET crucibleId = #{crucibleId},
                 skill = #{skill},
                 tier = #{tier},
@@ -71,7 +71,7 @@
                 orbitIndex = #{orbitIndex},
                 `out` = #{out},
                 `in` = #{in},
-                `crucibleNodeIndex` = #{crucibleNodeIndex}
+                crucibleNodeIndex = #{crucibleNodeIndex}
             WHERE dbId = #{dbId}
         ]]>
     </update>

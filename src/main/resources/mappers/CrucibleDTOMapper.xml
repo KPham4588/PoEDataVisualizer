@@ -20,14 +20,14 @@
             dbId,
             itemId,
             layout
-        FROM `poe-oracle`.Crucible
+        FROM Crucible
         WHERE Crucible.dbId = #{dbId}
 		]]>
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
-			INSERT INTO `poe-oracle`.Crucible
+			INSERT INTO Crucible
 			    (itemId, layout)
 			VALUES (#{itemId}, #{layout})
 		]]>
@@ -35,7 +35,7 @@
 
     <update id="updateEntity">
         <![CDATA[
-			UPDATE `poe-oracle`.Crucible
+			UPDATE Crucible
 			SET itemId = #{itemId},
 			    layout = #{layout}
 			WHERE dbId = #{dbId}
@@ -44,7 +44,7 @@
 
     <delete id="removeEntity">
         <![CDATA[
-			DELETE FROM `poe-oracle`.Crucible
+			DELETE FROM Crucible
 			WHERE dbId = #{dbId}
 		]]>
     </delete>

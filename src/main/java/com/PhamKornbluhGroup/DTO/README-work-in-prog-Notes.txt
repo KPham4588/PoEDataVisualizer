@@ -52,4 +52,4 @@ ResultDTO
         │   └── properties (ItemPropertyDTO)
         │       ├── ItemPropertyValuesDTO
         │       └── DisplayMode (ENUM)
-        └── ExtendedDTO
+    DONE└── ExtendedDTO
