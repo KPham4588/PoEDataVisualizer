@@ -1,11 +1,14 @@
 package com.PhamKornbluhGroup.DAO;
 
 import com.PhamKornbluhGroup.DTO.CrucibleDTO;
+import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 public class CrucibleDAO {
 
@@ -25,13 +28,24 @@ public class CrucibleDAO {
         return newNode;
     }
 
-    //P UPDATES NEEDED -- THIS IS COPIED FROM CRUCIBLENODEDTO
     public void insertCrucible(CrucibleDTO insertObject) {
         SqlSession session = SessionPool.getSession();
         ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
+
         System.out.println("Attempting to insert CrucibleDTO object.");
         mapper.saveEntity(insertObject);
         session.commit();
+
+        ArrayList<CrucibleNodeDTO> nodes = insertObject.getNodes();
+        for (CrucibleNodeDTO node : nodes) {
+            node.setCrucibleId(insertObject.getDbId());
+        }
+        insertObject.setNodes(nodes);
+
+        System.out.println("Attempting to insert crucible nodes.");
+        CrucibleNodeDAO insertNodes = new CrucibleNodeDAO();
+        insertNodes.insertCrucibleNodes(nodes);
+
         System.out.println("Attempt finished.");
     }
 

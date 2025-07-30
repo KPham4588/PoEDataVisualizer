@@ -1,26 +1,35 @@
 package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.DAO.CrucibleDAO;
-import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
 
 import com.PhamKornbluhGroup.DTO.CrucibleDTO;
 import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
+import com.PhamKornbluhGroup.utilities.SessionPool;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class runner {
 
     public static void main(String[] args) {
-        //CrucibleNodeDTO testObjectToBeUpdated = new CrucibleNodeDTO();
-        //testObjectToBeUpdated.setIcon("NewIconJustUpdated");
-        //testObjectToBeUpdated.setDbId(5);
+        CrucibleDTO testCrucible = new CrucibleDTO();
+        testCrucible.setLayout("Khoa's new layout");
 
-        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
-        System.out.println(testObject.toString());
+        ArrayList<CrucibleNodeDTO> testNodes = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            CrucibleNodeDTO node = new CrucibleNodeDTO();
+            node.setIn("hi Khoa " + i);
+            node.setOut("ho Khoa " + i);
+            testNodes.add(node);
+        }
+        testCrucible.setNodes(testNodes);
+
+        CrucibleDAO testCrucibleInsert = new CrucibleDAO();
+        testCrucibleInsert.insertCrucible(testCrucible);
 
         System.out.println();
         System.out.println();
+
+        SessionPool.getSession().close();
         System.out.println("Reached the end of main without exception");
 
         //p This is the old way that we got and saved 1 API Result file

@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 public class CrucibleNodeDAO {
 
     private final static Logger CrucibleNodeDAOLogger = LogManager.getLogger(CrucibleNodeDAO.class);
@@ -30,6 +32,17 @@ public class CrucibleNodeDAO {
         ICrucibleNodeDTO mapper = session.getMapper(ICrucibleNodeDTO.class);
         System.out.println("Attempting to insert CrucibleNodeDTO object.");
         mapper.saveEntity(insertObject);
+        session.commit();
+        System.out.println("Attempt finished.");
+    }
+
+    public void insertCrucibleNodes(ArrayList<CrucibleNodeDTO> insertObjects) {
+        SqlSession session = SessionPool.getSession();
+        ICrucibleNodeDTO mapper = session.getMapper(ICrucibleNodeDTO.class);
+        System.out.println("Attempting to insert CrucibleNodeDTO object in list.");
+        for (CrucibleNodeDTO node : insertObjects) {
+            mapper.saveEntity(node);
+        }
         session.commit();
         System.out.println("Attempt finished.");
     }
