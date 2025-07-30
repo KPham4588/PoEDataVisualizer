@@ -24,6 +24,7 @@
         <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
         <mapper resource="mappers/ScourgedDTOMapper.xml"/>
+        <mapper resource="mappers/ExtendedDTOMapper.xml"/>
     </mappers>
 
 </configuration>

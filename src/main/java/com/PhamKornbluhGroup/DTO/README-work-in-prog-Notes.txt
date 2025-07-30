@@ -18,38 +18,38 @@ RRRRRRRR     RRRRRRR    eeeeeeeeeeeeee  aaaaaaaaaa  aaaa  ddddddddd   ddddd     
 -------------------------------------------------------------------------------------------------------------------------------------
 Object Hierarchy:
 
-ResultDTO
-└── PublicStashChangeDTO
-    └── ItemDTO
-        ├── ItemSocketDTO
-        ├── ItemDTO                         // (Same as Parent ItemDTO)
-        ├── properties (ItemPropertyDTO)
-        │   ├── ItemPropertyValuesDTO
-        │   └── DisplayMode (ENUM)
-        ├── notableProperties (ItemPropertyDTO)
-        │   ├── ItemPropertyValuesDTO
-        │   └── DisplayMode (ENUM)
-        ├── requirements (ItemPropertyDTO)
-        │   ├── ItemPropertyValuesDTO
-        │   └── DisplayMode (ENUM)
-        ├── additionalProperties (ItemPropertyDTO)
-        │   ├── ItemPropertyValuesDTO
-        │   └── DisplayMode (ENUM)
-        ├── nextLevelRequirements (ItemPropertyDTO)
-        │   ├── ItemPropertyValuesDTO
-        │   └── DisplayMode (ENUM)
-        ├── RewardsDTO
-        ├── LogbookModsDTO
-        │   └── FactionDTO
-        │       └── FactionID (ENUM)
-        ├── UltimatumModsDTO
-        ├── IncubatedItemDTO
-    DONE├── ScourgedDTO
-    DONE├── CrucibleDTO
-    DONE│   └── CrucibleNodeDTO
-        ├── FrameType (ENUM)
-        ├── HybridDTO
-        │   └── properties (ItemPropertyDTO)
-        │       ├── ItemPropertyValuesDTO
-        │       └── DisplayMode (ENUM)
-        └── ExtendedDTO
+    ResultDTO
+    └── PublicStashChangeDTO
+        └── ItemDTO
+            ├── ItemSocketDTO
+            ├── ItemDTO                         // (Same as Parent ItemDTO)
+            ├── properties (ItemPropertyDTO)
+            │   ├── ItemPropertyValuesDTO
+            │   └── DisplayMode (ENUM)
+            ├── notableProperties (ItemPropertyDTO)
+            │   ├── ItemPropertyValuesDTO
+            │   └── DisplayMode (ENUM)
+            ├── requirements (ItemPropertyDTO)
+            │   ├── ItemPropertyValuesDTO
+            │   └── DisplayMode (ENUM)
+            ├── additionalProperties (ItemPropertyDTO)
+            │   ├── ItemPropertyValuesDTO
+            │   └── DisplayMode (ENUM)
+            ├── nextLevelRequirements (ItemPropertyDTO)
+            │   ├── ItemPropertyValuesDTO
+            │   └── DisplayMode (ENUM)
+            ├── RewardsDTO
+            ├── LogbookModsDTO
+            │   └── FactionDTO
+            │       └── FactionID (ENUM)
+            ├── UltimatumModsDTO
+            ├── IncubatedItemDTO
+MAPPER DONE ├── ScourgedDTO
+COMPLETE    ├── CrucibleDTO
+COMPLETE    │   └── CrucibleNodeDTO
+            ├── FrameType (ENUM)
+            ├── HybridDTO
+            │   └── properties (ItemPropertyDTO)
+            │       ├── ItemPropertyValuesDTO
+            │       └── DisplayMode (ENUM)
+MAPPER-TEST └── ExtendedDTO

@@ -7,6 +7,8 @@ import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 
 import java.util.ArrayList;
+import com.PhamKornbluhGroup.DAO.ExtendedDAO;
+import com.PhamKornbluhGroup.DTO.ExtendedDTO;
 
 public class runner {
 
@@ -14,6 +16,11 @@ public class runner {
         CrucibleDTO testCrucible = new CrucibleDTO();
         testCrucible.setLayout("Khoa's new layout");
 
+//        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
+//        System.out.println(testObject.toString());
+
+        ExtendedDTO testObject = testExtendedDAO();
+        System.out.println(testObject.toString());
         ArrayList<CrucibleNodeDTO> testNodes = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             CrucibleNodeDTO node = new CrucibleNodeDTO();
@@ -55,6 +62,11 @@ public class runner {
 //        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
+    }
+
+    public static ExtendedDTO testExtendedDAO() {
+        ExtendedDTO extendedTestObject = new ExtendedDAO().getExtendedById(1);
+        return extendedTestObject;
     }
 
     public static String returnTestJSON() {

@@ -18,14 +18,14 @@
     <select id="getEntityById" resultMap="ScourgedDTOMap">
         <![CDATA[
         SELECT *
-        FROM `poe-oracle`.Scourged
+        FROM Scourged
         WHERE Scourged.dbId = #{dbId}
 		]]>
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
-			INSERT INTO `poe-oracle`.Scourged
+			INSERT INTO Scourged
 			    (itemId, scourgedTier, scourgedLevel, scourgedProgress, scourgedTotal)
 			VALUES (#{itemId}, #{scourgedTier}, #{scourgedLevel}, #{scourgedProgress}, #{scourgedTotal})
 		]]>
@@ -33,7 +33,7 @@
 
     <update id="updateEntity">
         <![CDATA[
-			UPDATE `poe-oracle`.Scourged
+			UPDATE Scourged
 			SET itemId = #{itemId},
 			    scourgedTier = #{scourgedTier},
 			    scourgedLevel = #{scourgedLevel},
@@ -45,7 +45,7 @@
 
     <delete id="removeEntity">
         <![CDATA[
-			DELETE FROM `poe-oracle`.Scourged
+			DELETE FROM Scourged
 			WHERE dbId = #{dbId}
 		]]>
     </delete>
