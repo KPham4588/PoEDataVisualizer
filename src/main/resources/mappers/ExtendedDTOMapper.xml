@@ -11,9 +11,14 @@
         <result property="category" column="category"/>
         <result property="prefixes" column="prefixes"/>
         <result property="suffixes" column="suffixes"/>
-        <collection property="subcategories" column="dbId" javaType="Array" ofType="java.lang.String" select="getSubcategoriesByExtendedId">
-            <result property="subcategory" column="subcategory"/>
+<!--        <collection property="subcategories" column="dbId" javaType="ArrayList" ofType="java.lang.String" select="getSubcategoriesByExtendedId"/>-->
+<!--            <result property="subcategory" column="subcategory"/>-->
+
+        <collection property="subcategories" column="dbId" javaType="ArrayList" ofType="java.lang.String" select="getSubcategoriesByExtendedId">
+<!--                        <result property="subcategory" column="subcategory"/>-->
         </collection>
+
+
     </resultMap>
 
 <!--
@@ -22,34 +27,50 @@ the getSubcategoriesByExtendedId query might have problems as well
 also we have 2 saveEntity queries, and only one will be used. neither work. We need to fix the second one
 -->
 
-    <select id="getEntityById" resultMap="ExtendedDTOMap">
-        <![CDATA[
-        SELECT
-            dbId,
-            itemId,
-            category,
-            prefixes,
-            suffixes
-        FROM Extended
-        WHERE Extended.dbId = #{dbId}
-		]]>
-    </select>
+<!--    <select id="getEntityById" resultMap="ExtendedDTOMap">-->
+<!--        <![CDATA[-->
+<!--        SELECT-->
+<!--            dbId,-->
+<!--            itemId,-->
+<!--            category,-->
+<!--            prefixes,-->
+<!--            suffixes,-->
+<!--            subcategory-->
+<!--        FROM Extended-->
+<!--        WHERE Extended.dbId = #{dbId}-->
+<!--        INNER JOIN Subcategories-->
+<!--        ON Subcategories.extendedId = Extended.dbId-->
+<!--		]]>-->
+<!--    </select>-->
 
-    <select id="getSubcategoriesByExtendedId">
+        <select id="getEntityById" resultMap="ExtendedDTOMap">
+            <![CDATA[
+            SELECT
+                dbId,
+                itemId,
+                category,
+                prefixes,
+                suffixes
+            FROM Extended
+            WHERE Extended.dbId = #{dbId}
+    		]]>
+        </select>
+
+    <select id="getSubcategoriesByExtendedId" resultType="java.lang.String">
         <![CDATA[
         SELECT subcategory
         FROM Subcategories
-        WHERE extendedId = #{dbId}
+        WHERE Subcategories.extendedId = #{dbId}
 		]]>
     </select>
 
-    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
-        <![CDATA[
-			INSERT INTO Extended
-			    (itemId, layout, x, x, x, x, x)
-			VALUES (#{itemId}, #{layout})
-		]]>
-    </insert>
+<!--    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">-->
+<!--        <![CDATA[-->
+<!--			INSERT INTO Extended-->
+<!--			    (itemId, layout, x, x, x, x, x)-->
+<!--			VALUES (#{itemId}, #{layout})-->
+<!--		]]>-->
+<!--    </insert>-->
 
     <insert id="saveEntity" parameterType="java.util.List">
         INSERT INTO Extended (
