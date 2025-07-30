@@ -2,6 +2,7 @@ package com.PhamKornbluhGroup.utilities;
 
 import com.PhamKornbluhGroup.SecretsHelper;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -32,7 +33,7 @@ public class SessionPool {
         try {
             reader = Resources.getResourceAsReader(MYBATIS_URI);
             factory = new SqlSessionFactoryBuilder().build(reader, databaseSecrets);
-            session = factory.openSession();
+            session = factory.openSession(ExecutorType.BATCH);
             return session;
         }
         catch (IOException e) {

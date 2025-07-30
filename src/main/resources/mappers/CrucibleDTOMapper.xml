@@ -25,7 +25,7 @@
 		]]>
     </select>
 
-    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId" keyColumn="dbId">
         <![CDATA[
 			INSERT INTO Crucible
 			    (itemId, layout)
