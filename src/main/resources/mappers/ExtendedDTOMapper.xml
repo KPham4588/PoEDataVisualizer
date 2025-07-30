@@ -11,7 +11,9 @@
         <result property="category" column="category"/>
         <result property="prefixes" column="prefixes"/>
         <result property="suffixes" column="suffixes"/>
-        <collection property="subcategories" column="dbId" javaType="Array" ofType="java.lang.String" select="getSubcategoriesByExtendedId"/>
+        <collection property="subcategories" column="dbId" javaType="Array" ofType="java.lang.String" select="getSubcategoriesByExtendedId">
+            <result property="subcategory" column="subcategory"/>
+        </collection>
     </resultMap>
 
 <!--

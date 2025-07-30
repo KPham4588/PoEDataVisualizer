@@ -1,13 +1,7 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DAO.CrucibleDAO;
-import com.PhamKornbluhGroup.DAO.CrucibleNodeDAO;
-
-import com.PhamKornbluhGroup.DTO.CrucibleDTO;
-import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
-
-import java.sql.SQLOutput;
-import java.util.ArrayList;
+import com.PhamKornbluhGroup.DAO.ExtendedDAO;
+import com.PhamKornbluhGroup.DTO.ExtendedDTO;
 
 public class runner {
 
@@ -16,7 +10,10 @@ public class runner {
         //testObjectToBeUpdated.setIcon("NewIconJustUpdated");
         //testObjectToBeUpdated.setDbId(5);
 
-        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
+//        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
+//        System.out.println(testObject.toString());
+
+        ExtendedDTO testObject = testExtendedDAO();
         System.out.println(testObject.toString());
 
         System.out.println();
@@ -46,6 +43,11 @@ public class runner {
 //        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
+    }
+
+    public static ExtendedDTO testExtendedDAO() {
+        ExtendedDTO extendedTestObject = new ExtendedDAO().getExtendedById(1);
+        return extendedTestObject;
     }
 
     public static String returnTestJSON() {

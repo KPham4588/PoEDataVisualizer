@@ -52,4 +52,4 @@ COMPLETE    │   └── CrucibleNodeDTO
             │   └── properties (ItemPropertyDTO)
             │       ├── ItemPropertyValuesDTO
             │       └── DisplayMode (ENUM)
-MAPPER-PROG └── ExtendedDTO
+MAPPER-TEST └── ExtendedDTO
