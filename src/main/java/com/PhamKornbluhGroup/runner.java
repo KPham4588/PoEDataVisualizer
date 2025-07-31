@@ -16,11 +16,12 @@ public class runner {
         CrucibleDTO testCrucible = new CrucibleDTO();
         testCrucible.setLayout("Khoa's new layout");
 
-//        CrucibleDTO testObject = new CrucibleDAO().getCrucibleById(3);
-//        System.out.println(testObject.toString());
-
-        ExtendedDTO testObject = testExtendedDAO();
+        CrucibleDTO testObject = new CrucibleDTO();
+        testObject.setLayout("hi ho hi");
         System.out.println(testObject.toString());
+
+        //ExtendedDTO testObject = testExtendedDAO();
+        //System.out.println(testObject.toString());
         ArrayList<CrucibleNodeDTO> testNodes = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             CrucibleNodeDTO node = new CrucibleNodeDTO();
