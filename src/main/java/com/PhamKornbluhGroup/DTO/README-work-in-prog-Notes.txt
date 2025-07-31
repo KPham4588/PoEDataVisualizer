@@ -42,11 +42,11 @@ N/A                             │   └── DisplayMode (ENUM)
                                 │   └── FactionDTO
                                 │       └── FactionID (ENUM)
                                 ├── UltimatumModsDTO
-                                ├── IncubatedItemDTO
+Dan MAPPER DONE                 ├── IncubatedItemDTO
 MAPPER DONE                     ├── ScourgedDTO
 COMPLETE                        ├── CrucibleDTO
 COMPLETE                        │   └── CrucibleNodeDTO
-                                ├── FrameType (ENUM)
+N/A                             ├── FrameType (ENUM)
 Dan MAPPER DONE                 ├── HybridDTO
 Dan MAPPER DONE                 │   └── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │       ├── ItemPropertyValuesDTO

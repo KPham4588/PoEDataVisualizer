@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO">
+    <resultMap id="IncubatedItemDTOMap" type="com.PhamKornbluhGroup.DTO.IncubatedItemDTO" autoMapping = "false">
+        <id property = "dbId" column = "dbId"/>
+        <result property = "itemId" column = "itemId"/>
+        <result property = "incubatedItemName" column = "incubatedItemName"/>
+        <result property = "incubatedItemLevel" column = "incubatedItemLevel"/>
+        <result property = "progress" column = "progress"/>
+        <result property = "total" column = "total"/>
+    </resultMap>
+
+    <!-- UNTESTED -->
+    <select id = "getEntityById"> resultMap = "IncubatedItemDTOMap"
+        <![CDATA[
+			SELECT *
+			FROM IncubatedItem
+			WHERE dbId = #{dbId}
+		]]>
+    </select>
+
+    <!-- Untested as called by parent ItemPropertyDTOMapper -->
+    <select id = "getEntityByItemPropertyId"> resultMap = "IncubatedItemDTOMap"
+        <![CDATA[
+			SELECT *
+			FROM IncubatedItem
+			WHERE itemPropertyId = #{dbId}
+		]]>
+    </select>
+
+    <!-- UNTESTED -->
+    <insert id = "saveEntity" useGeneratedKeys = "true" keyProperty = "dbId">
+        <![CDATA[
+			INSERT INTO IncubatedItem
+			    (itemId, incubatedItemName, incubatedItemLevel, progress, total)
+			VALUES
+			    (#{dbId}, #{itemId}, #{incubatedItemName}, #{incubatedItemLevel}, #{progress})
+		]]>
+    </insert>
+
+    <!-- UNTESTED -->
+    <delete id = "removeEntity">
+        <![CDATA[
+			DELETE FROM IncubatedItem
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+    <!-- UNTESTED -->
+    <update id = "updateEntity">
+        <![CDATA[
+			UPDATE IncubatedItem
+			SET itemId = #{itemId},
+			    incubatedItemName = #{incubatedItemName},
+			    incubatedItemLevel = #{incubatedItemLevel},
+			    progress = #{progress},
+			    total = #{total}
+			WHERE dbId = #{dbId},
+		]]>
+    </update>
+
+</mapper>
