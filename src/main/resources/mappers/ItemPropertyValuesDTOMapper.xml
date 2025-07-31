@@ -21,7 +21,7 @@
     </resultMap>
 
     <!-- UNTESTED -->
-    <select id = "getEntityById"> resultMap = "IItemPropertyValuesDTO"
+    <select id = "getEntityById"> resultMap = "ItemPropertyValuesDTOMap"
         <![CDATA[
 			SELECT *
 			FROM ItemPropertyValues
@@ -30,7 +30,7 @@
     </select>
 
     <!-- Untested as called by parent ItemPropertyDTOMapper -->
-    <select id = "getEntityByItemPropertyId"> resultMap = "IItemPropertyValuesDTO"
+    <select id = "getEntityByItemPropertyId"> resultMap = "ItemPropertyValuesDTOMap"
         <![CDATA[
 			SELECT *
 			FROM ItemPropertyValues
