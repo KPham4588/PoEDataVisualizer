@@ -22,21 +22,21 @@ Object Hierarchy:
                             └── ItemDTO
                                 ├── ItemSocketDTO
                                 ├── ItemDTO                         // (Same as Parent ItemDTO)
-                                ├── properties (ItemPropertyDTO)
-                                │   ├── ItemPropertyValuesDTO
-                                │   └── DisplayMode (ENUM)
-                                ├── notableProperties (ItemPropertyDTO)
-                                │   ├── ItemPropertyValuesDTO
-                                │   └── DisplayMode (ENUM)
-                                ├── requirements (ItemPropertyDTO)
-                                │   ├── ItemPropertyValuesDTO
-                                │   └── DisplayMode (ENUM)
-                                ├── additionalProperties (ItemPropertyDTO)
-                                │   ├── ItemPropertyValuesDTO
-                                │   └── DisplayMode (ENUM)
-                                ├── nextLevelRequirements (ItemPropertyDTO)
-                                │   ├── ItemPropertyValuesDTO
-                                │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── properties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── notableProperties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── requirements (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── additionalProperties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── nextLevelRequirements (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
                                 ├── RewardsDTO
                                 ├── LogbookModsDTO
                                 │   └── FactionDTO
@@ -48,7 +48,7 @@ COMPLETE                        ├── CrucibleDTO
 COMPLETE                        │   └── CrucibleNodeDTO
                                 ├── FrameType (ENUM)
                                 ├── HybridDTO
-X Dan                           │   └── properties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   └── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │       ├── ItemPropertyValuesDTO
-Dan MAPPER DONE                 │       └── DisplayMode (ENUM)
+N/A                             │       └── DisplayMode (ENUM)
 Dan MAPPER & SELECT DONE        └── ExtendedDTO
