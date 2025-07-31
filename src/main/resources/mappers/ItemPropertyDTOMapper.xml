@@ -5,6 +5,17 @@
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO">
 
+        <!--
+        Hybrid ==> Calls Select of ItemProperty
+        ItemProperty ==> Calls Select of ItemPropertyValues
+
+        Assume we select HybridDTO with dbid of 5
+        Assume ItemPropertyDTO has personal DbId of 25, but has HybridId = 5 (Correctly linked to the parent)
+        Assume ItemPropertyValuesDTO has personal DbId of 50, but has ItemPropertyId of 25 (Correctly linked to the parent)
+
+        We need to make sure that when calling from Hybrid, down to ItemProperty, down to ItemPropertyValues
+        that the correct DbId is being passed each time
+        -->
     <resultMap id="ItemPropertyDTOMap" type="com.PhamKornbluhGroup.DTO.ItemPropertyDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
@@ -35,6 +46,23 @@
             icon
         FROM ItemProperty
         WHERE ItemProperty.dbId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getEntityByHybridId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.hybridId = #{dbId}
 		]]>
     </select>
 

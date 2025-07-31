@@ -47,7 +47,7 @@ MAPPER DONE                     ├── ScourgedDTO
 COMPLETE                        ├── CrucibleDTO
 COMPLETE                        │   └── CrucibleNodeDTO
                                 ├── FrameType (ENUM)
-                                ├── HybridDTO
+Dan MAPPER DONE                 ├── HybridDTO
 Dan MAPPER DONE                 │   └── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │       ├── ItemPropertyValuesDTO
 N/A                             │       └── DisplayMode (ENUM)

@@ -2,7 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO">
+        <!--
+        Hybrid ==> Calls Select of ItemProperty
+        ItemProperty ==> Calls Select of ItemPropertyValues
 
+        Assume we select HybridDTO with dbid of 5
+        Assume ItemPropertyDTO has personal DbId of 25, but has HybridId = 5 (Correctly linked to the parent)
+        Assume ItemPropertyValuesDTO has personal DbId of 50, but has ItemPropertyId of 25 (Correctly linked to the parent)
+
+        We need to make sure that when calling from Hybrid, down to ItemProperty, down to ItemPropertyValues
+        that the correct DbId is being passed each time
+        -->
     <resultMap id="ItemPropertyValuesDTOMap" type="com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO" autoMapping = "false">
         <id property = "dbId" column = "dbId"/>
         <result property = "itemPropertyId" column = "itemPropertyId"/>
