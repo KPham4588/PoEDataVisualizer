@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO">
+
+    <resultMap id="ItemPropertyDTOMap" type="com.PhamKornbluhGroup.DTO.ItemPropertyDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="itemId" column="itemId"/>
+        <result property="hybridId" column="hybridId"/>
+        <result property="name" column="name"/>
+        <result property="displayMode" column="displayMode"/>
+        <result property="progress" column="progress"/>
+        <result property="type" column="type"/>
+        <result property="suffix" column="suffix"/>
+        <result property="icon" column="icon"/>
+        <collection property="values" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO.getEntityByItemPropertyId"/>
+    </resultMap>
+
+    <!-- UNTESTED -->
+    <select id="getEntityById" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.dbId = #{dbId}
+		]]>
+    </select>
+
+    <!-- UNTESTED -->
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId" keyColumn="dbId">
+        <![CDATA[
+			INSERT INTO ItemProperty
+			    (itemId, hybridId, name, displayMode,
+			    progress, type, suffix, icon)
+			VALUES (#{itemId}, #{hybridId}, #{name}, #{displayMode},
+			    #{progress}, #{type}, #{suffix}, #{icon})
+		]]>
+    </insert>
+
+    <!-- UNTESTED -->
+    <update id="updateEntity">
+        <![CDATA[
+			UPDATE ItemProperty
+			SET itemId = #{itemId},
+			    hybridId = #{hybridId},
+			    name = #{name},
+			    displayMode = #{displayMode},
+			    progress = #{progress},
+			    type = #{type},
+			    suffix = #{suffix},
+			    icon = #{icon}
+			WHERE dbId = #{dbId}
+		]]>
+    </update>
+
+    <!-- UNTESTED -->
+    <delete id="removeEntity">
+        <![CDATA[
+			DELETE FROM ItemProperty
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+</mapper>

@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
+import java.util.ArrayList;
+
 public class ItemPropertyDTO {
     private int dbId;
 
@@ -9,7 +11,7 @@ public class ItemPropertyDTO {
     private int itemId;
     private int hybridId;
     private String name;
-    private ItemPropertyValuesDTO[] values;
+    private ArrayList<ItemPropertyValuesDTO> values;
     private DisplayMode displayMode;                        // Optional
     private double progress; // rounded to 2 decimal places // Optional
     private long type;                                      // Optional
