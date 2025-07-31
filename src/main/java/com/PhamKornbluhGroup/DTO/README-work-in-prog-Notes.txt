@@ -17,6 +17,41 @@ R::::::R     R:::::R  ee:::::::::::::e a::::::::::aa:::a d:::::::::ddd::::d     
 RRRRRRRR     RRRRRRR    eeeeeeeeeeeeee  aaaaaaaaaa  aaaa  ddddddddd   ddddd     MMMMMMMM               MMMMMMMMEEEEEEEEEEEEEEEEEEEEEE
 -------------------------------------------------------------------------------------------------------------------------------------
 Object Hierarchy:
+                        ResultDTO
+                        └── PublicStashChangeDTO
+                            └── ItemDTO
+                                ├── ItemSocketDTO
+                                ├── ItemDTO                         // (Same as Parent ItemDTO)
+Dan MAPPER DONE                 ├── properties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── notableProperties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── requirements (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── additionalProperties (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+Dan MAPPER DONE                 ├── nextLevelRequirements (ItemPropertyDTO)
+Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
+N/A                             │   └── DisplayMode (ENUM)
+                                ├── RewardsDTO
+MAPPER DONE                     ├── LogbookModsDTO
+MAPPER DONE                     │   └── FactionDTO
+                                │       └── FactionID (ENUM)
+                                ├── UltimatumModsDTO
+                                ├── IncubatedItemDTO
+MAPPER DONE                     ├── ScourgedDTO
+COMPLETE                        ├── CrucibleDTO
+COMPLETE                        │   └── CrucibleNodeDTO
+                                ├── FrameType (ENUM)
+Dan MAPPER DONE                 ├── HybridDTO
+Dan MAPPER DONE                 │   └── properties (ItemPropertyDTO)
+Dan MAPPER DONE                 │       ├── ItemPropertyValuesDTO
+N/A                             │       └── DisplayMode (ENUM)
+Dan MAPPER & SELECT DONE        └── ExtendedDTO
 
     ResultDTO
     └── PublicStashChangeDTO

@@ -25,6 +25,8 @@
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
         <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
+        <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
+        <mapper resource="mappers/HybridDTOMapper.xml"/>
     </mappers>
 
 </configuration>

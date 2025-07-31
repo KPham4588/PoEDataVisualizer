@@ -21,6 +21,7 @@
         <result property="crucibleNodeIndex" column="crucibleNodeIndex"/>
     </resultMap>
 
+    <!-- TESTED -->
     <select id="getEntityById" resultMap="CrucibleNodeDTOMap">
         <![CDATA[
             SELECT *
@@ -29,6 +30,7 @@
         ]]>
     </select>
 
+    <!-- TESTED -->
     <select id="getEntityByCrucibleId" resultMap="CrucibleNodeDTOMap">
         <![CDATA[
             SELECT *
@@ -37,6 +39,7 @@
         ]]>
     </select>
 
+    <!-- TESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
             INSERT INTO CrucibleNode
@@ -48,6 +51,7 @@
         ]]>
     </insert>
 
+    <!-- TESTED -->
     <delete id="removeEntity">
         <![CDATA[
             DELETE FROM CrucibleNode
@@ -55,6 +59,7 @@
         ]]>
     </delete>
 
+    <!-- TESTED -->
     <update id="updateEntity">
         <![CDATA[
             UPDATE CrucibleNode

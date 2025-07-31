@@ -10,8 +10,9 @@
         <result property="itemId" column="itemId"/>
         <result property="layout" column="layout"/>
 <!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>-->
-        <collection property="nodes" column="dbId" javaType="ArrayList" ofType="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO" select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.getEntityByCrucibleId"/>
-
+        <collection property="nodes" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.getEntityByCrucibleId"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="CrucibleDTOMap">
