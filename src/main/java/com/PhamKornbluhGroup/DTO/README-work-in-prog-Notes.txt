@@ -39,8 +39,8 @@ Object Hierarchy:
             │   ├── ItemPropertyValuesDTO
             │   └── DisplayMode (ENUM)
             ├── RewardsDTO
-            ├── LogbookModsDTO
-            │   └── FactionDTO
+MAPPER DONE ├── LogbookModsDTO
+MAPPER DONE │   └── FactionDTO
             │       └── FactionID (ENUM)
             ├── UltimatumModsDTO
             ├── IncubatedItemDTO
