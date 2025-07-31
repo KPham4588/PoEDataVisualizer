@@ -12,9 +12,9 @@
         <result property="scourgedLevel" column="scourgedLevel"/>
         <result property="scourgedProgress" column="scourgedProgress"/>
         <result property="scourgedTotal" column="scourgedTotal"/>
-
     </resultMap>
 
+    <!-- UNTESTED -->
     <select id="getEntityById" resultMap="ScourgedDTOMap">
         <![CDATA[
         SELECT *
@@ -23,6 +23,7 @@
 		]]>
     </select>
 
+    <!-- UNTESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Scourged
@@ -31,6 +32,7 @@
 		]]>
     </insert>
 
+    <!-- UNTESTED -->
     <update id="updateEntity">
         <![CDATA[
 			UPDATE Scourged
@@ -43,6 +45,7 @@
 		]]>
     </update>
 
+    <!-- UNTESTED -->
     <delete id="removeEntity">
         <![CDATA[
 			DELETE FROM Scourged
