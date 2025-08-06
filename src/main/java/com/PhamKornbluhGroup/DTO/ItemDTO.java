@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
+import java.util.ArrayList;
+
 public class ItemDTO {
     private int dbId;
     private int publicStashChangeId;
@@ -23,7 +25,7 @@ public class ItemDTO {
     private boolean delve;       // always true if present     // Optional   //w Is this part of influences??
     private boolean fractured;   // always true if present     // Optional   //w Is this part of influences??
     private boolean synthesised; // always true if present     // Optional   //w Is this part of influences??
-    private ItemSocketDTO[] sockets;                           // Optional
+    private ArrayList<ItemSocketDTO> sockets;                           // Optional
     private ItemDTO[] socketedItems;                           // Optional
     private String name;
     private String typeLine;

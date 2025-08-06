@@ -21,6 +21,14 @@
 		]]>
     </select>
 
+    <select id="getEntityByItemId" resultMap="ItemSocketDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM ItemSocket
+        WHERE ItemSocket.itemId = #{dbId}
+		]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO ItemSocket
