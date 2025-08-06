@@ -27,7 +27,8 @@
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>
-        <mapper resource="mappers/IncubatedItemDTO.xml"/>
+        <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
+        <mapper resource="mappers/FactionDTOMapper.xml"/>
     </mappers>
 
 </configuration>

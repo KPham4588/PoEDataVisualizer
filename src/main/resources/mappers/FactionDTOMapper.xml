@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO">
-<!--UNTESTED-->
+    <!--UNTESTED-->
     <resultMap id="FactionDTOMap" type="com.PhamKornbluhGroup.DTO.FactionDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
         <result property="logbookModsId" column="logbookModsId"/>
+        <result property="factionName" column="factionName"/>
         <association property="factionId" column="dbId" javaType="com.PhamKornbluhGroup.DTO.FactionId"
                      select="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO.getEntityByFactionId"/>
-        <result property="factionName" column="factionName"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="FactionDTOMap">
