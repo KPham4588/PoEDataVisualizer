@@ -30,6 +30,7 @@
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
         <mapper resource="mappers/FactionDTOMapper.xml"/>
         <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
+        <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -20,7 +20,7 @@ Object Hierarchy:
                         ResultDTO
                         └── PublicStashChangeDTO
                             └── ItemDTO
-                                ├── ItemSocketDTO
+Dan MAPPER DONE                 ├── ItemSocketDTO
                                 ├── ItemDTO                         // (Same as Parent ItemDTO)
 Dan MAPPER DONE                 ├── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
