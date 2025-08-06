@@ -29,6 +29,7 @@
         <mapper resource="mappers/HybridDTOMapper.xml"/>
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
         <mapper resource="mappers/FactionDTOMapper.xml"/>
+        <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
     </mappers>
 
 </configuration>

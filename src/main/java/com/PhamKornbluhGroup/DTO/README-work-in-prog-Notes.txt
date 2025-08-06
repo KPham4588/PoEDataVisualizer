@@ -41,7 +41,7 @@ N/A                             │   └── DisplayMode (ENUM)
 MAPPER DONE                     ├── LogbookModsDTO
 MAPPER DONE                     │   └── FactionDTO
                                 │       └── FactionID (ENUM)
-                                ├── UltimatumModsDTO
+Dan MAPPER DONE                 ├── UltimatumModsDTO
 Dan MAPPER DONE                 ├── IncubatedItemDTO
 MAPPER DONE                     ├── ScourgedDTO
 COMPLETE                        ├── CrucibleDTO

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO">
+
+    <resultMap id="UltimatumModsDTOMap" type="com.PhamKornbluhGroup.DTO.UltimatumModsDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="itemId" column="itemId"/>
+        <result property="type" column="type"/>
+        <result property="tier" column="tier"/>
+    </resultMap>
+
+    <select id="getEntityById" resultMap="UltimatumModsDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM UltimatumMods
+        WHERE UltimatumMods.dbId = #{dbId}
+		]]>
+    </select>
+
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        <![CDATA[
+			INSERT INTO UltimatumMods
+			    (itemId, type, tier)
+			VALUES (#{itemId}, #{type}, #{tier})
+		]]>
+    </insert>
+
+    <update id="updateEntity">
+        <![CDATA[
+			UPDATE UltimatumMods
+			SET itemId = #{itemId},
+			    type = #{type}
+			    tier = #{tier}
+			WHERE dbId = #{dbId}
+		]]>
+    </update>
+
+    <delete id="removeEntity">
+        <![CDATA[
+			DELETE FROM UltimatumMods
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+</mapper>
