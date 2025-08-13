@@ -20,6 +20,14 @@
 		]]>
     </select>
 
+    <select id="getEntityByItemId" resultMap="UltimatumModsDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM UltimatumMods
+        WHERE UltimatumMods.itemId = #{dbId}
+		]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO UltimatumMods

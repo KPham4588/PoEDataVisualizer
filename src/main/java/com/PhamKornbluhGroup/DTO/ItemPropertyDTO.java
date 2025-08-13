@@ -17,4 +17,5 @@ public class ItemPropertyDTO {
     private long type;                                      // Optional
     private String suffix;                                  // Optional
     private String icon;                                    // Optional
+    private String propertyType; // This isn't in the documentation. We have this to avoid multiple ItemProperty tables
 }

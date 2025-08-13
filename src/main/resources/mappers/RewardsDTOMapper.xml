@@ -28,6 +28,24 @@
 		]]>
     </select>
 
+    <select id="getEntityByItemId" resultMap="RewardsDTOMap">
+        <![CDATA[
+        SELECT
+            Rewards.dbId,
+            Rewards.itemId,
+            Rewards.category,
+            Rewards.prefixes,
+            Rewards.suffixes,
+            Subcategories.subcategory
+        FROM Rewards
+        INNER JOIN Subcategories
+        ON Subcategories.RewardsId = Rewards.dbId
+        WHERE Rewards.itemId = #{dbId}
+		]]>
+    </select>
+
+
+
 <!--    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">-->
 <!--        <![CDATA[-->
 <!--			INSERT INTO Rewards-->

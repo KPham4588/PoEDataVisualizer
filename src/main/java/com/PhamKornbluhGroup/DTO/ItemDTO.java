@@ -25,8 +25,8 @@ public class ItemDTO {
     private boolean delve;       // always true if present     // Optional   //w Is this part of influences??
     private boolean fractured;   // always true if present     // Optional   //w Is this part of influences??
     private boolean synthesised; // always true if present     // Optional   //w Is this part of influences??
-    private ArrayList<ItemSocketDTO> sockets;                           // Optional
-    private ItemDTO[] socketedItems;                           // Optional
+    private ArrayList<ItemSocketDTO> sockets;                  // Optional
+    private ArrayList<ItemDTO> socketedItems;                  // Optional
     private String name;
     private String typeLine;
     private String baseType;
@@ -45,30 +45,30 @@ public class ItemDTO {
     private boolean cisRaceReward;   // always true if present     // Optional
     private boolean seaRaceReward;   // always true if present     // Optional
     private boolean thRaceReward;    // always true if present     // Optional
-    private ItemPropertyDTO[] properties;                          // Optional
-    private ItemPropertyDTO[] notableProperties;                   // Optional
-    private ItemPropertyDTO[] requirements;                        // Optional
-    private ItemPropertyDTO[] additionalProperties;                // Optional
-    private ItemPropertyDTO[] nextLevelRequirements;               // Optional
+    private ArrayList<ItemPropertyDTO> properties;                 // Optional
+    private ArrayList<ItemPropertyDTO> notableProperties;          // Optional
+    private ArrayList<ItemPropertyDTO> requirements;               // Optional
+    private ArrayList<ItemPropertyDTO> additionalProperties;       // Optional
+    private ArrayList<ItemPropertyDTO> nextLevelRequirements;      // Optional
     private int talismanTier;                                      // Optional
-    private RewardsDTO[] rewards;                                  // Optional
+    private ArrayList<RewardsDTO> rewards;                         // Optional
     private String secDescrText;                                   // Optional
-    private String[] utilityMods;                                  // Optional
-    private LogbookModsDTO[] logbookMods;                          // Optional
-    private String[] enchantMods;                                  // Optional
-    private String[] scourgeMods;                                  // Optional
-    private String[] implicitMods;                                 // Optional
-    private UltimatumModsDTO[] ultimatumMods;                      // Optional
-    private String[] explicitMods;                                 // Optional
-    private String[] craftedMods;                                  // Optional
-    private String[] fracturedMods;                                // Optional
-    private String[] crucibleMods;  // only allocated mods are included // Optional
-    private String[] cosmeticMods;                                 // Optional
-    private String[] veiledMods;    // random video identifier      // Optional
-    private boolean veiled;         // always true if present       // Optional
-    private String descrText;                                      // Optional
-    private String[] flavourText;                                  // Optional
-    private Object[] flavourTextParsed; //p Can be either an array of Strings or Objects // Optional
+    private ArrayList<String> utilityMods;                         // Optional
+    private ArrayList<LogbookModsDTO> logbookMods;                 // Optional
+    private ArrayList<String> enchantMods;                         // Optional
+    private ArrayList<String> scourgeMods;                         // Optional
+    private ArrayList<String> implicitMods;                        // Optional
+    private ArrayList<UltimatumModsDTO> ultimatumMods;             // Optional
+    private ArrayList<String> explicitMods;                        // Optional
+    private ArrayList<String> craftedMods;                         // Optional
+    private ArrayList<String> fracturedMods;                                     // Optional
+    private ArrayList<String> crucibleMods;  // only allocated mods are included // Optional
+    private ArrayList<String> cosmeticMods;                                      // Optional
+    private ArrayList<String> veiledMods;    // random video identifier          // Optional
+    private boolean veiled;         // always true if present                    // Optional
+    private ArrayList<String> descrText;                                         // Optional
+    private ArrayList<String> flavourText;                                       // Optional
+    private ArrayList<Object> flavourTextParsed; //p Can be either an array of Strings or Objects // Optional
     private String flavourTextNote; // user-generated text         // Optional
     private String prophecyText;                                   // Optional
     private boolean isRelic;        // always true if present      // Optional

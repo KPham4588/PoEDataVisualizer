@@ -66,6 +66,96 @@
 		]]>
     </select>
 
+    <select id="getPropertiesByItemId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.itemId = #{dbId}
+            AND ItemProperty.propertyType = "Properties"
+		]]>
+    </select>
+
+    <select id="getNotablePropertiesByItemId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.itemId = #{dbId}
+            AND ItemProperty.propertyType = "Notable Properties"
+		]]>
+    </select>
+
+    <select id="getRequirementsByItemId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.itemId = #{dbId}
+            AND ItemProperty.propertyType = "Requirements"
+		]]>
+    </select>
+
+    <select id="getAdditionalPropertiesByItemId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.itemId = #{dbId}
+            AND ItemProperty.propertyType = "Additional Properties"
+		]]>
+    </select>
+
+    <select id="getNextLevelRequirementsByItemId" resultMap="ItemPropertyDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            hybridId,
+            name,
+            displayMode,
+            progress,
+            type,
+            suffix,
+            icon
+        FROM ItemProperty
+        WHERE ItemProperty.itemId = #{dbId}
+            AND ItemProperty.propertyType = "Next Level Requirements"
+		]]>
+    </select>
+
     <!-- UNTESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId" keyColumn="dbId">
         <![CDATA[

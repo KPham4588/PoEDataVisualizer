@@ -27,6 +27,17 @@
 		]]>
     </select>
 
+    <select id="getEntityByItemId" resultMap="LogbookModsDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            areaName
+        FROM LogbookMods
+        WHERE itemId = #{dbId}
+		]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO LogbookMods

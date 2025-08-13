@@ -5,6 +5,7 @@
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO">
 
+    <!-- At the end, need to reorder list to put collection at bottom. Probably alphabetize this and DTO-->
     <resultMap id="ItemDTOMap" type="com.PhamKornbluhGroup.DTO.ItemDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
         <result property="publicStashChangeId" column="publicStashChangeId"/>
@@ -28,14 +29,125 @@
         <result property="delve" column="delve"/>
         <result property="fractured" column="fractured"/>
         <result property="synthesised" column="synthesised"/>
-                <collection property="sockets" column="dbId" javaType="ArrayList"
-                            ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
-                            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
+        <collection property="sockets" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
+        <collection property="socketedItems" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityById"/>
+        <result property="name" column="name"/>
+        <result property="typeLine" column="typeLine"/>
+        <result property="baseType" column="baseType"/>
+        <result property="rarity" column="rarity"/>
+        <result property="identified" column="identified"/>
+        <result property="itemLevel" column="itemLevel"/>
+        <result property="ilvl" column="ilvl"/>
+        <result property="note" column="note"/>
+        <result property="forum_note" column="forum_note"/>
+        <result property="lockedToCharacter" column="lockedToCharacter"/>
+        <result property="lockedToAccount" column="lockedToAccount"/>
+        <result property="duplicated" column="duplicated"/>
+        <result property="split" column="split"/>
+        <result property="corrupted" column="corrupted"/>
+        <result property="unmodifiable" column="unmodifiable"/>
+        <result property="cisRaceReward" column="cisRaceReward"/>
+        <result property="seaRaceReward" column="seaRaceReward"/>
+        <result property="thRaceReward" column="thRaceReward"/>
+        <collection property="properties" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getPropertiesByItemId"/>
+        <collection property="notableProperties" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNotablePropertiesByItemId"/>
+        <collection property="requirements" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getRequirementsByItemId"/>
+        <collection property="additionalProperties" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getAdditionalPropertiesByItemId"/>
+        <collection property="nextLevelRequirements" column="dbId" javaType="ArrayList"
+            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNextLevelRequirementsByItemId"/>
 
-<!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IItemNodeDTO.ItemNodeDTOMap" autoMapping="true"/>-->
-<!--        <collection property="nodes" column="dbId" javaType="ArrayList"-->
-<!--                    ofType="com.PhamKornbluhGroup.DTO.ItemNodeDTO"-->
-<!--                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemNodeDTO.getEntityByItemId"/>-->
+
+        <!--Below has not been added to insert/update yet-->
+        <result property="talismanTier" column="talismanTier"/>
+        <collection property="rewards" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.RewardsDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
+        <result property="secDescrText" column="secDescrText"/>
+        <!-- Might need to reconfigure the table to make this and other ArrayList<String> work -->
+        <collection property="utilityMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="utilityMod" column="utilityMod"/>
+        </collection>
+        <collection property="LogbookMods" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.LogbookModsDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.ILogbookModsDTO.getEntityByItemId"/>
+        <collection property="enchantMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="enchantMod" column="enchantMod"/>
+        </collection>
+        <collection property="scourgeMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="scourgeMod" column="scourgeMod"/>
+        </collection>
+        <collection property="implicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="implicitMod" column="implicitMod"/>
+        </collection>
+        <collection property="ultimatumMods" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.UltimatumModsDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO.getEntityByItemId"/>
+        <collection property="explicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="explicitMod" column="explicitMod"/>
+        </collection>
+        <collection property="craftedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="craftedMod" column="craftedMod"/>
+        </collection>
+        <collection property="fracturedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="fracturedMod" column="fracturedMod"/>
+        </collection>
+        <collection property="crucibleMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="crucibleMod" column="crucibleMod"/>
+        </collection>
+        <collection property="cosmeticMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="cosmeticMod" column="cosmeticMod"/>
+        </collection>
+        <collection property="veiledMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="veiledMod" column="veiledMod"/>
+        </collection>
+        <result property="veiled" column="veiled"/>
+        <!-- Having collection name and property name be the same might cause an issue. -->
+        <collection property="descrText" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="descrText" column="descrText"/>
+        </collection>
+        <!-- Having collection name and property name be the same might cause an issue. -->
+        <collection property="flavourText" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="flavourText" column="flavourText"/>
+        </collection>
+        <!-- Having collection name and property name be the same might cause an issue. -->
+        <!-- this is mapped to ArrayList<Object> flavourTextParsed
+        Documentation never specifies what type of object this is. This might cause problems -->
+        <collection property="flavourTextParsed" column="dbId" javaType="ArrayList" ofType="java.lang.Object">
+            <result property="flavourTextParsed" column="flavourTextParsed"/>
+        </collection>
+        <result property="flavourTextNote" column="flavourTextNote"/>
+        <result property="prophecyText" column="prophecyText"/>
+        <result property="isRelic" column="isRelic"/>
+        <result property="foilVariation" column="foilVariation"/>
+        <result property="replica" column="replica"/>
+        <result property="foreseeing" column="foreseeing"/>
+        <association property="incubatedItem" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO" autoMapping="true"/>
+        <association property="scourged" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO" autoMapping="true"/>
+        <association property="crucible" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO" autoMapping="true"/>
+        <result property="ruthless" column="ruthless"/>
+        <!-- FrameType is an enum. We may need an enum TypeHandler here-->
+        <association property="frameType" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType" autoMapping="true"/>
+        <result property="artFilename" column="artFilename"/>
+        <association property="hybrid" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO" autoMapping="true"/>
+        <association property="extended" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO" autoMapping="true"/>
+        <result property="x" column="x"/>
+        <result property="y" column="y"/>
+        <result property="inventoryId" column="inventoryId"/>
+        <result property="socket" column="socket"/>
+        <result property="colour" column="colour"/>
     </resultMap>
 
     <!--    Doesn't include object "Influence"-->
@@ -62,7 +174,25 @@
             abyssJewel,
             delve,
             fractured,
-            synthesised
+            synthesised,
+            name,
+            typeLine,
+            baseType,
+            rarity,
+            identified,
+            itemLevel,
+            ilvl,
+            note,
+            forum_note,
+            lockedToCharacter,
+            lockedToAccount,
+            duplicated,
+            split,
+            corrupted,
+            unmodifiable,
+            cisRaceReward,
+            seaRaceReward,
+            thRaceReward
         FROM Item
         WHERE Item.dbId = #{dbId}
 		]]>
@@ -72,8 +202,16 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Item
-			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText, league, id, elder, shaper, searing, tangled, abyssJewel, delve, fractured, synthesised)
-			VALUES (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize}, #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{elder}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel}, #{delve}, #{fractured}, #{synthesised})
+			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize,
+			    stackSizeText, league, id, elder, shaper, searing, tangled, abyssJewel, delve, fractured,
+			    synthesised, name, typeLine, baseType, rarity, identified, itemLevel, ilvl, note, forum_note,
+			    lockedToCharacter, lockedToAccount, duplicated, split, corrupted, unmodifiable, cisRaceReward,
+			    seaRaceReward, thRaceReward)
+			VALUES (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize}, #{maxStackSize},
+			    #{stackSizeText}, #{league}, #{id}, #{elder}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel}, #{delve}, #{fractured},
+			    #{synthesised}, #{name}, #{typeLine}, #{baseType}, #{rarity}, #{identified}, #{itemLevel}, #{typeLine}, #{ilvl}, #{note}, #{forum_note},
+			    #{lockedToCharacter}, #{lockedToAccount}, #{duplicated}, #{split}, #{corrupted}, #{unmodifiable}, #{cisRaceReward},
+			    #{seaRaceReward}, #{thRaceReward})
 		]]>
     </insert>
 
@@ -93,14 +231,32 @@
 			    stackSizeText = #{stackSizeText},
 			    league = #{league},
 			    id = #{id},
-			    id = #{elder},
-			    id = #{shaper},
-			    id = #{searing},
-			    id = #{tangled},
-			    id = #{abyssJewel},
-			    id = #{delve},
-			    id = #{fractured},
-			    id = #{synthesised},
+			    elder = #{elder},
+			    shaper = #{shaper},
+			    searing = #{searing},
+			    tangled = #{tangled},
+			    abyssJewel = #{abyssJewel},
+			    delve = #{delve},
+			    fractured = #{fractured},
+			    synthesised = #{synthesised},
+			    name = #{name},
+			    typeLine = #{typeLine},
+			    baseType = #{baseType},
+			    rarity = #{rarity},
+			    identified = #{identified},
+			    itemLevel = #{itemLevel},
+			    ilvl = #{ilvl},
+			    note = #{note},
+			    forum_note = #{forum_note},
+			    lockedToCharacter = #{lockedToCharacter},
+			    lockedToAccount = #{lockedToAccount},
+			    duplicated = #{duplicated},
+			    split = #{split},
+			    corrupted = #{corrupted},
+			    unmodifiable = #{unmodifiable},
+			    cisRaceReward = #{cisRaceReward},
+			    seaRaceReward = #{seaRaceReward},
+			    thRaceReward = #{thRaceReward}
 			WHERE dbId = #{dbId}
 		]]>
     </update>
