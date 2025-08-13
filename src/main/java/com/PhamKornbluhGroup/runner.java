@@ -2,37 +2,23 @@ package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.DAO.CrucibleDAO;
 
-import com.PhamKornbluhGroup.DTO.CrucibleDTO;
-import com.PhamKornbluhGroup.DTO.CrucibleNodeDTO;
+import com.PhamKornbluhGroup.DAO.FactionDAO;
+import com.PhamKornbluhGroup.DTO.*;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 
 import java.util.ArrayList;
 import com.PhamKornbluhGroup.DAO.ExtendedDAO;
-import com.PhamKornbluhGroup.DTO.ExtendedDTO;
 
 public class runner {
 
     public static void main(String[] args) {
-        CrucibleDTO testCrucible = new CrucibleDTO();
-        testCrucible.setLayout("Khoa's new layout");
+        FactionDTO testObject = new FactionDTO();
+        testObject.setFactionId(FactionId.FACTION2);
+        testObject.setLogbookModsId(2);
+        testObject.setFactionName("Khoa's Faction2");
 
-        CrucibleDTO testObject = new CrucibleDTO();
-        testObject.setLayout("hi ho hi");
-        System.out.println(testObject.toString());
-
-        //ExtendedDTO testObject = testExtendedDAO();
-        //System.out.println(testObject.toString());
-        ArrayList<CrucibleNodeDTO> testNodes = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            CrucibleNodeDTO node = new CrucibleNodeDTO();
-            node.setIn("hi Khoa " + i);
-            node.setOut("ho Khoa " + i);
-            testNodes.add(node);
-        }
-        testCrucible.setNodes(testNodes);
-
-        CrucibleDAO testCrucibleInsert = new CrucibleDAO();
-        testCrucibleInsert.insertCrucible(testCrucible);
+        FactionDAO testFactionInsert = new FactionDAO();
+        testFactionInsert.saveFaction(testObject);
 
         System.out.println();
         System.out.println();

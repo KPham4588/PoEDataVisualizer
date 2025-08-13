@@ -6,6 +6,11 @@
         <setting name="logImpl" value="LOG4J2"/>
     </settings>
 
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FactionId" />
+        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" />
+    </typeHandlers>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -22,16 +27,15 @@
     <mappers>
         <mapper resource="mappers/CrucibleDTOMapper.xml"/>
         <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
-        <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
-        <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
-        <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
+        <mapper resource="mappers/FactionDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
-        <mapper resource="mappers/FactionDTOMapper.xml"/>
+        <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
+        <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
+        <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
         <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
         <mapper resource="mappers/ItemDTOMapper.xml"/>
     </mappers>
-
 </configuration>

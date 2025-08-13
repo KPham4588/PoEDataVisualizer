@@ -21,24 +21,28 @@
         <result property="itemId" column="itemId"/>
         <result property="isVaalGem" column="isVaalGem"/>
         <result property="baseTypeName" column="baseTypeName"/>
-        <result property="explicitMods" column="explicitMods"/>
         <result property="secDescrText" column="secDescrText"/>
         <collection property="properties" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getEntityByHybridId"/>
+        <collection property="explicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+            <result property="explicitMod" column="explicitMod"/>
+        </collection>
     </resultMap>
 
     <!-- UNTESTED -->
     <select id="getEntityById" resultMap="HybridDTOMap">
         <![CDATA[
         SELECT
-            dbId,
-            itemId,
-            isVaalGem,
-            baseTypeName,
-            explicitMods,
-            secDescrText
+            Hybrid.dbId,
+            Hybrid.itemId,
+            Hybrid.isVaalGem,
+            Hybrid.baseTypeName,
+            ExplicitMods.explicitMod,
+            Hybrid.secDescrText
         FROM Hybrid
+        INNER JOIN ExplicitMods
+        ON Hybrid.dbId = ExplicitMods.hybridId
         WHERE Hybrid.dbId = #{dbId}
 		]]>
     </select>

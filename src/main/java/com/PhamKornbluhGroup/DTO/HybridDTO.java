@@ -8,6 +8,6 @@ public class HybridDTO {
     private boolean isVaalGem;            // Optional
     private String baseTypeName;
     private ArrayList<ItemPropertyDTO> properties; // Optional
-    private String[] explicitMods;        // Optional
+    private ArrayList<String> explicitMods;        // Optional
     private String secDescrText;          // Optional
 }
