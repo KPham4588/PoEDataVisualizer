@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO">
+
+    <resultMap id="ItemDTOMap" type="com.PhamKornbluhGroup.DTO.ItemDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="publicStashChangeId" column="publicStashChangeId"/>
+        <result property="parentItemId" column="parentItemId"/>
+        <result property="verified" column="verified"/>
+        <result property="w" column="w"/>
+        <result property="h" column="h"/>
+        <result property="icon" column="icon"/>
+        <result property="support" column="support"/>
+        <result property="stackSize" column="stackSize"/>
+        <result property="maxStackSize" column="maxStackSize"/>
+        <result property="stackSizeText" column="stackSizeText"/>
+        <result property="league" column="league"/>
+        <result property="id" column="id"/>
+<!--        OBJECT INFLUENCE -->
+        <result property="elder" column="elder"/>
+        <result property="shaper" column="shaper"/>
+        <result property="searing" column="searing"/>
+        <result property="tangled" column="tangled"/>
+        <result property="abyssJewel" column="abyssJewel"/>
+        <result property="delve" column="delve"/>
+        <result property="fractured" column="fractured"/>
+        <result property="synthesised" column="synthesised"/>
+                <collection property="sockets" column="dbId" javaType="ArrayList"
+                            ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
+                            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
+
+<!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IItemNodeDTO.ItemNodeDTOMap" autoMapping="true"/>-->
+<!--        <collection property="nodes" column="dbId" javaType="ArrayList"-->
+<!--                    ofType="com.PhamKornbluhGroup.DTO.ItemNodeDTO"-->
+<!--                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemNodeDTO.getEntityByItemId"/>-->
+    </resultMap>
+
+    <!--    Doesn't include object "Influence"-->
+    <select id="getEntityById" resultMap="ItemDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            publicStashChangeId,
+            parentItemId,
+            verified,
+            w,
+            h,
+            icon,
+            support,
+            stackSize,
+            maxStackSize,
+            stackSizeText,
+            league,
+            id,
+            elder,
+            shaper,
+            searing,
+            tangled,
+            abyssJewel,
+            delve,
+            fractured,
+            synthesised
+        FROM Item
+        WHERE Item.dbId = #{dbId}
+		]]>
+    </select>
+
+    <!--    Doesn't include object "Influence"-->
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        <![CDATA[
+			INSERT INTO Item
+			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText, league, id, elder, shaper, searing, tangled, abyssJewel, delve, fractured, synthesised)
+			VALUES (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize}, #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{elder}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel}, #{delve}, #{fractured}, #{synthesised})
+		]]>
+    </insert>
+
+<!--    Doesn't include object "Influence"-->
+    <update id="updateEntity">
+        <![CDATA[
+			UPDATE Item
+			SET publicStashChangeId = #{publicStashChangeId},
+			    parentItemId = #{parentItemId},
+			    verified = #{verified},
+			    w = #{w},
+			    h = #{h},
+			    icon = #{icon},
+			    support = #{support},
+			    stackSize = #{stackSize},
+			    maxStackSize = #{maxStackSize},
+			    stackSizeText = #{stackSizeText},
+			    league = #{league},
+			    id = #{id},
+			    id = #{elder},
+			    id = #{shaper},
+			    id = #{searing},
+			    id = #{tangled},
+			    id = #{abyssJewel},
+			    id = #{delve},
+			    id = #{fractured},
+			    id = #{synthesised},
+			WHERE dbId = #{dbId}
+		]]>
+    </update>
+
+    <delete id="removeEntity">
+        <![CDATA[
+			DELETE FROM Item
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+</mapper>

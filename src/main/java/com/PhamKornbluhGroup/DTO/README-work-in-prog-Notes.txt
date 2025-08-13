@@ -19,8 +19,8 @@ RRRRRRRR     RRRRRRR    eeeeeeeeeeeeee  aaaaaaaaaa  aaaa  ddddddddd   ddddd     
 Object Hierarchy:
                         ResultDTO
                         └── PublicStashChangeDTO
-                            └── ItemDTO
-                                ├── ItemSocketDTO
+DAN GOT TO SOCKETS         └── ItemDTO
+Dan MAPPER DONE                 ├── ItemSocketDTO
                                 ├── ItemDTO                         // (Same as Parent ItemDTO)
 Dan MAPPER DONE                 ├── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO

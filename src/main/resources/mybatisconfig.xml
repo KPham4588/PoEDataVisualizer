@@ -35,5 +35,7 @@
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
         <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
+        <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
+        <mapper resource="mappers/ItemDTOMapper.xml"/>
     </mappers>
 </configuration>
