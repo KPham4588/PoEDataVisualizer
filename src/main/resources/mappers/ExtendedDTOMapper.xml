@@ -41,13 +41,27 @@
 <!--    </insert>-->
 
     <!--Doesn't Work-->
-    <insert id="saveEntity" parameterType="java.util.List">
-        INSERT INTO Extended (
-            (id, itemId, category, prefixes, suffixes, game_type)
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        INSERT INTO Extended
+            (itemId, category, prefixes, suffixes)
         VALUES
-        <foreach collection="list" item="element" index="index" open="(" separator="),("  close=")">
-            #{element}
-        </foreach>
+        (#{itemId}, #{category}, #{prefixes}, #{suffixes})
+    </insert>
+
+<!--    <insert id="saveSubcategories" useGeneratedKeys="true" keyProperty="dbId" parameterType="com.PhamKornbluhGroup.DTO.ExtendedDTO">-->
+<!--        INSERT INTO Subcategories-->
+<!--            (extendedId, subcategory)-->
+<!--        VALUES-->
+<!--        <foreach collection="subcategories" item="element" separator=",">-->
+<!--            (#{extendedDbId}, #{element})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+    <insert id="saveSubcategories" useGeneratedKeys="true">
+        INSERT INTO Subcategories
+            (extendedId, subcategory)
+        VALUES
+            (#{arg0}, #{arg1})
     </insert>
 
     <!--Doesn't Work-->

@@ -29,12 +29,6 @@
         <result property="delve" column="delve"/>
         <result property="fractured" column="fractured"/>
         <result property="synthesised" column="synthesised"/>
-        <collection property="sockets" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
-        <collection property="socketedItems" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityById"/>
         <result property="name" column="name"/>
         <result property="typeLine" column="typeLine"/>
         <result property="baseType" column="baseType"/>
@@ -53,29 +47,53 @@
         <result property="cisRaceReward" column="cisRaceReward"/>
         <result property="seaRaceReward" column="seaRaceReward"/>
         <result property="thRaceReward" column="thRaceReward"/>
-        <collection property="properties" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getPropertiesByItemId"/>
-        <collection property="notableProperties" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNotablePropertiesByItemId"/>
-        <collection property="requirements" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getRequirementsByItemId"/>
-        <collection property="additionalProperties" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getAdditionalPropertiesByItemId"/>
-        <collection property="nextLevelRequirements" column="dbId" javaType="ArrayList"
-            ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
-            select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNextLevelRequirementsByItemId"/>
-
-
-        <!--Below has not been added to insert/update yet-->
         <result property="talismanTier" column="talismanTier"/>
+        <result property="secDescrText" column="secDescrText"/>
+        <result property="flavourTextNote" column="flavourTextNote"/>
+        <result property="prophecyText" column="prophecyText"/>
+        <result property="isRelic" column="isRelic"/>
+        <result property="foilVariation" column="foilVariation"/>
+        <result property="replica" column="replica"/>
+        <result property="foreseeing" column="foreseeing"/>
+        <result property="ruthless" column="ruthless"/>
+        <result property="artFilename" column="artFilename"/>
+        <result property="x" column="x"/>
+        <result property="y" column="y"/>
+        <result property="inventoryId" column="inventoryId"/>
+        <result property="socket" column="socket"/>
+        <result property="colour" column="colour"/>
+        <result property="veiled" column="veiled"/>
+        <association property="incubatedItem" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO" autoMapping="true"/>
+        <association property="scourged" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO" autoMapping="true"/>
+        <association property="crucible" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO" autoMapping="true"/>
+        <!-- FrameType is an enum. We may need an enum TypeHandler here-->
+        <association property="frameType" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType" autoMapping="true"/>
+        <association property="hybrid" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO" autoMapping="true"/>
+        <association property="extended" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO" autoMapping="true"/>
+        <collection property="sockets" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
+        <collection property="socketedItems" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityById"/>
+        <collection property="properties" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getPropertiesByItemId"/>
+        <collection property="notableProperties" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNotablePropertiesByItemId"/>
+        <collection property="requirements" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getRequirementsByItemId"/>
+        <collection property="additionalProperties" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getAdditionalPropertiesByItemId"/>
+        <collection property="nextLevelRequirements" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getNextLevelRequirementsByItemId"/>
         <collection property="rewards" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.RewardsDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
-        <result property="secDescrText" column="secDescrText"/>
         <!-- Might need to reconfigure the table to make this and other ArrayList<String> work -->
         <collection property="utilityMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
             <result property="utilityMod" column="utilityMod"/>
@@ -113,7 +131,6 @@
         <collection property="veiledMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
             <result property="veiledMod" column="veiledMod"/>
         </collection>
-        <result property="veiled" column="veiled"/>
         <!-- Having collection name and property name be the same might cause an issue. -->
         <collection property="descrText" column="dbId" javaType="ArrayList" ofType="java.lang.String">
             <result property="descrText" column="descrText"/>
@@ -128,26 +145,6 @@
         <collection property="flavourTextParsed" column="dbId" javaType="ArrayList" ofType="java.lang.Object">
             <result property="flavourTextParsed" column="flavourTextParsed"/>
         </collection>
-        <result property="flavourTextNote" column="flavourTextNote"/>
-        <result property="prophecyText" column="prophecyText"/>
-        <result property="isRelic" column="isRelic"/>
-        <result property="foilVariation" column="foilVariation"/>
-        <result property="replica" column="replica"/>
-        <result property="foreseeing" column="foreseeing"/>
-        <association property="incubatedItem" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO" autoMapping="true"/>
-        <association property="scourged" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO" autoMapping="true"/>
-        <association property="crucible" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO" autoMapping="true"/>
-        <result property="ruthless" column="ruthless"/>
-        <!-- FrameType is an enum. We may need an enum TypeHandler here-->
-        <association property="frameType" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType" autoMapping="true"/>
-        <result property="artFilename" column="artFilename"/>
-        <association property="hybrid" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO" autoMapping="true"/>
-        <association property="extended" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO" autoMapping="true"/>
-        <result property="x" column="x"/>
-        <result property="y" column="y"/>
-        <result property="inventoryId" column="inventoryId"/>
-        <result property="socket" column="socket"/>
-        <result property="colour" column="colour"/>
     </resultMap>
 
     <!--    Doesn't include object "Influence"-->

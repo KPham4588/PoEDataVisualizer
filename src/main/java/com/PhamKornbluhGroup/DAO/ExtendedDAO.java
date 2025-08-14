@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 public class ExtendedDAO {
 
     private final static Logger ExtendedDAOLogger = LogManager.getLogger(ExtendedDAO.class);
@@ -24,5 +26,21 @@ public class ExtendedDAO {
         }
         return newNode;
     }
+
+    public void insertExtendedById(ArrayList<ExtendedDTO> insertObjects) {
+        SqlSession session = SessionPool.getSession();
+        IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
+        System.out.println("Attempting to insert ExtendedDTO object in list.");
+        for (ExtendedDTO node : insertObjects) {
+            mapper.saveEntity(node);
+            for (String subcategory : node.getSubcategories()) {
+                mapper.saveSubcategories(node.getDbId(), subcategory);
+            }
+        }
+        session.commit();
+        System.out.println("Attempt finished.");
+    }
+
+
     
 }

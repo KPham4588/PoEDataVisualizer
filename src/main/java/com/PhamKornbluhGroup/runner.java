@@ -12,19 +12,41 @@ import com.PhamKornbluhGroup.DAO.ExtendedDAO;
 public class runner {
 
     public static void main(String[] args) {
-        FactionDTO testObject = new FactionDTO();
-        testObject.setFactionId(FactionId.FACTION2);
-        testObject.setLogbookModsId(2);
-        testObject.setFactionName("Khoa's Faction2");
+        ExtendedDTO testDTO = new ExtendedDAO().getExtendedById(1);
+        System.out.println(testDTO.toString());
 
-        FactionDAO testFactionInsert = new FactionDAO();
-        testFactionInsert.saveFaction(testObject);
+        ExtendedDTO secondDTO = new ExtendedDAO().getExtendedById(2);
+        System.out.println(secondDTO.toString());
 
-        System.out.println();
-        System.out.println();
+
+        ArrayList<String> subcats = new ArrayList<>();
+        subcats.add("firstOne");
+        subcats.add("SecondOne");
+        subcats.add("ThirdOne");
+
+        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category", subcats, 2, 2);
+
+        ArrayList<ExtendedDTO> insertList = new ArrayList<>();
+        insertList.add(insertionDTO);
+
+        new ExtendedDAO().insertExtendedById(insertList);
+
 
         SessionPool.getSession().close();
-        System.out.println("Reached the end of main without exception");
+
+//        FactionDTO testObject = new FactionDTO();
+//        testObject.setFactionId(FactionId.FACTION2);
+//        testObject.setLogbookModsId(2);
+//        testObject.setFactionName("Khoa's Faction2");
+//
+//        FactionDAO testFactionInsert = new FactionDAO();
+//        testFactionInsert.saveFaction(testObject);
+//
+//        System.out.println();
+//        System.out.println();
+//
+//        SessionPool.getSession().close();
+//        System.out.println("Reached the end of main without exception");
 
         //p This is the old way that we got and saved 1 API Result file
         //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
@@ -49,11 +71,6 @@ public class runner {
 //        for (String element : BulkAPIUtils.knownFields) {
 //            System.out.println(element);
 //        }
-    }
-
-    public static ExtendedDTO testExtendedDAO() {
-        ExtendedDTO extendedTestObject = new ExtendedDAO().getExtendedById(1);
-        return extendedTestObject;
     }
 
     public static String returnTestJSON() {
