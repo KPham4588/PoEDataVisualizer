@@ -57,7 +57,7 @@
 <!--        </foreach>-->
 <!--    </insert>-->
 
-    <insert id="saveSubcategories" useGeneratedKeys="true">
+    <insert id="saveSubcategories">
         INSERT INTO Subcategories
             (extendedId, subcategory)
         VALUES
