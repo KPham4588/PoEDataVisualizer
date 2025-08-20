@@ -30,7 +30,7 @@
         </collection>
     </resultMap>
 
-    <!-- UNTESTED -->
+
     <select id="getEntityById" resultMap="HybridDTOMap">
         <![CDATA[
         SELECT
