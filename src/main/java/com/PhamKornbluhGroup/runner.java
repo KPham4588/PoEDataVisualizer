@@ -22,9 +22,9 @@ public class runner {
         ArrayList<String> subcats = new ArrayList<>();
         subcats.add("firstOne");
         subcats.add("SecondOne");
-        subcats.add("ThirdOne");
+        subcats.add("oheightnineteen");
 
-        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category", subcats, 2, 2);
+        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category oheightnineteencategory", subcats, 2, 2);
 
         ArrayList<ExtendedDTO> insertList = new ArrayList<>();
         insertList.add(insertionDTO);

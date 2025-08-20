@@ -26,3 +26,88 @@ CREATE TABLE IF NOT EXISTS `poe-oracle`.`Crucible` (
   `layout` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`dbId`)
 );
+
+------------- ArrayList<String> objects inside Item -------------
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`UtilityMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `utilityMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`EnchantMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `enchantMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`ScourgeMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `scourgeMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`ImplicitMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `implicitMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`ExplicitMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `explicitMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`CraftedMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `craftedMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`FracturedMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `fracturedMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`CrucibleMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `crucibleMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`CosmeticMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `cosmeticMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`VeiledMods` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `veiledMod` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`DescrText` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `descrText` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
+
+CREATE TABLE IF NOT EXISTS `poe-oracle`.`FlavourText` (
+  `dbId` INT NOT NULL AUTO_INCREMENT,
+  `itemId` INT NOT NULL,
+  `flavourText` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`dbId`)
+);
