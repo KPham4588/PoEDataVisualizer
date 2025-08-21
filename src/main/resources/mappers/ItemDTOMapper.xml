@@ -69,13 +69,34 @@
         <result property="y" column="y"/>
 
         <!--========== Objects ==========-->
-        <association property="crucible" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO" autoMapping="true"/>
-        <association property="extended" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO" autoMapping="true"/>
-        <association property="frameType" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType" autoMapping="true"/>
-        <association property="hybrid" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO" autoMapping="true"/>
-        <association property="incubatedItem" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO" autoMapping="true"/>
+        <association property="crucible"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO.getEntityByItemId"
+             autoMapping="true"/>
+        <association property="extended"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO.getEntityByItemId"
+             autoMapping="true"/>
+
+        <!--        NEED TO USE ENUM TYPEHANDLER FOR THIS-->
+        <association property="frameType"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType.getEntityByItemId"
+             autoMapping="true"/>
+
+        <association property="hybrid"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO.getEntityByItemId"
+             autoMapping="true"/>
+        <association property="incubatedItem"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO.getEntityByItemId"
+             autoMapping="true"/>
         <!-- This is where the INFLUENCE OBJECT is missing -->
-        <association property="scourged" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO" autoMapping="true"/>
+        <association property="scourged"
+             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO"
+             select="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO.getEntityByItemId"
+             autoMapping="true"/>
         <!-- FrameType is an enum. We may need an enum TypeHandler here-->
 
         <!--========== ArrayList<String> ==========-->
@@ -132,9 +153,11 @@
 
 
         <!--========== ArrayList of various objects ==========-->
+
+        <!-- Need to create getEntityByParentItemId -->
         <collection property="socketedItems" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
-                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityById"/>
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityByParentItemId"/>
         <collection property="additionalProperties" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getAdditionalPropertiesByItemId"/>
@@ -170,12 +193,64 @@
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO.getEntityByItemId"/>
     </resultMap>
 
-    <!-- Very Incomplete -->
+    <!-- UNTESTED -->
     <select id="getEntityById" resultMap="ItemDTOMap">
         <![CDATA[
         SELECT
-            dbId,
-            x
+            artFilename,
+            baseType,
+            colour,
+            flavourTextNote,
+            forum_note,
+            icon,
+            id,
+            inventoryId,
+            league,
+            name,
+            note,
+            prophecyText,
+            rarity,
+            secDescrText,
+            stackSizeText,
+            typeLine,
+            abyssJewel,
+            cisRaceReward,
+            corrupted,
+            delve,
+            duplicated,
+            elder,
+            foreseeing,
+            fractured,
+            identified,
+            isRelic,
+            lockedToAccount,
+            lockedToCharacter,
+            replica,
+            ruthless,
+            seaRaceReward,
+            searing,
+            shaper,
+            split,
+            support,
+            synthesised,
+            tangled,
+            thRaceReward,
+            unmodifiable,
+            veiled,
+            verified,
+            foilVariation,
+            ilvl,
+            itemLevel,
+            maxStackSize,
+            parentItemId,
+            publicStashChangeId,
+            stackSize,
+            talismanTier,
+            h,
+            socket,
+            w,
+            x,
+            y
         FROM Item
         WHERE Item.dbId = #{dbId}
 		]]>

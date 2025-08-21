@@ -26,6 +26,18 @@
 		]]>
     </select>
 
+    <!-- Untested as called by ItemMapper -->
+    <select id="getEntityByItemId" resultMap="CrucibleDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            itemId,
+            layout
+        FROM Crucible
+        WHERE Crucible.itemId = #{dbId}
+		]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Crucible

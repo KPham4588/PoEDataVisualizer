@@ -31,6 +31,20 @@
 		]]>
     </select>
 
+    <!-- Untested as called by ItemMapper -->
+    <select id="getEntityByItemId" resultMap="ExtendedDTOMap">
+        <![CDATA[
+        SELECT
+            Extended.dbId,
+            Extended.itemId,
+            Extended.category,
+            Extended.prefixes,
+            Extended.suffixes
+        FROM Extended
+        WHERE Extended.itemId = #{dbId}
+		]]>
+    </select>
+
     <select id="getSubcategoryByExtendedId" resultType="java.lang.String">
         <![CDATA[
         SELECT Subcategories.subcategory

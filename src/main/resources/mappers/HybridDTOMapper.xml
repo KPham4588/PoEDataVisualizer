@@ -47,6 +47,23 @@
 		]]>
     </select>
 
+    <!-- Untested as called by ItemMapper -->
+    <select id="getEntityByItemId" resultMap="HybridDTOMap">
+        <![CDATA[
+        SELECT
+            Hybrid.dbId,
+            Hybrid.itemId,
+            Hybrid.isVaalGem,
+            Hybrid.baseTypeName,
+            ExplicitMods.explicitMod,
+            Hybrid.secDescrText
+        FROM Hybrid
+        INNER JOIN ExplicitMods
+        ON Hybrid.dbId = ExplicitMods.hybridId
+        WHERE Hybrid.itemId = #{dbId}
+		]]>
+    </select>
+
     <!-- UNTESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId" keyColumn="dbId">
         <![CDATA[

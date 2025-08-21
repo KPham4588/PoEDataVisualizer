@@ -12,7 +12,7 @@
     </resultMap>
 
     <!-- UNTESTED -->
-    <select id = "getEntityById"> resultMap = "IncubatedItemDTOMap"
+    <select id = "getEntityById" resultMap = "IncubatedItemDTOMap">
         <![CDATA[
 			SELECT *
 			FROM IncubatedItem
@@ -20,8 +20,17 @@
 		]]>
     </select>
 
+    <!-- Untested as called by ItemMapper -->
+    <select id = "getEntityByItemId" resultMap = "IncubatedItemDTOMap">
+        <![CDATA[
+			SELECT *
+			FROM IncubatedItem
+			WHERE IncubatedItem.itemId = #{dbId}
+		]]>
+    </select>
+
     <!-- Untested as called by parent ItemPropertyDTOMapper -->
-    <select id = "getEntityByItemPropertyId"> resultMap = "IncubatedItemDTOMap"
+    <select id = "getEntityByItemPropertyId" resultMap = "IncubatedItemDTOMap">
         <![CDATA[
 			SELECT *
 			FROM IncubatedItem

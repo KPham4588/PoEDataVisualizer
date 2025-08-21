@@ -23,6 +23,15 @@
 		]]>
     </select>
 
+    <!-- UNTESTED as called by parent ItemMapper -->
+    <select id="getEntityByItemId" resultMap="ScourgedDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM Scourged
+        WHERE Scourged.dbId = #{dbId}
+		]]>
+    </select>
+
     <!-- UNTESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
