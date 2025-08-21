@@ -21,7 +21,7 @@ Object Hierarchy:
                         └── PublicStashChangeDTO
 DAN GOT TO SOCKETS         └── ItemDTO
 Dan MAPPER DONE                 ├── ItemSocketDTO
-                                ├── ItemDTO                         // (Same as Parent ItemDTO)
+Dan MAPPER DONE                 ├── ItemDTO                         // (Same as Parent ItemDTO)
 Dan MAPPER DONE                 ├── properties (ItemPropertyDTO)
 Dan MAPPER DONE                 │   ├── ItemPropertyValuesDTO
 N/A                             │   └── DisplayMode (ENUM)

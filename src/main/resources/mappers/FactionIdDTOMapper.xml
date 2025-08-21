@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+    <!-- We might not need a mapper for this at all. This is an enum-->
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionId">
     <!--UNTESTED-->
     <resultMap id="FactionIdMap" type="com.PhamKornbluhGroup.DTO.FactionId" autoMapping="false">
