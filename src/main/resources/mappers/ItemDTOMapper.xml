@@ -79,42 +79,54 @@
         <!-- FrameType is an enum. We may need an enum TypeHandler here-->
 
         <!--========== ArrayList<String> ==========-->
-        <collection property="cosmeticMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="cosmeticMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getCosmeticModsByExtendedId">
             <result property="cosmeticMod" column="cosmeticMod"/>
         </collection>
-        <collection property="craftedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="craftedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getCraftedModsByExtendedId">
             <result property="craftedMod" column="craftedMod"/>
         </collection>
-        <collection property="crucibleMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="crucibleMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getCrucibleModsByExtendedId">
             <result property="crucibleMod" column="crucibleMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
-        <collection property="descrText" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="descrText" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getDescrTextByExtendedId">
             <result property="descrText" column="descrText"/>
         </collection>
-        <collection property="enchantMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="enchantMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
-        <collection property="explicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="explicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getExplicitModsByExtendedId">
             <result property="explicitMod" column="explicitMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
-        <collection property="flavourText" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="flavourText" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getFlavourTextByExtendedId">
             <result property="flavourText" column="flavourText"/>
         </collection>
-        <collection property="fracturedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="fracturedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getFracturedModsByExtendedId">
             <result property="fracturedMod" column="fracturedMod"/>
         </collection>
-        <collection property="implicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="implicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getImplicitModsByExtendedId">
             <result property="implicitMod" column="implicitMod"/>
         </collection>
-        <collection property="scourgeMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="scourgeMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getScourgeModsByExtendedId">
             <result property="scourgeMod" column="scourgeMod"/>
         </collection>
-        <collection property="utilityMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="utilityMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getUtilityModsByExtendedId">
             <result property="utilityMod" column="utilityMod"/>
         </collection>
-        <collection property="veiledMods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="veiledMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getVeiledModsByExtendedId">
             <result property="veiledMod" column="veiledMod"/>
         </collection>
 
@@ -169,6 +181,102 @@
 		]]>
     </select>
 
+    <select id="getCosmeticModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CosmeticMods.cosmeticMod
+        FROM CosmeticMods
+        WHERE CosmeticMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getCraftedModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CraftedMods.craftedMod
+        FROM CraftedMods
+        WHERE CraftedMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getCrucibleModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CrucibleMods.crucibleMod
+        FROM CrucibleMods
+        WHERE CrucibleMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getDescrTextByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT DescrText.descrText
+        FROM DescrText
+        WHERE DescrText.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getEnchantModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT EnchantMods.enchantMod
+        FROM EnchantMods
+        WHERE EnchantMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getExplicitModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT ExplicitMods.explicitMod
+        FROM ExplicitMods
+        WHERE ExplicitMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getFlavourTextByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT FlavourText.flavourText
+        FROM FlavourText
+        WHERE FlavourText.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getFracturedModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT FracturedMods.fracturedMod
+        FROM FracturedMods
+        WHERE FracturedMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getImplicitModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT ImplicitMods.implicitMod
+        FROM ImplicitMods
+        WHERE ImplicitMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getScourgeModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT ScourgeMods.scourgeMod
+        FROM ScourgeMods
+        WHERE ScourgeMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getUtilityModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT UtilityMods.utilityMod
+        FROM UtilityMods
+        WHERE UtilityMods.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getVeiledModsByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT VeiledMods.veiledMod
+        FROM VeiledMods
+        WHERE VeiledMods.itemId = #{dbId}
+		]]>
+    </select>
+
     <!-- Very Incomplete -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
@@ -178,18 +286,10 @@
 		]]>
     </insert>
 
-    <!-- Very Incomplete -->
-    <update id="updateEntity">
-        <![CDATA[
-			UPDATE Item
-			SET publicStashChangeId = #{publicStashChangeId},
-			    parentItemId = #{parentItemId},
 
-			WHERE dbId = #{dbId}
-		]]>
-    </update>
 
-    <!-- Very Incomplete -->
+
+
     <delete id="removeEntity">
         <![CDATA[
 			DELETE FROM Item
