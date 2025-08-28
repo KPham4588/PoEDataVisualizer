@@ -1,4 +1,7 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IExtendedDTO extends IBaseDAO<IExtendedDTO> {
+import com.PhamKornbluhGroup.DTO.ExtendedDTO;
+
+public interface IExtendedDTO extends IBaseDAO<ExtendedDTO> {
+    void saveSubcategories(int extendedId, String subcategory);
 }

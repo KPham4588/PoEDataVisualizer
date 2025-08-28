@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IHybridDTO extends IBaseDAO<IHybridDTO> {
+import com.PhamKornbluhGroup.DTO.HybridDTO;
+
+public interface IHybridDTO extends IBaseDAO<HybridDTO> {
 }

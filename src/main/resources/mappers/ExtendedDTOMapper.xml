@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO">
+
+    <resultMap id="ExtendedDTOMap" type="com.PhamKornbluhGroup.DTO.ExtendedDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="itemId" column="itemId"/>
+        <result property="category" column="category"/>
+        <result property="prefixes" column="prefixes"/>
+        <result property="suffixes" column="suffixes"/>
+        <collection property="subcategories" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getSubcategoryByExtendedId">
+            <result property="subcategory" column="subcategory"/>
+        </collection>
+    </resultMap>
+
+    <!-- This works -->
+    <select id="getEntityById" resultMap="ExtendedDTOMap">
+        <![CDATA[
+        SELECT
+            Extended.dbId,
+            Extended.itemId,
+            Extended.category,
+            Extended.prefixes,
+            Extended.suffixes
+        FROM Extended
+        WHERE Extended.dbId = #{dbId}
+		]]>
+    </select>
+
+    <!-- Untested as called by ItemMapper -->
+    <select id="getEntityByItemId" resultMap="ExtendedDTOMap">
+        <![CDATA[
+        SELECT
+            Extended.dbId,
+            Extended.itemId,
+            Extended.category,
+            Extended.prefixes,
+            Extended.suffixes
+        FROM Extended
+        WHERE Extended.itemId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getSubcategoryByExtendedId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT Subcategories.subcategory
+        FROM Subcategories
+        WHERE Subcategories.extendedId = #{dbId}
+		]]>
+    </select>
+
+    <!-- This works -->
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        INSERT INTO Extended
+            (itemId, category, prefixes, suffixes)
+        VALUES
+        (#{itemId}, #{category}, #{prefixes}, #{suffixes})
+    </insert>
+
+    <!-- This works -->
+    <insert id="saveSubcategories">
+        INSERT INTO Subcategories
+            (extendedId, subcategory)
+        VALUES
+            (#{arg0}, #{arg1})
+    </insert>
+
+    <!--Doesn't Work-->
+    <update id="updateEntity">
+        <![CDATA[
+			UPDATE Extended
+			SET itemId = #{itemId},
+			    layout = #{layout}
+			WHERE dbId = #{dbId}
+		]]>
+    </update>
+
+    <!--Doesn't Work-->
+    <delete id="removeEntity">
+        <![CDATA[
+			DELETE FROM Extended
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+</mapper>

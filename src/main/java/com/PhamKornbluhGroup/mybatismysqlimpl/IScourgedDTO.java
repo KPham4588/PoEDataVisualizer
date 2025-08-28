@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IScourgedDTO extends IBaseDAO<IScourgedDTO> {
+import com.PhamKornbluhGroup.DTO.ScourgedDTO;
+
+public interface IScourgedDTO extends IBaseDAO<ScourgedDTO> {
 }

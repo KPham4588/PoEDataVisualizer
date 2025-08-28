@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IIncubatedItemDTO extends IBaseDAO<IIncubatedItemDTO> {
+import com.PhamKornbluhGroup.DTO.IncubatedItemDTO;
+
+public interface IIncubatedItemDTO extends IBaseDAO<IncubatedItemDTO> {
 }

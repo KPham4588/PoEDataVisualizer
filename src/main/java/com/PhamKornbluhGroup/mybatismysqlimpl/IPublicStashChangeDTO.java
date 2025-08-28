@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IPublicStashChangeDTO extends IBaseDAO<IPublicStashChangeDTO> {
+import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
+
+public interface IPublicStashChangeDTO extends IBaseDAO<PublicStashChangeDTO> {
 }

@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IResultDTO extends IBaseDAO<IResultDTO> {
+import com.PhamKornbluhGroup.DTO.ResultDTO;
+
+public interface IResultDTO extends IBaseDAO<ResultDTO> {
 }

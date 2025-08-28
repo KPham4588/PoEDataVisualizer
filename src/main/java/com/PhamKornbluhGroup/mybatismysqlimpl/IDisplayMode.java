@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IDisplayMode extends IBaseDAO<IDisplayMode> {
+import com.PhamKornbluhGroup.DTO.DisplayMode;
+
+public interface IDisplayMode extends IBaseDAO<DisplayMode> {
 }

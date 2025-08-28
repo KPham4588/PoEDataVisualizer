@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface IRewardsDTO extends IBaseDAO<IRewardsDTO> {
+import com.PhamKornbluhGroup.DTO.RewardsDTO;
+
+public interface IRewardsDTO extends IBaseDAO<RewardsDTO> {
 }

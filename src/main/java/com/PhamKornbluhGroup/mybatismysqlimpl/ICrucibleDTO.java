@@ -1,4 +1,6 @@
 package com.PhamKornbluhGroup.mybatismysqlimpl;
 
-public interface ICrucibleDTO extends IBaseDAO<ICrucibleDTO> {
+import com.PhamKornbluhGroup.DTO.CrucibleDTO;
+
+public interface ICrucibleDTO extends IBaseDAO<CrucibleDTO> {
 }
