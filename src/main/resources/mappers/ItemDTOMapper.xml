@@ -70,31 +70,37 @@
 
         <!--========== Objects ==========-->
         <association property="crucible"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.CrucibleDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.CrucibleDTO.getEntityByItemId"
              autoMapping="true"/>
         <association property="extended"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.ExtendedDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.ExtendedDTO.getEntityByItemId"
              autoMapping="true"/>
 
         <!--        NEED TO USE ENUM TYPEHANDLER FOR THIS-->
         <association property="frameType"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.FrameType"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.FrameType.getEntityByItemId"
              autoMapping="true"/>
 
         <association property="hybrid"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.HybridDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.HybridDTO.getEntityByItemId"
              autoMapping="true"/>
         <association property="incubatedItem"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.IncubatedItemDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO.getEntityByItemId"
              autoMapping="true"/>
         <!-- This is where the INFLUENCE OBJECT is missing -->
         <association property="scourged"
-             resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO"
+             column="dbId"
+             javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.ScourgedDTO.getEntityByItemId"
              autoMapping="true"/>
         <!-- FrameType is an enum. We may need an enum TypeHandler here-->
