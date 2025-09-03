@@ -20,4 +20,12 @@ public enum DisplayMode {
     public String getInformation() {
         return information;
     }
+
+    @Override
+    public String toString() {
+        return "DisplayMode{" +
+                "displayCode=" + displayCode +
+                ", information='" + information + '\'' +
+                '}';
+    }
 }

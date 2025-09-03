@@ -14,4 +14,11 @@ public enum FactionId {
     public String getFactionId() {
         return factionId;
     }
+
+    @Override
+    public String toString() {
+        return "FactionId{" +
+                "factionId='" + factionId + '\'' +
+                '}';
+    }
 }

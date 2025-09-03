@@ -27,4 +27,12 @@ public enum FrameType {
     public String getInformation() {
         return information;
     }
+
+    @Override
+    public String toString() {
+        return "FrameType{" +
+                "value=" + value +
+                ", information='" + information + '\'' +
+                '}';
+    }
 }

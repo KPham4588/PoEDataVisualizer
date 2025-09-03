@@ -6,4 +6,40 @@ public class ResultDTO {
     private int dbId;
     private String nextChangeId; // pagination code
     private ArrayList<PublicStashChangeDTO> stashes;
+
+    public ResultDTO() {
+    }
+    public ResultDTO(int dbId, String nextChangeId, ArrayList<PublicStashChangeDTO> stashes) {
+        this.dbId = dbId;
+        this.nextChangeId = nextChangeId;
+        this.stashes = stashes;
+    }
+
+    public int getDbId() {
+        return dbId;
+    }
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
+    public String getNextChangeId() {
+        return nextChangeId;
+    }
+    public void setNextChangeId(String nextChangeId) {
+        this.nextChangeId = nextChangeId;
+    }
+    public ArrayList<PublicStashChangeDTO> getStashes() {
+        return stashes;
+    }
+    public void setStashes(ArrayList<PublicStashChangeDTO> stashes) {
+        this.stashes = stashes;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultDTO{" +
+                "dbId=" + dbId +
+                ", nextChangeId='" + nextChangeId + '\'' +
+                ", stashes=" + stashes +
+                '}';
+    }
 }
