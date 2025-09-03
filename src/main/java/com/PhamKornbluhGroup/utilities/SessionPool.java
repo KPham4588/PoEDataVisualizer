@@ -22,6 +22,9 @@ public class SessionPool {
     }
 
     public static SqlSession getSession() {
+        if (session != null) {
+            return session;
+        }
         Properties databaseSecrets = SecretsHelper.getDBInformation();
         // Session never gets closed
 
