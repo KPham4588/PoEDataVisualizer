@@ -35,6 +35,22 @@
 		]]>
     </select>
 
+    <select id="getEntityByResultId" resultMap="PublicStashChangeDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            resultId,
+            id,
+            isPublic,
+            accountName,
+            stash,
+            stashType,
+            league
+        FROM PublicStashChange
+        WHERE PublicStashChange.resultId = #{dbId}
+		]]>
+    </select>
+
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO PublicStashChange
