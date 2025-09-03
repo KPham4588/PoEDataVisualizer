@@ -367,6 +367,68 @@
 		]]>
     </insert>
 
+    <select id="getEntityByPublicStashChangeId" resultMap="ItemDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            artFilename,
+            baseType,
+            colour,
+            flavourTextNote,
+            forum_note,
+            icon,
+            id,
+            inventoryId,
+            league,
+            name,
+            note,
+            prophecyText,
+            rarity,
+            secDescrText,
+            stackSizeText,
+            typeLine,
+            abyssJewel,
+            cisRaceReward,
+            corrupted,
+            delve,
+            duplicated,
+            elder,
+            foreseeing,
+            fractured,
+            identified,
+            isRelic,
+            lockedToAccount,
+            lockedToCharacter,
+            replica,
+            ruthless,
+            seaRaceReward,
+            searing,
+            shaper,
+            split,
+            support,
+            synthesised,
+            tangled,
+            thRaceReward,
+            unmodifiable,
+            veiled,
+            verified,
+            foilVariation,
+            ilvl,
+            itemLevel,
+            maxStackSize,
+            parentItemId,
+            publicStashChangeId,
+            stackSize,
+            talismanTier,
+            h,
+            socket,
+            w,
+            x,
+            y
+        FROM Item
+        WHERE Item.publicStashChangeId = #{dbId}
+		]]>
+    </select>
 
 
 

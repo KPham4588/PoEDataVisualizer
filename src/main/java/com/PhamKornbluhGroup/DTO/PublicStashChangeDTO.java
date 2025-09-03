@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
+import java.util.ArrayList;
+
 public class PublicStashChangeDTO {
     private int dbId;
     private int resultId;
@@ -9,5 +11,5 @@ public class PublicStashChangeDTO {
     private String stash;        // The name of the stash                     //p Optional
     private String stashType;
     private String league;       // the league's name                         //p Optional
-    private ItemDTO[] items;     // array of Item
+    private ArrayList<ItemDTO> items;     // array of Item
 }
