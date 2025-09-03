@@ -49,7 +49,6 @@ public class CrucibleDAO {
         System.out.println("Attempt finished.");
     }
 
-    //P UPDATES NEEDED -- THIS IS COPIED FROM CRUCIBLENODEDTO
     public void updateCrucible(CrucibleDTO updateObject) {
         SqlSession session = SessionPool.getSession();
         ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
@@ -59,7 +58,6 @@ public class CrucibleDAO {
         System.out.println("Attempt finished.");
     }
 
-    //P UPDATES NEEDED -- THIS IS COPIED FROM CRUCIBLENODEDTO
     public void deleteCrucibleById(int id) {
         SqlSession session = SessionPool.getSession();
         ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
@@ -68,5 +66,4 @@ public class CrucibleDAO {
         session.commit();
         System.out.println("Attempt finished.");
     }
-    
 }
