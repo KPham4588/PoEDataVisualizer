@@ -9,6 +9,9 @@ public class ItemDTO {
     private String baseType;
     private String colour;              // Optional  // S, D, I, or G
     private String flavourTextNote;     // Optional  // user-generated text
+    //r forum_note DOES NOT FIT STANDARD NAMING CONVENTIONS
+    //r forum_note DOES NOT FIT STANDARD NAMING CONVENTIONS
+    //r forum_note DOES NOT FIT STANDARD NAMING CONVENTIONS
     private String forum_note;          // Optional  // user-generated text
     private String icon;
     private String id;                  // Optional  // a unique 64 digit hexadecimal string

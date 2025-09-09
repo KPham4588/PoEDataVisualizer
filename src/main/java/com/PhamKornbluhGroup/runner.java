@@ -1,38 +1,50 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DAO.CrucibleDAO;
-
-import com.PhamKornbluhGroup.DAO.FactionDAO;
-import com.PhamKornbluhGroup.DTO.*;
-import com.PhamKornbluhGroup.utilities.SessionPool;
-
-import java.util.ArrayList;
-import com.PhamKornbluhGroup.DAO.ExtendedDAO;
+import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
+import com.PhamKornbluhGroup.jsonParsing.JSONParser;
 
 public class runner {
 
-    public static void main(String[] args) {
-        ExtendedDTO testDTO = new ExtendedDAO().getExtendedById(1);
-        System.out.println(testDTO.toString());
+    public static void main(String[] args) throws Exception {
+        String json = returnTestJSON();
+        JSONParser parser = new JSONParser();
+        PublicStashChangeDTO publicStashChangeDTO = parser.traversePublicStashChange(json);
 
-        ExtendedDTO secondDTO = new ExtendedDAO().getExtendedById(2);
-        System.out.println(secondDTO.toString());
+//        System.out.println(publicStashChangeDTO.toString());
 
+//        ExtendedDTO testDTO = new ExtendedDAO().getExtendedById(1);
+//        System.out.println(testDTO.toString());
+//
+//        ExtendedDTO secondDTO = new ExtendedDAO().getExtendedById(2);
+//        System.out.println(secondDTO.toString());
+//
+//
+//        ArrayList<String> subcats = new ArrayList<>();
+//        subcats.add("firstOne");
+//        subcats.add("SecondOne");
+//        subcats.add("oheightnineteen");
+//
+//        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category oheightnineteencategory", subcats, 2, 2);
+//
+//        ArrayList<ExtendedDTO> insertList = new ArrayList<>();
+//        insertList.add(insertionDTO);
+//
+//        new ExtendedDAO().insertExtendedById(insertList);
+//
+//
+//        SessionPool.getSession().close();
 
-        ArrayList<String> subcats = new ArrayList<>();
-        subcats.add("firstOne");
-        subcats.add("SecondOne");
-        subcats.add("oheightnineteen");
+        /////////////////////////////////////////
+//        CrucibleNodeDAO dao = new CrucibleNodeDAO();
 
-        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category oheightnineteencategory", subcats, 2, 2);
+//        CrucibleNodeDTO testNode = new CrucibleNodeDTO(15, 4, 123, 321, "yep", true, true, true, "stat", "reminder", 321, 4321, "out", "thisIsIn", "indexIsFive");
+//        dao.fakeInsertCrucibleNode(testNode);
+//        SessionPool.getSession().flushStatements();
+//        System.out.println(dao.getCrucibleNodeById(24));
+//        SessionPool.getSession().flushStatements();
+//        SessionPool.getSession().rollback();
 
-        ArrayList<ExtendedDTO> insertList = new ArrayList<>();
-        insertList.add(insertionDTO);
-
-        new ExtendedDAO().insertExtendedById(insertList);
-
-
-        SessionPool.getSession().close();
+        /////////////////////////////////////////
 
 //        FactionDTO testObject = new FactionDTO();
 //        testObject.setFactionId(FactionId.FACTION2);
