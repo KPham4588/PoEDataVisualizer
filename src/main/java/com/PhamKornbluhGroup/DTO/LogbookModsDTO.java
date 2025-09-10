@@ -1,17 +1,17 @@
 package com.PhamKornbluhGroup.DTO;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class LogbookModsDTO {
     private int dbId;
     private int itemId;
     private String areaName;    // Called "name" in Dev Docs   // Description "area name" in Dev Docs
     private FactionDTO faction;
-    private String[] mods;
+    private ArrayList<String> mods;
 
     public LogbookModsDTO() {
     }
-    public LogbookModsDTO(int dbId, int itemId, String areaName, FactionDTO faction, String[] mods) {
+    public LogbookModsDTO(int dbId, int itemId, String areaName, FactionDTO faction, ArrayList<String> mods) {
         this.dbId = dbId;
         this.itemId = itemId;
         this.areaName = areaName;
@@ -43,10 +43,10 @@ public class LogbookModsDTO {
     public void setFaction(FactionDTO faction) {
         this.faction = faction;
     }
-    public String[] getMods() {
+    public ArrayList<String> getMods() {
         return mods;
     }
-    public void setMods(String[] mods) {
+    public void setMods(ArrayList<String> mods) {
         this.mods = mods;
     }
 
@@ -57,7 +57,7 @@ public class LogbookModsDTO {
                 ", itemId=" + itemId +
                 ", areaName='" + areaName + '\'' +
                 ", faction=" + faction +
-                ", mods=" + Arrays.toString(mods) +
+                ", mods=" + mods +
                 '}';
     }
 }

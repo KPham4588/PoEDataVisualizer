@@ -17,6 +17,8 @@ public class CrucibleNodeDTO {
     private String in;           // node identifiers of nodes connected to this one
     private String crucibleNodeIndex; // In documentation, this is the key for the "nodes" hashmap, and is the string value of the node index
 
+    public CrucibleNodeDTO() {
+    }
     public CrucibleNodeDTO(int dbId, int crucibleId, long skill, long tier, String icon, boolean allocated,
                            boolean isNotable, boolean isReward, String stats, String reminderText, long orbit,
                            long orbitIndex, String out, String in, String crucibleNodeIndex) {
@@ -34,6 +36,13 @@ public class CrucibleNodeDTO {
         this.orbitIndex = orbitIndex;
         this.out = out;
         this.in = in;
+        this.crucibleNodeIndex = crucibleNodeIndex;
+    }
+
+    public String getCrucibleNodeIndex() {
+        return crucibleNodeIndex;
+    }
+    public void setCrucibleNodeIndex(String crucibleNodeIndex) {
         this.crucibleNodeIndex = crucibleNodeIndex;
     }
 
@@ -144,6 +153,9 @@ public class CrucibleNodeDTO {
     public String getIn() {
         return in;
     }
+    public void setIn(String in) {
+        this.in = in;
+    }
 
     @Override
     public String toString() {
@@ -163,9 +175,5 @@ public class CrucibleNodeDTO {
                 ", out='" + out + '\'' +
                 ", in='" + in + '\'' +
                 '}';
-    }
-
-    public void setIn(String in) {
-        this.in = in;
     }
 }
