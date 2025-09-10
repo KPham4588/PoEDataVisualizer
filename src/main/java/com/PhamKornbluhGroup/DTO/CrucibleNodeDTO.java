@@ -17,6 +17,26 @@ public class CrucibleNodeDTO {
     private String in;           // node identifiers of nodes connected to this one
     private String crucibleNodeIndex; // In documentation, this is the key for the "nodes" hashmap, and is the string value of the node index
 
+    public CrucibleNodeDTO(int dbId, int crucibleId, long skill, long tier, String icon, boolean allocated,
+                           boolean isNotable, boolean isReward, String stats, String reminderText, long orbit,
+                           long orbitIndex, String out, String in, String crucibleNodeIndex) {
+        this.dbId = dbId;
+        this.crucibleId = crucibleId;
+        this.skill = skill;
+        this.tier = tier;
+        this.icon = icon;
+        this.allocated = allocated;
+        this.isNotable = isNotable;
+        this.isReward = isReward;
+        this.stats = stats;
+        this.reminderText = reminderText;
+        this.orbit = orbit;
+        this.orbitIndex = orbitIndex;
+        this.out = out;
+        this.in = in;
+        this.crucibleNodeIndex = crucibleNodeIndex;
+    }
+
     public int getDbId() {
         return dbId;
     }

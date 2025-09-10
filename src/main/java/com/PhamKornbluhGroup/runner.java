@@ -1,8 +1,6 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DAO.CrucibleDAO;
-
-import com.PhamKornbluhGroup.DAO.FactionDAO;
+import com.PhamKornbluhGroup.DAO.PublicStashChangeDAO;
 import com.PhamKornbluhGroup.DTO.*;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 
@@ -12,11 +10,21 @@ import com.PhamKornbluhGroup.DAO.ExtendedDAO;
 public class runner {
 
     public static void main(String[] args) {
-        ExtendedDTO testDTO = new ExtendedDAO().getExtendedById(1);
-        System.out.println(testDTO.toString());
 
-        ExtendedDTO secondDTO = new ExtendedDAO().getExtendedById(2);
-        System.out.println(secondDTO.toString());
+
+        ArrayList<ItemDTO> sampleItems = new ArrayList<>();
+        ItemDTO sampleItem = new ItemDTO();
+        sampleItems.add(sampleItem);
+        ArrayList<PublicStashChangeDTO> testStash = new ArrayList<PublicStashChangeDTO>();
+        PublicStashChangeDTO sampleStash = new PublicStashChangeDTO();
+        testStash.add(sampleStash);
+
+        ResultDTO sampleResult = new ResultDTO();
+        // replace with proper constructors later
+        sampleResult.setNextChangeId("SampleChangeID");
+        // put in constructor
+        sampleResult.setStashes(testStash);
+
 
 
         ArrayList<String> subcats = new ArrayList<>();
@@ -34,19 +42,6 @@ public class runner {
 
         SessionPool.getSession().close();
 
-//        FactionDTO testObject = new FactionDTO();
-//        testObject.setFactionId(FactionId.FACTION2);
-//        testObject.setLogbookModsId(2);
-//        testObject.setFactionName("Khoa's Faction2");
-//
-//        FactionDAO testFactionInsert = new FactionDAO();
-//        testFactionInsert.saveFaction(testObject);
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        SessionPool.getSession().close();
-//        System.out.println("Reached the end of main without exception");
 
         //p This is the old way that we got and saved 1 API Result file
         //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
