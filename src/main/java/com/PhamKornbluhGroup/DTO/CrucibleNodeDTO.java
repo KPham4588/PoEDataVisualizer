@@ -14,16 +14,18 @@ public class CrucibleNodeDTO {
     private String reminderText;                                                   // Optional
     private long orbit;          // the column this node occupies                  // Optional
     private long orbitIndex;     // the node's position within the column          // Optional
-    private String out;          // node identifiers of nodes this one connects to
-    private String in;           // node identifiers of nodes connected to this one
     private String crucibleNodeIndex; // In documentation, this is the key for the "nodes" hashmap, and is the string value of the node index
+    private ArrayList<String> out;          // node identifiers of nodes this one connects to
+    private ArrayList<String> in;           // node identifiers of nodes connected to this one
     private ArrayList<String> stats;  // stat descriptions                         // Optional
 
     public CrucibleNodeDTO() {
     }
+
     public CrucibleNodeDTO(int dbId, int crucibleId, long skill, long tier, String icon, boolean allocated,
                            boolean isNotable, boolean isReward, String reminderText, long orbit, long orbitIndex,
-                           String out, String in, String crucibleNodeIndex, ArrayList<String> stats) {
+                           String crucibleNodeIndex, ArrayList<String> out, ArrayList<String> in,
+                           ArrayList<String> stats) {
         this.dbId = dbId;
         this.crucibleId = crucibleId;
         this.skill = skill;
@@ -35,18 +37,12 @@ public class CrucibleNodeDTO {
         this.reminderText = reminderText;
         this.orbit = orbit;
         this.orbitIndex = orbitIndex;
+        this.crucibleNodeIndex = crucibleNodeIndex;
         this.out = out;
         this.in = in;
-        this.crucibleNodeIndex = crucibleNodeIndex;
         this.stats = stats;
     }
 
-    public String getCrucibleNodeIndex() {
-        return crucibleNodeIndex;
-    }
-    public void setCrucibleNodeIndex(String crucibleNodeIndex) {
-        this.crucibleNodeIndex = crucibleNodeIndex;
-    }
     public int getDbId() {
         return dbId;
     }
@@ -95,12 +91,6 @@ public class CrucibleNodeDTO {
     public void setReward(boolean reward) {
         isReward = reward;
     }
-    public ArrayList<String> getStats() {
-        return stats;
-    }
-    public void setStats(ArrayList<String> stats) {
-        this.stats = stats;
-    }
     public String getReminderText() {
         return reminderText;
     }
@@ -119,17 +109,29 @@ public class CrucibleNodeDTO {
     public void setOrbitIndex(long orbitIndex) {
         this.orbitIndex = orbitIndex;
     }
-    public String getOut() {
+    public String getCrucibleNodeIndex() {
+        return crucibleNodeIndex;
+    }
+    public void setCrucibleNodeIndex(String crucibleNodeIndex) {
+        this.crucibleNodeIndex = crucibleNodeIndex;
+    }
+    public ArrayList<String> getOut() {
         return out;
     }
-    public void setOut(String out) {
+    public void setOut(ArrayList<String> out) {
         this.out = out;
     }
-    public String getIn() {
+    public ArrayList<String> getIn() {
         return in;
     }
-    public void setIn(String in) {
+    public void setIn(ArrayList<String> in) {
         this.in = in;
+    }
+    public ArrayList<String> getStats() {
+        return stats;
+    }
+    public void setStats(ArrayList<String> stats) {
+        this.stats = stats;
     }
 
     @Override

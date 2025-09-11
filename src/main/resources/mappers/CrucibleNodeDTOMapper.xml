@@ -15,13 +15,18 @@
         <result property="reminderText" column="reminderText"/>
         <result property="orbit" column="orbit"/>
         <result property="orbitIndex" column="orbitIndex"/>
-        <result property="out" column="out"/>
-        <result property="in" column="in"/>
         <result property="crucibleNodeIndex" column="crucibleNodeIndex"/>
-        <result property="stats" column="stats"/>
         <collection property="stats" column="dbId" javaType="ArrayList" ofType="java.lang.String"
                     select="getStatsByCrucibleNodeId">
             <result property="stat" column="stat"/>
+        </collection>
+        <collection property="out" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+                    select="getOutByCrucibleNodeId">
+            <result property="outVal" column="outVal"/>
+        </collection>
+        <collection property="in" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+                    select="getInByCrucibleNodeId">
+            <result property="inVal" column="inVal"/>
         </collection>
     </resultMap>
 
@@ -45,9 +50,25 @@
 
     <select id="getStatsByCrucibleNodeId" resultType="java.lang.String">
         <![CDATA[
-        SELECT CrucibleStats.scourgeMod
-        FROM CrucibleStats
-        WHERE CrucibleStats.stat = #{dbId}
+        SELECT CrucibleNodeStats.stat
+        FROM CrucibleNodeStats
+        WHERE CrucibleNodeStats.dbid = #{dbId}
+		]]>
+    </select>
+
+    <select id="getOutByCrucibleNodeId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CrucibleNodeOut.out
+        FROM CrucibleNodeOut
+        WHERE CrucibleNodeOut.dbid = #{dbId}
+		]]>
+    </select>
+
+    <select id="getInByCrucibleNodeId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CrucibleNodeIn.in
+        FROM CrucibleNodeIn
+        WHERE CrucibleNodeIn.dbid = #{dbId}
 		]]>
     </select>
 
