@@ -1,5 +1,6 @@
 package com.PhamKornbluhGroup.DAO;
 
+import com.PhamKornbluhGroup.DTO.ItemDTO;
 import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IPublicStashChangeDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
@@ -35,15 +36,15 @@ public class PublicStashChangeDAO {
         mapper.saveEntity(insertObject);
         session.commit();
 
-        ArrayList<PublicStashChangeDTO> stashes = insertObject.getStashes();
-        for (PublicStashChangeDTO node : stashes) {
+        ArrayList<ItemDTO> items = insertObject.getItems();
+        for (ItemDTO node : items) {
             node.setPublicStashChangeId(insertObject.getDbId());
         }
-        insertObject.setStashes(stashes);
+        insertObject.setItems(items);
 
-        System.out.println("Attempting to insert crucible stashes.");
-        PublicStashChangeDAO insertStashes = new PublicStashChangeDAO();
-        insertStashes.insertPublicStashChanges(stashes);
+        System.out.println("Attempting to insert items.");
+        ItemDAO insertItems = new ItemDAO();
+        insertItems.insertItemById(items);
 
         System.out.println("Attempt finished.");
     }
