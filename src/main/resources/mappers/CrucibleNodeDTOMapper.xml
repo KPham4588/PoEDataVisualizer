@@ -12,13 +12,17 @@
         <result property="allocated" column="allocated"/>
         <result property="isNotable" column="isNotable"/>
         <result property="isReward" column="isReward"/>
-        <result property="stats" column="stats"/>
         <result property="reminderText" column="reminderText"/>
         <result property="orbit" column="orbit"/>
         <result property="orbitIndex" column="orbitIndex"/>
         <result property="out" column="out"/>
         <result property="in" column="in"/>
         <result property="crucibleNodeIndex" column="crucibleNodeIndex"/>
+        <result property="stats" column="stats"/>
+        <collection property="stats" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+                    select="getStatsByCrucibleNodeId">
+            <result property="stat" column="stat"/>
+        </collection>
     </resultMap>
 
     <!-- TESTED -->
@@ -37,6 +41,14 @@
             FROM CrucibleNode
             WHERE crucibleId = #{dbId}
         ]]>
+    </select>
+
+    <select id="getStatsByCrucibleNodeId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT CrucibleStats.scourgeMod
+        FROM CrucibleStats
+        WHERE CrucibleStats.stat = #{dbId}
+		]]>
     </select>
 
     <!-- TESTED -->
