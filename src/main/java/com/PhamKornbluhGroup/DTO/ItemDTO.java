@@ -1,5 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.CrucibleDTODeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 
 public class ItemDTO {
@@ -64,6 +67,7 @@ public class ItemDTO {
     private long x;                    // Optional
     private long y;                    // Optional
 
+    @JsonDeserialize(using = CrucibleDTODeserializer.class)
     private CrucibleDTO crucible;            // Optional
     private ExtendedDTO extended;            // Optional  // only present in the Public Stash API
     private FrameType frameType;             // Optional
