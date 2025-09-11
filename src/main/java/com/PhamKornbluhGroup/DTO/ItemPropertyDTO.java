@@ -1,5 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.ItemPropertyValuesDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 
 public class ItemPropertyDTO {
@@ -11,6 +14,7 @@ public class ItemPropertyDTO {
     private int itemId;
     private int hybridId;
     private String name;
+    @JsonDeserialize(contentUsing = ItemPropertyValuesDeserializer.class)
     private ArrayList<ItemPropertyValuesDTO> values;
     private DisplayMode displayMode;                        // Optional
     private double progress; // rounded to 2 decimal places // Optional
