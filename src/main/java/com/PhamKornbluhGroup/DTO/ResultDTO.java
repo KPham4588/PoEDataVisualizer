@@ -1,9 +1,12 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class ResultDTO {
     private int dbId;
+    @JsonProperty("next_change_id")
     private String nextChangeId; // pagination code
     private ArrayList<PublicStashChangeDTO> stashes;
 

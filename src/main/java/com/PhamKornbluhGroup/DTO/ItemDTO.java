@@ -1,5 +1,8 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.CrucibleDTODeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 
 public class ItemDTO {
@@ -8,6 +11,7 @@ public class ItemDTO {
     private String artFilename;         // Optional
     private String baseType;
     private String colour;              // Optional  // S, D, I, or G
+    private String descrText;           // Optional
     private String flavourTextNote;     // Optional  // user-generated text
     //r forum_note DOES NOT FIT STANDARD NAMING CONVENTIONS
     //r forum_note DOES NOT FIT STANDARD NAMING CONVENTIONS
@@ -63,6 +67,7 @@ public class ItemDTO {
     private long x;                    // Optional
     private long y;                    // Optional
 
+    @JsonDeserialize(using = CrucibleDTODeserializer.class)
     private CrucibleDTO crucible;            // Optional
     private ExtendedDTO extended;            // Optional  // only present in the Public Stash API
     private FrameType frameType;             // Optional
@@ -75,7 +80,6 @@ public class ItemDTO {
     private ArrayList<String> cosmeticMods;   // Optional
     private ArrayList<String> craftedMods;    // Optional
     private ArrayList<String> crucibleMods;   // Optional  // only allocated mods are included
-    private ArrayList<String> descrText;      // Optional
     private ArrayList<String> enchantMods;    // Optional
     private ArrayList<String> explicitMods;   // Optional
     private ArrayList<String> flavourText;    // Optional
@@ -100,20 +104,20 @@ public class ItemDTO {
 
     public ItemDTO() {
     }
-    public ItemDTO(int dbId, String artFilename, String baseType, String colour, String flavourTextNote,
-                   String forum_note, String icon, String id, String inventoryId, String league, String name,
-                   String note, String prophecyText, String rarity, String secDescrText, String stackSizeText,
-                   String typeLine, boolean abyssJewel, boolean cisRaceReward, boolean corrupted, boolean delve,
-                   boolean duplicated, boolean elder, boolean foreseeing, boolean fractured, boolean identified,
-                   boolean isRelic, boolean lockedToAccount, boolean lockedToCharacter, boolean replica,
-                   boolean ruthless, boolean seaRaceReward, boolean searing, boolean shaper, boolean split,
-                   boolean support, boolean synthesised, boolean tangled, boolean thRaceReward,
-                   boolean unmodifiable, boolean veiled, boolean verified, int foilVariation, int ilvl,
-                   int itemLevel, int maxStackSize, int parentItemId, int publicStashChangeId, int stackSize,
-                   int talismanTier, long h, long socket, long w, long x, long y, CrucibleDTO crucible,
-                   ExtendedDTO extended, FrameType frameType, HybridDTO hybrid, IncubatedItemDTO incubatedItem,
-                   Object influences, ScourgedDTO scourged, ArrayList<String> cosmeticMods,
-                   ArrayList<String> craftedMods, ArrayList<String> crucibleMods, ArrayList<String> descrText,
+
+    public ItemDTO(int dbId, String artFilename, String baseType, String colour, String descrText,
+                   String flavourTextNote, String forum_note, String icon, String id, String inventoryId, String league,
+                   String name, String note, String prophecyText, String rarity, String secDescrText,
+                   String stackSizeText, String typeLine, boolean abyssJewel, boolean cisRaceReward, boolean corrupted,
+                   boolean delve, boolean duplicated, boolean elder, boolean foreseeing, boolean fractured,
+                   boolean identified, boolean isRelic, boolean lockedToAccount, boolean lockedToCharacter,
+                   boolean replica, boolean ruthless, boolean seaRaceReward, boolean searing, boolean shaper,
+                   boolean split, boolean support, boolean synthesised, boolean tangled, boolean thRaceReward,
+                   boolean unmodifiable, boolean veiled, boolean verified, int foilVariation, int ilvl, int itemLevel,
+                   int maxStackSize, int parentItemId, int publicStashChangeId, int stackSize, int talismanTier, long h,
+                   long socket, long w, long x, long y, CrucibleDTO crucible, ExtendedDTO extended, FrameType frameType,
+                   HybridDTO hybrid, IncubatedItemDTO incubatedItem, Object influences, ScourgedDTO scourged,
+                   ArrayList<String> cosmeticMods, ArrayList<String> craftedMods, ArrayList<String> crucibleMods,
                    ArrayList<String> enchantMods, ArrayList<String> explicitMods, ArrayList<String> flavourText,
                    ArrayList<String> fracturedMods, ArrayList<String> implicitMods, ArrayList<String> scourgeMods,
                    ArrayList<String> utilityMods, ArrayList<String> veiledMods, ArrayList<ItemDTO> socketedItems,
@@ -126,6 +130,7 @@ public class ItemDTO {
         this.artFilename = artFilename;
         this.baseType = baseType;
         this.colour = colour;
+        this.descrText = descrText;
         this.flavourTextNote = flavourTextNote;
         this.forum_note = forum_note;
         this.icon = icon;
@@ -187,7 +192,6 @@ public class ItemDTO {
         this.cosmeticMods = cosmeticMods;
         this.craftedMods = craftedMods;
         this.crucibleMods = crucibleMods;
-        this.descrText = descrText;
         this.enchantMods = enchantMods;
         this.explicitMods = explicitMods;
         this.flavourText = flavourText;
@@ -232,6 +236,12 @@ public class ItemDTO {
     }
     public void setColour(String colour) {
         this.colour = colour;
+    }
+    public String getDescrText() {
+        return descrText;
+    }
+    public void setDescrText(String descrText) {
+        this.descrText = descrText;
     }
     public String getFlavourTextNote() {
         return flavourTextNote;
@@ -599,12 +609,6 @@ public class ItemDTO {
     public void setCrucibleMods(ArrayList<String> crucibleMods) {
         this.crucibleMods = crucibleMods;
     }
-    public ArrayList<String> getDescrText() {
-        return descrText;
-    }
-    public void setDescrText(ArrayList<String> descrText) {
-        this.descrText = descrText;
-    }
     public ArrayList<String> getEnchantMods() {
         return enchantMods;
     }
@@ -722,7 +726,8 @@ public class ItemDTO {
 
     @Override
     public String toString() {
-        return "ItemDTO{" +
+        return "\r\n" +
+                "ItemDTO{" +
                 "dbId=" + dbId +
                 ", artFilename='" + artFilename + '\'' +
                 ", baseType='" + baseType + '\'' +

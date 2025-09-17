@@ -13,6 +13,7 @@
         <result property="artFilename" column="artFilename"/>
         <result property="baseType" column="baseType"/>
         <result property="colour" column="colour"/>
+        <result property="descrText" column="descrText"/>
         <result property="flavourTextNote" column="flavourTextNote"/>
         <result property="forum_note" column="forum_note"/>
         <result property="icon" column="icon"/>
@@ -119,10 +120,6 @@
             <result property="crucibleMod" column="crucibleMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
-        <collection property="descrText" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getDescrTextByExtendedId">
-            <result property="descrText" column="descrText"/>
-        </collection>
         <collection property="enchantMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
         select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
@@ -283,14 +280,6 @@
         SELECT CrucibleMods.crucibleMod
         FROM CrucibleMods
         WHERE CrucibleMods.itemId = #{dbId}
-		]]>
-    </select>
-
-    <select id="getDescrTextByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT DescrText.descrText
-        FROM DescrText
-        WHERE DescrText.itemId = #{dbId}
 		]]>
     </select>
 
