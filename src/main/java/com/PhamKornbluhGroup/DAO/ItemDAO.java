@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup.DAO;
 
+import com.PhamKornbluhGroup.DTO.CrucibleDTO;
+import com.PhamKornbluhGroup.DTO.ExtendedDTO;
 import com.PhamKornbluhGroup.DTO.ItemDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
@@ -27,14 +29,50 @@ public class ItemDAO {
         return newNode;
     }
 
-    public void insertItemById(ArrayList<ItemDTO> insertObjects) {
+    // TODO: figure out how to insert FrameType, influences
+    public void insertItem(ItemDTO item) {
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
-        ItemDAOLogger.trace("Attempting to insert ItemDTO object in list.");
-        for (ItemDTO node : insertObjects) {
-            mapper.saveEntity(node);
-        }
+        ItemDAOLogger.trace("Attempting to insert ItemDTO object.");
+
+        mapper.saveEntity(item);
         session.commit();
-        ItemDAOLogger.trace("ItemDTO Insert Attempt finished.");
+        ItemDAOLogger.trace("ItemDTO insert attempt finished. Putting ItemID into child objects");
+
+        CrucibleDTO crucible = item.getCrucible();
+        crucible.setItemId(item.getDbId());
+        CrucibleDAO crucibleDAO = new CrucibleDAO();
+        crucibleDAO.insertCrucible(crucible);
+
+        ExtendedDTO extended = item.getExtended();
+        extended.setItemId(item.getDbId());
+        ExtendedDAO extendedDAO = new ExtendedDAO();
+        extendedDAO.insertExtendedById(extended);
+
+        CrucibleDTO crucible = item.getCrucible();
+        crucible.setItemId(item.getDbId());
+        CrucibleDAO crucibleDAO = new CrucibleDAO();
+        crucibleDAO.insertCrucible(crucible);
+
+        CrucibleDTO crucible = item.getCrucible();
+        crucible.setItemId(item.getDbId());
+        CrucibleDAO crucibleDAO = new CrucibleDAO();
+        crucibleDAO.insertCrucible(crucible);
+
+        CrucibleDTO crucible = item.getCrucible();
+        crucible.setItemId(item.getDbId());
+        CrucibleDAO crucibleDAO = new CrucibleDAO();
+        crucibleDAO.insertCrucible(crucible);
+
+
+    }
+
+    public void insertItems(ArrayList<ItemDTO> items) {
+        System.out.println("Attempting to insert ItemDTO objects in list.");
+        for (ItemDTO item : items) {
+            insertItem(item);
+        }
+
+        System.out.println("Finished inserting list of items.");
     }
 }

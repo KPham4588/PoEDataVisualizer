@@ -28,6 +28,10 @@ public class ResultDAO {
         return result;
     }
 
+    /** Insert a result object and assigns ResultID to the child {@code PublicStashChangeDTO}
+     * objects, then call a {@code PublicStashChangeDAO} to insert
+     * @param insertObject this is a ResultDTO object
+     */
     public void insertResult(ResultDTO insertObject) {
         SqlSession session = SessionPool.getSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
@@ -40,9 +44,8 @@ public class ResultDAO {
         for (PublicStashChangeDTO node : stashes) {
             node.setResultId(insertObject.getDbId());
         }
-        insertObject.setStashes(stashes);
 
-        System.out.println("Attempting to insert crucible stashes.");
+        System.out.println("Attempting to insert stashes.");
         PublicStashChangeDAO insertStashes = new PublicStashChangeDAO();
         insertStashes.insertPublicStashChanges(stashes);
 

@@ -1,12 +1,31 @@
 package com.PhamKornbluhGroup.DAO;
 
 import com.PhamKornbluhGroup.DTO.*;
+import com.PhamKornbluhGroup.mybatismysqlimpl.IResultDTO;
+import com.PhamKornbluhGroup.utilities.SessionPool;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 class TestUtils {
+
+    //@Test
+    public void fakeInsertAndGetResult() {
+        ResultDAO dao = new ResultDAO();
+
+        System.out.println("Attempting to insert ResultDTO object.");
+
+        ResultDTO sampleResult = createMockResult();
+
+        System.out.println(dao.getResultById(sampleResult.getDbId()));
+
+        dao.deleteResultById(sampleResult.getDbId());
+
+        System.out.println("Inserted and deleted without exceptions.");
+    }
 
     public static ResultDTO createMockResult() {
         ArrayList<PublicStashChangeDTO> stashes = new ArrayList<>();
@@ -253,9 +272,8 @@ class TestUtils {
 
         FactionDTO faction = createMockLogbookModsFaction();
 
-        String[] mods = new String[] {
-                "mod1"
-        };
+        ArrayList<String> mods = new ArrayList<>();
+        mods.add("mod1");
 
         LogbookModsDTO logbookMods = new LogbookModsDTO(1, 1, "String areaName", faction, mods);
 

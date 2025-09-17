@@ -1,14 +1,16 @@
 package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
+import com.PhamKornbluhGroup.DeleteThisPackage.CopyOfTestUtils;
 import com.PhamKornbluhGroup.jsonParsing.JSONParser;
 
 public class runner {
 
     public static void main(String[] args) throws Exception {
-        String json = returnTestJSON();
-        JSONParser parser = new JSONParser();
-        PublicStashChangeDTO publicStashChangeDTO = parser.traversePublicStashChange(json);
+        CopyOfTestUtils.fakeInsertAndGetResult();
+        //String json = returnTestJSON();
+        //JSONParser parser = new JSONParser();
+        //PublicStashChangeDTO publicStashChangeDTO = parser.traversePublicStashChange(json);
 
 //        System.out.println(publicStashChangeDTO.toString());
 

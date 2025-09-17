@@ -40,24 +40,25 @@ public class PublicStashChangeDAO {
         for (ItemDTO node : items) {
             node.setPublicStashChangeId(insertObject.getDbId());
         }
-        insertObject.setItems(items);
 
         System.out.println("Attempting to insert items.");
         ItemDAO insertItems = new ItemDAO();
-        insertItems.insertItemById(items);
+        insertItems.insertItems(items);
 
         System.out.println("Attempt finished.");
     }
 
+    /**
+     * @param insertObjects This is an ArrayList<PublicStashChangeDTO> that
+     *                      gets inserted by the single saveEntity calls
+     */
     public void insertPublicStashChanges(ArrayList<PublicStashChangeDTO> insertObjects) {
-        SqlSession session = SessionPool.getSession();
-        IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
-        System.out.println("Attempting to insert PublicStashChangeDTO object in list.");
-        for (PublicStashChangeDTO node : insertObjects) {
-            mapper.saveEntity(node);
+        System.out.println("Attempting to insert PublicStashChangeDTO objects in list.");
+        for (PublicStashChangeDTO stash : insertObjects) {
+            insertPublicStashChange(stash);
         }
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        System.out.println("Finished inserting list of stashes.");
     }
 
     public void updatePublicStashChange(PublicStashChangeDTO updateObject) {
