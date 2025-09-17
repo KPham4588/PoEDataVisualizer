@@ -1,9 +1,13 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class FactionDTO {
     private int dbId;
     private int logbookModsId;
+    @JsonProperty("id")
     private FactionId factionId; // Called "faction" in Dev Docs - Faction1, Faction2, Faction3, or Faction4
+    @JsonProperty("name")
     private String factionName;  // Called "name" in Dev Docs
 
     public FactionDTO() {

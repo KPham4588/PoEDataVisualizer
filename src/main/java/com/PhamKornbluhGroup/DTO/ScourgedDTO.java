@@ -1,11 +1,17 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ScourgedDTO {
     private int dbId;
     private int itemId;
+    @JsonProperty("tier")
     private long scourgedTier;     // Called "tier" in Dev Docs      // 1-3 for items, 1-10 for maps
+    @JsonProperty("level")
     private long scourgedLevel;    // Called "level" in Dev Docs     // monster level required to progress  // Optional
+    @JsonProperty("progress")
     private long scourgedProgress; // Called "progress" in Dev Docs                                         // Optional
+    @JsonProperty("total")
     private long scourgedTotal;    // Called "total" in Dev Docs                                            // Optional
 
     public ScourgedDTO() {

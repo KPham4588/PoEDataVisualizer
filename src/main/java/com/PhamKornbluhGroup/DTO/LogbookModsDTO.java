@@ -1,10 +1,13 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class LogbookModsDTO {
     private int dbId;
     private int itemId;
+    @JsonProperty("name")
     private String areaName;    // Called "name" in Dev Docs   // Description "area name" in Dev Docs
     private FactionDTO faction;
     private ArrayList<String> mods;

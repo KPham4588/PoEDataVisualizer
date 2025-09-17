@@ -1,5 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class CrucibleNodeDTO {
@@ -9,7 +11,9 @@ public class CrucibleNodeDTO {
     private long tier;           // mod tier                                       // Optional
     private String icon;                                                           // Optional
     private boolean allocated;   // always true if present                         // Optional
+    @JsonProperty("isNotable")
     private boolean isNotable;   // always true if present                         // Optional
+    @JsonProperty("isReward")
     private boolean isReward;    // always true if present                         // Optional
     private String reminderText;                                                   // Optional
     private long orbit;          // the column this node occupies                  // Optional
