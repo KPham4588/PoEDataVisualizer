@@ -27,16 +27,15 @@ public class ExtendedDAO {
         return newNode;
     }
 
-    public void insertExtendedById(ArrayList<ExtendedDTO> insertObjects) {
+    public void insertExtended(ExtendedDTO insertObject) {
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");
-        for (ExtendedDTO node : insertObjects) {
-            mapper.saveEntity(node);
-            for (String subcategory : node.getSubcategories()) {
-                mapper.saveSubcategories(node.getDbId(), subcategory);
+        mapper.saveEntity(insertObject);
+            for (String subcategory : insertObject.getSubcategories()) {
+                mapper.saveSubcategories(insertObject.getDbId(), subcategory);
             }
-        }
+
         session.commit();
         System.out.println("Attempt finished.");
     }

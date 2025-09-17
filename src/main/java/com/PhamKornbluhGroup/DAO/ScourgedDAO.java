@@ -37,4 +37,14 @@ public class ScourgedDAO {
         session.commit();
         ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
     }
+
+    public void insertScourged(ScourgedDTO insertObject) {
+        SqlSession session = SessionPool.getSession();
+        IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
+        ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
+        mapper.saveEntity(insertObject);
+
+        session.commit();
+        ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
+    }
 }

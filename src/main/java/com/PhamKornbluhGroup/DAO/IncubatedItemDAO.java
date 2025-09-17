@@ -37,4 +37,13 @@ public class IncubatedItemDAO {
         session.commit();
         IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
     }
+
+    public void insertIncubatedItem(IncubatedItemDTO insertObject) {
+        SqlSession session = SessionPool.getSession();
+        IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
+        IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
+        mapper.saveEntity(insertObject);
+        session.commit();
+        IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
+    }
 }
