@@ -1,9 +1,13 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class IncubatedItemDTO {
     private int dbId;
     private int itemId;
+    @JsonProperty("name")
     private String incubatedItemName; // Called "name" in Dev Docs
+    @JsonProperty("level")
     private long incubatedItemLevel;  // Called "level" in Dev Docs   // monster level required to progress
     private long progress;
     private long total;

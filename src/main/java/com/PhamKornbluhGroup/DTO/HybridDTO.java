@@ -1,10 +1,13 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class HybridDTO {
     private int dbId;
     private int itemId;
+    @JsonProperty("isVaalGem")
     private boolean isVaalGem;            // Optional
     private String baseTypeName;
     private ArrayList<ItemPropertyDTO> properties; // Optional
