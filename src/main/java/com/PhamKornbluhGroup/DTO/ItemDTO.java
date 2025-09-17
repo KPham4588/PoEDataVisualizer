@@ -1,6 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
 import com.PhamKornbluhGroup.jsonParsing.CrucibleDTODeserializer;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class ItemDTO {
     private boolean foreseeing;         // Optional  // always true if present
     private boolean fractured;          // Optional  // always true if present    //w Is this part of influences??
     private boolean identified;
+    @JsonProperty("isRelic")
     private boolean isRelic;            // Optional  // always true if present
     private boolean lockedToAccount;    // Optional  // always true if present
     private boolean lockedToCharacter;  // Optional
