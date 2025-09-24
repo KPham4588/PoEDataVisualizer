@@ -32,6 +32,7 @@
         <mapper resource="mappers/FactionIdDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
+        <mapper resource="mappers/InfluencesDTOMapper.xml"/>
         <mapper resource="mappers/ItemDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
