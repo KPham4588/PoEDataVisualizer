@@ -11,8 +11,8 @@ public class ItemPropertyDTO {
     // this DTO is the child of two different DTOs,
     // so only one out of itemID and hybridID will be populated for an entry
     // and the other will be blank or filled with a default
-    private int itemId;
-    private int hybridId;
+    private Integer itemId;
+    private Integer hybridId;
     private String name;
     @JsonDeserialize(contentUsing = ItemPropertyValuesDeserializer.class)
     private ArrayList<ItemPropertyValuesDTO> values;

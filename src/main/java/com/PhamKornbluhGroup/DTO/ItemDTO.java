@@ -58,8 +58,8 @@ public class ItemDTO {
     private int ilvl;
     private int itemLevel;              // Optional // used for items that always display their item level
     private int maxStackSize;           // Optional
-    private int parentItemId;
-    private int publicStashChangeId;
+    private Integer parentItemId;
+    private Integer publicStashChangeId;
     private int stackSize;             // Optional
     private int talismanTier;          // Optional
     private long h;

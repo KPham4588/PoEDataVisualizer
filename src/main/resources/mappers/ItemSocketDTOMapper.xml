@@ -32,7 +32,7 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO ItemSocket
-			    (itemId, group, attr, sColour)
+			    (itemId, `group`, attr, sColour)
 			VALUES (#{itemId}, #{group}, #{attr}, #{sColour})
 		]]>
     </insert>
