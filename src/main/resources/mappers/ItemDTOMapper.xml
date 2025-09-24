@@ -40,6 +40,7 @@
         <result property="isRelic" column="isRelic"/>
         <result property="lockedToAccount" column="lockedToAccount"/>
         <result property="lockedToCharacter" column="lockedToCharacter"/>
+        <result property="memoryItem" column="memoryItem"/>
         <result property="replica" column="replica"/>
         <result property="ruthless" column="ruthless"/>
         <result property="seaRaceReward" column="seaRaceReward"/>
@@ -53,6 +54,7 @@
         <result property="unmodifiable" column="unmodifiable"/>
         <result property="veiled" column="veiled"/>
         <result property="verified" column="verified"/>
+        <result property="unmodifiableExceptChaos" column="unmodifiableExceptChaos"/>
         <!--========== int ==========-->
         <result property="foilVariation" column="foilVariation"/>
         <result property="ilvl" column="ilvl"/>
@@ -101,7 +103,11 @@
              javaType="com.PhamKornbluhGroup.DTO.IncubatedItemDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO.getEntityByItemId"
              autoMapping="true"/>
-        <!-- This is where the INFLUENCE OBJECT is missing -->
+        <association property="influences"
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.InfluencesDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IInfluencesDTO.InfluencesDTO.getEntityByItemId"
+                     autoMapping="true"/>
         <association property="scourged"
              column="dbId"
              javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
@@ -231,6 +237,7 @@
             isRelic,
             lockedToAccount,
             lockedToCharacter,
+            memoryItem,
             replica,
             ruthless,
             seaRaceReward,
@@ -244,6 +251,7 @@
             unmodifiable,
             veiled,
             verified,
+            unmodifiableExceptChaos,
             foilVariation,
             ilvl,
             itemLevel,
@@ -404,6 +412,7 @@
             isRelic,
             lockedToAccount,
             lockedToCharacter,
+            memoryItem,
             replica,
             ruthless,
             seaRaceReward,
@@ -417,6 +426,7 @@
             unmodifiable,
             veiled,
             verified,
+            unmodifiableExceptChaos,
             foilVariation,
             ilvl,
             itemLevel,
