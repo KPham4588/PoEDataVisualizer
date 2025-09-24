@@ -3,12 +3,12 @@ package com.PhamKornbluhGroup.DTO;
 public class InfluencesDTO {
     private int dbId;
     private int itemId;
-    private boolean crusader;
-    private boolean shaper;
-    private boolean elder;
-    private boolean hunter;
-    private boolean redeemer;
-    private boolean warlord;
+    private boolean crusader; // optional
+    private boolean shaper;   // optional
+    private boolean elder;    // optional
+    private boolean hunter;   // optional
+    private boolean redeemer; // optional
+    private boolean warlord;  // optional
 
     public InfluencesDTO() {
     }
