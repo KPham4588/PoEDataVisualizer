@@ -22,6 +22,8 @@ public class CopyOfTestUtils {
 
         ResultDTO sampleResult = createMockResult();
 
+        dao.insertResult(sampleResult);
+
         System.out.println(dao.getResultById(sampleResult.getDbId()));
 
         dao.deleteResultById(sampleResult.getDbId());

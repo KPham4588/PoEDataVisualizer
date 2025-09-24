@@ -362,8 +362,21 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Item
-			    (publicStashChangeId, parentItemId)
-			VALUES (#{publicStashChangeId}, #{parentItemId})
+			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText,
+			    league, id, shaper, searing, tangled, abyssJewel, delve, fractured, synthesised, name, typeLine, baseType,
+			    rarity, identified, itemLevel, ilvl, note, forum_note, lockedToCharacter, lockedToAccount, duplicated,
+			    split, corrupted, unmodifiable, cisRaceReward, seaRaceReward, thRaceReward, talismanTier, secDescrText,
+			    veiled, descrText, flavourTextNote, prophecyText, isRelic, foilVariation, replica, foreseeing, ruthless,
+			    artFilename, x, y, inventoryId, socket, colour, elder)
+			VALUES
+			    (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize},
+			    #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel},
+			    #{delve}, #{fractured}, #{synthesised}, #{name}, #{typeLine}, #{baseType}, #{rarity}, #{identified},
+			    #{itemLevel}, #{ilvl}, #{note}, #{forum_note}, #{lockedToCharacter}, #{lockedToAccount}, #{duplicated},
+			    #{split}, #{corrupted}, #{unmodifiable}, #{cisRaceReward}, #{seaRaceReward}, #{thRaceReward}, #{talismanTier},
+			    #{secDescrText}, #{veiled}, #{descrText}, #{flavourTextNote}, #{prophecyText}, #{isRelic}, #{foilVariation},
+			    #{replica}, #{foreseeing}, #{ruthless}, #{artFilename}, #{x}, #{y}, #{inventoryId}, #{socket}, #{colour},
+			    #{elder})
 		]]>
     </insert>
 
