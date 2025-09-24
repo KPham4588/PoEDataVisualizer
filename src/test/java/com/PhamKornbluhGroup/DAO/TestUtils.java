@@ -249,8 +249,8 @@ class TestUtils {
         socket.setDbId(1);
         socket.setItemId(1);
         socket.setGroup(123);
-        socket.setAttr("String attr");
-        socket.setsColour("String sColour");
+        socket.setAttr("st");
+        socket.setsColour("st");
 
         return socket;
     }

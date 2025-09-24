@@ -2,11 +2,7 @@ package com.PhamKornbluhGroup.DeleteThisPackage;
 
 import com.PhamKornbluhGroup.DAO.ResultDAO;
 import com.PhamKornbluhGroup.DTO.*;
-import com.PhamKornbluhGroup.mybatismysqlimpl.IResultDTO;
-import com.PhamKornbluhGroup.utilities.SessionPool;
-import org.apache.ibatis.session.SqlSession;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -253,8 +249,8 @@ public class CopyOfTestUtils {
         socket.setDbId(1);
         socket.setItemId(1);
         socket.setGroup(123);
-        socket.setAttr("String attr");
-        socket.setsColour("String sColour");
+        socket.setAttr("st");
+        socket.setsColour("st");
 
         return socket;
     }
