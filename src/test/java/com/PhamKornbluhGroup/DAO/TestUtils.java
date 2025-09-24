@@ -61,9 +61,10 @@ class TestUtils {
         FrameType frameType = FrameType.EIGHT;
         HybridDTO hybrid = createMockHybrid();
         IncubatedItemDTO incubatedItem = createMockIncubatedItem();
-        var influences = new Object() {
-            public String influence = "Crusader";
-        };
+
+        InfluencesDTO influences = new InfluencesDTO();
+        influences.setCrusader(true);
+        influences.setElder(true);
 
         ScourgedDTO scourged = createMockScourged();
 
