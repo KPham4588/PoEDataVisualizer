@@ -40,6 +40,7 @@
         <result property="isRelic" column="isRelic"/>
         <result property="lockedToAccount" column="lockedToAccount"/>
         <result property="lockedToCharacter" column="lockedToCharacter"/>
+        <result property="memoryItem" column="memoryItem"/>
         <result property="replica" column="replica"/>
         <result property="ruthless" column="ruthless"/>
         <result property="seaRaceReward" column="seaRaceReward"/>
@@ -231,6 +232,7 @@
             isRelic,
             lockedToAccount,
             lockedToCharacter,
+            memoryItem,
             replica,
             ruthless,
             seaRaceReward,
@@ -391,6 +393,7 @@
             isRelic,
             lockedToAccount,
             lockedToCharacter,
+            memoryItem,
             replica,
             ruthless,
             seaRaceReward,
