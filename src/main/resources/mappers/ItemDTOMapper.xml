@@ -103,7 +103,11 @@
              javaType="com.PhamKornbluhGroup.DTO.IncubatedItemDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.IncubatedItemDTO.getEntityByItemId"
              autoMapping="true"/>
-        <!-- This is where the INFLUENCE OBJECT is missing -->
+        <association property="influences"
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.InfluencesDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IInfluencesDTO.InfluencesDTO.getEntityByItemId"
+                     autoMapping="true"/>
         <association property="scourged"
              column="dbId"
              javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
