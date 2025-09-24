@@ -54,6 +54,7 @@
         <result property="unmodifiable" column="unmodifiable"/>
         <result property="veiled" column="veiled"/>
         <result property="verified" column="verified"/>
+        <result property="unmodifiableExceptChaos" column="unmodifiableExceptChaos"/>
         <!--========== int ==========-->
         <result property="foilVariation" column="foilVariation"/>
         <result property="ilvl" column="ilvl"/>
@@ -246,6 +247,7 @@
             unmodifiable,
             veiled,
             verified,
+            unmodifiableExceptChaos,
             foilVariation,
             ilvl,
             itemLevel,
@@ -407,6 +409,7 @@
             unmodifiable,
             veiled,
             verified,
+            unmodifiableExceptChaos,
             foilVariation,
             ilvl,
             itemLevel,
