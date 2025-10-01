@@ -43,7 +43,7 @@ public class CopyOfTestUtils {
         items.add(createMockItem());
         PublicStashChangeDTO stash = new PublicStashChangeDTO();
         stash.setDbId(1);
-        stash.setResultId(1);
+        stash.setResultId(0);
         stash.setId("string id");
         stash.setPublic(true);
         stash.setAccountName("String accountName");
@@ -246,9 +246,9 @@ public class CopyOfTestUtils {
     }
 
     public static ItemSocketDTO createMockItemSocket() {
-        ItemSocketDTO socket = new ItemSocketDTO(1, 1, 123, "String attr", "String sColour");
+        ItemSocketDTO socket = new ItemSocketDTO();
         socket.setDbId(1);
-        socket.setItemId(1);
+        socket.setItemId(0);
         socket.setGroup(123);
         socket.setAttr("st");
         socket.setsColour("st");
@@ -264,8 +264,8 @@ public class CopyOfTestUtils {
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
-        itemProperty.setItemId(1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
@@ -296,8 +296,8 @@ public class CopyOfTestUtils {
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
-        itemProperty.setItemId(1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
@@ -328,8 +328,8 @@ public class CopyOfTestUtils {
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
-        itemProperty.setItemId(1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
@@ -360,8 +360,8 @@ public class CopyOfTestUtils {
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
-        itemProperty.setItemId(1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
@@ -392,8 +392,8 @@ public class CopyOfTestUtils {
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
-        itemProperty.setItemId(-1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(DisplayMode.ZERO);
@@ -419,7 +419,7 @@ public class CopyOfTestUtils {
     public static RewardsDTO createMockRewards() {
         HashMap<String, Integer> rewardsHashmap = new HashMap<>();
         rewardsHashmap.put("reward1", 1);
-        RewardsDTO rewards = new RewardsDTO(1, 1, "String label", rewardsHashmap);
+        RewardsDTO rewards = new RewardsDTO();
         rewards.setDbId(1);
         rewards.setItemId(1);
         rewards.setLabel("String label");
@@ -434,7 +434,7 @@ public class CopyOfTestUtils {
         ArrayList<String> mods = new ArrayList<>();
         mods.add("mod1");
 
-        LogbookModsDTO logbookMods = new LogbookModsDTO(1, 1, "String areaName", faction, mods);
+        LogbookModsDTO logbookMods = new LogbookModsDTO();
         logbookMods.setDbId(1);
         logbookMods.setItemId(1);
         logbookMods.setAreaName("String areaName");
@@ -534,9 +534,7 @@ public class CopyOfTestUtils {
         ArrayList<String> explicitMods = new ArrayList<>();
         explicitMods.add("mod");
 
-        HybridDTO hybrid = new HybridDTO(
-                1, 1, false, "String baseTypeName",
-                itemProperties, explicitMods, "secDescrText");
+        HybridDTO hybrid = new HybridDTO();
 
         hybrid.setDbId(1);
         hybrid.setItemId(1);
@@ -555,13 +553,11 @@ public class CopyOfTestUtils {
 
         DisplayMode displayMode = DisplayMode.ONE;
 
-        ItemPropertyDTO itemProperty = new ItemPropertyDTO(1, -1, 1, "hybrid property", values,
-                displayMode, 123, 123, "sufferix", "sample icon",
-                "propertyType");
+        ItemPropertyDTO itemProperty = new ItemPropertyDTO();
 
         itemProperty.setDbId(1);
-        itemProperty.setItemId(-1);
-        itemProperty.setHybridId(1);
+        itemProperty.setItemId(0);
+        itemProperty.setHybridId(0);
         itemProperty.setName("name");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);

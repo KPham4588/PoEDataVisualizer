@@ -162,8 +162,21 @@
 			INSERT INTO ItemProperty
 			    (itemId, hybridId, name, displayMode,
 			    progress, type, suffix, icon)
-			VALUES (#{itemId}, #{hybridId}, #{name}, #{displayMode},
-			    #{progress}, #{type}, #{suffix}, #{icon})
+			SELECT
+			    CASE
+			        WHEN #{itemId} <= 0 THEN NULL
+			        ELSE #{itemId}
+			    END,
+			    CASE
+			        WHEN #{hybridId} <= 0 THEN NULL
+			        ELSE #{hybridId}
+			    END,
+			    #{name},
+			    #{displayMode},
+			    #{progress},
+			    #{type},
+			    #{suffix},
+			    #{icon}
 		]]>
     </insert>
 
