@@ -14,14 +14,6 @@ public class IncubatedItemDTO {
 
     public IncubatedItemDTO() {
     }
-    public IncubatedItemDTO(int dbId, int itemId, String incubatedItemName, long incubatedItemLevel, long progress, long total) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.incubatedItemName = incubatedItemName;
-        this.incubatedItemLevel = incubatedItemLevel;
-        this.progress = progress;
-        this.total = total;
-    }
 
     public int getDbId() {
         return dbId;
