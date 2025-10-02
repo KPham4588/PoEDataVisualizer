@@ -40,6 +40,7 @@
         <mapper resource="mappers/LogbookModsDTOMapper.xml"/>
         <mapper resource="mappers/PublicStashChangeDTOMapper.xml"/>
         <mapper resource="mappers/ResultDTOMapper.xml"/>
+        <mapper resource="mappers/RewardsCollectionDTOMapper.xml"/>
         <mapper resource="mappers/RewardsDTOMapper.xml"/>
         <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
