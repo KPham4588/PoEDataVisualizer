@@ -1,22 +1,14 @@
 package com.PhamKornbluhGroup.DTO;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class RewardsDTO {
     private int dbId;
     private int itemId;
     private String label;
-    private HashMap<String, Integer> rewards;
-        // Key = A string representing the type of reward
-        // Value = The amount
+    private ArrayList<RewardsCollectionDTO> rewards;
 
     public RewardsDTO() {
-    }
-    public RewardsDTO(int dbId, int itemId, String label, HashMap<String, Integer> rewards) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.label = label;
-        this.rewards = rewards;
     }
 
     public int getDbId() {
@@ -37,20 +29,10 @@ public class RewardsDTO {
     public void setLabel(String label) {
         this.label = label;
     }
-    public HashMap<String, Integer> getRewards() {
+    public ArrayList<RewardsCollectionDTO> getRewards() {
         return rewards;
     }
-    public void setRewards(HashMap<String, Integer> rewards) {
+    public void setRewards(ArrayList<RewardsCollectionDTO> rewards) {
         this.rewards = rewards;
-    }
-
-    @Override
-    public String toString() {
-        return "RewardsDTO{" +
-                "dbId=" + dbId +
-                ", itemId=" + itemId +
-                ", label='" + label + '\'' +
-                ", rewards=" + rewards +
-                '}';
     }
 }
