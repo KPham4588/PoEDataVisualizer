@@ -86,7 +86,7 @@ public class ItemDAO {
             reward.setItemId(item.getDbId());
         }
         RewardsDAO rewardsDAO = new RewardsDAO();
-        rewardsDAO.insertRewardsById(rewards);
+        rewardsDAO.insertRewards(rewards);
 
         ArrayList<LogbookModsDTO> logbookMods = item.getLogbookMods();
         for (LogbookModsDTO logbookMod : logbookMods) {
