@@ -37,8 +37,7 @@
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
-        INSERT INTO Rewards (
-            (itemId, label)
+        INSERT INTO Rewards (itemId, label)
         VALUES (#{itemId}, #{label})
     </insert>
 </mapper>
