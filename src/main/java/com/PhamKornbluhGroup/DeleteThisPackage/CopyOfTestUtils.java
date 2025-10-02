@@ -417,15 +417,24 @@ public class CopyOfTestUtils {
     }
 
     public static RewardsDTO createMockRewards() {
-        HashMap<String, Integer> rewardsHashmap = new HashMap<>();
-        rewardsHashmap.put("reward1", 1);
+        ArrayList<RewardsCollectionDTO> rewardsCollection = new ArrayList<>();
+        rewardsCollection.add(createMockRewardsCollection());
         RewardsDTO rewards = new RewardsDTO();
         rewards.setDbId(1);
         rewards.setItemId(1);
         rewards.setLabel("String label");
-        rewards.setRewards(rewardsHashmap);
+        rewards.setRewards(rewardsCollection);
 
         return rewards;
+    }
+
+    public static RewardsCollectionDTO createMockRewardsCollection() {
+        RewardsCollectionDTO rewardsCollection = new RewardsCollectionDTO();
+        rewardsCollection.setRewardsId(0);
+        rewardsCollection.setRewardsAmount(10);
+        rewardsCollection.setRewardsType("flasks");
+
+        return rewardsCollection;
     }
 
     public static LogbookModsDTO createMockLogbookMods() {
