@@ -358,7 +358,6 @@
 		]]>
     </select>
 
-    <!-- Very Incomplete -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Item
@@ -445,9 +444,6 @@
 		]]>
     </select>
 
-
-
-
     <delete id="removeEntity">
         <![CDATA[
 			DELETE FROM Item
@@ -455,4 +451,91 @@
 		]]>
     </delete>
 
+    <insert id="insertCosmeticMod">
+        INSERT INTO CosmeticMods (
+        itemId,
+        cosmeticMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertCraftedMod">
+        INSERT INTO CraftedMods (
+        itemId,
+        craftedMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertCrucibleMod">
+        INSERT INTO CosmeticMods (
+        itemId,
+        crucibleMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertEnchantMod">
+        INSERT INTO EnchantMods (
+        itemId,
+        EnchantMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertExplicitMod">
+        INSERT INTO ExplicitMods (
+        itemId,
+        explicitMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertFlavourText">
+        INSERT INTO FlavourText (
+        itemId,
+        flavourText)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertFracturedMod">
+        INSERT INTO FracturedMods (
+        itemId,
+        fracturedMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertImplicitMod">
+        INSERT INTO ImplicitMods (
+        itemId,
+        implicitMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertScourgeMod">
+        INSERT INTO ScourgeMods (
+        itemId,
+        scourgeMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertUtilityMod">
+        INSERT INTO UtilityMods (
+        itemId,
+        utilityMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertVeiledMod">
+        INSERT INTO VeiledMods (
+        itemId,
+        veiledMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
 </mapper>

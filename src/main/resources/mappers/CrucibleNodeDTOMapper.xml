@@ -68,7 +68,7 @@
         <![CDATA[
         SELECT CrucibleNodeIn.in
         FROM CrucibleNodeIn
-        WHERE CrucibleNodeIn.dbid = #{dbId}
+        WHERE CrucibleNodeIn.dbId = #{dbId}
 		]]>
     </select>
 
@@ -77,10 +77,10 @@
         <![CDATA[
             INSERT INTO CrucibleNode
                 (crucibleId, skill, tier, icon, allocated, isNotable, isReward,
-                stats, reminderText, orbit, orbitIndex, `out`, `in`, crucibleNodeIndex)
+                reminderText, orbit, orbitIndex, crucibleNodeIndex)
             VALUES (#{crucibleId}, #{skill}, #{tier}, #{icon}, #{allocated},
-                #{isNotable}, #{isReward}, #{stats}, #{reminderText},
-                #{orbit}, #{orbitIndex}, #{out}, #{in}, #{crucibleNodeIndex})
+                #{isNotable}, #{isReward}, #{reminderText},
+                #{orbit}, #{orbitIndex}, #{crucibleNodeIndex})
         ]]>
     </insert>
 
@@ -114,4 +114,27 @@
         ]]>
     </update>
 
+    <insert id="insertStat">
+        INSERT INTO CrucibleNodeStats (
+        crucibleNodeId,
+        stat)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertIn">
+        INSERT INTO CrucibleNodeIn (
+        crucibleNodeId,
+        `in`)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <insert id="insertOut">
+        INSERT INTO CrucibleNodeOut (
+        crucibleNodeId,
+        `out`)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
 </mapper>
