@@ -15,18 +15,6 @@ public class PublicStashChangeDTO {
 
     public PublicStashChangeDTO() {
     }
-    public PublicStashChangeDTO(int dbId, int resultId, String id, boolean isPublic, String accountName,
-                                String stash, String stashType, String league, ArrayList<ItemDTO> items) {
-        this.dbId = dbId;
-        this.resultId = resultId;
-        this.id = id;
-        this.isPublic = isPublic;
-        this.accountName = accountName;
-        this.stash = stash;
-        this.stashType = stashType;
-        this.league = league;
-        this.items = items;
-    }
 
     public int getDbId() {
         return dbId;

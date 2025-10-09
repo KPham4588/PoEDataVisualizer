@@ -9,13 +9,6 @@ public class ItemSocketDTO {
 
     public ItemSocketDTO() {
     }
-    public ItemSocketDTO(int dbId, int itemId, long group, String attr, String sColour) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.group = group;
-        this.attr = attr;
-        this.sColour = sColour;
-    }
 
     public int getDbId() {
         return dbId;

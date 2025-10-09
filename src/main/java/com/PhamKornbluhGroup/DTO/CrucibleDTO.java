@@ -10,12 +10,6 @@ public class CrucibleDTO {
 
     public CrucibleDTO() {
     }
-    public CrucibleDTO(int dbId, int itemId, String layout, ArrayList<CrucibleNodeDTO> nodes) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.layout = layout;
-        this.nodes = nodes;
-    }
 
     public int getDbId() {
         return dbId;

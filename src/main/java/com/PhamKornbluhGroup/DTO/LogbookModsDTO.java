@@ -14,13 +14,6 @@ public class LogbookModsDTO {
 
     public LogbookModsDTO() {
     }
-    public LogbookModsDTO(int dbId, int itemId, String areaName, FactionDTO faction, ArrayList<String> mods) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.areaName = areaName;
-        this.faction = faction;
-        this.mods = mods;
-    }
 
     public int getDbId() {
         return dbId;

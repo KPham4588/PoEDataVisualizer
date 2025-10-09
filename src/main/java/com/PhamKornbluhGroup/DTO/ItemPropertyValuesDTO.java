@@ -8,12 +8,6 @@ public class ItemPropertyValuesDTO {
 
     public ItemPropertyValuesDTO() {
     }
-    public ItemPropertyValuesDTO(int dbId, int itemPropertyId, String value, long valueType) {
-        this.dbId = dbId;
-        this.itemPropertyId = itemPropertyId;
-        this.value = value;
-        this.valueType = valueType;
-    }
 
     public long getValueType() {
         return valueType;

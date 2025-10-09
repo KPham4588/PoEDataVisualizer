@@ -12,14 +12,6 @@ public class ExtendedDTO {
 
     public ExtendedDTO() {
     }
-    public ExtendedDTO(int dbId, int itemId, String category, ArrayList<String> subcategories, long prefixes, long suffixes) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.category = category;
-        this.subcategories = subcategories;
-        this.prefixes = prefixes;
-        this.suffixes = suffixes;
-    }
 
     public int getDbId() {
         return dbId;

@@ -26,27 +26,6 @@ public class CrucibleNodeDTO {
     public CrucibleNodeDTO() {
     }
 
-    public CrucibleNodeDTO(int dbId, int crucibleId, long skill, long tier, String icon, boolean allocated,
-                           boolean isNotable, boolean isReward, String reminderText, long orbit, long orbitIndex,
-                           String crucibleNodeIndex, ArrayList<String> out, ArrayList<String> in,
-                           ArrayList<String> stats) {
-        this.dbId = dbId;
-        this.crucibleId = crucibleId;
-        this.skill = skill;
-        this.tier = tier;
-        this.icon = icon;
-        this.allocated = allocated;
-        this.isNotable = isNotable;
-        this.isReward = isReward;
-        this.reminderText = reminderText;
-        this.orbit = orbit;
-        this.orbitIndex = orbitIndex;
-        this.crucibleNodeIndex = crucibleNodeIndex;
-        this.out = out;
-        this.in = in;
-        this.stats = stats;
-    }
-
     public int getDbId() {
         return dbId;
     }

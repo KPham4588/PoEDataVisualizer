@@ -12,12 +12,6 @@ public class FactionDTO {
 
     public FactionDTO() {
     }
-    public FactionDTO(int dbId, int logbookModsId, FactionId factionId, String factionName) {
-        this.dbId = dbId;
-        this.logbookModsId = logbookModsId;
-        this.factionId = factionId;
-        this.factionName = factionName;
-    }
 
     public int getDbId() {
         return dbId;

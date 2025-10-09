@@ -25,21 +25,6 @@ public class ItemPropertyDTO {
 
     public ItemPropertyDTO() {
     }
-    public ItemPropertyDTO(int dbId, int itemId, int hybridId, String name, ArrayList<ItemPropertyValuesDTO> values,
-                           DisplayMode displayMode, double progress, long type, String suffix, String icon,
-                           String propertyType) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.hybridId = hybridId;
-        this.name = name;
-        this.values = values;
-        this.displayMode = displayMode;
-        this.progress = progress;
-        this.type = type;
-        this.suffix = suffix;
-        this.icon = icon;
-        this.propertyType = propertyType;
-    }
 
     public int getDbId() {
         return dbId;

@@ -13,18 +13,6 @@ public class InfluencesDTO {
     public InfluencesDTO() {
     }
 
-    public InfluencesDTO(int dbId, int itemId, boolean shaper, boolean elder, boolean hunter, boolean crusader,
-                         boolean redeemer, boolean warlord) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.shaper = shaper;
-        this.elder = elder;
-        this.hunter = hunter;
-        this.crusader = crusader;
-        this.redeemer = redeemer;
-        this.warlord = warlord;
-    }
-
     public int getDbId() {
         return dbId;
     }

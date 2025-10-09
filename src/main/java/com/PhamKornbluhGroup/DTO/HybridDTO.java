@@ -16,15 +16,6 @@ public class HybridDTO {
 
     public HybridDTO() {
     }
-    public HybridDTO(int dbId, int itemId, boolean isVaalGem, String baseTypeName, ArrayList<ItemPropertyDTO> properties, ArrayList<String> explicitMods, String secDescrText) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.isVaalGem = isVaalGem;
-        this.baseTypeName = baseTypeName;
-        this.properties = properties;
-        this.explicitMods = explicitMods;
-        this.secDescrText = secDescrText;
-    }
 
     public int getDbId() {
         return dbId;
