@@ -39,7 +39,4 @@ public class ExtendedDAO {
         session.commit();
         System.out.println("Attempt finished.");
     }
-
-
-    
 }
