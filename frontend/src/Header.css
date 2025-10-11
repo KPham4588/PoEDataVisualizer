@@ -1,0 +1,40 @@
+.header {
+    /*Place at top*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*padding-bottom: 0px;*/
+
+    /*Sizing*/
+    width: 100vw;
+    height: 3vw;
+    background-color: rgb(28, 22, 22);
+
+    /*Place elements into left to right row*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.header-menu-button {
+    /*Apply padding within element*/
+    box-sizing: border-box;
+    padding: 1.5vw 1.5vw;
+
+    border-radius: 100px;
+    background-color: rgb(19, 38, 80);
+    color: rgb(159, 155, 155);
+    text-decoration: none;
+
+    text-align: center;
+    flex: 1;
+    text-size-adjust: 100%;
+    font-size: clamp(2rem, 3rem, 2vw);
+    white-space: nowrap;
+}
+
+.header-menu-button a {
+    color: inherit;
+}

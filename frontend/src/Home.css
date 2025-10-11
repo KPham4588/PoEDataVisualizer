@@ -1,0 +1,28 @@
+.root {
+    font-size: 16px;
+    
+}
+
+.parent {
+    position: relative;
+    /*position:fixed;*/
+    top: 0;
+    background-color: #01ecc9;
+}
+
+/*flex: 1;*/
+/*display: flex;              !* make button itself a flex container *!*/
+/*justify-content: center;    !* centers text horizontally *!*/
+/*align-items: center;        !* centers text vertically *!*/
+
+/*background-color: rgb(113, 63, 63);*/
+/*color: white;*/
+/*border-radius: 100px;*/
+/*text-align: center;*/
+
+.text {
+    /*position: fixed;*/
+    top: 0;
+    margin-top: 3vw;
+    font-size: inherit;
+}
