@@ -1,16 +1,35 @@
 .root {
     font-size: 16px;
-    
+    background-color: #ffffff;
+    background-image: url("/assets/pexels-eberhardgross-1743392.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
 }
 
 .parent {
-    position: relative;
-    /*position:fixed;*/
-    top: 0;
-    background-color: #01ecc9;
-}
+    /*Height and Dimensions*/
+    height: 95vh;
+    width: 80vw;
+    margin-top: 5vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
 
-/*flex: 1;*/
+    /*Color and Alignment*/
+    background-color: rgba(96, 241, 0, 0.15);
+    justify-content: center;
+    align-items: center;
+
+    /*Border*/
+    box-sizing: border-box;
+    box-shadow: 3px 0 50px rgb(0, 0, 0, 90%);
+
+    /*Flex Settings*/
+    display: flex;
+    flex-direction: row;
+    flex-flow: column nowrap;
+
+}
 /*display: flex;              !* make button itself a flex container *!*/
 /*justify-content: center;    !* centers text horizontally *!*/
 /*align-items: center;        !* centers text vertically *!*/
