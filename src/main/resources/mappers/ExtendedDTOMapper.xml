@@ -62,7 +62,7 @@
     </insert>
 
     <!-- This works -->
-    <insert id="saveSubcategories">
+    <insert id="saveSubcategory" useGeneratedKeys="true">
         INSERT INTO Subcategories
             (extendedId, subcategory)
         VALUES

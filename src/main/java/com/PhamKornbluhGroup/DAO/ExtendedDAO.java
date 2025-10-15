@@ -7,8 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-
 public class ExtendedDAO {
 
     private final static Logger ExtendedDAOLogger = LogManager.getLogger(ExtendedDAO.class);
@@ -32,9 +30,13 @@ public class ExtendedDAO {
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");
         mapper.saveEntity(insertObject);
-            for (String subcategory : insertObject.getSubcategories()) {
-                mapper.saveSubcategories(insertObject.getDbId(), subcategory);
-            }
+
+        System.out.println("Saved initial extended properties. Attempting to insert subcategories.");
+        session.commit();
+
+        for (String subcategory : insertObject.getSubcategories()) {
+            mapper.saveSubcategory(insertObject.getDbId(), subcategory);
+        }
 
         session.commit();
         System.out.println("Attempt finished.");
