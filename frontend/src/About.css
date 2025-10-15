@@ -1,0 +1,18 @@
+.body-block {
+    box-sizing: border-box;
+    border-color: rgba(0, 0, 0, 75%) rgba(4, 3, 3, 0.75) rgba(0, 0, 0, 75%);
+    border-width: 5px;
+    border-style: groove;
+    background-color: rgba(37, 35, 35, 0.3);
+    align-content: center;
+    margin: 5px;
+
+
+    display: inline-block;
+    position: relative;
+
+    /*display: flex;*/
+    flex: auto;
+    /*margin-top: 3vw;*/
+    font-size: inherit;
+}
