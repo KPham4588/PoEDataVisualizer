@@ -21,10 +21,10 @@
     /*Height and Dimensions*/
     height: auto;
     min-height: 94vh;
-    width: 80vw;
+    width: 90vw;
     margin-top: 6vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
 
     /*Color and Alignment*/
     background-color: rgba(55, 57, 54, 0.15);
