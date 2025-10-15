@@ -9,7 +9,6 @@
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
         <result property="layout" column="layout"/>
-<!--        <association property="node" resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.CrucibleNodeDTOMap" autoMapping="true"/>-->
         <collection property="nodes" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.CrucibleNodeDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO.getEntityByCrucibleId"/>
@@ -26,7 +25,6 @@
 		]]>
     </select>
 
-    <!-- Untested as called by ItemMapper -->
     <select id="getEntityByItemId" resultMap="CrucibleDTOMap">
         <![CDATA[
         SELECT
