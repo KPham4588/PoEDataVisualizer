@@ -1,21 +1,16 @@
 package com.PhamKornbluhGroup.DTO;
 
 public enum DisplayMode {
-    ZERO(0L, "Name should be followed by values"), // Name should be followed by values
-    ONE(1L, "Values should be followed by name"),
-    TWO(2L, "Progress bar"),
-    THREE(3L, "Values should be inserted into the string by index"),
-    FOUR(4L, "Separator");
+    ZERO("Name should be followed by values"), // Name should be followed by values
+    ONE("Values should be followed by name"),
+    TWO("Progress bar"),
+    THREE("Values should be inserted into the string by index"),
+    FOUR("Separator");
 
-    private final long displayCode;
     private final String information;
 
-    DisplayMode(long displayCode, String information) {
-        this.displayCode = displayCode;
+    DisplayMode(String information) {
         this.information = information;
-    }
-    public long getDisplayCode() {
-        return displayCode;
     }
     public String getInformation() {
         return information;
@@ -24,7 +19,6 @@ public enum DisplayMode {
     @Override
     public String toString() {
         return "DisplayMode{" +
-                "displayCode=" + displayCode +
                 ", information='" + information + '\'' +
                 '}';
     }
