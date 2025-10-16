@@ -4,16 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO">
-    <!--UNTESTED-->
+
     <resultMap id="FactionDTOMap" type="com.PhamKornbluhGroup.DTO.FactionDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
         <result property="logbookModsId" column="logbookModsId"/>
         <result property="factionId" column="factionId" javaType="com.PhamKornbluhGroup.DTO.FactionId" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
         <result property="factionName" column="factionName"/>
-        <!--
-        <association property="factionId" column="dbId" javaType="com.PhamKornbluhGroup.DTO.FactionId"
-                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO.getEntityByFactionId"/>
-        -->
     </resultMap>
 
     <select id="getEntityById" resultMap="FactionDTOMap">
@@ -21,6 +17,7 @@
         SELECT
             dbId,
             logbookModsId,
+            factionId,
             factionName
         FROM Faction
         WHERE dbId = #{dbId}
@@ -34,21 +31,4 @@
 			VALUES (#{logbookModsId}, #{factionId, javaType=com.PhamKornbluhGroup.DTO.FactionId, typeHandler=org.apache.ibatis.type.EnumTypeHandler}, #{factionName})
 		]]>
     </insert>
-
-    <update id="updateEntity">
-        <![CDATA[
-			UPDATE Faction
-			SET logbookModsId = #{logbookModsId},
-			    factionId = #{factionId, javaType=com.PhamKornbluhGroup.DTO.FactionId, typeHandler=org.apache.ibatis.type.EnumTypeHandler},
-			    factionName = #{factionName}
-			WHERE dbId = #{dbId}
-		]]>
-    </update>
-
-    <delete id="removeEntity">
-        <![CDATA[
-			DELETE FROM Faction
-			WHERE dbId = #{dbId}
-		]]>
-    </delete>
 </mapper>
