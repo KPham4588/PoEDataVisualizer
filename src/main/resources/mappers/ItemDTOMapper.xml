@@ -72,7 +72,7 @@
         <result property="y" column="y"/>
 
         <!--========== enum ==========-->
-        <result property="displayMode" column="displayMode"/>
+        <result property="frameType" column="frameType" javaType="com.PhamKornbluhGroup.DTO.FrameType" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
 
         <!--========== Objects ==========-->
         <association property="crucible"
@@ -366,7 +366,7 @@
 			    rarity, identified, itemLevel, ilvl, note, forum_note, lockedToCharacter, lockedToAccount, duplicated,
 			    split, corrupted, unmodifiable, unmodifiableExceptChaos, cisRaceReward, seaRaceReward, thRaceReward, talismanTier, secDescrText,
 			    veiled, descrText, flavourTextNote, prophecyText, isRelic, foilVariation, replica, foreseeing, ruthless,
-			    artFilename, x, y, inventoryId, socket, colour, elder)
+			    artFilename, x, y, inventoryId, socket, colour, elder, frameType)
 			VALUES
 			    (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize},
 			    #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel},
@@ -375,7 +375,7 @@
 			    #{split}, #{corrupted}, #{unmodifiable}, #{unmodifiableExceptChaos}, #{cisRaceReward}, #{seaRaceReward}, #{thRaceReward}, #{talismanTier},
 			    #{secDescrText}, #{veiled}, #{descrText}, #{flavourTextNote}, #{prophecyText}, #{isRelic}, #{foilVariation},
 			    #{replica}, #{foreseeing}, #{ruthless}, #{artFilename}, #{x}, #{y}, #{inventoryId}, #{socket}, #{colour},
-			    #{elder})
+			    #{elder}, #{frameType, javaType=com.PhamKornbluhGroup.DTO.FrameType, typeHandler=org.apache.ibatis.type.EnumTypeHandler})
 		]]>
     </insert>
 
@@ -438,7 +438,8 @@
             socket,
             w,
             x,
-            y
+            y,
+            frameType
         FROM Item
         WHERE Item.publicStashChangeId = #{dbId}
 		]]>

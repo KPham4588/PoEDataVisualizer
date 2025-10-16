@@ -233,7 +233,7 @@ public class ItemDAO {
             logbookMod.setItemId(item.getDbId());
         }
         LogbookModsDAO logbookModsDAO = new LogbookModsDAO();
-        logbookModsDAO.insertLogbookModsById(logbookMods);
+        logbookModsDAO.insertLogbookMods(logbookMods);
 
         //ultimatum mods
         ArrayList<UltimatumModsDTO> ultimatumMods = item.getUltimatumMods();
