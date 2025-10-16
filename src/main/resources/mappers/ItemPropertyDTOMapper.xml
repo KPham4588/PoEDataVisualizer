@@ -21,17 +21,16 @@
         <result property="itemId" column="itemId"/>
         <result property="hybridId" column="hybridId"/>
         <result property="name" column="name"/>
-        <result property="displayMode" column="displayMode"/>
         <result property="progress" column="progress"/>
         <result property="type" column="type"/>
         <result property="suffix" column="suffix"/>
         <result property="icon" column="icon"/>
+        <result property="displayMode" column="displayMode" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
         <collection property="values" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO.getEntityByItemPropertyId"/>
     </resultMap>
 
-    <!-- UNTESTED -->
     <select id="getEntityById" resultMap="ItemPropertyDTOMap">
         <![CDATA[
         SELECT
