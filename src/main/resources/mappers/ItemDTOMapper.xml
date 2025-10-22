@@ -86,13 +86,6 @@
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.getEntityByItemId"
              autoMapping="true"/>
 
-        <!--        NEED TO USE ENUM TYPEHANDLER FOR THIS-->
-        <association property="frameType"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.FrameType"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.IFrameType.getEntityByItemId"
-             autoMapping="true"/>
-
         <association property="hybrid"
              column="dbId"
              javaType="com.PhamKornbluhGroup.DTO.HybridDTO"
@@ -113,7 +106,6 @@
              javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
              select="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.getEntityByItemId"
              autoMapping="true"/>
-        <!-- FrameType is an enum. We may need an enum TypeHandler here-->
 
         <!--========== ArrayList<String> ==========-->
         <collection property="cosmeticMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
