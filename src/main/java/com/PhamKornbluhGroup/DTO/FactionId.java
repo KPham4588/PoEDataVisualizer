@@ -23,8 +23,6 @@ public enum FactionId {
 
     @Override
     public String toString() {
-        return "FactionId{" +
-                "factionId='" + factionId + '\'' +
-                '}';
+        return factionId;
     }
 }

@@ -14,20 +14,17 @@ public enum FrameType {
     TEN("Supporter Foil frame"),
     ELEVEN("Necropolis frame");
 
-    private final String information;
+    private final String frameType;
 
-    FrameType(String information) {
-        this.information = information;
+    FrameType(String frameType) {
+        this.frameType = frameType;
     }
 
-    public String getInformation() {
-        return information;
+    public String getFrameType() {
+        return frameType;
     }
 
-    @Override
     public String toString() {
-        return "FrameType{" +
-                ", information='" + information + '\'' +
-                '}';
+        return frameType;
     }
 }
