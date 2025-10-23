@@ -72,7 +72,7 @@
         <result property="y" column="y"/>
 
         <!--========== enum ==========-->
-        <result property="frameType" column="frameType" javaType="com.PhamKornbluhGroup.DTO.FrameType" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
+        <result property="frameType" column="frameType" javaType="com.PhamKornbluhGroup.DTO.FrameType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 
         <!--========== Objects ==========-->
         <association property="crucible"
@@ -355,7 +355,7 @@
 			INSERT INTO Item
 			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText,
 			    league, id, shaper, searing, tangled, abyssJewel, delve, fractured, synthesised, name, typeLine, baseType,
-			    rarity, identified, itemLevel, ilvl, note, forum_note, lockedToCharacter, lockedToAccount, duplicated,
+			    rarity, identified, itemLevel, ilvl, note, forum_note, lockedToCharacter, memoryItem, lockedToAccount, duplicated,
 			    split, corrupted, unmodifiable, unmodifiableExceptChaos, cisRaceReward, seaRaceReward, thRaceReward, talismanTier, secDescrText,
 			    veiled, descrText, flavourTextNote, prophecyText, isRelic, foilVariation, replica, foreseeing, ruthless,
 			    artFilename, x, y, inventoryId, socket, colour, elder, frameType)
@@ -363,11 +363,11 @@
 			    (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize},
 			    #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel},
 			    #{delve}, #{fractured}, #{synthesised}, #{name}, #{typeLine}, #{baseType}, #{rarity}, #{identified},
-			    #{itemLevel}, #{ilvl}, #{note}, #{forum_note}, #{lockedToCharacter}, #{lockedToAccount}, #{duplicated},
+			    #{itemLevel}, #{ilvl}, #{note}, #{forum_note}, #{lockedToCharacter}, #{memoryItem}, #{lockedToAccount}, #{duplicated},
 			    #{split}, #{corrupted}, #{unmodifiable}, #{unmodifiableExceptChaos}, #{cisRaceReward}, #{seaRaceReward}, #{thRaceReward}, #{talismanTier},
 			    #{secDescrText}, #{veiled}, #{descrText}, #{flavourTextNote}, #{prophecyText}, #{isRelic}, #{foilVariation},
 			    #{replica}, #{foreseeing}, #{ruthless}, #{artFilename}, #{x}, #{y}, #{inventoryId}, #{socket}, #{colour},
-			    #{elder}, #{frameType, javaType=com.PhamKornbluhGroup.DTO.FrameType, typeHandler=org.apache.ibatis.type.EnumTypeHandler})
+			    #{elder}, #{frameType, typeHandler=org.apache.ibatis.type.EnumTypeHandler})
 		]]>
     </insert>
 

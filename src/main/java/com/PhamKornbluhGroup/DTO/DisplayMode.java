@@ -18,8 +18,6 @@ public enum DisplayMode {
 
     @Override
     public String toString() {
-        return "DisplayMode{" +
-                ", information='" + information + '\'' +
-                '}';
+        return information;
     }
 }

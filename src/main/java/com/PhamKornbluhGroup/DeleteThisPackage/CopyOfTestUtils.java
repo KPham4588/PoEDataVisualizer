@@ -58,7 +58,7 @@ public class CopyOfTestUtils {
     public static ItemDTO createMockItem() {
         CrucibleDTO crucible = createMockCrucible();
         ExtendedDTO extended = createMockExtended();
-        FrameType frameType = FrameType.EIGHT;
+        FrameType frameType = FrameType.ONE;
         HybridDTO hybrid = createMockHybrid();
         IncubatedItemDTO incubatedItem = createMockIncubatedItem();
 
@@ -234,6 +234,7 @@ public class CopyOfTestUtils {
         item.setFlavourTextParsed(flavourTextParsed);
         item.setRewards(rewards);
         item.setUltimatumMods(ultimatumMods);
+        item.setMemoryItem(true);
 
         return item;
     }

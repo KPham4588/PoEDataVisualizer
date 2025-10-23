@@ -24,6 +24,8 @@ public enum FrameType {
         return frameType;
     }
 
+
+    @Override
     public String toString() {
         return frameType;
     }

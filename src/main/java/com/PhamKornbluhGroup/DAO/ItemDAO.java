@@ -151,7 +151,6 @@ public class ItemDAO {
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
         ItemDAOLogger.trace("Attempting to insert ItemDTO object.");
-
         mapper.saveEntity(item);
         session.commit();
         ItemDAOLogger.trace("ItemDTO insert attempt finished. Putting ItemID into child objects and inserting.");

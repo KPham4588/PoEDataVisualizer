@@ -1,14 +1,20 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
 import com.PhamKornbluhGroup.DeleteThisPackage.CopyOfTestUtils;
-import com.PhamKornbluhGroup.jsonParsing.JSONParser;
 
 public class runner {
 
     public static void main(String[] args) throws Exception {
         CopyOfTestUtils.fakeInsertAndGetResult();
+        /*
+        CrucibleDAO dao = new CrucibleDAO();
+        SqlSession session = SessionPool.getSession();
+        ICrucibleDTO mapper = session.getMapper(ICrucibleDTO.class);
+        CrucibleDTO dto = mapper.getEntityByItemId(37);
+        System.out.println(dto.toString());
+        */
 
+        System.out.println("Reached end of main without exceptions.");
     }
 
     public static String returnTestJSON() {

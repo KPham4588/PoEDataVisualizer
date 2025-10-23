@@ -21,6 +21,7 @@
     <Loggers>
         <!-- Right now we want one logger, logging everything, so we go TRACE -->
         <Logger name="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO" level="ALL" />
+        <Logger name="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO" level="ALL" />
         <Root level="INFO">
             <AppenderRef ref="CONSOLE" level="ALL"/>
             <AppenderRef ref="MAIN" level="ALL"/>
