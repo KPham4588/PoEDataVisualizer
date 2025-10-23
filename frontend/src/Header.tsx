@@ -4,16 +4,10 @@ import {Link} from "react-router-dom";
 export default function Header() {
     return (
         <header className="header">
-            <h1 className="header-menu-button">
-                <Link to="/greatest-hits">Greatest Hits</Link>
-                {/*<a href="/greatest-hits">Greatest Hits2</a>*/}
-            </h1>
-            <h1 className="header-menu-button">
-                <Link to="/divine-orbs">Divine Orbs</Link>
-            </h1>
-            <h1 className="header-menu-button">
-                <Link to="/about">About</Link>
-            </h1>
+
+            <Link to="/greatest-hits" className="header-menu-button">Greatest Hits</Link>
+            <Link to="/divine-orbs" className="header-menu-button">Divine Orbs</Link>
+            <Link to="/about" className="header-menu-button">About</Link>
         </header>
     )
 }

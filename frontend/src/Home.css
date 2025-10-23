@@ -20,9 +20,9 @@
 .parent {
     /*Height and Dimensions*/
     height: auto;
-    min-height: 94vh;
+    min-height: 94.5vh;
     width: 90vw;
-    margin-top: 6vh;
+    margin-top: 5.5vh;
     margin-left: 5vw;
     margin-right: 5vw;
 
@@ -41,14 +41,6 @@
     flex-flow: column nowrap;
 
 }
-/*display: flex;              !* make button itself a flex container *!*/
-/*justify-content: center;    !* centers text horizontally *!*/
-/*align-items: center;        !* centers text vertically *!*/
-
-/*background-color: rgb(113, 63, 63);*/
-/*color: white;*/
-/*border-radius: 100px;*/
-/*text-align: center;*/
 
 .main-body {
     box-sizing: border-box;
@@ -57,9 +49,7 @@
     position: relative;
     overflow-y: visible;
     top: 0;
-    /*margin-top: 3vw;*/
     font-size: inherit;
-    /*overflow: ;*/
 }
 
 /*Scrollbar Behavior*/
@@ -68,17 +58,20 @@
     height: 12px;
 }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
-    background: rgb(55, 54, 54);
+    background: rgb(48, 47, 47);
 }
 ::-webkit-scrollbar-button {
     display: none;
 }
 /* Thumb styling */
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(30, 30, 30, 0.6);
+    background-color: rgba(64, 64, 64, 0.6);
     border-radius: 100px;
-    border: solid rgba(214, 211, 211, 0.6);
+    border: solid rgba(228, 228, 228, 0.6);
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(220, 218, 218, 0.9);
+    border: solid rgba(244, 244, 244, 0.6);
+    width: 18px;
+    height: 18px;
 }
