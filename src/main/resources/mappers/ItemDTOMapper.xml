@@ -437,6 +437,72 @@
 		]]>
     </select>
 
+    <select id="getEntityByParentItemId" resultMap="ItemDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            artFilename,
+            baseType,
+            colour,
+            flavourTextNote,
+            forum_note,
+            icon,
+            id,
+            inventoryId,
+            league,
+            name,
+            note,
+            prophecyText,
+            rarity,
+            secDescrText,
+            stackSizeText,
+            typeLine,
+            abyssJewel,
+            cisRaceReward,
+            corrupted,
+            delve,
+            duplicated,
+            elder,
+            foreseeing,
+            fractured,
+            identified,
+            isRelic,
+            lockedToAccount,
+            lockedToCharacter,
+            memoryItem,
+            replica,
+            ruthless,
+            seaRaceReward,
+            searing,
+            shaper,
+            split,
+            support,
+            synthesised,
+            tangled,
+            thRaceReward,
+            unmodifiable,
+            veiled,
+            verified,
+            unmodifiableExceptChaos,
+            foilVariation,
+            ilvl,
+            itemLevel,
+            maxStackSize,
+            parentItemId,
+            publicStashChangeId,
+            stackSize,
+            talismanTier,
+            h,
+            socket,
+            w,
+            x,
+            y,
+            frameType
+        FROM Item
+        WHERE Item.parentItemId = #{dbId}
+		]]>
+    </select>
+
     <delete id="removeEntity">
         <![CDATA[
 			DELETE FROM Item

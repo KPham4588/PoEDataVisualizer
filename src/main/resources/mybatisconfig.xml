@@ -9,6 +9,7 @@
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FactionId" />
         <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" />
+        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FrameType" />
     </typeHandlers>
 
     <environments default="development">

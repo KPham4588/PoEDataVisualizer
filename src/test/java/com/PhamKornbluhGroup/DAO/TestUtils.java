@@ -260,7 +260,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -292,7 +292,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockNotablePropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -324,7 +324,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockRequirementsItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -356,7 +356,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockAdditionalPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -388,7 +388,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockNextLevelRequirementsItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -396,7 +396,7 @@ class TestUtils {
         itemProperty.setHybridId(0);
         itemProperty.setName("hybrid property");
         itemProperty.setValues(values);
-        itemProperty.setDisplayMode(DisplayMode.ZERO);
+        itemProperty.setDisplayMode(displayMode);
         itemProperty.setProgress(12D);
         itemProperty.setType(12L);
         itemProperty.setSuffix("suffer");
@@ -560,7 +560,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockHybridPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.ONE;
+        DisplayMode displayMode = DisplayMode.DOS;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
 

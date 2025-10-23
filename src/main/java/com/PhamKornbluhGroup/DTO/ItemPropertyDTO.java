@@ -22,6 +22,7 @@ public class ItemPropertyDTO {
     private String suffix;                                  // Optional
     private String icon;                                    // Optional
     private String propertyType; // This isn't in the documentation. We have this to avoid multiple ItemProperty tables
+    // set PropertyType when deserializing the JSON into object
 
     public ItemPropertyDTO() {
     }

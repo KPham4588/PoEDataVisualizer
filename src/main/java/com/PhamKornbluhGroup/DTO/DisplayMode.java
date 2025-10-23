@@ -1,11 +1,11 @@
 package com.PhamKornbluhGroup.DTO;
 
 public enum DisplayMode {
-    ZERO("Name should be followed by values"), // Name should be followed by values
-    ONE("Values should be followed by name"),
-    TWO("Progress bar"),
-    THREE("Values should be inserted into the string by index"),
-    FOUR("Separator");
+    UNO("Name should be followed by values"), // Name should be followed by values
+    DOS("Values should be followed by name"),
+    TRES("Progress bar"),
+    FOURSPANISH("Values should be inserted into the string by index"),
+    FIVESPANISH("Separator");
 
     private final String information;
 
