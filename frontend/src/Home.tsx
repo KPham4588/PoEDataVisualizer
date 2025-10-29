@@ -15,7 +15,7 @@ export default function Home() {
             <div className="main-body">
                     <Routes>
                         <Route path="/greatest-hits" element={GreatestHits()}/>
-                        <Route path="/about" element={About()}/>34
+                        <Route path="/about" element={About()}/>
                     </Routes>
             </div>
 

@@ -31,7 +31,6 @@
     min-height: 3vh;
     height: auto;
 
-
     border-radius: 50px;
     background-color: rgb(19, 38, 80);
 
@@ -71,5 +70,4 @@
 
 .header-menu-button a {
     color: inherit;
-
 }

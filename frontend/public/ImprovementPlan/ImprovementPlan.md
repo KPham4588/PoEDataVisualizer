@@ -8,9 +8,6 @@
 
 ## Section 2 - Fixes
 ### Header
-1. Make entire header button redirect (not just text)
-
-
 2. **(MAY BE FIXED)** When zooming-in, make buttons grow equally in both directions or wherever there's space. Currently gives full prio to whatever is leftmost
 
 
@@ -54,3 +51,6 @@
 
 
 2. No Horizontal Scrollbars
+
+## Section 5 - Completed
+1. Make entire header button redirect (not just text)
