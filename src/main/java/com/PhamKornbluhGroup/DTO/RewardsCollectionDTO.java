@@ -1,7 +1,5 @@
 package com.PhamKornbluhGroup.DTO;
 
-import java.util.HashMap;
-
 public class RewardsCollectionDTO {
     private int dbId;
     private int rewardsId;

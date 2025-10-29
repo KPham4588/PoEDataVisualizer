@@ -14,7 +14,10 @@
 
     <select id="getEntityById" resultMap="UltimatumModsDTOMap">
         <![CDATA[
-        SELECT *
+        SELECT dbId as dbId,
+            itemId,
+            `type`,
+            tier
         FROM UltimatumMods
         WHERE UltimatumMods.dbId = #{dbId}
 		]]>
@@ -22,16 +25,19 @@
 
     <select id="getEntityByItemId" resultMap="UltimatumModsDTOMap">
         <![CDATA[
-        SELECT *
+        SELECT dbId,
+            itemId,
+            `type`,
+            tier
         FROM UltimatumMods
-        WHERE UltimatumMods.itemId = #{dbId}
+        WHERE itemId = #{dbId}
 		]]>
     </select>
 
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO UltimatumMods
-			    (itemId, type, tier)
+			    (itemId, `type`, tier)
 			VALUES (#{itemId}, #{type}, #{tier})
 		]]>
     </insert>
@@ -40,7 +46,7 @@
         <![CDATA[
 			UPDATE UltimatumMods
 			SET itemId = #{itemId},
-			    type = #{type}
+			    `type` = #{type},
 			    tier = #{tier}
 			WHERE dbId = #{dbId}
 		]]>

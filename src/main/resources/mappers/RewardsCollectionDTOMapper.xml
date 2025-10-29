@@ -9,16 +9,16 @@
         <id property="dbId" column="dbId"/>
         <result property="rewardsId" column="rewardsId"/>
         <result property="rewardsType" column="rewardsType"/>
-        <collection property="rewardsAmount" column="rewardsAmount"/>
+        <result property="rewardsAmount" column="rewardsAmount"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="RewardsCollectionDTOMap">
         <![CDATA[
         SELECT
-            RewardsCollection.dbId,
-            RewardsCollection.rewardsId,
-            RewardsCollection.rewardsType,
-            RewardsCollection.rewardsAmount
+            dbId,
+            rewardsId,
+            rewardsType,
+            rewardsAmount
         FROM RewardsCollection
         WHERE RewardsCollection.dbId = #{dbId}
 		]]>
@@ -27,10 +27,10 @@
     <select id="getEntityByRewardsId" resultMap="RewardsCollectionDTOMap">
         <![CDATA[
         SELECT
-            RewardsCollection.dbId,
-            RewardsCollection.rewardsId,
-            RewardsCollection.rewardsType,
-            RewardsCollection.rewardsAmount
+            dbId,
+            rewardsId,
+            rewardsType,
+            rewardsAmount
         FROM RewardsCollection
         WHERE RewardsCollection.rewardsId = #{dbId}
 		]]>

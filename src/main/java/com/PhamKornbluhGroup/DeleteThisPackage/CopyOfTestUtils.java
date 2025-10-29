@@ -469,7 +469,7 @@ public class CopyOfTestUtils {
         UltimatumModsDTO ultimatumMods = new UltimatumModsDTO();
         ultimatumMods.setDbId(1);
         ultimatumMods.setItemId(1);
-        ultimatumMods.setType("String type");
+        ultimatumMods.setType("String");
         ultimatumMods.setTier(1L);
 
         return ultimatumMods;
