@@ -274,7 +274,7 @@ public class CopyOfTestUtils {
         itemProperty.setType(123);
         itemProperty.setSuffix("sufferix");
         itemProperty.setIcon("sample icon");
-        itemProperty.setPropertyType("propertyType");
+        itemProperty.setPropertyType("Properties");
 
         return itemProperty;
     }
@@ -306,7 +306,7 @@ public class CopyOfTestUtils {
         itemProperty.setType(123);
         itemProperty.setSuffix("sufferix");
         itemProperty.setIcon("sample icon");
-        itemProperty.setPropertyType("propertyType");
+        itemProperty.setPropertyType("Notable Properties");
 
         return itemProperty;
     }
@@ -338,7 +338,7 @@ public class CopyOfTestUtils {
         itemProperty.setType(123);
         itemProperty.setSuffix("sufferix");
         itemProperty.setIcon("sample icon");
-        itemProperty.setPropertyType("propertyType");
+        itemProperty.setPropertyType("Requirements");
 
         return itemProperty;
     }
