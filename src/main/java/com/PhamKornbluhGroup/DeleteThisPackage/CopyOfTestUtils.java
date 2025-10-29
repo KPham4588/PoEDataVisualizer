@@ -267,7 +267,7 @@ public class CopyOfTestUtils {
         itemProperty.setDbId(1);
         itemProperty.setItemId(0);
         itemProperty.setHybridId(0);
-        itemProperty.setName("hybrid property");
+        itemProperty.setName("item properties property");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
         itemProperty.setProgress(123);
@@ -363,14 +363,14 @@ public class CopyOfTestUtils {
         itemProperty.setDbId(1);
         itemProperty.setItemId(0);
         itemProperty.setHybridId(0);
-        itemProperty.setName("hybrid property");
+        itemProperty.setName("Item Additional Properties");
         itemProperty.setValues(values);
         itemProperty.setDisplayMode(displayMode);
         itemProperty.setProgress(123);
         itemProperty.setType(123);
         itemProperty.setSuffix("sufferix");
         itemProperty.setIcon("sample icon");
-        itemProperty.setPropertyType("propertyType");
+        itemProperty.setPropertyType("Additional Properties");
 
         return itemProperty;
     }
@@ -402,7 +402,7 @@ public class CopyOfTestUtils {
         itemProperty.setType(12L);
         itemProperty.setSuffix("suffer");
         itemProperty.setIcon("icon");
-        itemProperty.setPropertyType("type");
+        itemProperty.setPropertyType("Next Level Requirements");
 
         return itemProperty;
     }
