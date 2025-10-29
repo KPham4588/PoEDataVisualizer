@@ -15,10 +15,10 @@
     <select id="getEntityById" resultMap="RewardsCollectionDTOMap">
         <![CDATA[
         SELECT
-            Rewards.dbId,
-            Rewards.rewardsId,
-            Rewards.rewardsType,
-            Rewards.rewardsAmount
+            RewardsCollection.dbId,
+            RewardsCollection.rewardsId,
+            RewardsCollection.rewardsType,
+            RewardsCollection.rewardsAmount
         FROM RewardsCollection
         WHERE RewardsCollection.dbId = #{dbId}
 		]]>
@@ -27,10 +27,10 @@
     <select id="getEntityByRewardsId" resultMap="RewardsCollectionDTOMap">
         <![CDATA[
         SELECT
-            Rewards.dbId,
-            Rewards.rewardsId,
-            Rewards.rewardsType,
-            Rewards.rewardsAmount
+            RewardsCollection.dbId,
+            RewardsCollection.rewardsId,
+            RewardsCollection.rewardsType,
+            RewardsCollection.rewardsAmount
         FROM RewardsCollection
         WHERE RewardsCollection.rewardsId = #{dbId}
 		]]>

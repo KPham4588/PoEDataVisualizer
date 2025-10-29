@@ -180,7 +180,7 @@
         <collection property="sockets" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemSocketDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemSocketDTO.getEntityByItemId"/>
-        <collection property="LogbookMods" column="dbId" javaType="ArrayList"
+        <collection property="logbookMods" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.LogbookModsDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.ILogbookModsDTO.getEntityByItemId"/>
         <!-- Having collection name and property name be the same might cause an issue. -->

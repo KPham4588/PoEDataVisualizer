@@ -7,9 +7,8 @@
     </settings>
 
     <typeHandlers>
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FactionId" />
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" />
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FrameType" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FactionId"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler" />
     </typeHandlers>
 
     <environments default="development">
@@ -25,12 +24,12 @@
         </environment>
     </environments>
 
+
     <mappers>
         <mapper resource="mappers/CrucibleDTOMapper.xml"/>
         <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
         <mapper resource="mappers/FactionDTOMapper.xml"/>
-        <mapper resource="mappers/FactionIdDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
         <mapper resource="mappers/InfluencesDTOMapper.xml"/>
