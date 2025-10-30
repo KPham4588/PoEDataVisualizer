@@ -116,8 +116,6 @@ class TestUtils {
         veiledMods.add(0, "Heya");
         veiledMods.add(1, "It's a veiled mod");
 
-        ArrayList<ItemDTO> socketedItems = new ArrayList<>();
-
         ArrayList<ItemPropertyDTO> additionalProperties = new ArrayList<>();
         additionalProperties.add(createMockAdditionalProperties());
 
@@ -196,7 +194,6 @@ class TestUtils {
         item.setIlvl(1);
         item.setItemLevel(1);
         item.setMaxStackSize(1);
-        item.setParentItemId(1);
         item.setPublicStashChangeId(1);
         item.setStackSize(1);
         item.setTalismanTier(1);
@@ -223,7 +220,6 @@ class TestUtils {
         item.setScourgeMods(scourgeMods);
         item.setUtilityMods(utilityMods);
         item.setVeiledMods(veiledMods);
-        item.setSocketedItems(socketedItems);
         item.setAdditionalProperties(additionalProperties);
         item.setNextLevelRequirements(nextLevelRequirements);
         item.setNotableProperties(notableProperties);
@@ -260,7 +256,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -292,7 +288,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockNotablePropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -324,7 +320,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockRequirementsItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -356,7 +352,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockAdditionalPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -388,7 +384,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockNextLevelRequirementsItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
         itemProperty.setDbId(1);
@@ -469,7 +465,7 @@ class TestUtils {
         ultimatumMods.setDbId(1);
         ultimatumMods.setItemId(1);
         ultimatumMods.setType("String type");
-        ultimatumMods.setTier(1L);
+        ultimatumMods.setTier(1);
 
         return ultimatumMods;
     }
@@ -560,7 +556,7 @@ class TestUtils {
         ArrayList<ItemPropertyValuesDTO> values = new ArrayList<>();
         values.add(createMockHybridPropertiesItemPropertyValues());
 
-        DisplayMode displayMode = DisplayMode.DOS;
+        DisplayMode displayMode = DisplayMode.TWO;
 
         ItemPropertyDTO itemProperty = new ItemPropertyDTO();
 

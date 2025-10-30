@@ -12,11 +12,6 @@ public class ResultDTO {
 
     public ResultDTO() {
     }
-    public ResultDTO(int dbId, String nextChangeId, ArrayList<PublicStashChangeDTO> stashes) {
-        this.dbId = dbId;
-        this.nextChangeId = nextChangeId;
-        this.stashes = stashes;
-    }
 
     public int getDbId() {
         return dbId;

@@ -175,13 +175,6 @@ public class ItemDAO {
         ItemSocketDAO itemSocketDAO = new ItemSocketDAO();
         itemSocketDAO.insertItemSocketById(itemSockets);
 
-        // socketed item
-        ArrayList<ItemDTO> socketedItems = item.getSocketedItems();
-        for (ItemDTO socketedItem : socketedItems) {
-            socketedItem.setParentItemId(item.getDbId());
-        }
-        insertItems(socketedItems);
-
         // properties
         ArrayList<ItemPropertyDTO> properties = item.getProperties();
         for (ItemPropertyDTO property : properties) {

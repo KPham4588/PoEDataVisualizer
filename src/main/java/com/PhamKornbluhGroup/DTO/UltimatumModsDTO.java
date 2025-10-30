@@ -8,12 +8,6 @@ public class UltimatumModsDTO {
 
     public UltimatumModsDTO() {
     }
-    public UltimatumModsDTO(int dbId, int itemId, String type, long tier) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.type = type;
-        this.tier = tier;
-    }
 
     public int getDbId() {
         return dbId;
@@ -38,15 +32,5 @@ public class UltimatumModsDTO {
     }
     public void setTier(long tier) {
         this.tier = tier;
-    }
-
-    @Override
-    public String toString() {
-        return "UltimatumModsDTO{" +
-                "dbId=" + dbId +
-                ", itemId=" + itemId +
-                ", type='" + type + '\'' +
-                ", tier=" + tier +
-                '}';
     }
 }

@@ -16,15 +16,6 @@ public class ScourgedDTO {
 
     public ScourgedDTO() {
     }
-    public ScourgedDTO(int dbId, int itemId, long scourgedTier, long scourgedLevel, long scourgedProgress,
-                       long scourgedTotal) {
-        this.dbId = dbId;
-        this.itemId = itemId;
-        this.scourgedTier = scourgedTier;
-        this.scourgedLevel = scourgedLevel;
-        this.scourgedProgress = scourgedProgress;
-        this.scourgedTotal = scourgedTotal;
-    }
 
     public int getDbId() {
         return dbId;

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO">
 
-    <!--        OBJECT INFLUENCE IS MISSING -->
     <resultMap id="ItemDTOMap" type="com.PhamKornbluhGroup.DTO.ItemDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
 
@@ -60,7 +59,6 @@
         <result property="ilvl" column="ilvl"/>
         <result property="itemLevel" column="itemLevel"/>
         <result property="maxStackSize" column="maxStackSize"/>
-        <result property="parentItemId" column="parentItemId"/>
         <result property="publicStashChangeId" column="publicStashChangeId"/>
         <result property="stackSize" column="stackSize"/>
         <result property="talismanTier" column="talismanTier"/>
@@ -158,10 +156,6 @@
 
         <!--========== ArrayList of various objects ==========-->
 
-        <!-- Need to create getEntityByParentItemId -->
-        <collection property="socketedItems" column="dbId" javaType="ArrayList"
-                    ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
-                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityByParentItemId"/>
         <collection property="additionalProperties" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemPropertyDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO.getAdditionalPropertiesByItemId"/>
@@ -248,7 +242,6 @@
             ilvl,
             itemLevel,
             maxStackSize,
-            parentItemId,
             publicStashChangeId,
             stackSize,
             talismanTier,
@@ -353,14 +346,14 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO Item
-			    (publicStashChangeId, parentItemId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText,
+			    (publicStashChangeId, verified, w, h, icon, support, stackSize, maxStackSize, stackSizeText,
 			    league, id, shaper, searing, tangled, abyssJewel, delve, fractured, synthesised, name, typeLine, baseType,
 			    rarity, identified, itemLevel, ilvl, note, forum_note, lockedToCharacter, memoryItem, lockedToAccount, duplicated,
 			    split, corrupted, unmodifiable, unmodifiableExceptChaos, cisRaceReward, seaRaceReward, thRaceReward, talismanTier, secDescrText,
 			    veiled, descrText, flavourTextNote, prophecyText, isRelic, foilVariation, replica, foreseeing, ruthless,
 			    artFilename, x, y, inventoryId, socket, colour, elder, frameType)
 			VALUES
-			    (#{publicStashChangeId}, #{parentItemId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize},
+			    (#{publicStashChangeId}, #{verified}, #{w}, #{h}, #{icon}, #{support}, #{stackSize},
 			    #{maxStackSize}, #{stackSizeText}, #{league}, #{id}, #{shaper}, #{searing}, #{tangled}, #{abyssJewel},
 			    #{delve}, #{fractured}, #{synthesised}, #{name}, #{typeLine}, #{baseType}, #{rarity}, #{identified},
 			    #{itemLevel}, #{ilvl}, #{note}, #{forum_note}, #{lockedToCharacter}, #{memoryItem}, #{lockedToAccount}, #{duplicated},
@@ -422,7 +415,6 @@
             ilvl,
             itemLevel,
             maxStackSize,
-            parentItemId,
             publicStashChangeId,
             stackSize,
             talismanTier,
@@ -434,72 +426,6 @@
             frameType
         FROM Item
         WHERE Item.publicStashChangeId = #{dbId}
-		]]>
-    </select>
-
-    <select id="getEntityByParentItemId" resultMap="ItemDTOMap">
-        <![CDATA[
-        SELECT
-            dbId,
-            artFilename,
-            baseType,
-            colour,
-            flavourTextNote,
-            forum_note,
-            icon,
-            id,
-            inventoryId,
-            league,
-            name,
-            note,
-            prophecyText,
-            rarity,
-            secDescrText,
-            stackSizeText,
-            typeLine,
-            abyssJewel,
-            cisRaceReward,
-            corrupted,
-            delve,
-            duplicated,
-            elder,
-            foreseeing,
-            fractured,
-            identified,
-            isRelic,
-            lockedToAccount,
-            lockedToCharacter,
-            memoryItem,
-            replica,
-            ruthless,
-            seaRaceReward,
-            searing,
-            shaper,
-            split,
-            support,
-            synthesised,
-            tangled,
-            thRaceReward,
-            unmodifiable,
-            veiled,
-            verified,
-            unmodifiableExceptChaos,
-            foilVariation,
-            ilvl,
-            itemLevel,
-            maxStackSize,
-            parentItemId,
-            publicStashChangeId,
-            stackSize,
-            talismanTier,
-            h,
-            socket,
-            w,
-            x,
-            y,
-            frameType
-        FROM Item
-        WHERE Item.parentItemId = #{dbId}
 		]]>
     </select>
 

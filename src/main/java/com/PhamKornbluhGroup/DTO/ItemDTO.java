@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ItemDTO {
     private int dbId; // PK
-
     private String artFilename;         // Optional
     private String baseType;
     private String colour;              // Optional  // S, D, I, or G
@@ -58,7 +57,6 @@ public class ItemDTO {
     private int ilvl;
     private int itemLevel;              // Optional // used for items that always display their item level
     private int maxStackSize;           // Optional
-    private Integer parentItemId;
     private Integer publicStashChangeId;
     private int stackSize;             // Optional
     private int talismanTier;          // Optional
@@ -91,7 +89,6 @@ public class ItemDTO {
     private ArrayList<String> veiledMods;     // Optional  // random video identifier
 
     // Complex Object List
-    private ArrayList<ItemDTO> socketedItems;                  // Optional
     private ArrayList<ItemPropertyDTO> additionalProperties;   // Optional
     private ArrayList<ItemPropertyDTO> nextLevelRequirements;  // Optional
     private ArrayList<ItemPropertyDTO> notableProperties;      // Optional
@@ -498,14 +495,6 @@ public class ItemDTO {
         this.maxStackSize = maxStackSize;
     }
 
-    public int getParentItemId() {
-        return parentItemId;
-    }
-
-    public void setParentItemId(int parentItemId) {
-        this.parentItemId = parentItemId;
-    }
-
     public int getPublicStashChangeId() {
         return publicStashChangeId;
     }
@@ -714,14 +703,6 @@ public class ItemDTO {
         this.veiledMods = veiledMods;
     }
 
-    public ArrayList<ItemDTO> getSocketedItems() {
-        return socketedItems;
-    }
-
-    public void setSocketedItems(ArrayList<ItemDTO> socketedItems) {
-        this.socketedItems = socketedItems;
-    }
-
     public ArrayList<ItemPropertyDTO> getAdditionalProperties() {
         return additionalProperties;
     }
@@ -854,7 +835,6 @@ public class ItemDTO {
                 ", ilvl=" + ilvl +
                 ", itemLevel=" + itemLevel +
                 ", maxStackSize=" + maxStackSize +
-                ", parentItemId=" + parentItemId +
                 ", publicStashChangeId=" + publicStashChangeId +
                 ", stackSize=" + stackSize +
                 ", talismanTier=" + talismanTier +
@@ -881,7 +861,6 @@ public class ItemDTO {
                 ", scourgeMods=" + scourgeMods +
                 ", utilityMods=" + utilityMods +
                 ", veiledMods=" + veiledMods +
-                ", socketedItems=" + socketedItems +
                 ", additionalProperties=" + additionalProperties +
                 ", nextLevelRequirements=" + nextLevelRequirements +
                 ", notableProperties=" + notableProperties +
