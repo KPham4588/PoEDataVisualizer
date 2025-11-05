@@ -20,7 +20,7 @@ public class CrucibleDTODeserializer extends StdDeserializer<CrucibleDTO> {
     }
 
     @Override
-    public CrucibleDTO deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
+    public CrucibleDTO deserialize(JsonParser parser, DeserializationContext context) throws IOException {
         ObjectMapper mapper = (ObjectMapper) parser.getCodec();
         JsonNode root = mapper.readTree(parser);
 
