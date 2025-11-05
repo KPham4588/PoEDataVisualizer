@@ -5,5 +5,5 @@ import com.PhamKornbluhGroup.DTO.UltimatumModsDTO;
 import java.util.ArrayList;
 
 public interface IUltimatumModsDTO extends IBaseDAO<UltimatumModsDTO> {
-    ArrayList<UltimatumModsDTO> getEntityByItemId(int dbId);
+    UltimatumModsDTO getEntityByItemId(int dbId);
 }
