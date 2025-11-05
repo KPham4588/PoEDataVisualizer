@@ -25,4 +25,14 @@ public enum FactionId {
     public String toString() {
         return factionId;
     }
+
+    public static FactionId fromFactionId(String factionId){
+        for (FactionId v : FactionId.values()){
+            if (v.toString().equals(factionId)){
+                return v;
+            }
+        }
+        return null;
+    }
+
 }

@@ -20,4 +20,13 @@ public enum DisplayMode {
     public String toString() {
         return information;
     }
+
+    public static DisplayMode fromDisplayMode(String displayMode){
+        for (DisplayMode v : DisplayMode.values()){
+            if (v.toString().equals(displayMode)){
+                return v;
+            }
+        }
+        return null;
+    }
 }

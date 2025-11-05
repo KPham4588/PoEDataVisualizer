@@ -17,31 +17,22 @@ public class FrameTypeTypeHandler<E extends FrameType> extends EnumTypeHandler<F
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, FrameType parameter, JdbcType jdbcType) throws SQLException {
-        super.setNonNullParameter(ps, i, parameter, jdbcType);
+        ps.setString(i, parameter.toString());
     }
 
     @Override
     public FrameType getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String FrameTypeAsString = rs.getString(columnName);
-        FrameType frameType = this.stringToEnum(FrameTypeAsString);
-
-        return frameType;
+        return FrameType.fromFrameType(rs.getString(columnName));
     }
 
     @Override
     public FrameType getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String FrameTypeAsString = rs.getString(columnIndex);
-        FrameType frameType = this.stringToEnum(FrameTypeAsString);
-
-        return frameType;
+        return FrameType.fromFrameType(rs.getString(columnIndex));
     }
 
     @Override
     public FrameType getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String FrameTypeAsString = cs.getString(columnIndex);
-        FrameType frameType = this.stringToEnum(FrameTypeAsString);
-
-        return frameType;
+        return FrameType.fromFrameType(cs.getString(columnIndex));
     }
 
     private FrameType stringToEnum(String string) throws SQLException {

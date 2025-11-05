@@ -20,13 +20,17 @@ public enum FrameType {
         this.frameType = frameType;
     }
 
-    public String getFrameType() {
-        return frameType;
-    }
-
-
     @Override
     public String toString() {
         return frameType;
+    }
+
+    public static FrameType fromFrameType(String frameType){
+        for (FrameType v : FrameType.values()){
+            if (v.toString().equals(frameType)){
+                return v;
+            }
+        }
+        return null;
     }
 }

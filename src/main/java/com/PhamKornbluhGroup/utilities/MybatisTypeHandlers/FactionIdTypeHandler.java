@@ -17,31 +17,22 @@ public class FactionIdTypeHandler<E extends FactionId> extends EnumTypeHandler<F
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, FactionId parameter, JdbcType jdbcType) throws SQLException {
-        super.setNonNullParameter(ps, i, parameter, jdbcType);
+        ps.setString(i, parameter.toString());
     }
 
     @Override
     public FactionId getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String factionIdAsString = rs.getString(columnName);
-        FactionId factionId = this.stringToEnum(factionIdAsString);
-
-        return factionId;
+        return FactionId.fromFactionId(rs.getString(columnName));
     }
 
     @Override
     public FactionId getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String factionIdAsString = rs.getString(columnIndex);
-        FactionId factionId = this.stringToEnum(factionIdAsString);
-
-        return factionId;
+        return FactionId.fromFactionId(rs.getString(columnIndex));
     }
 
     @Override
     public FactionId getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String factionIdAsString = cs.getString(columnIndex);
-        FactionId factionId = this.stringToEnum(factionIdAsString);
-
-        return factionId;
+        return FactionId.fromFactionId(cs.getString(columnIndex));
     }
 
     private FactionId stringToEnum(String string) throws SQLException {

@@ -17,31 +17,22 @@ public class DisplayModeTypeHandler<E extends DisplayMode> extends EnumTypeHandl
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, DisplayMode parameter, JdbcType jdbcType) throws SQLException {
-        super.setNonNullParameter(ps, i, parameter, jdbcType);
+        ps.setString(i, parameter.toString());
     }
 
     @Override
     public DisplayMode getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String DisplayModeAsString = rs.getString(columnName);
-        DisplayMode displayMode = this.stringToEnum(DisplayModeAsString);
-
-        return displayMode;
+        return DisplayMode.fromDisplayMode(rs.getString(columnName));
     }
 
     @Override
     public DisplayMode getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String DisplayModeAsString = rs.getString(columnIndex);
-        DisplayMode displayMode = this.stringToEnum(DisplayModeAsString);
-
-        return displayMode;
+        return DisplayMode.fromDisplayMode(rs.getString(columnIndex));
     }
 
     @Override
     public DisplayMode getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String DisplayModeAsString = cs.getString(columnIndex);
-        DisplayMode displayMode = this.stringToEnum(DisplayModeAsString);
-
-        return displayMode;
+        return DisplayMode.fromDisplayMode(cs.getString(columnIndex));
     }
 
     private DisplayMode stringToEnum(String string) throws SQLException {
