@@ -72,7 +72,8 @@
         <!--========== enum ==========-->
         <result property="frameType" column="frameType"
                 javaType="com.PhamKornbluhGroup.DTO.FrameType"
-                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+                typeHandler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FrameTypeTypeHandler"
+        />
 
         <!--========== Objects ==========-->
         <association property="crucible"
@@ -388,7 +389,7 @@
 			    #{split}, #{corrupted}, #{unmodifiable}, #{unmodifiableExceptChaos}, #{cisRaceReward}, #{seaRaceReward}, #{thRaceReward}, #{talismanTier},
 			    #{secDescrText}, #{veiled}, #{descrText}, #{flavourTextNote}, #{prophecyText}, #{isRelic}, #{foilVariation},
 			    #{replica}, #{foreseeing}, #{ruthless}, #{artFilename}, #{x}, #{y}, #{inventoryId}, #{socket}, #{colour},
-			    #{elder}, #{frameType, typeHandler=org.apache.ibatis.type.EnumTypeHandler})
+			    #{elder}, #{frameType, javaType=com.PhamKornbluhGroup.DTO.FrameType, typeHandler=com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FrameTypeTypeHandler})
 		]]>
     </insert>
 

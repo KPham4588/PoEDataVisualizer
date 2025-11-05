@@ -26,7 +26,7 @@
         <result property="suffix" column="suffix"/>
         <result property="icon" column="icon"/>
         <result property="propertyType" column="propertyType"/>
-        <result property="displayMode" column="displayMode" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
+        <result property="displayMode" column="displayMode" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" typeHandler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.DisplayModeTypeHandler"/>
         <collection property="values" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyValuesDTO.getEntityByItemPropertyId"/>
@@ -178,7 +178,7 @@
 			        ELSE #{hybridId}
 			    END,
 			    #{name},
-			    #{displayMode},
+			    #{displayMode, javaType=com.PhamKornbluhGroup.DTO.DisplayMode, typeHandler=com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.DisplayModeTypeHandler},
 			    #{progress},
 			    #{type},
 			    #{suffix},
