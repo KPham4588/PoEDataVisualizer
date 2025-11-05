@@ -9,6 +9,10 @@
     <typeHandlers>
         <typeHandler javaType="com.PhamKornbluhGroup.DTO.FactionId"
                      handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FrameType"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FrameTypeTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.DisplayMode"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.DisplayModeTypeHandler" />
     </typeHandlers>
 
     <environments default="development">
