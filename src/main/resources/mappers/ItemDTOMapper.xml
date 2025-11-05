@@ -70,89 +70,117 @@
         <result property="y" column="y"/>
 
         <!--========== enum ==========-->
-        <result property="frameType" column="frameType" javaType="com.PhamKornbluhGroup.DTO.FrameType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="frameType" column="frameType"
+                javaType="com.PhamKornbluhGroup.DTO.FrameType"
+                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 
         <!--========== Objects ==========-->
         <association property="crucible"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.CrucibleDTO"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.getEntityByItemId"
-             autoMapping="true"/>
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.CrucibleDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.getEntityByItemId"/>
         <association property="extended"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.ExtendedDTO"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.getEntityByItemId"
-             autoMapping="true"/>
-
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.ExtendedDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IExtendedDTO.getEntityByItemId"/>
         <association property="hybrid"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.HybridDTO"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.getEntityByItemId"
-             autoMapping="true"/>
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.HybridDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO.getEntityByItemId"/>
         <association property="incubatedItem"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.IncubatedItemDTO"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.getEntityByItemId"
-             autoMapping="true"/>
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.IncubatedItemDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IIncubatedItemDTO.getEntityByItemId"/>
         <association property="influences"
                      column="dbId"
                      javaType="com.PhamKornbluhGroup.DTO.InfluencesDTO"
-                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IInfluencesDTO.getEntityByItemId"
-                     autoMapping="true"/>
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IInfluencesDTO.getEntityByItemId"/>
         <association property="scourged"
-             column="dbId"
-             javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
-             select="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.getEntityByItemId"
-             autoMapping="true"/>
+                     column="dbId"
+                     javaType="com.PhamKornbluhGroup.DTO.ScourgedDTO"
+                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO.getEntityByItemId"
+                     autoMapping="true"/>
 
         <!--========== ArrayList<String> ==========-->
-        <collection property="cosmeticMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getCosmeticModsByExtendedId">
+        <collection property="cosmeticMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getCosmeticModsByExtendedId">
             <result property="cosmeticMod" column="cosmeticMod"/>
         </collection>
-        <collection property="craftedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getCraftedModsByExtendedId">
+        <collection property="craftedMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getCraftedModsByExtendedId">
             <result property="craftedMod" column="craftedMod"/>
         </collection>
-        <collection property="crucibleMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getCrucibleModsByExtendedId">
+        <collection property="crucibleMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getCrucibleModsByExtendedId">
             <result property="crucibleMod" column="crucibleMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
-        <collection property="enchantMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getEnchantModsByExtendedId">
+        <collection property="enchantMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
-        <collection property="explicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getExplicitModsByExtendedId">
+        <collection property="explicitMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getExplicitModsByExtendedId">
             <result property="explicitMod" column="explicitMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
-        <collection property="flavourText" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getFlavourTextByExtendedId">
+        <collection property="flavourText"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getFlavourTextByExtendedId">
             <result property="flavourText" column="flavourText"/>
         </collection>
-        <collection property="fracturedMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getFracturedModsByExtendedId">
+        <collection property="fracturedMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getFracturedModsByExtendedId">
             <result property="fracturedMod" column="fracturedMod"/>
         </collection>
-        <collection property="implicitMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getImplicitModsByExtendedId">
+        <collection property="implicitMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getImplicitModsByExtendedId">
             <result property="implicitMod" column="implicitMod"/>
         </collection>
-        <collection property="scourgeMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getScourgeModsByExtendedId">
+        <collection property="scourgeMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getScourgeModsByExtendedId">
             <result property="scourgeMod" column="scourgeMod"/>
         </collection>
-        <collection property="utilityMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getUtilityModsByExtendedId">
+        <collection property="utilityMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getUtilityModsByExtendedId">
             <result property="utilityMod" column="utilityMod"/>
         </collection>
-        <collection property="veiledMods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
-        select="getVeiledModsByExtendedId">
+        <collection property="veiledMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getVeiledModsByExtendedId">
             <result property="veiledMod" column="veiledMod"/>
         </collection>
-
 
         <!--========== ArrayList of various objects ==========-->
 
@@ -183,12 +211,12 @@
         <collection property="flavourTextParsed" column="dbId" javaType="ArrayList" ofType="java.lang.Object">
             <result property="flavourTextParsed" column="flavourTextParsed"/>
         </collection>
-        <collection property="rewards" column="dbId" javaType="ArrayList"
-                    ofType="com.PhamKornbluhGroup.DTO.RewardsDTO"
-                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
         <collection property="ultimatumMods" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.UltimatumModsDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO.getEntityByItemId"/>
+        <collection property="rewards" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.RewardsDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
     </resultMap>
 
     <!-- UNTESTED -->

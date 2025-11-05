@@ -33,4 +33,14 @@ public class UltimatumModsDTO {
     public void setTier(long tier) {
         this.tier = tier;
     }
+
+    @Override
+    public String toString() {
+        return "UltimatumModsDTO{" +
+                "dbId=" + dbId +
+                ", itemId=" + itemId +
+                ", type='" + type + '\'' +
+                ", tier=" + tier +
+                '}';
+    }
 }
