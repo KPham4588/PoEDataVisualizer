@@ -76,10 +76,6 @@
         />
 
         <!--========== Objects ==========-->
-        <association property="crucible"
-                     column="dbId"
-                     javaType="com.PhamKornbluhGroup.DTO.CrucibleDTO"
-                     select="com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleDTO.getEntityByItemId"/>
         <association property="extended"
                      column="dbId"
                      javaType="com.PhamKornbluhGroup.DTO.ExtendedDTO"
@@ -116,13 +112,6 @@
                     ofType="java.lang.String"
                     select="getCraftedModsByExtendedId">
             <result property="craftedMod" column="craftedMod"/>
-        </collection>
-        <collection property="crucibleMods"
-                    column="dbId"
-                    javaType="ArrayList"
-                    ofType="java.lang.String"
-                    select="getCrucibleModsByExtendedId">
-            <result property="crucibleMod" column="crucibleMod"/>
         </collection>
         <!-- Having collection name and property name be the same might cause an issue. -->
         <collection property="enchantMods"
@@ -300,14 +289,6 @@
 		]]>
     </select>
 
-    <select id="getCrucibleModsByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT CrucibleMods.crucibleMod
-        FROM CrucibleMods
-        WHERE CrucibleMods.itemId = #{dbId}
-		]]>
-    </select>
-
     <select id="getEnchantModsByExtendedId" resultType="java.lang.String">
         <![CDATA[
         SELECT EnchantMods.enchantMod
@@ -477,14 +458,6 @@
         INSERT INTO CraftedMods (
         itemId,
         craftedMod)
-        VALUES
-        (#{arg0}, #{arg1})
-    </insert>
-
-    <insert id="insertCrucibleMod">
-        INSERT INTO CosmeticMods (
-        itemId,
-        crucibleMod)
         VALUES
         (#{arg0}, #{arg1})
     </insert>

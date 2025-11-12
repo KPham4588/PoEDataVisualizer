@@ -1,7 +1,6 @@
 package com.PhamKornbluhGroup.DAO;
 
 import com.PhamKornbluhGroup.DTO.InfluencesDTO;
-import com.PhamKornbluhGroup.mybatismysqlimpl.ICrucibleNodeDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IInfluencesDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 import org.apache.ibatis.session.SqlSession;
@@ -48,19 +47,10 @@ public class InfluencesDAO {
         InfluencesDAOLogger.trace("Attempt finished.");
     }
 
-    public void updateCrucibleNode(InfluencesDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
-        IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
-        InfluencesDAOLogger.trace("Attempting to update CrucibleNodeDTO entry.");
-        mapper.updateEntity(updateObject);
-        session.commit();
-        InfluencesDAOLogger.trace("Attempt finished.");
-    }
-
     public void deleteInfluencesById(int id) {
         SqlSession session = SessionPool.getSession();
-        ICrucibleNodeDTO mapper = session.getMapper(ICrucibleNodeDTO.class);
-        InfluencesDAOLogger.trace("Attempting to delete CrucibleNodeDTO object with ID " + id);
+        IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
+        InfluencesDAOLogger.trace("Attempting to delete InfluenceDTO object with ID " + id);
         mapper.removeEntity(id);
         session.commit();
         InfluencesDAOLogger.trace("Attempt finished.");

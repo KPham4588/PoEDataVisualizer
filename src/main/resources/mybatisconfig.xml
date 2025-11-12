@@ -30,8 +30,6 @@
 
 
     <mappers>
-        <mapper resource="mappers/CrucibleDTOMapper.xml"/>
-        <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
         <mapper resource="mappers/FactionDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>

@@ -57,7 +57,6 @@ public class CopyOfTestUtils {
     }
 
     public static ItemDTO createMockItem() {
-        CrucibleDTO crucible = createMockCrucible();
         ExtendedDTO extended = createMockExtended();
         FrameType frameType = FrameType.ONE;
         HybridDTO hybrid = createMockHybrid();
@@ -76,10 +75,6 @@ public class CopyOfTestUtils {
         ArrayList<String> craftedMods = new ArrayList<>();
         cosmeticMods.add(0, "Heya");
         cosmeticMods.add(1, "It's a crafted mod");
-
-        ArrayList<String> crucibleMods = new ArrayList<>();
-        cosmeticMods.add(0, "Heya");
-        cosmeticMods.add(1, "It's a crucible mod");
 
         ArrayList<String> descrText = new ArrayList<>();
         descrText.add(0, "Heya");
@@ -203,7 +198,6 @@ public class CopyOfTestUtils {
         item.setW(1);
         item.setX(1);
         item.setY(1);
-        item.setCrucible(crucible);
         item.setExtended(extended);
         item.setFrameType(frameType);
         item.setHybrid(hybrid);
@@ -212,7 +206,6 @@ public class CopyOfTestUtils {
         item.setScourged(scourged);
         item.setCosmeticMods(cosmeticMods);
         item.setCraftedMods(craftedMods);
-        item.setCrucibleMods(crucibleMods);
         item.setEnchantMods(enchantMods);
         item.setExplicitMods(explicitMods);
         item.setFlavourText(flavourText);
@@ -494,44 +487,6 @@ public class CopyOfTestUtils {
         scourged.setScourgedTotal(1L);
 
         return scourged;
-    }
-
-    public static CrucibleDTO createMockCrucible() {
-        ArrayList<CrucibleNodeDTO> nodes = new ArrayList<>();
-        nodes.add(createMockCrucibleNode());
-
-        CrucibleDTO crucible = new CrucibleDTO();
-        crucible.setDbId(1);
-        crucible.setItemId(1);
-        crucible.setLayout("String layout");
-        crucible.setNodes(nodes);
-
-        return crucible;
-    }
-
-    public static CrucibleNodeDTO createMockCrucibleNode() {
-        ArrayList<String> out = new ArrayList<>();
-        out.add("hey");
-
-        CrucibleNodeDTO node = new CrucibleNodeDTO();
-        node.setDbId(1);
-        node.setCrucibleId(1);
-        node.setSkill(1L);
-        node.setTier(1L);
-        node.setIcon("icon");
-        node.setAllocated(false);
-        node.setNotable(false);
-        node.setReward(false);
-        node.setReminderText("render");
-        node.setOrbit(0L);
-        node.setOrbitIndex(0L);
-        node.setCrucibleNodeIndex("string crucibleNodeIndex");
-
-        node.setOut(out);
-        node.setIn(out);
-        node.setStats(out);
-
-        return node;
     }
 
     public static HybridDTO createMockHybrid() {

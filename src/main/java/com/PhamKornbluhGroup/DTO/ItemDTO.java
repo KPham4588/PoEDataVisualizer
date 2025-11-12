@@ -1,6 +1,5 @@
 package com.PhamKornbluhGroup.DTO;
 
-import com.PhamKornbluhGroup.jsonParsing.CrucibleDTODeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -66,8 +65,6 @@ public class ItemDTO {
     private long x;                    // Optional
     private long y;                    // Optional
 
-    @JsonDeserialize(using = CrucibleDTODeserializer.class)
-    private CrucibleDTO crucible;            // Optional
     private ExtendedDTO extended;            // Optional   // only present in the Public Stash API
     private FrameType frameType;             // Optional
     private HybridDTO hybrid;                // Optional
@@ -78,7 +75,6 @@ public class ItemDTO {
     // Sorted by type (and alphabetical)
     private ArrayList<String> cosmeticMods;   // Optional
     private ArrayList<String> craftedMods;    // Optional
-    private ArrayList<String> crucibleMods;   // Optional  // only allocated mods are included
     private ArrayList<String> enchantMods;    // Optional
     private ArrayList<String> explicitMods;   // Optional
     private ArrayList<String> flavourText;    // Optional
@@ -559,14 +555,6 @@ public class ItemDTO {
         this.y = y;
     }
 
-    public CrucibleDTO getCrucible() {
-        return crucible;
-    }
-
-    public void setCrucible(CrucibleDTO crucible) {
-        this.crucible = crucible;
-    }
-
     public ExtendedDTO getExtended() {
         return extended;
     }
@@ -629,14 +617,6 @@ public class ItemDTO {
 
     public void setCraftedMods(ArrayList<String> craftedMods) {
         this.craftedMods = craftedMods;
-    }
-
-    public ArrayList<String> getCrucibleMods() {
-        return crucibleMods;
-    }
-
-    public void setCrucibleMods(ArrayList<String> crucibleMods) {
-        this.crucibleMods = crucibleMods;
     }
 
     public ArrayList<String> getEnchantMods() {
@@ -843,7 +823,6 @@ public class ItemDTO {
                 ", w=" + w +
                 ", x=" + x +
                 ", y=" + y +
-                ", crucible=" + crucible +
                 ", extended=" + extended +
                 ", frameType=" + frameType +
                 ", hybrid=" + hybrid +
@@ -852,7 +831,6 @@ public class ItemDTO {
                 ", scourged=" + scourged +
                 ", cosmeticMods=" + cosmeticMods +
                 ", craftedMods=" + craftedMods +
-                ", crucibleMods=" + crucibleMods +
                 ", enchantMods=" + enchantMods +
                 ", explicitMods=" + explicitMods +
                 ", flavourText=" + flavourText +

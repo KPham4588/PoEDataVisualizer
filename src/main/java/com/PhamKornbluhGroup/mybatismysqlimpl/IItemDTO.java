@@ -5,7 +5,6 @@ import com.PhamKornbluhGroup.DTO.ItemDTO;
 public interface IItemDTO extends IBaseDAO<ItemDTO> {
     void insertCosmeticMod(int itemId, String cosmeticMod);
     void insertCraftedMod(int itemId, String craftedMod);
-    void insertCrucibleMod(int itemId, String crucibleMod);
     void insertEnchantMod(int itemId, String enchantMod);
     void insertExplicitMod(int itemId, String explicitMod);
     void insertFlavourText(int itemId, String flavourText);

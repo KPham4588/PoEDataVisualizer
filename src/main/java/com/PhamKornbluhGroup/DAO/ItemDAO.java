@@ -56,16 +56,6 @@ public class ItemDAO {
         session.commit();
     }
 
-    private void insertCrucibleMods(int itemId, ArrayList<String> crucibleMods) {
-        SqlSession session = SessionPool.getSession();
-        IItemDTO mapper = session.getMapper(IItemDTO.class);
-
-        for (String mod : crucibleMods) {
-            mapper.insertCrucibleMod(itemId, mod);
-        }
-        session.commit();
-    }
-
     private void insertEnchantMods(int itemId, ArrayList<String> enchantMods) {
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
@@ -157,7 +147,6 @@ public class ItemDAO {
 
         insertCosmeticMods(item.getDbId(), item.getCosmeticMods());
         insertCraftedMods(item.getDbId(), item.getCraftedMods());
-        insertCrucibleMods(item.getDbId(), item.getCrucibleMods());
         insertEnchantMods(item.getDbId(), item.getEnchantMods());
         insertExplicitMods(item.getDbId(), item.getExplicitMods());
         insertFlavourText(item.getDbId(), item.getFlavourText());
@@ -244,11 +233,6 @@ public class ItemDAO {
         scourged.setItemId(item.getDbId());
         ScourgedDAO scourgedDAO = new ScourgedDAO();
         scourgedDAO.insertScourged(scourged);
-
-        CrucibleDTO crucible = item.getCrucible();
-        crucible.setItemId(item.getDbId());
-        CrucibleDAO crucibleDAO = new CrucibleDAO();
-        crucibleDAO.insertCrucible(crucible);
 
         HybridDTO hybrid = item.getHybrid();
         hybrid.setItemId(item.getDbId());

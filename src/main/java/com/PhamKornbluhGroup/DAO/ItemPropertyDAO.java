@@ -41,7 +41,7 @@ public class ItemPropertyDAO {
         }
         insertObject.setValues(values);
 
-        System.out.println("Attempting to insert crucible nodes.");
+        System.out.println("Attempting to insert item property values.");
         ItemPropertyValuesDAO insertValues = new ItemPropertyValuesDAO();
         insertValues.insertItemPropertyValues(values);
 
