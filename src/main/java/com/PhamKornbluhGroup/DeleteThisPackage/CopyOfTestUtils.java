@@ -572,7 +572,7 @@ public class CopyOfTestUtils {
         itemProperty.setType(1);
         itemProperty.setSuffix("suffix");
         itemProperty.setIcon("icon");
-        itemProperty.setPropertyType("type");
+        itemProperty.setPropertyType("Hybrid");
 
         return itemProperty;
     }

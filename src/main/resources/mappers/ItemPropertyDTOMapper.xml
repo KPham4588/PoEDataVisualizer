@@ -167,7 +167,7 @@
         <![CDATA[
 			INSERT INTO ItemProperty
 			    (itemId, hybridId, name, displayMode,
-			    progress, type, suffix, icon)
+			    progress, type, suffix, icon, propertyType)
 			SELECT
 			    CASE
 			        WHEN #{itemId} <= 0 THEN NULL
@@ -182,7 +182,8 @@
 			    #{progress},
 			    #{type},
 			    #{suffix},
-			    #{icon}
+			    #{icon},
+			    #{propertyType}
 		]]>
     </insert>
 
