@@ -195,12 +195,6 @@
         <collection property="logbookMods" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.LogbookModsDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.ILogbookModsDTO.getEntityByItemId"/>
-        <!-- Having collection name and property name be the same might cause an issue. -->
-        <!-- this is mapped to ArrayList<Object> flavourTextParsed
-        Documentation never specifies what type of object this is. This might cause problems -->
-        <collection property="flavourTextParsed" column="dbId" javaType="ArrayList" ofType="java.lang.Object">
-            <result property="flavourTextParsed" column="flavourTextParsed"/>
-        </collection>
         <collection property="ultimatumMods" column="dbId" javaType="ArrayList"
                     ofType="com.PhamKornbluhGroup.DTO.UltimatumModsDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO.getEntityByItemId"/>

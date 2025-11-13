@@ -92,7 +92,6 @@ public class ItemDTO {
     private ArrayList<ItemPropertyDTO> requirements;           // Optional
     private ArrayList<ItemSocketDTO> sockets;                  // Optional
     private ArrayList<LogbookModsDTO> logbookMods;             // Optional
-    private ArrayList<Object> flavourTextParsed;               // Optional //p Can be either an array of Strings or Objects
     private ArrayList<RewardsDTO> rewards;                     // Optional
     private ArrayList<UltimatumModsDTO> ultimatumMods;         // Optional
 
@@ -739,14 +738,6 @@ public class ItemDTO {
         this.logbookMods = logbookMods;
     }
 
-    public ArrayList<Object> getFlavourTextParsed() {
-        return flavourTextParsed;
-    }
-
-    public void setFlavourTextParsed(ArrayList<Object> flavourTextParsed) {
-        this.flavourTextParsed = flavourTextParsed;
-    }
-
     public ArrayList<RewardsDTO> getRewards() {
         return rewards;
     }
@@ -846,7 +837,6 @@ public class ItemDTO {
                 ", requirements=" + requirements +
                 ", sockets=" + sockets +
                 ", logbookMods=" + logbookMods +
-                ", flavourTextParsed=" + flavourTextParsed +
                 ", rewards=" + rewards +
                 ", ultimatumMods=" + ultimatumMods +
                 '}';

@@ -133,9 +133,6 @@ public class CopyOfTestUtils {
         ArrayList<LogbookModsDTO> logbookMods = new ArrayList<>();
         logbookMods.add(createMockLogbookMods());
 
-        ArrayList<Object> flavourTextParsed = new ArrayList<>();
-        flavourTextParsed.add(createMockFlavourTextParsed());
-
         ArrayList<RewardsDTO> rewards = new ArrayList<>();
         rewards.add(createMockRewards());
 
@@ -221,19 +218,11 @@ public class CopyOfTestUtils {
         item.setRequirements(requirements);
         item.setSockets(sockets);
         item.setLogbookMods(logbookMods);
-        item.setFlavourTextParsed(flavourTextParsed);
         item.setRewards(rewards);
         item.setUltimatumMods(ultimatumMods);
         item.setMemoryItem(true);
 
         return item;
-    }
-
-    public static Object createMockFlavourTextParsed() {
-        var flavourTextParsed = new Object() {
-            public String text = "yay";
-        };
-        return flavourTextParsed;
     }
 
     public static ItemSocketDTO createMockItemSocket() {

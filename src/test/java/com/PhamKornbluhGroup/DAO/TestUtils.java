@@ -218,7 +218,6 @@ class TestUtils {
         item.setRequirements(requirements);
         item.setSockets(sockets);
         item.setLogbookMods(logbookMods);
-        item.setFlavourTextParsed(flavourTextParsed);
         item.setRewards(rewards);
         item.setUltimatumMods(ultimatumMods);
 
