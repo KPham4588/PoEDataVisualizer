@@ -73,8 +73,8 @@ public class CopyOfTestUtils {
         cosmeticMods.add(1, "Foil");
 
         ArrayList<String> craftedMods = new ArrayList<>();
-        cosmeticMods.add(0, "Heya");
-        cosmeticMods.add(1, "It's a crafted mod");
+        craftedMods.add(0, "Heya");
+        craftedMods.add(1, "It's a crafted mod");
 
         ArrayList<String> descrText = new ArrayList<>();
         descrText.add(0, "Heya");

@@ -37,6 +37,14 @@ public class HybridDAO {
         var explicitMods = insertObject.getExplicitMods();
         insertExplicitMods(insertObject.getDbId(), explicitMods);
 
+        var properties = insertObject.getProperties();
+        for (var property : properties) {
+            property.setHybridId(insertObject.getDbId());
+        }
+
+        ItemPropertyDAO itemProperty = new ItemPropertyDAO();
+        itemProperty.insertItemProperties(properties);
+
         System.out.println("Attempt finished.");
     }
 

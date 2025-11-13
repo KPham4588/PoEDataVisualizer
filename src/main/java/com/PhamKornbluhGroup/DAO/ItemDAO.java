@@ -170,35 +170,35 @@ public class ItemDAO {
             property.setItemId(item.getDbId());
         }
         ItemPropertyDAO itemPropertyDAO = new ItemPropertyDAO();
-        itemPropertyDAO.insertItemProperty(properties);
+        itemPropertyDAO.insertItemProperties(properties);
 
         // notable properties
         ArrayList<ItemPropertyDTO> notableProperties = item.getNotableProperties();
         for (ItemPropertyDTO notableProperty : notableProperties) {
             notableProperty.setItemId(item.getDbId());
         }
-        itemPropertyDAO.insertItemProperty(notableProperties);
+        itemPropertyDAO.insertItemProperties(notableProperties);
 
         // item requirements
         ArrayList<ItemPropertyDTO> requirements = item.getRequirements();
         for (ItemPropertyDTO requirement : requirements) {
             requirement.setItemId(item.getDbId());
         }
-        itemPropertyDAO.insertItemProperty(requirements);
+        itemPropertyDAO.insertItemProperties(requirements);
 
         // additional properties
         ArrayList<ItemPropertyDTO> additionalProperties = item.getAdditionalProperties();
         for (ItemPropertyDTO additionalProperty : additionalProperties) {
             additionalProperty.setItemId(item.getDbId());
         }
-        itemPropertyDAO.insertItemProperty(additionalProperties);
+        itemPropertyDAO.insertItemProperties(additionalProperties);
 
         //next level requirements
         ArrayList<ItemPropertyDTO> nextLevelRequirements = item.getNextLevelRequirements();
         for (ItemPropertyDTO nextlevelRequirement : nextLevelRequirements) {
             nextlevelRequirement.setItemId(item.getDbId());
         }
-        itemPropertyDAO.insertItemProperty(nextLevelRequirements);
+        itemPropertyDAO.insertItemProperties(nextLevelRequirements);
 
         //rewards
         ArrayList<RewardsDTO> rewards = item.getRewards();

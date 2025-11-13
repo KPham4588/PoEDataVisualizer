@@ -14,20 +14,6 @@ public class ItemPropertyDAO {
 
     private final static Logger ItemPropertyDAOLogger = LogManager.getLogger(ItemPropertyDAO.class);
 
-    public ItemPropertyDTO getItemPropertyById(int id) {
-        SqlSession session = SessionPool.getSession();
-        IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
-        System.out.println("Attempting to get ItemPropertyDTO object with ID " + id);
-        ItemPropertyDTO newNode = mapper.getEntityById(id);
-        if (newNode != null) {
-            ItemPropertyDAOLogger.trace("Success!");
-        }
-        else {
-            ItemPropertyDAOLogger.trace("Failure!");
-        }
-        return newNode;
-    }
-
     public void insertItemProperty(ItemPropertyDTO insertObject) {
         SqlSession session = SessionPool.getSession();
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
@@ -48,32 +34,11 @@ public class ItemPropertyDAO {
         System.out.println("Attempt finished.");
     }
 
-    public void insertItemProperty(ArrayList<ItemPropertyDTO> insertObjects) {
-        SqlSession session = SessionPool.getSession();
-        IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
-        System.out.println("Attempting to insert ItemPropertyDTO object in list.");
+    public void insertItemProperties(ArrayList<ItemPropertyDTO> insertObjects) {
+        System.out.println("Attempting to insert ItemPropertyDTO objects in list.");
         for (ItemPropertyDTO node : insertObjects) {
-            mapper.saveEntity(node);
+            insertItemProperty(node);
         }
-        session.commit();
-        System.out.println("Attempt finished.");
-    }
-
-    public void updateItemProperty(ItemPropertyDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
-        IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
-        System.out.println("Attempting to update ItemPropertyDTO entry.");
-        mapper.updateEntity(updateObject);
-        session.commit();
-        System.out.println("Attempt finished.");
-    }
-
-    public void deleteItemPropertyById(int id) {
-        SqlSession session = SessionPool.getSession();
-        IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
-        System.out.println("Attempting to delete ItemPropertyDTO object with ID " + id);
-        mapper.removeEntity(id);
-        session.commit();
         System.out.println("Attempt finished.");
     }
 }
