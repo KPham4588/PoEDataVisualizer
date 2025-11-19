@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.ILogbookModsDTO">
-<!--UNTESTED-->
     <resultMap id="LogbookModsDTOMap" type="com.PhamKornbluhGroup.DTO.LogbookModsDTO" autoMapping="false">
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
         <result property="areaName" column="areaName"/>
         <association property="faction" column="dbId" javaType="com.PhamKornbluhGroup.DTO.FactionDTO"
                      select="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO.getEntityByLogbookModsId"/>
-        <collection property="mods" column="dbId" javaType="ArrayList" ofType="java.lang.String">
+        <collection property="mods" column="dbId" javaType="ArrayList" ofType="java.lang.String"
+        select="getModsByLogbookModsId">
             <result property="mod" column="mod"/>
         </collection>
     </resultMap>
@@ -61,4 +61,20 @@
 			WHERE dbId = #{dbId}
 		]]>
     </delete>
+
+    <insert id="insertMod">
+        INSERT INTO ModOfLogbookMods (
+        logbookModsId,
+        `mod`)
+        VALUES
+        (#{arg0}, #{arg1})
+    </insert>
+
+    <select id="getModsByLogbookModsId" resultType="java.lang.String">
+        <![CDATA[
+        SELECT ModOfLogbookMods.`mod`
+        FROM ModOfLogbookMods
+        WHERE ModOfLogbookMods.logbookModsId = #{dbId}
+		]]>
+    </select>
 </mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO">
@@ -9,7 +9,9 @@
         <id property="dbId" column="dbId"/>
         <result property="itemId" column="itemId"/>
         <result property="label" column="label"/>
-        <collection property="rewards" javaType="HashMap" ofType="java.lang.String"/>
+        <collection property="rewards" column="dbId" javaType="ArrayList"
+                    ofType="com.PhamKornbluhGroup.DTO.RewardsCollectionDTO"
+                    select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsCollectionDTO.getEntityByRewardsId"/>
     </resultMap>
 
     <select id="getEntityById" resultMap="RewardsDTOMap">
@@ -17,13 +19,8 @@
         SELECT
             Rewards.dbId,
             Rewards.itemId,
-            Rewards.category,
-            Rewards.prefixes,
-            Rewards.suffixes,
-            Subcategories.subcategory
+            Rewards.label
         FROM Rewards
-        INNER JOIN Subcategories
-        ON Subcategories.RewardsId = Rewards.dbId
         WHERE Rewards.dbId = #{dbId}
 		]]>
     </select>
@@ -33,53 +30,14 @@
         SELECT
             Rewards.dbId,
             Rewards.itemId,
-            Rewards.category,
-            Rewards.prefixes,
-            Rewards.suffixes,
-            Subcategories.subcategory
+            Rewards.label
         FROM Rewards
-        INNER JOIN Subcategories
-        ON Subcategories.RewardsId = Rewards.dbId
         WHERE Rewards.itemId = #{dbId}
 		]]>
     </select>
 
-
-
-<!--    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">-->
-<!--        <![CDATA[-->
-<!--			INSERT INTO Rewards-->
-<!--			    (itemId, layout, x, x, x, x, x)-->
-<!--			VALUES (#{itemId}, #{layout})-->
-<!--		]]>-->
-<!--    </insert>-->
-
-    <!--Doesn't Work-->
-    <insert id="saveEntity" parameterType="java.util.List">
-        INSERT INTO Rewards (
-            (id, itemId, category, prefixes, suffixes, game_type)
-        VALUES
-        <foreach collection="list" item="element" index="index" open="(" separator="),("  close=")">
-            #{element}
-        </foreach>
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        INSERT INTO Rewards (itemId, label)
+        VALUES (#{itemId}, #{label})
     </insert>
-
-    <!--Doesn't Work-->
-    <update id="updateEntity">
-        <![CDATA[
-			UPDATE Rewards
-			SET itemId = #{itemId},
-			    layout = #{layout}
-			WHERE dbId = #{dbId}
-		]]>
-    </update>
-
-    <!--Doesn't Work-->
-    <delete id="removeEntity">
-        <![CDATA[
-			DELETE FROM Rewards
-			WHERE dbId = #{dbId}
-		]]>
-    </delete>
-
 </mapper>

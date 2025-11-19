@@ -27,14 +27,38 @@ public class LogbookModsDAO {
         return newNode;
     }
 
-    public void insertLogbookModsById(ArrayList<LogbookModsDTO> insertObjects) {
-        SqlSession session = SessionPool.getSession();
-        ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
+    public void insertLogbookMods(ArrayList<LogbookModsDTO> insertObjects) {
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object in list.");
         for (LogbookModsDTO node : insertObjects) {
-            mapper.saveEntity(node);
+            insertLogbookMod(node);
+        }
+        LogbookModsDAOLogger.trace("LogbookModsDTO List Insert Attempt finished.");
+    }
+
+    public void insertLogbookMod(LogbookModsDTO insertObject) {
+        SqlSession session = SessionPool.getSession();
+        ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
+        LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object.");
+        mapper.saveEntity(insertObject);
+        session.commit();
+
+        insertMods(insertObject.getDbId(), insertObject.getMods());
+
+        var faction = insertObject.getFaction();
+        faction.setLogbookModsId(insertObject.getDbId());
+        FactionDAO factionDAO = new FactionDAO();
+        factionDAO.saveFaction(faction);
+
+        LogbookModsDAOLogger.trace("LogbookModsDTO Insert Attempt finished.");
+    }
+
+    private void insertMods(int logbookModsId, ArrayList<String> logbookMods) {
+        SqlSession session = SessionPool.getSession();
+        ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
+
+        for (String mod : logbookMods) {
+            mapper.insertMod(logbookModsId, mod);
         }
         session.commit();
-        LogbookModsDAOLogger.trace("LogbookModsDTO Insert Attempt finished.");
     }
 }

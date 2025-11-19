@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO">
@@ -64,12 +64,11 @@
 		]]>
     </select>
 
-    <!-- UNTESTED -->
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId" keyColumn="dbId">
         <![CDATA[
 			INSERT INTO Hybrid
-			    (itemId, isVaalGem, baseTypeName, explicitMods, secDescrText)
-			VALUES (#{itemId}, #{isVaalGem}, #{baseTypeName}, #{explicitMods}, #{secDescrText})
+			    (itemId, isVaalGem, baseTypeName, secDescrText)
+			VALUES (#{itemId}, #{isVaalGem}, #{baseTypeName}, #{secDescrText})
 		]]>
     </insert>
 
@@ -94,4 +93,11 @@
 		]]>
     </delete>
 
+    <select id="insertExplicitMod">
+        INSERT INTO ExplicitMods (
+        hybridId,
+        explicitMod)
+        VALUES
+        (#{arg0}, #{arg1})
+    </select>
 </mapper>

@@ -7,8 +7,12 @@
     </settings>
 
     <typeHandlers>
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FactionId" />
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FactionId"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FrameType"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FrameTypeTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.DisplayMode"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.DisplayModeTypeHandler" />
     </typeHandlers>
 
     <environments default="development">
@@ -24,18 +28,23 @@
         </environment>
     </environments>
 
+
     <mappers>
-        <mapper resource="mappers/CrucibleDTOMapper.xml"/>
-        <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
         <mapper resource="mappers/ExtendedDTOMapper.xml"/>
         <mapper resource="mappers/FactionDTOMapper.xml"/>
         <mapper resource="mappers/HybridDTOMapper.xml"/>
         <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
+        <mapper resource="mappers/InfluencesDTOMapper.xml"/>
+        <mapper resource="mappers/ItemDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
         <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
+        <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
+        <mapper resource="mappers/LogbookModsDTOMapper.xml"/>
+        <mapper resource="mappers/PublicStashChangeDTOMapper.xml"/>
+        <mapper resource="mappers/ResultDTOMapper.xml"/>
+        <mapper resource="mappers/RewardsCollectionDTOMapper.xml"/>
+        <mapper resource="mappers/RewardsDTOMapper.xml"/>
         <mapper resource="mappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
-        <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
-        <mapper resource="mappers/ItemDTOMapper.xml"/>
     </mappers>
 </configuration>

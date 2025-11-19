@@ -1,5 +1,6 @@
 package com.PhamKornbluhGroup.DAO;
 
+import com.PhamKornbluhGroup.DTO.RewardsCollectionDTO;
 import com.PhamKornbluhGroup.DTO.RewardsDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
@@ -27,14 +28,34 @@ public class RewardsDAO {
         return newNode;
     }
 
-    public void insertRewardsById(ArrayList<RewardsDTO> insertObjects) {
+    public void insertRewards(ArrayList<RewardsDTO> insertObjects) {
+        RewardsDAOLogger.trace("Attempting to insert list of rewards");
+        for (var insertObject : insertObjects)
+        {
+            insertReward(insertObject);
+        }
+        RewardsDAOLogger.trace("Finished inserting list of rewards");
+    }
+
+    public void insertReward(RewardsDTO reward)
+    {
         SqlSession session = SessionPool.getSession();
         IRewardsDTO mapper = session.getMapper(IRewardsDTO.class);
-        RewardsDAOLogger.trace("Attempting to insert RewardsDTO object in list.");
-        for (RewardsDTO node : insertObjects) {
-            mapper.saveEntity(node);
-        }
+        RewardsDAOLogger.trace("Attempting to insert RewardsDTO object");
+
+        mapper.saveEntity(reward);
         session.commit();
+
+        ArrayList<RewardsCollectionDTO> rewardsCollectionDTOS = reward.getRewards();
+        for (var rewardCollection : rewardsCollectionDTOS) {
+            rewardCollection.setRewardsId(reward.getDbId());
+        }
+        reward.setRewards(rewardsCollectionDTOS);
+
+        RewardsDAOLogger.trace("Attempting to insert rewards collection.");
+        RewardsCollectionDAO rewardsCollectionDAO = new RewardsCollectionDAO();
+        rewardsCollectionDAO.insertRewardsCollections(rewardsCollectionDTOS);
+
         RewardsDAOLogger.trace("RewardsDTO Insert Attempt finished.");
     }
 }

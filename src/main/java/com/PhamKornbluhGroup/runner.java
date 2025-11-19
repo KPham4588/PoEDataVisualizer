@@ -1,76 +1,13 @@
 package com.PhamKornbluhGroup;
 
-import com.PhamKornbluhGroup.DAO.CrucibleDAO;
-
-import com.PhamKornbluhGroup.DAO.FactionDAO;
-import com.PhamKornbluhGroup.DTO.*;
-import com.PhamKornbluhGroup.utilities.SessionPool;
-
-import java.util.ArrayList;
-import com.PhamKornbluhGroup.DAO.ExtendedDAO;
+import com.PhamKornbluhGroup.DeleteThisPackage.CopyOfTestUtils;
 
 public class runner {
 
-    public static void main(String[] args) {
-        ExtendedDTO testDTO = new ExtendedDAO().getExtendedById(1);
-        System.out.println(testDTO.toString());
+    public static void main(String[] args) throws Exception {
+        CopyOfTestUtils.fakeInsertAndGetResult();
 
-        ExtendedDTO secondDTO = new ExtendedDAO().getExtendedById(2);
-        System.out.println(secondDTO.toString());
-
-
-        ArrayList<String> subcats = new ArrayList<>();
-        subcats.add("firstOne");
-        subcats.add("SecondOne");
-        subcats.add("oheightnineteen");
-
-        ExtendedDTO insertionDTO = new ExtendedDTO(5,3, "dan category oheightnineteencategory", subcats, 2, 2);
-
-        ArrayList<ExtendedDTO> insertList = new ArrayList<>();
-        insertList.add(insertionDTO);
-
-        new ExtendedDAO().insertExtendedById(insertList);
-
-
-        SessionPool.getSession().close();
-
-//        FactionDTO testObject = new FactionDTO();
-//        testObject.setFactionId(FactionId.FACTION2);
-//        testObject.setLogbookModsId(2);
-//        testObject.setFactionName("Khoa's Faction2");
-//
-//        FactionDAO testFactionInsert = new FactionDAO();
-//        testFactionInsert.saveFaction(testObject);
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        SessionPool.getSession().close();
-//        System.out.println("Reached the end of main without exception");
-
-        //p This is the old way that we got and saved 1 API Result file
-        //System.out.println("WE ARE RUNNING THE getAndSaveOnePOEAPIResult FUNCTION");
-        //GGGAPIHandler handler = new GGGAPIHandler();
-        //handler.getAndSaveOnePOEAPIResult();
-
-        //p This gets gets and saves 10 API result files
-//        BulkAPIResultHandler handler = new BulkAPIResultHandler();
-//        handler.getBulkPOEApiResults(10);
-
-        //p This is the new logic to parse JSON by passing in the data
-//        DeprecatedJSONParsingTool tool = new DeprecatedJSONParsingTool();
-//        APIResultData apiResultData = new APIResultData();
-//        apiResultData.setContent(returnTestJSON());
-//        tool.traverseJson(apiResultData);
-//        tool.printElements();
-
-//        BulkJSONTester.run(100);
-
-//        BulkAPIUtils.loadKnownFields();
-//        BulkAPIUtils.knownFields.stream().sorted().forEach(System.out::println);
-//        for (String element : BulkAPIUtils.knownFields) {
-//            System.out.println(element);
-//        }
+        System.out.println("Reached end of main without exceptions.");
     }
 
     public static String returnTestJSON() {

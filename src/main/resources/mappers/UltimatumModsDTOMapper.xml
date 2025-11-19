@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.5.10//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IUltimatumModsDTO">
@@ -31,7 +31,7 @@
     <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
         <![CDATA[
 			INSERT INTO UltimatumMods
-			    (itemId, type, tier)
+			    (itemId, `type`, tier)
 			VALUES (#{itemId}, #{type}, #{tier})
 		]]>
     </insert>
@@ -40,7 +40,7 @@
         <![CDATA[
 			UPDATE UltimatumMods
 			SET itemId = #{itemId},
-			    type = #{type}
+			    `type` = #{type},
 			    tier = #{tier}
 			WHERE dbId = #{dbId}
 		]]>

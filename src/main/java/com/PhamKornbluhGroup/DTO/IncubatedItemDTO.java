@@ -1,10 +1,66 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class IncubatedItemDTO {
     private int dbId;
     private int itemId;
+    @JsonProperty("name")
     private String incubatedItemName; // Called "name" in Dev Docs
+    @JsonProperty("level")
     private long incubatedItemLevel;  // Called "level" in Dev Docs   // monster level required to progress
     private long progress;
     private long total;
+
+    public IncubatedItemDTO() {
+    }
+
+    public int getDbId() {
+        return dbId;
+    }
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
+    public int getItemId() {
+        return itemId;
+    }
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+    public String getIncubatedItemName() {
+        return incubatedItemName;
+    }
+    public void setIncubatedItemName(String incubatedItemName) {
+        this.incubatedItemName = incubatedItemName;
+    }
+    public long getIncubatedItemLevel() {
+        return incubatedItemLevel;
+    }
+    public void setIncubatedItemLevel(long incubatedItemLevel) {
+        this.incubatedItemLevel = incubatedItemLevel;
+    }
+    public long getProgress() {
+        return progress;
+    }
+    public void setProgress(long progress) {
+        this.progress = progress;
+    }
+    public long getTotal() {
+        return total;
+    }
+    public void setTotal(long total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "IncubatedItemDTO{" +
+                "dbId=" + dbId +
+                ", itemId=" + itemId +
+                ", incubatedItemName='" + incubatedItemName + '\'' +
+                ", incubatedItemLevel=" + incubatedItemLevel +
+                ", progress=" + progress +
+                ", total=" + total +
+                '}';
+    }
 }
