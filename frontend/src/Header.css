@@ -22,6 +22,19 @@
     z-index: 1000;  /* make sure it’s above everything else */
 }
 
+.header-menu-icon {
+    display: flex;
+
+    margin-top: 0.75vh;
+    margin-bottom: 0.75vh;
+    margin-left: clamp(0px, 0.15vw, 0.15vw);
+    margin-right: clamp(0px, 0.15vw, 0.15vw);
+
+    min-height: 3vh;
+    max-height: 15vh;
+    height: clamp(1.5rem, 2.5rem, 1.5vw);
+}
+
 .header-menu-button {
     margin-top: 0.75vh;
     margin-bottom: 0.75vh;
