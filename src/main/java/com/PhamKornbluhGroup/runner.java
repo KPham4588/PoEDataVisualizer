@@ -1,13 +1,18 @@
 package com.PhamKornbluhGroup;
 
 import com.PhamKornbluhGroup.DeleteThisPackage.CopyOfTestUtils;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class runner {
 
     public static void main(String[] args) throws Exception {
         CopyOfTestUtils.fakeInsertAndGetResult();
 
         System.out.println("Reached end of main without exceptions.");
+
+        SpringApplication.run(PoeDataVisualizerApplication.class, args);
     }
 
     public static String returnTestJSON() {
