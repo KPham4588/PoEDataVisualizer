@@ -1,5 +1,6 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.ItemPropertyTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -85,10 +86,16 @@ public class ItemDTO {
     private ArrayList<String> veiledMods;     // Optional  // random video identifier
 
     // Complex Object List
+
+    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> additionalProperties;   // Optional
+    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> nextLevelRequirements;  // Optional
+    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> notableProperties;      // Optional
+    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> properties;             // Optional
+    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> requirements;           // Optional
     private ArrayList<ItemSocketDTO> sockets;                  // Optional
     private ArrayList<LogbookModsDTO> logbookMods;             // Optional
