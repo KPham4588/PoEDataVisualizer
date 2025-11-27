@@ -26,6 +26,10 @@ public class ExtendedDAO {
     }
 
     public void insertExtended(ExtendedDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");

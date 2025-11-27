@@ -15,6 +15,10 @@ public class ItemPropertyDAO {
     private final static Logger ItemPropertyDAOLogger = LogManager.getLogger(ItemPropertyDAO.class);
 
     public void insertItemProperty(ItemPropertyDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
         System.out.println("Attempting to insert ItemPropertyDTO object.");
@@ -35,6 +39,10 @@ public class ItemPropertyDAO {
     }
 
     public void insertItemProperties(ArrayList<ItemPropertyDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         System.out.println("Attempting to insert ItemPropertyDTO objects in list.");
         for (ItemPropertyDTO node : insertObjects) {
             insertItemProperty(node);

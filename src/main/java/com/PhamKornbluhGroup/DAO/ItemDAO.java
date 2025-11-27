@@ -28,6 +28,10 @@ public class ItemDAO {
     }
 
     public void insertItems(ArrayList<ItemDTO> items) {
+        if (items == null) {
+            return;
+        }
+
         System.out.println("Attempting to insert ItemDTO objects in list.");
         for (ItemDTO item : items) {
             insertItem(item);
@@ -37,6 +41,10 @@ public class ItemDAO {
     }
 
     private void insertCosmeticMods(int itemId, ArrayList<String> cosmeticMods) {
+        if (cosmeticMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -47,6 +55,10 @@ public class ItemDAO {
     }
 
     private void insertCraftedMods(int itemId, ArrayList<String> craftedMods) {
+        if (craftedMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -57,6 +69,10 @@ public class ItemDAO {
     }
 
     private void insertEnchantMods(int itemId, ArrayList<String> enchantMods) {
+        if (enchantMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -67,6 +83,10 @@ public class ItemDAO {
     }
 
     private void insertExplicitMods(int itemId, ArrayList<String> explicitMods) {
+        if (explicitMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -77,6 +97,10 @@ public class ItemDAO {
     }
 
     private void insertFlavourText(int itemId, ArrayList<String> flavourText) {
+        if (flavourText == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -87,6 +111,10 @@ public class ItemDAO {
     }
 
     private void insertFracturedMods(int itemId, ArrayList<String> fracturedMod) {
+        if (fracturedMod == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -97,6 +125,10 @@ public class ItemDAO {
     }
 
     private void insertImplicitMods(int itemId, ArrayList<String> implicitMod) {
+        if (implicitMod == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -107,6 +139,10 @@ public class ItemDAO {
     }
 
     private void insertScourgeMods(int itemId, ArrayList<String> scourgeMods) {
+        if (scourgeMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -117,6 +153,10 @@ public class ItemDAO {
     }
 
     private void insertUtilityMods(int itemId, ArrayList<String> utilityMods) {
+        if (utilityMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -127,6 +167,10 @@ public class ItemDAO {
     }
 
     private void insertVeiledMods(int itemId, ArrayList<String> veiledMods) {
+        if (veiledMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
@@ -158,90 +202,117 @@ public class ItemDAO {
 
         //item socket
         ArrayList<ItemSocketDTO> itemSockets = item.getSockets();
-        for (ItemSocketDTO socket : itemSockets) {
-            socket.setItemId(item.getDbId());
+        if (itemSockets != null) {
+            for (ItemSocketDTO socket : itemSockets) {
+                socket.setItemId(item.getDbId());
+            }
+            ItemSocketDAO itemSocketDAO = new ItemSocketDAO();
+            itemSocketDAO.insertItemSocketById(itemSockets);
         }
-        ItemSocketDAO itemSocketDAO = new ItemSocketDAO();
-        itemSocketDAO.insertItemSocketById(itemSockets);
+
+        ItemPropertyDAO itemPropertyDAO = new ItemPropertyDAO();
 
         // properties
         ArrayList<ItemPropertyDTO> properties = item.getProperties();
-        for (ItemPropertyDTO property : properties) {
-            property.setItemId(item.getDbId());
+        if (properties != null) {
+            for (ItemPropertyDTO property : properties) {
+                property.setItemId(item.getDbId());
+            }
+            itemPropertyDAO.insertItemProperties(properties);
         }
-        ItemPropertyDAO itemPropertyDAO = new ItemPropertyDAO();
-        itemPropertyDAO.insertItemProperties(properties);
 
         // notable properties
         ArrayList<ItemPropertyDTO> notableProperties = item.getNotableProperties();
-        for (ItemPropertyDTO notableProperty : notableProperties) {
-            notableProperty.setItemId(item.getDbId());
+        if (notableProperties != null) {
+            for (ItemPropertyDTO notableProperty : notableProperties) {
+                notableProperty.setItemId(item.getDbId());
+            }
+            itemPropertyDAO.insertItemProperties(notableProperties);
         }
-        itemPropertyDAO.insertItemProperties(notableProperties);
 
         // item requirements
         ArrayList<ItemPropertyDTO> requirements = item.getRequirements();
-        for (ItemPropertyDTO requirement : requirements) {
-            requirement.setItemId(item.getDbId());
+        if (requirements != null) {
+            for (ItemPropertyDTO requirement : requirements) {
+                requirement.setItemId(item.getDbId());
+            }
+            itemPropertyDAO.insertItemProperties(requirements);
         }
-        itemPropertyDAO.insertItemProperties(requirements);
 
         // additional properties
         ArrayList<ItemPropertyDTO> additionalProperties = item.getAdditionalProperties();
-        for (ItemPropertyDTO additionalProperty : additionalProperties) {
-            additionalProperty.setItemId(item.getDbId());
+        if (additionalProperties != null) {
+            for (ItemPropertyDTO additionalProperty : additionalProperties) {
+                additionalProperty.setItemId(item.getDbId());
+            }
+            itemPropertyDAO.insertItemProperties(additionalProperties);
         }
-        itemPropertyDAO.insertItemProperties(additionalProperties);
 
         //next level requirements
         ArrayList<ItemPropertyDTO> nextLevelRequirements = item.getNextLevelRequirements();
-        for (ItemPropertyDTO nextlevelRequirement : nextLevelRequirements) {
-            nextlevelRequirement.setItemId(item.getDbId());
+        if (nextLevelRequirements != null) {
+            for (ItemPropertyDTO nextlevelRequirement : nextLevelRequirements) {
+                nextlevelRequirement.setItemId(item.getDbId());
+            }
+            itemPropertyDAO.insertItemProperties(nextLevelRequirements);
         }
-        itemPropertyDAO.insertItemProperties(nextLevelRequirements);
 
         //rewards
         ArrayList<RewardsDTO> rewards = item.getRewards();
-        for (RewardsDTO reward : rewards) {
-            reward.setItemId(item.getDbId());
+        if (rewards != null) {
+            for (RewardsDTO reward : rewards) {
+                reward.setItemId(item.getDbId());
+            }
+            RewardsDAO rewardsDAO = new RewardsDAO();
+            rewardsDAO.insertRewards(rewards);
         }
-        RewardsDAO rewardsDAO = new RewardsDAO();
-        rewardsDAO.insertRewards(rewards);
 
         //logbook mods
         ArrayList<LogbookModsDTO> logbookMods = item.getLogbookMods();
-        for (LogbookModsDTO logbookMod : logbookMods) {
-            logbookMod.setItemId(item.getDbId());
+        if (logbookMods != null) {
+            for (LogbookModsDTO logbookMod : logbookMods) {
+                logbookMod.setItemId(item.getDbId());
+            }
+            LogbookModsDAO logbookModsDAO = new LogbookModsDAO();
+            logbookModsDAO.insertLogbookMods(logbookMods);
         }
-        LogbookModsDAO logbookModsDAO = new LogbookModsDAO();
-        logbookModsDAO.insertLogbookMods(logbookMods);
 
         //ultimatum mods
         ArrayList<UltimatumModsDTO> ultimatumMods = item.getUltimatumMods();
-        for (UltimatumModsDTO ultimatumMod : ultimatumMods) {
-            ultimatumMod.setItemId(item.getDbId());
+        if (ultimatumMods != null) {
+            for (UltimatumModsDTO ultimatumMod : ultimatumMods) {
+                ultimatumMod.setItemId(item.getDbId());
+            }
+            UltimatumModsDAO ultimatumModsDAO = new UltimatumModsDAO();
+            ultimatumModsDAO.insertUltimatumModsById(ultimatumMods);
         }
-        UltimatumModsDAO ultimatumModsDAO = new UltimatumModsDAO();
-        ultimatumModsDAO.insertUltimatumModsById(ultimatumMods);
 
         IncubatedItemDTO incubatedItem = item.getIncubatedItem();
-        incubatedItem.setItemId(item.getDbId());
-        IncubatedItemDAO incubatedItemDAO = new IncubatedItemDAO();
-        incubatedItemDAO.insertIncubatedItem(incubatedItem);
+        if (incubatedItem != null) {
+            incubatedItem.setItemId(item.getDbId());
+            IncubatedItemDAO incubatedItemDAO = new IncubatedItemDAO();
+            incubatedItemDAO.insertIncubatedItem(incubatedItem);
+        }
 
         ScourgedDTO scourged = item.getScourged();
-        scourged.setItemId(item.getDbId());
-        ScourgedDAO scourgedDAO = new ScourgedDAO();
-        scourgedDAO.insertScourged(scourged);
+        if (scourged != null) {
+            scourged.setItemId(item.getDbId());
+            ScourgedDAO scourgedDAO = new ScourgedDAO();
+            scourgedDAO.insertScourged(scourged);
+        }
 
         HybridDTO hybrid = item.getHybrid();
-        hybrid.setItemId(item.getDbId());
-        HybridDAO hybridDAO = new HybridDAO();
-        hybridDAO.insertHybrid(hybrid);
+        if (hybrid != null) {
+            hybrid.setItemId(item.getDbId());
+            HybridDAO hybridDAO = new HybridDAO();
+            hybridDAO.insertHybrid(hybrid);
+        }
 
         ExtendedDTO extended = item.getExtended();
-        extended.setItemId(item.getDbId());
-        ExtendedDAO extendedDAO = new ExtendedDAO();
-        extendedDAO.insertExtended(extended);
+        if (extended != null) {
+            extended.setItemId(item.getDbId());
+            ExtendedDAO extendedDAO = new ExtendedDAO();
+            extendedDAO.insertExtended(extended);
+        }
     }
 }

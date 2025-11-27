@@ -12,12 +12,15 @@ public class HybridDTO {
     @JsonProperty("isVaalGem")
     private boolean isVaalGem;            // Optional
     private String baseTypeName;
-    @JsonDeserialize(contentUsing = ItemPropertyTypeDeserializer.class)
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> properties; // Optional
     private ArrayList<String> explicitMods;        // Optional
     private String secDescrText;          // Optional
 
     public HybridDTO() {
+        this.properties = new ArrayList<>();
+        this.explicitMods = new ArrayList<>();
+        this.secDescrText = "";
     }
 
     public int getDbId() {

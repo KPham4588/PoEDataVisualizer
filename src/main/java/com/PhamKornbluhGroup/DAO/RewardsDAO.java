@@ -29,6 +29,10 @@ public class RewardsDAO {
     }
 
     public void insertRewards(ArrayList<RewardsDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         RewardsDAOLogger.trace("Attempting to insert list of rewards");
         for (var insertObject : insertObjects)
         {
@@ -37,8 +41,11 @@ public class RewardsDAO {
         RewardsDAOLogger.trace("Finished inserting list of rewards");
     }
 
-    public void insertReward(RewardsDTO reward)
-    {
+    public void insertReward(RewardsDTO reward) {
+        if (reward == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IRewardsDTO mapper = session.getMapper(IRewardsDTO.class);
         RewardsDAOLogger.trace("Attempting to insert RewardsDTO object");

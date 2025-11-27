@@ -11,6 +11,8 @@ public class ExtendedDTO {
     private long suffixes;                                  // Optional
 
     public ExtendedDTO() {
+        this.category = "";
+        this.subcategories = new ArrayList<>();
     }
 
     public int getDbId() {

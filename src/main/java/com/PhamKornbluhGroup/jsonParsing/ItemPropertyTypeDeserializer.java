@@ -16,38 +16,28 @@ public class ItemPropertyTypeDeserializer extends JsonDeserializer<List<ItemProp
 
     @Override
     public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-        //b Return this
-        List<ItemPropertyDTO> result = new ArrayList<>();
 
         ObjectMapper mapper = (ObjectMapper) p.getCodec();
-        //b The parent field name like "requirements", "properties", etc
+
+        JsonNode node = mapper.readTree(p);
+
         String parentKey = p.getParsingContext().getCurrentName();
-        JsonNode nodeMayBeArray = mapper.readTree(p);
 
-        //b Null
-        if (nodeMayBeArray == null || nodeMayBeArray.isNull()) {
-            return result;
-        }
-        //b Multiple Results
-        else if (nodeMayBeArray.isArray()) {
-            for (JsonNode node : nodeMayBeArray) {
+        List<ItemPropertyDTO> list = new ArrayList<>();
 
-                //b Assign ItemPropertyDTO fields automatically
-                ItemPropertyDTO dto = mapper.treeToValue(node, ItemPropertyDTO.class);
-
-                //b Get the pretty version of the property name from ParsingContext
-                String propertyType = mapPropertyType(parentKey);
-                dto.setPropertyType(propertyType);
-
-                result.add(dto);
+        if (node.isArray()) {
+            for (JsonNode child : node) {
+                ItemPropertyDTO dto = mapper.treeToValue(child, ItemPropertyDTO.class);
+                dto.setPropertyType(mapPropertyType(parentKey));
+                list.add(dto);
             }
-        }
-        //b One Result
-        else if (nodeMayBeArray.isObject()) {
-            ItemPropertyDTO dto = mapper.treeToValue(nodeMayBeArray, ItemPropertyDTO.class);
+        } else if (node.isObject()) {
+            ItemPropertyDTO dto = mapper.treeToValue(node, ItemPropertyDTO.class);
+            dto.setPropertyType(mapPropertyType(parentKey));
+            list.add(dto);
         }
 
-        return result;
+        return list;
     }
 
     private String mapPropertyType(String parentKey) {

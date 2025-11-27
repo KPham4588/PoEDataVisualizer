@@ -25,6 +25,8 @@ public class ItemPropertyDTO {
     // set PropertyType when deserializing the JSON into object
 
     public ItemPropertyDTO() {
+        this.itemId = 0;
+        this.hybridId = 0;
     }
 
     public int getDbId() {

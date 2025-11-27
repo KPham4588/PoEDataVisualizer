@@ -28,6 +28,10 @@ public class ScourgedDAO {
     }
 
     public void insertScourgedById(ArrayList<ScourgedDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
@@ -39,6 +43,10 @@ public class ScourgedDAO {
     }
 
     public void insertScourged(ScourgedDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
