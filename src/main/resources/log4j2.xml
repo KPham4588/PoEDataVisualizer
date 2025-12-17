@@ -15,15 +15,20 @@
         <File name="MAIN" fileName="logs/main.log">
             <PatternLayout pattern="%p - %m%n"/>
         </File>
+
+        <File name="ERRORS" fileName="logs/errors.log">
+            <PatternLayout pattern="%p - %m%n"/>
+        </File>
     </Appenders>
 
     <!-- Here's where we set logging  -->
     <Loggers>
-        <!-- Right now we want one logger, logging everything, so we go TRACE -->
         <Logger name="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO" level="ALL" />
+        <Logger name="com.PhamKornbluhGroup.jsonParsing.RewardsCollectionDeserializer" level="ERROR" />
         <Root level="INFO">
             <AppenderRef ref="CONSOLE" level="ALL"/>
             <AppenderRef ref="MAIN" level="ALL"/>
+            <AppenderRef ref="ERRORS" level="ERROR"/>
         </Root>
     </Loggers>
 </Configuration>
