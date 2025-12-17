@@ -1,11 +1,15 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.RewardsCollectionDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 
 public class RewardsDTO {
     private int dbId;
     private int itemId;
     private String label;
+    @JsonDeserialize(using = RewardsCollectionDeserializer.class)
     private ArrayList<RewardsCollectionDTO> rewards;
 
     public RewardsDTO() {
