@@ -31,8 +31,11 @@ public class SessionPool {
             return session;
         }
         Properties databaseSecrets = SecretsHelper.getDBInformation();
+        // Session never gets closed
 
 
+        //r SESSION MUST BE CLOSED BY THE CALLER DOWNSTREAM
+        // Other Notes:    Update / Make sure not to create extra unneeded builders
         try {
             sessionPoolLogger.trace("Setting reader in SessionPool");
             reader = Resources.getResourceAsReader(MYBATIS_URI);

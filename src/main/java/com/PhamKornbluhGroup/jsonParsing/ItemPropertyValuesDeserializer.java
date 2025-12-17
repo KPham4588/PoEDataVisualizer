@@ -1,23 +1,24 @@
 package com.PhamKornbluhGroup.jsonParsing;
 
 import com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.core.JacksonException;
 
-import java.io.IOException;
-
-public class ItemPropertyValuesDeserializer extends StdDeserializer<ItemPropertyValuesDTO> {
+public class ItemPropertyValuesDeserializer extends tools.jackson.databind.ValueDeserializer<ItemPropertyValuesDTO> {
 
     public ItemPropertyValuesDeserializer() {
         this(null);
     }
 
-    public ItemPropertyValuesDeserializer(Class<?> vc) {
-        super(vc);
+    @Override
+    public ItemPropertyValuesDTO deserialize(tools.jackson.core.JsonParser p, tools.jackson.databind.DeserializationContext ctxt) throws JacksonException {
+        return null;
     }
 
+    public ItemPropertyValuesDeserializer(Class<?> vc) {
+        super();
+    }
+
+    /*
     @Override
     public ItemPropertyValuesDTO deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         // node is an array: ["27-50", 0]
@@ -31,5 +32,5 @@ public class ItemPropertyValuesDeserializer extends StdDeserializer<ItemProperty
         propertyValuesDTO.setValueType(valueType);
         return propertyValuesDTO;
     }
-
+    */
 }

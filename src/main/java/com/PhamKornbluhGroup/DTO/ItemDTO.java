@@ -2,7 +2,6 @@ package com.PhamKornbluhGroup.DTO;
 
 import com.PhamKornbluhGroup.jsonParsing.ItemPropertyTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
 
