@@ -44,20 +44,17 @@ public class GGGAPIHandler {
             throw new Exception(errorMessage);
         }
 
-        //b Use GGGAPIHandler to get an APIResultData w/ pageChangeId
-        GGGAPIHandler handler = new GGGAPIHandler();
-
         String currentPageChangeId = pageChangeId;
         ResultDAO dao = new ResultDAO();
         for (int i = 0; i < numberOfResults; i++) {
-
-            GGGAPIHandlerLogger.trace(
+            GGGAPIHandlerLogger.info(
                     "Calling handler.getPOEDataFromServer(currentPageChangeId) with currentPageChangeId of "
                     + "\""
                     + currentPageChangeId
                     + "\""
             );
-            APIResultData apiResultData = handler.getPOEDataFromServer(currentPageChangeId);
+
+            APIResultData apiResultData = this.getPOEDataFromServer(currentPageChangeId);
 
             if (apiResultData == null) {
                 String errorMessage =
