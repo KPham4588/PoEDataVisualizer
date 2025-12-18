@@ -23,9 +23,7 @@
 
     <!-- Here's where we set logging  -->
     <Loggers>
-        <Logger name="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO" level="ALL" />
-        <Logger name="com.PhamKornbluhGroup.jsonParsing.RewardsCollectionDeserializer" level="ERROR" />
-        <Root level="INFO">
+        <Root level="ALL">
             <AppenderRef ref="CONSOLE" level="ALL"/>
             <AppenderRef ref="MAIN" level="ALL"/>
             <AppenderRef ref="ERRORS" level="ERROR"/>
