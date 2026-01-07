@@ -258,13 +258,17 @@ public class ItemDAO {
         }
 
         //rewards
+        ItemDAOLogger.trace("Planning to insert rewards");
         ArrayList<RewardsDTO> rewards = item.getRewards();
         if (rewards != null) {
+            ItemDAOLogger.error("rewards is not null for item id = " + item.getId());
+            ItemDAOLogger.error("rewards = " + rewards);
             for (RewardsDTO reward : rewards) {
                 reward.setItemId(item.getDbId());
             }
             RewardsDAO rewardsDAO = new RewardsDAO();
             rewardsDAO.insertRewards(rewards);
+            ItemDAOLogger.error("inserted reward");
         }
 
         //logbook mods
