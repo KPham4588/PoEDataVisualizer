@@ -1,6 +1,8 @@
 package com.PhamKornbluhGroup.jsonParsing;
 
+import com.PhamKornbluhGroup.APIResultData;
 import com.PhamKornbluhGroup.DTO.ResultDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -14,7 +16,6 @@ public class JSONParser {
 
         ResultDTO resultDTO = new ResultDTO();
 
-//        try {
         try (stream) {
             resultDTO = mapper.readValue(stream, ResultDTO.class);
         }
@@ -26,11 +27,6 @@ public class JSONParser {
 
 
     public static ResultDTO parseHardCodedAPIFile() {
-//        try {
-//            File file = new File("C:\\Dev\\PhamkornbluhAPIResult\\NewAPIResult.txt");
-//            FileInputStream stream = new FileInputStream(file);
-//            return stream;
-//        }
         File file = new File("C:\\Dev\\PhamkornbluhAPIResult\\NewAPIResult.txt");
         try (FileInputStream stream = new FileInputStream(file)) {
             return parsePublicStashChange(stream);
@@ -39,5 +35,14 @@ public class JSONParser {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ResultDTO parseAPIResultData(APIResultData data) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        ResultDTO resultDTO = mapper.readValue(data.getContent(), ResultDTO.class);
+
+        return resultDTO;
     }
 }

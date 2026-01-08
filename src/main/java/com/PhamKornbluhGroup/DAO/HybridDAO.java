@@ -28,6 +28,10 @@ public class HybridDAO {
     }
 
     public void insertHybrid(HybridDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to insert HybridDTO object.");
@@ -49,6 +53,10 @@ public class HybridDAO {
     }
 
     private void insertExplicitMods(int hybridId, ArrayList<String> explicitMods) {
+        if (explicitMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
 

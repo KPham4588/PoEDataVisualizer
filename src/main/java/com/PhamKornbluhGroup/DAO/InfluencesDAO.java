@@ -39,6 +39,10 @@ public class InfluencesDAO {
     }
 
     public void insertInfluences(InfluencesDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to insert InfluencesDTO object.");

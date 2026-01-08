@@ -28,6 +28,10 @@ public class ItemPropertyValuesDAO {
     }
 
     public void insertItemPropertyValues(ItemPropertyValuesDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to insert ItemPropertyValuesDTO object.");
@@ -37,6 +41,10 @@ public class ItemPropertyValuesDAO {
     }
 
     public void insertItemPropertyValues(ArrayList<ItemPropertyValuesDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to insert ItemPropertyValuesDTO object in list.");

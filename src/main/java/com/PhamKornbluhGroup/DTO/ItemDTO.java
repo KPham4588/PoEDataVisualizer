@@ -1,5 +1,6 @@
 package com.PhamKornbluhGroup.DTO;
 
+import com.PhamKornbluhGroup.jsonParsing.ItemPropertyTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -7,63 +8,63 @@ import java.util.ArrayList;
 
 public class ItemDTO {
     private int dbId; // PK
-    private String artFilename;         // Optional
+    private String artFilename = "";         // Optional
     private String baseType;
-    private String colour;              // Optional  // S, D, I, or G
-    private String descrText;           // Optional
-    private String flavourTextNote;     // Optional  // user-generated text
-    private String forum_note;          // Optional  // user-generated text
+    private String colour = "";              // Optional  // S, D, I, or G
+    private String descrText = "";           // Optional
+    private String flavourTextNote = "";     // Optional  // user-generated text
+    private String forum_note = "";          // Optional  // user-generated text
     private String icon;
-    private String id;                  // Optional  // a unique 64 digit hexadecimal string
-    private String inventoryId;         // Optional
-    private String league;              // Optional
+    private String id = "";                  // Optional  // a unique 64 digit hexadecimal string
+    private String inventoryId = "";         // Optional
+    private String league = "";              // Optional
     private String name;
-    private String note;                // Optional  // user-generated text
-    private String prophecyText;        // Optional
-    private String rarity;              // Optional  // Normal, Magic, Rare, or Unique
-    private String secDescrText;        // Optional
-    private String stackSizeText;       // Optional
+    private String note = "";                // Optional  // user-generated text
+    private String prophecyText = "";        // Optional
+    private String rarity = "";              // Optional  // Normal, Magic, Rare, or Unique
+    private String secDescrText = "";        // Optional
+    private String stackSizeText = "";       // Optional
     private String typeLine;
-    private boolean abyssJewel;         // Optional  // always true if present    //w Is this part of influences??
-    private boolean cisRaceReward;      // Optional  // always true if present
-    private boolean corrupted;          // Optional  // always true if present
-    private boolean delve;              // Optional  // always true if present    //w Is this part of influences??
-    private boolean duplicated;         // Optional  // always true if present
-    private boolean elder;              // Optional  // always true if present    //w Is this part of influences??
-    private boolean foreseeing;         // Optional  // always true if present
-    private boolean fractured;          // Optional  // always true if present    //w Is this part of influences??
+    private boolean abyssJewel = false;         // Optional  // always true if present    //w Is this part of influences??
+    private boolean cisRaceReward = false;      // Optional  // always true if present
+    private boolean corrupted = false;          // Optional  // always true if present
+    private boolean delve = false;              // Optional  // always true if present    //w Is this part of influences??
+    private boolean duplicated = false;         // Optional  // always true if present
+    private boolean elder = false;              // Optional  // always true if present    //w Is this part of influences??
+    private boolean foreseeing = false;         // Optional  // always true if present
+    private boolean fractured = false;          // Optional  // always true if present    //w Is this part of influences??
     private boolean identified;
     @JsonProperty("isRelic")
-    private boolean isRelic;            // Optional  // always true if present
-    private boolean lockedToAccount;    // Optional  // always true if present
-    private boolean lockedToCharacter;  // Optional
-    private boolean memoryItem;         // Optional  // always true if present
-    private boolean replica;            // Optional  // always true if present
-    private boolean ruthless;           // Optional  // always true if present
-    private boolean seaRaceReward;      // Optional  // always true if present
-    private boolean searing;            // Optional  // always true if present   //w Is this part of influences??
-    private boolean shaper;             // Optional  // always true if present   //w Is this part of influences??
-    private boolean split;              // Optional  // always true if present
-    private boolean support;            // Optional  // always true if present
-    private boolean synthesised;        // Optional  // always true if present   //w Is this part of influences??
-    private boolean tangled;            // Optional  // always true if present   //w Is this part of influences??
-    private boolean thRaceReward;       // Optional  // always true if present
-    private boolean unmodifiable;       // Optional  // always true if present
-    private boolean veiled;             // Optional  // always true if present
+    private boolean isRelic = false;            // Optional  // always true if present
+    private boolean lockedToAccount = false;    // Optional  // always true if present
+    private boolean lockedToCharacter = false;  // Optional
+    private boolean memoryItem = false;         // Optional  // always true if present
+    private boolean replica = false;            // Optional  // always true if present
+    private boolean ruthless = false;           // Optional  // always true if present
+    private boolean seaRaceReward = false;      // Optional  // always true if present
+    private boolean searing = false;            // Optional  // always true if present   //w Is this part of influences??
+    private boolean shaper = false;             // Optional  // always true if present   //w Is this part of influences??
+    private boolean split = false;              // Optional  // always true if present
+    private boolean support = false;            // Optional  // always true if present
+    private boolean synthesised = false;        // Optional  // always true if present   //w Is this part of influences??
+    private boolean tangled = false;            // Optional  // always true if present   //w Is this part of influences??
+    private boolean thRaceReward = false;       // Optional  // always true if present
+    private boolean unmodifiable = false;       // Optional  // always true if present
+    private boolean veiled = false;             // Optional  // always true if present
     private boolean verified;
-    private boolean unmodifiableExceptChaos; // Optional  // always true if present
-    private int foilVariation;          // Optional
+    private boolean unmodifiableExceptChaos = false; // Optional  // always true if present
+    private int foilVariation = -1;          // Optional
     private int ilvl;
-    private int itemLevel;              // Optional // used for items that always display their item level
-    private int maxStackSize;           // Optional
+    private int itemLevel = -1;              // Optional // used for items that always display their item level
+    private int maxStackSize = -1;           // Optional
     private Integer publicStashChangeId;
-    private int stackSize;             // Optional
-    private int talismanTier;          // Optional
+    private int stackSize = -1;             // Optional
+    private int talismanTier = -1;          // Optional
     private long h;
-    private long socket;               // Optional
+    private long socket = -1;               // Optional
     private long w;
-    private long x;                    // Optional
-    private long y;                    // Optional
+    private long x = -1;                    // Optional
+    private long y = -1;                    // Optional
 
     private ExtendedDTO extended;            // Optional   // only present in the Public Stash API
     private FrameType frameType;             // Optional
@@ -85,10 +86,16 @@ public class ItemDTO {
     private ArrayList<String> veiledMods;     // Optional  // random video identifier
 
     // Complex Object List
+
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> additionalProperties;   // Optional
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> nextLevelRequirements;  // Optional
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> notableProperties;      // Optional
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> properties;             // Optional
+    @JsonDeserialize(using = ItemPropertyTypeDeserializer.class)
     private ArrayList<ItemPropertyDTO> requirements;           // Optional
     private ArrayList<ItemSocketDTO> sockets;                  // Optional
     private ArrayList<LogbookModsDTO> logbookMods;             // Optional

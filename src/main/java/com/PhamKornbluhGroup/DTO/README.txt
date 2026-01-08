@@ -45,8 +45,8 @@ ResultDTO
         ├── UltimatumModsDTO
         ├── IncubatedItemDTO
         ├── ScourgedDTO
-        ├── CrucibleDTO
-        │   └── CrucibleNodeDTO
+        ├── CrucibleDTO //b Deprecated in this project as around 01/06/2026
+        │   └── CrucibleNodeDTO //b Deprecated in this project as around 01/06/2026
         ├── FrameType (ENUM)
         ├── HybridDTO
         │   └── properties (ItemPropertyDTO)

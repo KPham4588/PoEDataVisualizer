@@ -14,10 +14,10 @@ public class ExtendedDAO {
     public ExtendedDTO getExtendedById(int id) {
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
-        System.out.println("Attempting to get ExtendedDTO object with ID " + id);
+        ExtendedDAOLogger.trace("Attempting to get ExtendedDTO object with ID " + id);
         ExtendedDTO newNode = mapper.getEntityById(id);
         if (newNode != null) {
-            ExtendedDAOLogger.trace("Success!");
+            ExtendedDAOLogger.trace("ExtendedDTO object is not null!");
         }
         else {
             ExtendedDAOLogger.error("Failure!");
@@ -26,6 +26,10 @@ public class ExtendedDAO {
     }
 
     public void insertExtended(ExtendedDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");

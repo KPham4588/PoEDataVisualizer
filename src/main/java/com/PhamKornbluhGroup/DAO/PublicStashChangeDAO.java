@@ -29,6 +29,10 @@ public class PublicStashChangeDAO {
     }
 
     public void insertPublicStashChange(PublicStashChangeDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
@@ -53,6 +57,10 @@ public class PublicStashChangeDAO {
      *                      gets inserted by the single saveEntity calls
      */
     public void insertPublicStashChanges(ArrayList<PublicStashChangeDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         System.out.println("Attempting to insert PublicStashChangeDTO objects in list.");
         for (PublicStashChangeDTO stash : insertObjects) {
             insertPublicStashChange(stash);

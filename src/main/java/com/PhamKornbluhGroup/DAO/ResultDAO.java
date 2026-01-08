@@ -33,6 +33,10 @@ public class ResultDAO {
      * @param insertObject this is a ResultDTO object
      */
     public void insertResult(ResultDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
 

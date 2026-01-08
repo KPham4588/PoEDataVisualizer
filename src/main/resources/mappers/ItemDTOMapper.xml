@@ -441,82 +441,102 @@
     </delete>
 
     <insert id="insertCosmeticMod">
+        <![CDATA[
         INSERT INTO CosmeticMods (
         itemId,
         cosmeticMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertCraftedMod">
+        <![CDATA[
         INSERT INTO CraftedMods (
         itemId,
         craftedMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertEnchantMod">
+        <![CDATA[
         INSERT INTO EnchantMods (
         itemId,
         EnchantMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertExplicitMod">
+        <![CDATA[
         INSERT INTO ExplicitMods (
         itemId,
         explicitMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertFlavourText">
+        <![CDATA[
         INSERT INTO FlavourText (
         itemId,
         flavourText)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertFracturedMod">
+        <![CDATA[
         INSERT INTO FracturedMods (
         itemId,
         fracturedMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertImplicitMod">
+        <![CDATA[
         INSERT INTO ImplicitMods (
         itemId,
         implicitMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertScourgeMod">
+        <![CDATA[
         INSERT INTO ScourgeMods (
         itemId,
         scourgeMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertUtilityMod">
+        <![CDATA[
         INSERT INTO UtilityMods (
         itemId,
         utilityMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 
     <insert id="insertVeiledMod">
+        <![CDATA[
         INSERT INTO VeiledMods (
         itemId,
         veiledMod)
         VALUES
         (#{arg0}, #{arg1})
+        ]]>
     </insert>
 </mapper>

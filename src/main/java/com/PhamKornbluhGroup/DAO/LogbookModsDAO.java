@@ -28,6 +28,10 @@ public class LogbookModsDAO {
     }
 
     public void insertLogbookMods(ArrayList<LogbookModsDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object in list.");
         for (LogbookModsDTO node : insertObjects) {
             insertLogbookMod(node);
@@ -36,6 +40,10 @@ public class LogbookModsDAO {
     }
 
     public void insertLogbookMod(LogbookModsDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object.");
@@ -53,6 +61,10 @@ public class LogbookModsDAO {
     }
 
     private void insertMods(int logbookModsId, ArrayList<String> logbookMods) {
+        if (logbookMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
 
