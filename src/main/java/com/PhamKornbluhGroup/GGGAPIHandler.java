@@ -38,7 +38,7 @@ public class GGGAPIHandler {
     }
 
     public void saveNumberOfResultsToDB(int numberOfResults, String pageChangeId) throws Exception {
-        if (numberOfResults < 0 ) {
+        if (numberOfResults <= 0 ) {
             String errorMessage = "Number of results must be 1 or more when calling GGGAPIHandler.saveNumberOfResultsToDB";
             GGGAPIHandlerLogger.error(errorMessage);
             throw new Exception(errorMessage);
