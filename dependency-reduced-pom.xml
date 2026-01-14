@@ -26,7 +26,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.5.0</version>
         <configuration>
-          <mainClass>com.PhamKornbluhGroup.runner</mainClass>
+          <mainClass>com.PhamKornbluhGroup.PoeDataVisualizerApplication</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -36,7 +36,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.PhamKornbluhGroup.runner</mainClass>
+              <mainClass>com.PhamKornbluhGroup.PoeDataVisualizerApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -85,21 +85,21 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
+      <groupId>tools.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.15.0</version>
+      <version>3.0.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
+      <groupId>tools.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.15.0</version>
+      <version>3.0.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.15.0</version>
+      <version>2.20</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -242,6 +242,18 @@
           <groupId>org.xmlunit</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <dependencyManagement>
