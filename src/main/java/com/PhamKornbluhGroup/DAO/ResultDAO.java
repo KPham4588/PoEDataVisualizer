@@ -23,7 +23,7 @@ public class ResultDAO {
             ResultDAOLogger.trace("Success!");
         }
         else {
-            ResultDAOLogger.error("Failure!");
+            ResultDAOLogger.error("Result is null!");
         }
         return result;
     }

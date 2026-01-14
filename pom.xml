@@ -172,7 +172,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>3.5.0</version>
 				<configuration>
-					<mainClass>com.PhamKornbluhGroup.runner</mainClass>
+					<mainClass>com.PhamKornbluhGroup.PoeDataVisualizerApplication</mainClass>
 				</configuration>
 			</plugin>
 
@@ -185,7 +185,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.PhamKornbluhGroup.runner</mainClass>
+							<mainClass>com.PhamKornbluhGroup.PoeDataVisualizerApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

@@ -203,7 +203,6 @@
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
     </resultMap>
 
-    <!-- UNTESTED -->
     <select id="getEntityById" resultMap="ItemDTOMap">
         <![CDATA[
         SELECT

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class runner {
-
+/*
     public static void main(String[] args) throws Exception {
         CopyOfTestUtils.fakeInsertAndGetResult();
 
@@ -13,7 +13,7 @@ public class runner {
 
         SpringApplication.run(PoeDataVisualizerApplication.class, args);
     }
-
+*/
     public static String returnTestJSON() {
         String json = """
                         {

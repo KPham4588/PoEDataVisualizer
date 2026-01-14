@@ -22,7 +22,7 @@ public class ScourgedDAO {
             ScourgedDAOLogger.trace("ScourgedDTO get = Success!");
         }
         else {
-            ScourgedDAOLogger.error("ScourgedDTO get = Failure!");
+            ScourgedDAOLogger.error("ScourgedDTO get = Scourged is null!");
         }
         return newNode;
     }
