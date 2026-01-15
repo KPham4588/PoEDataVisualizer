@@ -1,7 +1,7 @@
 package com.PhamKornbluhGroup.controllers;
 
-import com.PhamKornbluhGroup.DAO.ResultDAO;
-import com.PhamKornbluhGroup.DTO.ResultDTO;
+import com.PhamKornbluhGroup.DAO.ItemDAO;
+import com.PhamKornbluhGroup.DTO.ItemDTO;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
 
     @GetMapping
-    public ResultDTO GetItems(@RequestParam int id) {
+    public ItemDTO GetItems(@RequestParam int id) {
 
-        ResultDAO dao = new ResultDAO();
+        ItemDAO dao = new ItemDAO();
 
 
-        var results = dao.getResultById(id);
+        var result = dao.getItemById(9655);
 
-        return results;
+        return result;
     }
 }

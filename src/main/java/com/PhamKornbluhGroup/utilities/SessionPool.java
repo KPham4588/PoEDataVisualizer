@@ -33,6 +33,8 @@ public class SessionPool {
         Properties databaseSecrets = SecretsHelper.getDBInformation();
         // Session never gets closed
 
+        /* TODO: UPDATE -- Since we're using the Singleton, we should check to see if session has already been initialized
+         * If it has, we should return the pre-existing object, not overwrite it with a new one */
 
         //r SESSION MUST BE CLOSED BY THE CALLER DOWNSTREAM
         // Other Notes:    Update / Make sure not to create extra unneeded builders
@@ -66,6 +68,7 @@ public class SessionPool {
             // TODO: Add a better multi-catch and implement logging
             catch (Exception e) {
                 sessionPoolLogger.error("Exception in SessionPool.getSession. Message: " + e.getMessage());
+                System.out.println("could not close the sql session " + e.getMessage());
             }
         }
     }

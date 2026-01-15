@@ -11,6 +11,6 @@ public class Error implements ErrorController {
     @RequestMapping("/error")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String handleError() {
-        return "STOP THIS SHIT PLEASE";
+        return "TODO: Actually figure out how to see what error happened and how to handle it.";
     }
 }
