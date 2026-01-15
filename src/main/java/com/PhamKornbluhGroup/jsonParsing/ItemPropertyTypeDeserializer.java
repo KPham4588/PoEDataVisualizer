@@ -1,27 +1,26 @@
 package com.PhamKornbluhGroup.jsonParsing;
 
 import com.PhamKornbluhGroup.DTO.ItemPropertyDTO;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemPropertyTypeDeserializer extends JsonDeserializer<List<ItemPropertyDTO>> {
+public class ItemPropertyTypeDeserializer extends ValueDeserializer<List<ItemPropertyDTO>> {
 
     @Override
-    public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) {
 
-        ObjectMapper mapper = (ObjectMapper) p.getCodec();
+        ObjectMapper mapper = (ObjectMapper) p.objectReadContext();
 
         JsonNode node = mapper.readTree(p);
 
-        String parentKey = p.getParsingContext().getCurrentName();
+        // TODO: see if this works in an equivalent way to p.getParsingContext.GetCurrentName()
+        String parentKey = p.currentName();
 
         List<ItemPropertyDTO> list = new ArrayList<>();
 

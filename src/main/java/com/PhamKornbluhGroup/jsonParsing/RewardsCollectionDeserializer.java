@@ -1,27 +1,26 @@
 package com.PhamKornbluhGroup.jsonParsing;
 
 import com.PhamKornbluhGroup.DTO.RewardsCollectionDTO;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.*;
 
 //TODO: Not 100% sure this works. Its existence definitely prevents exceptions, but it might be producing empty data
-public class RewardsCollectionDeserializer extends JsonDeserializer<List<RewardsCollectionDTO>> {
+public class RewardsCollectionDeserializer extends ValueDeserializer<List<RewardsCollectionDTO>> {
 
     private final static Logger rewardsCollectionDeserializerLogger = LogManager.getLogger(RewardsCollectionDeserializer.class);
 
     @Override
-    public List<RewardsCollectionDTO> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-        rewardsCollectionDeserializerLogger.error("Beginnning RewardsCollectionDeserializer deserialize method");
+    public List<RewardsCollectionDTO> deserialize(JsonParser p, DeserializationContext ctxt) {
+        rewardsCollectionDeserializerLogger.error("Beginning RewardsCollectionDeserializer deserialize method");
 
-        ObjectMapper mapper = (ObjectMapper) p.getCodec();
+        ObjectMapper mapper = (ObjectMapper) p.objectReadContext();
         JsonNode node = mapper.readTree(p);
 
         String lastKey = "";
@@ -31,8 +30,8 @@ public class RewardsCollectionDeserializer extends JsonDeserializer<List<Rewards
         List<RewardsCollectionDTO> list = new ArrayList<>();
 
         if (node.isArray()) {
-            rewardsCollectionDeserializerLogger.error("node is an array");
-            throw new IOException("rewardsCollection should never be an Array. node is " + node.toPrettyString());
+            String errorMessage = "rewardsCollection should never be an Array. node is " + node.toPrettyString();
+            rewardsCollectionDeserializerLogger.error(errorMessage);
         }
         else if (node.isObject()) {
             rewardsCollectionDeserializerLogger.error("node is an object");
@@ -48,17 +47,18 @@ public class RewardsCollectionDeserializer extends JsonDeserializer<List<Rewards
                 dto.setRewardsAmount(value);
                 list.add(dto);
 
-                rewardsCollectionDeserializerLogger.error("Key = " + key);
-                rewardsCollectionDeserializerLogger.error("value = " + value);
+                String keyAndValue = "Key = " + key + " and value = " + value;
+
+                rewardsCollectionDeserializerLogger.error(keyAndValue);
 
                 lastKey = key;
                 lastValue = value;
             }
         }
 
-        rewardsCollectionDeserializerLogger.error("we're at the end now");
-        rewardsCollectionDeserializerLogger.error("Key = " + lastKey);
-        rewardsCollectionDeserializerLogger.error("value = " + lastValue);
+        String endingLog = "we're at the end now; key = " + lastKey + " and value = " + lastValue;
+
+        rewardsCollectionDeserializerLogger.error(endingLog);
         return list;
     }
 

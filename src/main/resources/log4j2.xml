@@ -23,7 +23,7 @@
 
     <!-- Here's where we set logging  -->
     <Loggers>
-        <Root level="ALL">
+        <Root level="INFO">
             <AppenderRef ref="CONSOLE" level="ALL"/>
             <AppenderRef ref="MAIN" level="ALL"/>
             <AppenderRef ref="ERRORS" level="ERROR"/>
