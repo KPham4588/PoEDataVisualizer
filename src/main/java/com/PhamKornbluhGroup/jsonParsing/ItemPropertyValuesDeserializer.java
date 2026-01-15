@@ -5,6 +5,7 @@ import tools.jackson.databind.ValueDeserializer;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;
+import tools.jackson.core.JacksonException;
 
 
 public class ItemPropertyValuesDeserializer extends ValueDeserializer<ItemPropertyValuesDTO> {
