@@ -46,5 +46,7 @@
         <mapper resource="mappers/ingestionMappers/RewardsDTOMapper.xml"/>
         <mapper resource="mappers/ingestionMappers/ScourgedDTOMapper.xml"/>
         <mapper resource="mappers/ingestionMappers/UltimatumModsDTOMapper.xml"/>
+
+        <mapper resource="mappers/filtrationMappers/FilteredStashResultsDTOMapper.xml"/>
     </mappers>
 </configuration>
