@@ -15,7 +15,7 @@
         <result property="stashType" column="stashType"/>
         <result property="league" column="league"/>
         <collection property="items" column="dbId" javaType="ArrayList"
-                    ofType="com.PhamKornbluhGroup.DTO.PublicStashChangeDTO"
+                    ofType="com.PhamKornbluhGroup.DTO.ItemDTO"
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.getEntityByPublicStashChangeId"/>
     </resultMap>
 
