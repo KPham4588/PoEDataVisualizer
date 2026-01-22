@@ -67,7 +67,7 @@
         logbookModsId,
         `mod`)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
     </insert>
 
     <select id="getModsByLogbookModsId" resultType="java.lang.String">

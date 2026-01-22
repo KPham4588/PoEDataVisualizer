@@ -65,17 +65,4 @@ public class HybridDTO {
     public void setSecDescrText(String secDescrText) {
         this.secDescrText = secDescrText;
     }
-
-    @Override
-    public String toString() {
-        return "HybridDTO{" +
-                "dbId=" + dbId +
-                ", itemId=" + itemId +
-                ", isVaalGem=" + isVaalGem +
-                ", baseTypeName='" + baseTypeName + '\'' +
-                ", properties=" + properties +
-                ", explicitMods=" + explicitMods +
-                ", secDescrText='" + secDescrText + '\'' +
-                '}';
-    }
 }

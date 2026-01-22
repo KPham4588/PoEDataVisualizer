@@ -5,7 +5,6 @@ import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.ValueDeserializer;
 import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +14,8 @@ public class ItemPropertyTypeDeserializer extends ValueDeserializer<List<ItemPro
     @Override
     public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) {
 
-        ObjectMapper mapper = (ObjectMapper) p.objectReadContext();
 
-        JsonNode node = mapper.readTree(p);
+        JsonNode node = ctxt.readTree(p);
 
         // TODO: see if this works in an equivalent way to p.getParsingContext.GetCurrentName()
         String parentKey = p.currentName();
@@ -26,12 +24,12 @@ public class ItemPropertyTypeDeserializer extends ValueDeserializer<List<ItemPro
 
         if (node.isArray()) {
             for (JsonNode child : node) {
-                ItemPropertyDTO dto = mapper.treeToValue(child, ItemPropertyDTO.class);
+                ItemPropertyDTO dto = ctxt.readTreeAsValue(child, ItemPropertyDTO.class);
                 dto.setPropertyType(mapPropertyType(parentKey));
                 list.add(dto);
             }
         } else if (node.isObject()) {
-            ItemPropertyDTO dto = mapper.treeToValue(node, ItemPropertyDTO.class);
+            ItemPropertyDTO dto = ctxt.readTreeAsValue(node, ItemPropertyDTO.class);
             dto.setPropertyType(mapPropertyType(parentKey));
             list.add(dto);
         }
