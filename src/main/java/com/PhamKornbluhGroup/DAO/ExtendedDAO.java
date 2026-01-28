@@ -20,7 +20,7 @@ public class ExtendedDAO {
             ExtendedDAOLogger.trace("ExtendedDTO object is not null!");
         }
         else {
-            ExtendedDAOLogger.error("Failure!");
+            ExtendedDAOLogger.error("Extended is null!");
         }
         return newNode;
     }

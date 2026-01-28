@@ -1,7 +1,7 @@
 package com.PhamKornbluhGroup.DTO;
 
 import com.PhamKornbluhGroup.jsonParsing.RewardsCollectionDeserializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
 

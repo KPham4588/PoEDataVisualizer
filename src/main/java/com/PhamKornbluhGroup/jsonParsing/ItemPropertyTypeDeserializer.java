@@ -1,38 +1,35 @@
 package com.PhamKornbluhGroup.jsonParsing;
 
 import com.PhamKornbluhGroup.DTO.ItemPropertyDTO;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.JsonNode;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemPropertyTypeDeserializer extends JsonDeserializer<List<ItemPropertyDTO>> {
+public class ItemPropertyTypeDeserializer extends ValueDeserializer<List<ItemPropertyDTO>> {
 
     @Override
-    public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public List<ItemPropertyDTO> deserialize(JsonParser p, DeserializationContext ctxt) {
 
-        ObjectMapper mapper = (ObjectMapper) p.getCodec();
 
-        JsonNode node = mapper.readTree(p);
+        JsonNode node = ctxt.readTree(p);
 
-        String parentKey = p.getParsingContext().getCurrentName();
+        // TODO: see if this works in an equivalent way to p.getParsingContext.GetCurrentName()
+        String parentKey = p.currentName();
 
         List<ItemPropertyDTO> list = new ArrayList<>();
 
         if (node.isArray()) {
             for (JsonNode child : node) {
-                ItemPropertyDTO dto = mapper.treeToValue(child, ItemPropertyDTO.class);
+                ItemPropertyDTO dto = ctxt.readTreeAsValue(child, ItemPropertyDTO.class);
                 dto.setPropertyType(mapPropertyType(parentKey));
                 list.add(dto);
             }
         } else if (node.isObject()) {
-            ItemPropertyDTO dto = mapper.treeToValue(node, ItemPropertyDTO.class);
+            ItemPropertyDTO dto = ctxt.readTreeAsValue(node, ItemPropertyDTO.class);
             dto.setPropertyType(mapPropertyType(parentKey));
             list.add(dto);
         }

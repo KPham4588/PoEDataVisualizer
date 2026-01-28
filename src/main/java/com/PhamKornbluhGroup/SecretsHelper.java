@@ -1,7 +1,7 @@
 package com.PhamKornbluhGroup;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
@@ -88,10 +88,12 @@ public class SecretsHelper {
         // username, password, driver, and url are exact strings that will be used to match variables in the mybatisconfig.xml
         // If we change in one place, must change in the other place as well
         Properties props = new Properties();
+
         props.setProperty("username", getDBUserName());
         props.setProperty("password", getDBPassword());
         props.setProperty("driver", getDBDriver());
         props.setProperty("url", getDBURL());
+
         return props;
     }
 

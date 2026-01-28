@@ -2,17 +2,18 @@ package com.PhamKornbluhGroup.jsonParsing;
 
 import com.PhamKornbluhGroup.APIResultData;
 import com.PhamKornbluhGroup.DTO.ResultDTO;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.core.JacksonException;
 
 import java.io.*;
 
 public class JSONParser {
 
     private static ResultDTO parsePublicStashChange(InputStream stream) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        JsonMapper mapper = JsonMapper.builder()
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
 
         ResultDTO resultDTO = new ResultDTO();
 
@@ -37,9 +38,10 @@ public class JSONParser {
         return null;
     }
 
-    public static ResultDTO parseAPIResultData(APIResultData data) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    public static ResultDTO parseAPIResultData(APIResultData data) throws JacksonException {
+        JsonMapper mapper = JsonMapper.builder()
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
 
         ResultDTO resultDTO = mapper.readValue(data.getContent(), ResultDTO.class);
 

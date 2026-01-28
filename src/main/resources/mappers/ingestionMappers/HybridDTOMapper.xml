@@ -98,6 +98,6 @@
         hybridId,
         explicitMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
     </select>
 </mapper>
