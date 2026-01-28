@@ -31,7 +31,7 @@ public class SessionPool {
             return session;
         }
         Properties databaseSecrets = SecretsHelper.getDBInformation();
-        // Session never gets closed
+        // Session does not automatically close - CALLER NEEDS TO CLOSE THE SESSION
 
         /* TODO: UPDATE -- Since we're using the Singleton, we should check to see if session has already been initialized
          * If it has, we should return the pre-existing object, not overwrite it with a new one */
