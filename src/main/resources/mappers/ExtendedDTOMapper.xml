@@ -66,7 +66,7 @@
         INSERT INTO Subcategories
             (extendedId, subcategory)
         VALUES
-            (#{arg0}, #{arg1})
+            (#{param1}, #{param2})
     </insert>
 
     <!--Doesn't Work-->

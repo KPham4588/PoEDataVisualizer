@@ -1,0 +1,16 @@
+package com.PhamKornbluhGroup.controllers;
+
+import org.springframework.boot.webmvc.error.ErrorController;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@Controller
+public class Error implements ErrorController {
+    @RequestMapping("/error")
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleError() {
+        return "TODO: Actually figure out how to see what error happened and how to handle it.";
+    }
+}

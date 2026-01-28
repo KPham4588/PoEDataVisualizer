@@ -203,7 +203,6 @@
                     select="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsDTO.getEntityByItemId"/>
     </resultMap>
 
-    <!-- UNTESTED -->
     <select id="getEntityById" resultMap="ItemDTOMap">
         <![CDATA[
         SELECT
@@ -446,7 +445,7 @@
         itemId,
         cosmeticMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -456,7 +455,7 @@
         itemId,
         craftedMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -466,7 +465,7 @@
         itemId,
         EnchantMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -476,7 +475,7 @@
         itemId,
         explicitMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -486,7 +485,7 @@
         itemId,
         flavourText)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -496,7 +495,7 @@
         itemId,
         fracturedMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -506,7 +505,7 @@
         itemId,
         implicitMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -516,7 +515,7 @@
         itemId,
         scourgeMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -526,7 +525,7 @@
         itemId,
         utilityMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 
@@ -536,7 +535,7 @@
         itemId,
         veiledMod)
         VALUES
-        (#{arg0}, #{arg1})
+        (#{param1}, #{param2})
         ]]>
     </insert>
 </mapper>

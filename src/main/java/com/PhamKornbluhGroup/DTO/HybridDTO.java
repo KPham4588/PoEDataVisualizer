@@ -2,7 +2,7 @@ package com.PhamKornbluhGroup.DTO;
 
 import com.PhamKornbluhGroup.jsonParsing.ItemPropertyTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
 
@@ -64,18 +64,5 @@ public class HybridDTO {
     }
     public void setSecDescrText(String secDescrText) {
         this.secDescrText = secDescrText;
-    }
-
-    @Override
-    public String toString() {
-        return "HybridDTO{" +
-                "dbId=" + dbId +
-                ", itemId=" + itemId +
-                ", isVaalGem=" + isVaalGem +
-                ", baseTypeName='" + baseTypeName + '\'' +
-                ", properties=" + properties +
-                ", explicitMods=" + explicitMods +
-                ", secDescrText='" + secDescrText + '\'' +
-                '}';
     }
 }

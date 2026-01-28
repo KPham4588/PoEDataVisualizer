@@ -23,7 +23,12 @@
 
     <!-- Here's where we set logging  -->
     <Loggers>
-        <Root level="ALL">
+        <Logger name="com.PhamKornbluhGroup" level="ALL">
+            <AppenderRef ref="CONSOLE" level="ALL"/>
+            <AppenderRef ref="MAIN" level="ALL"/>
+            <AppenderRef ref="ERRORS" level="ERROR"/>
+        </Logger>
+        <Root level="ERROR">
             <AppenderRef ref="CONSOLE" level="ALL"/>
             <AppenderRef ref="MAIN" level="ALL"/>
             <AppenderRef ref="ERRORS" level="ERROR"/>
