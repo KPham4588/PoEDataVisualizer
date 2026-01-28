@@ -15,7 +15,7 @@ public class ItemController {
         ItemDAO dao = new ItemDAO();
 
 
-        var result = dao.getItemById(9655);
+        var result = dao.getItemById(id);
 
         return result;
     }
