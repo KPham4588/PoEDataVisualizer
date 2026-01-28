@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class Error implements ErrorController {
     @RequestMapping("/error")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleError() {
         return "TODO: Actually figure out how to see what error happened and how to handle it.";
     }
