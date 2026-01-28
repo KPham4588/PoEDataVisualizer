@@ -13,19 +13,18 @@ import java.util.ArrayList;
 @RequestMapping("/items")
 public class ItemController {
 
-    @GetMapping
-    public ItemDTO getItems(@RequestParam int id) {
+    @GetMapping("/getItems")
+    public ItemDTO getItems(@RequestParam("id") int id) {
 
         ItemDAO dao = new ItemDAO();
 
-
-        var result = dao.getItemById(id);
+        ItemDTO result = dao.getItemById(id);
 
         return result;
     }
 
-    // https://localhost:8080/items/getItemsByNameAndLeague?itemName=Mageblood&league=Keepers
-    @GetMapping
+    // Example: https://localhost:8080/items/getItemsByNameAndLeague?itemName=Mageblood&league=Keepers
+    @GetMapping("/getItemsByNameAndLeague")
     public ArrayList<PublicStashChangeDTO> getItemsByNameAndLeague(@RequestParam("itemName") String itemName,
                                                                    @RequestParam("league") String league) {
         PublicStashChangeDAO dao = new PublicStashChangeDAO();
