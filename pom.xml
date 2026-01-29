@@ -172,7 +172,6 @@
 	<!-- Build Section -->
 	<build>
 		<plugins>
-
 			<!-- Plugin for executing Java code during build and testing -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -181,6 +180,66 @@
 				<configuration>
 					<mainClass>com.PhamKornbluhGroup.PoeDataVisualizerApplication</mainClass>
 				</configuration>
+			</plugin>
+
+			<!-- Source: https://mvnrepository.com/artifact/com.github.eirslett/frontend-maven-plugin -->
+			<!--
+				This plugin downloads and installs node and npm, packaging it into the jar dependencies in concert
+				with the maven-shade-plugin. This ensures that all builds run on the same version of npm, and allows
+				 npm to function even when not installed on the host machine.
+			 -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<!-- This config allows the plugin to locate where npm commands should be run, since it's a different
+				 folder from where the POM is located-->
+				<configuration>
+					<workingDirectory>frontend</workingDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<!-- "generate-resources" is the default phase. This is just to be explicit -->
+						<phase>generate-resources</phase>
+						<configuration>
+							<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
+							<nodeVersion>v24.12.0</nodeVersion>
+							<npmVersion>11.6.2</npmVersion>
+						</configuration>
+					</execution>
+<!--					<execution>-->
+<!--						<id>npm ci</id>-->
+<!--						<goals>-->
+<!--							<goal>npm</goal>-->
+<!--						</goals>-->
+<!--						&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
+<!--						<configuration>-->
+<!--							<arguments>ci</arguments>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--					<execution>-->
+<!--						<id>javascript tests</id>-->
+<!--						<goals>-->
+<!--							<goal>npm</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<arguments>run test</arguments>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- Plugin for packaging the project into a JAR file with a custom manifest -->
@@ -198,11 +257,13 @@
 				</configuration>
 			</plugin>
 
+			<!-- This plugin gives you an "uber-jar" containing all dependencies when packaging	-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.6.1</version>
 			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

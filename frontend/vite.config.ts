@@ -10,4 +10,10 @@ export default defineConfig({
       },
     }),
   ],
+//   This specifies that vite should build into the default location
+//   where Spring Boot is expecting static resources to be located
+  build: {
+    outDir: '../src/main/resources/static',
+    emptyOutDir: true,
+  },
 })
