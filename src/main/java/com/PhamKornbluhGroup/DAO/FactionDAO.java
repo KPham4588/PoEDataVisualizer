@@ -26,8 +26,11 @@ public class FactionDAO {
         return faction;
     }
 
-    public void saveFaction(FactionDTO insertObject)
-    {
+    public void saveFaction(FactionDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IFactionDTO mapper = session.getMapper(IFactionDTO.class);
         System.out.println("Attempting to save FactionDTO object");

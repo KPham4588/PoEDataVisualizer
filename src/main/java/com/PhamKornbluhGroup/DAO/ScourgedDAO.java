@@ -22,18 +22,36 @@ public class ScourgedDAO {
             ScourgedDAOLogger.trace("ScourgedDTO get = Success!");
         }
         else {
-            ScourgedDAOLogger.error("ScourgedDTO get = Failure!");
+            ScourgedDAOLogger.error("ScourgedDTO get = Scourged is null!");
         }
         return newNode;
     }
 
     public void insertScourgedById(ArrayList<ScourgedDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
         for (ScourgedDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
+        session.commit();
+        ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
+    }
+
+    public void insertScourged(ScourgedDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
+        SqlSession session = SessionPool.getSession();
+        IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
+        ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
+        mapper.saveEntity(insertObject);
+
         session.commit();
         ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
     }

@@ -7,8 +7,12 @@
     </settings>
 
     <typeHandlers>
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.FactionId" />
-        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="com.PhamKornbluhGroup.DTO.DisplayMode" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FactionId"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.FrameType"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FrameTypeTypeHandler" />
+        <typeHandler javaType="com.PhamKornbluhGroup.DTO.DisplayMode"
+                     handler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.DisplayModeTypeHandler" />
     </typeHandlers>
 
     <environments default="development">
@@ -24,18 +28,25 @@
         </environment>
     </environments>
 
+
     <mappers>
-        <mapper resource="mappers/CrucibleDTOMapper.xml"/>
-        <mapper resource="mappers/CrucibleNodeDTOMapper.xml"/>
-        <mapper resource="mappers/ExtendedDTOMapper.xml"/>
-        <mapper resource="mappers/FactionDTOMapper.xml"/>
-        <mapper resource="mappers/HybridDTOMapper.xml"/>
-        <mapper resource="mappers/IncubatedItemDTOMapper.xml"/>
-        <mapper resource="mappers/ItemPropertyDTOMapper.xml"/>
-        <mapper resource="mappers/ItemPropertyValuesDTOMapper.xml"/>
-        <mapper resource="mappers/ScourgedDTOMapper.xml"/>
-        <mapper resource="mappers/UltimatumModsDTOMapper.xml"/>
-        <mapper resource="mappers/ItemSocketDTOMapper.xml"/>
-        <mapper resource="mappers/ItemDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ExtendedDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/FactionDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/HybridDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/IncubatedItemDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/InfluencesDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ItemDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ItemPropertyDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ItemPropertyValuesDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ItemSocketDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/LogbookModsDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/PublicStashChangeDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ResultDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/RewardsCollectionDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/RewardsDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/ScourgedDTOMapper.xml"/>
+        <mapper resource="mappers/ingestionMappers/UltimatumModsDTOMapper.xml"/>
+
+        <mapper resource="mappers/filtrationMappers/FilteredStashResultsDTOMapper.xml"/>
     </mappers>
 </configuration>

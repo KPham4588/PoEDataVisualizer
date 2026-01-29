@@ -28,12 +28,29 @@ public class IncubatedItemDAO {
     }
 
     public void insertIncubatedItemById(ArrayList<IncubatedItemDTO> insertObjects) {
+        if (insertObjects == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
         IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
         for (IncubatedItemDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
+        session.commit();
+        IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
+    }
+
+    public void insertIncubatedItem(IncubatedItemDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
+        SqlSession session = SessionPool.getSession();
+        IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
+        IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
+        mapper.saveEntity(insertObject);
         session.commit();
         IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
     }

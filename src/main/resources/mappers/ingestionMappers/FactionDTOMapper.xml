@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IFactionDTO">
+
+    <resultMap id="FactionDTOMap" type="com.PhamKornbluhGroup.DTO.FactionDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="logbookModsId" column="logbookModsId"/>
+        <result property="factionId" column="factionId" javaType="com.PhamKornbluhGroup.DTO.FactionId" typeHandler="com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler" />
+        <result property="factionName" column="factionName"/>
+    </resultMap>
+
+    <select id="getEntityById" resultMap="FactionDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            logbookModsId,
+            factionId,
+            factionName
+        FROM Faction
+        WHERE dbId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getEntityByLogbookModsId" resultMap="FactionDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            logbookModsId,
+            factionId,
+            factionName
+        FROM Faction
+        WHERE logbookModsId = #{dbId}
+		]]>
+    </select>
+
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        <![CDATA[
+			INSERT INTO Faction
+			    (logbookModsId, factionId, factionName)
+			VALUES (#{logbookModsId}, #{factionId, javaType=com.PhamKornbluhGroup.DTO.FactionId, typeHandler=com.PhamKornbluhGroup.utilities.MybatisTypeHandlers.FactionIdTypeHandler}, #{factionName})
+		]]>
+    </insert>
+</mapper>

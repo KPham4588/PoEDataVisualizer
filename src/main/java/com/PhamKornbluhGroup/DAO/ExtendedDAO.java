@@ -7,8 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-
 public class ExtendedDAO {
 
     private final static Logger ExtendedDAOLogger = LogManager.getLogger(ExtendedDAO.class);
@@ -16,31 +14,35 @@ public class ExtendedDAO {
     public ExtendedDTO getExtendedById(int id) {
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
-        System.out.println("Attempting to get ExtendedDTO object with ID " + id);
+        ExtendedDAOLogger.trace("Attempting to get ExtendedDTO object with ID " + id);
         ExtendedDTO newNode = mapper.getEntityById(id);
         if (newNode != null) {
-            ExtendedDAOLogger.trace("Success!");
+            ExtendedDAOLogger.trace("ExtendedDTO object is not null!");
         }
         else {
-            ExtendedDAOLogger.error("Failure!");
+            ExtendedDAOLogger.error("Extended is null!");
         }
         return newNode;
     }
 
-    public void insertExtendedById(ArrayList<ExtendedDTO> insertObjects) {
+    public void insertExtended(ExtendedDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");
-        for (ExtendedDTO node : insertObjects) {
-            mapper.saveEntity(node);
-            for (String subcategory : node.getSubcategories()) {
-                mapper.saveSubcategories(node.getDbId(), subcategory);
-            }
+        mapper.saveEntity(insertObject);
+
+        System.out.println("Saved initial extended properties. Attempting to insert subcategories.");
+        session.commit();
+
+        for (String subcategory : insertObject.getSubcategories()) {
+            mapper.saveSubcategory(insertObject.getDbId(), subcategory);
         }
+
         session.commit();
         System.out.println("Attempt finished.");
     }
-
-
-    
 }

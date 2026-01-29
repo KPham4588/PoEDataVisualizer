@@ -28,23 +28,42 @@ public class HybridDAO {
     }
 
     public void insertHybrid(HybridDTO insertObject) {
+        if (insertObject == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to insert HybridDTO object.");
         mapper.saveEntity(insertObject);
         session.commit();
+
+        var explicitMods = insertObject.getExplicitMods();
+        insertExplicitMods(insertObject.getDbId(), explicitMods);
+
+        var properties = insertObject.getProperties();
+        for (var property : properties) {
+            property.setHybridId(insertObject.getDbId());
+        }
+
+        ItemPropertyDAO itemProperty = new ItemPropertyDAO();
+        itemProperty.insertItemProperties(properties);
+
         System.out.println("Attempt finished.");
     }
 
-    public void insertHybrid(ArrayList<HybridDTO> insertObjects) {
+    private void insertExplicitMods(int hybridId, ArrayList<String> explicitMods) {
+        if (explicitMods == null) {
+            return;
+        }
+
         SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-        System.out.println("Attempting to insert HybridDTO object in list.");
-        for (HybridDTO node : insertObjects) {
-            mapper.saveEntity(node);
+
+        for (String mod : explicitMods) {
+            mapper.insertExplicitMod(hybridId, mod);
         }
         session.commit();
-        System.out.println("Attempt finished.");
     }
 
     public void updateHybrid(HybridDTO updateObject) {
