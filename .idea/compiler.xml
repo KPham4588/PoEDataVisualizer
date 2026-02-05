@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="PhamKornbluhGroup" target="17" />
+      <module name="POEDataVisualizer" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
