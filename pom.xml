@@ -196,6 +196,10 @@
 				 folder from where the POM is located-->
 				<configuration>
 					<workingDirectory>frontend</workingDirectory>
+
+					<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
+					<nodeVersion>v24.12.0</nodeVersion>
+					<npmVersion>11.6.2</npmVersion>
 				</configuration>
 				<executions>
 					<execution>
@@ -205,11 +209,6 @@
 						</goals>
 						<!-- "generate-resources" is the default phase. This is just to be explicit -->
 						<phase>generate-resources</phase>
-						<configuration>
-							<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
-							<nodeVersion>v24.12.0</nodeVersion>
-							<npmVersion>11.6.2</npmVersion>
-						</configuration>
 					</execution>
 <!--					<execution>-->
 <!--						<id>npm ci</id>-->
