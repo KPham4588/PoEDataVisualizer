@@ -10,7 +10,7 @@ on:
 
 jobs:
   setup-and-check:
-    runs-on: windows-latest  # Change to windows-latest or macos-latest as needed
+    runs-on: ubuntu-latest  # Can be ubuntu-latest, windows-latest, or macos-latest as needed
 
     steps:
       # Checkout the repository
