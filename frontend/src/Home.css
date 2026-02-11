@@ -1,0 +1,77 @@
+.root {
+    font-size: 16px;
+    background-image: url("/assets/pexels-eberhardgross-1743392.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    color: rgb(237, 236, 236);
+}
+
+/*this darkens the image, but doesnt work when you scroll down*/
+.root:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* adjust opacity for brightness */
+    z-index: 0;
+}
+
+.parent {
+    /*Height and Dimensions*/
+    height: auto;
+    min-height: 94.5vh;
+    width: 90vw;
+    margin-top: 5.5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+    /*Color and Alignment*/
+    background-color: rgba(55, 57, 54, 0.15);
+    justify-content: center;
+    align-items: center;
+
+    /*Border*/
+    box-sizing: border-box;
+    box-shadow: 3px 0 50px rgb(0, 0, 0, 90%);
+
+    /*Flex Settings*/
+    display: flex;
+    flex-direction: row;
+    flex-flow: column nowrap;
+
+}
+
+.main-body {
+    box-sizing: border-box;
+    display: flex;
+    flex: auto;
+    position: relative;
+    overflow-y: visible;
+    top: 0;
+    font-size: inherit;
+}
+
+/*Scrollbar Behavior*/
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+    background: rgb(48, 47, 47);
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
+/* Thumb styling */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(64, 64, 64, 0.6);
+    border-radius: 100px;
+    border: solid rgba(228, 228, 228, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(220, 218, 218, 0.9);
+    border: solid rgba(244, 244, 244, 0.6);
+    width: 18px;
+    height: 18px;
+}

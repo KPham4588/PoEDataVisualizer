@@ -1,0 +1,86 @@
+.header {
+    /*Place at top*/
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    /*Sizing*/
+    width: 100vw;
+    height: auto;
+    min-height: 4vh;
+
+    /*Place elements into left to right row*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    align-items: center;
+
+    /*Misc*/
+    background-color: rgb(28, 22, 22);
+    overflow: hidden;
+    z-index: 1000;  /* make sure it’s above everything else */
+}
+
+.header-menu-icon {
+    display: flex;
+
+    margin-top: 0.75vh;
+    margin-bottom: 0.75vh;
+    margin-left: clamp(0px, 0.15vw, 0.15vw);
+    margin-right: clamp(0px, 0.15vw, 0.15vw);
+
+    min-height: 3vh;
+    max-height: 15vh;
+    height: clamp(1.5rem, 2.5rem, 1.5vw);
+}
+
+.header-menu-button {
+    margin-top: 0.75vh;
+    margin-bottom: 0.75vh;
+    margin-left: clamp(0px, 0.15vw, 0.15vw);
+    margin-right: clamp(0px, 0.15vw, 0.15vw);
+
+    min-height: 3vh;
+    height: auto;
+
+    border-radius: 50px;
+    background-color: rgb(19, 38, 80);
+
+    color: rgb(159, 155, 155);
+    text-shadow: #000000 2px 2px;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*flex: 1;*/
+    flex: auto;
+
+    font-size: clamp(1.5rem, 2.5rem, 1.5vw);
+
+    /*Animation when Hover/Focusing*/
+    transition-property: background-color, box-shadow, color;
+    transition-duration: 125ms;
+    transition-delay: 0s;
+    transition-timing-function: ease-in;
+
+    /*Mobile Support*/
+    text-size-adjust: 50%;
+}
+
+.header-menu-button:hover {
+    background-color: rgb(28, 53, 104);
+    color: rgb(124, 123, 123);
+    box-shadow: #959191 0 2px;
+
+}
+
+.header-menu-button:active, .header-menu-button:focus {
+    background-color: rgb(68, 94, 158);
+    color: rgb(124, 123, 123);
+}
+
+.header-menu-button a {
+    color: inherit;
+}
