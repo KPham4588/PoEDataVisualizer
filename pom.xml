@@ -199,6 +199,8 @@
 					<installDirectory>target</installDirectory>
 
 					<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
+					<!-- If you update the node/npm versions here, make sure to also update them in the GitHub
+					workflow.yaml file for consistency-->
 					<nodeVersion>v24.12.0</nodeVersion>
 					<npmVersion>11.6.2</npmVersion>
 				</configuration>
@@ -230,6 +232,19 @@
 <!--							<arguments>run test</arguments>-->
 <!--						</configuration>-->
 <!--					</execution>-->
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<arguments>ci</arguments>
+						</configuration>
+					</execution>
+
+
+
 					<execution>
 						<id>npm run build</id>
 						<goals>
