@@ -6,6 +6,5 @@
   ],
   "compilerOptions": {
     "types": ["vite/client"]
-  },
-  "include": ["src", "./vite-env-override.d.ts"]
+  }
 }
