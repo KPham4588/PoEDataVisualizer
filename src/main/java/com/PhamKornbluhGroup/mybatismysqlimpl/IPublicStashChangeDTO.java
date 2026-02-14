@@ -8,5 +8,8 @@ import java.util.ArrayList;
 public interface IPublicStashChangeDTO extends IBaseDAO<PublicStashChangeDTO> {
 
     ArrayList<PublicStashChangeDTO> findStashesByItemNameAndLeague(@Param("itemName") String itemName,
-                                                                   @Param("league") String league);
+                                                                   @Param("league")   String league);
+
+    ArrayList<PublicStashChangeDTO> findStashesByCustomParameters(@Param("itemName") String itemName,
+                                                                  @Param("league")   String league);
 }

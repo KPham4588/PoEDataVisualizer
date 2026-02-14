@@ -109,4 +109,26 @@ public class PublicStashChangeDAO {
         }
         return stash;
     }
+
+    /**
+     * @param itemName This is the name of the Path of Exile Item you want to search for
+     *
+     * @param league This is the name of the "Standard" or temporary leagues. Examples:
+     *               "Hardcore", "Standard", "Keepers"
+     */
+    public ArrayList<PublicStashChangeDTO> findByCustomParameters(String itemName, String league) {
+        SqlSession session = SessionPool.getSession();
+        IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
+
+        PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO objects with custom parameters");
+
+        ArrayList<PublicStashChangeDTO> stash = mapper.findStashesByCustomParameters(itemName, league);
+        if (stash != null) {
+            PublicStashChangeDAOLogger.trace("Success!");
+        }
+        else {
+            PublicStashChangeDAOLogger.error("Failure!");
+        }
+        return stash;
+    }
 }
