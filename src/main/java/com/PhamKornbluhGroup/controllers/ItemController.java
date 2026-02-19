@@ -23,14 +23,6 @@ public class ItemController {
         return result;
     }
 
-    // Example: http://localhost:8080/items/getItemsByNameAndLeague?itemName=Mageblood&league=Keepers
-    @GetMapping("/getItemsByNameAndLeague")
-    public ArrayList<PublicStashChangeDTO> getItemsByNameAndLeague(@RequestParam(name = "itemName") String itemName,
-                                                                   @RequestParam(name = "league")   String league) {
-        PublicStashChangeDAO dao = new PublicStashChangeDAO();
-        return dao.findByItemNameAndLeague(itemName, league);
-    }
-
     // Example: http://localhost:8080/items/getItemsByCustomParameters?itemName=Mageblood&league=Keepers
     @GetMapping("/getItemsByCustomParameters")
     public ArrayList<PublicStashChangeDTO> getItemsByCustomParameters(
