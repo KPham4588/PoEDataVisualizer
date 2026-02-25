@@ -87,20 +87,69 @@ public class PublicStashChangeDAO {
         System.out.println("Attempt finished.");
     }
 
-    /**
-     * @param itemName This is the name of the Path of Exile Item you want to search for
-     *
-     * @param league This is the name of the "Standard" or temporary leagues. Examples:
-     *               "Hardcore", "Standard", "Keepers"
-     */
-    public ArrayList<PublicStashChangeDTO> findByItemNameAndLeague(String itemName, String league) {
+    public ArrayList<PublicStashChangeDTO> findByCustomParameters(String accountName,
+                                                                  String artFilename,
+                                                                  String baseType,
+                                                                  String colour,
+                                                                  String flavourTextNote,
+                                                                  String forum_note,
+                                                                  String icon,
+                                                                  String inventoryId,
+                                                                  String league,
+                                                                  String name,
+                                                                  String note,
+                                                                  String prophecyText,
+                                                                  String rarity,
+                                                                  String secDescrText,
+                                                                  String stackSizeText,
+                                                                  String typeLine,
+                                                                  String abyssJewel,
+                                                                  String cisRaceReward,
+                                                                  String corrupted,
+                                                                  String delve,
+                                                                  String duplicated,
+                                                                  String elder,
+                                                                  String foreseeing,
+                                                                  String fractured,
+                                                                  String identified,
+                                                                  String isRelic,
+                                                                  String lockedToAccount,
+                                                                  String lockedToCharacter,
+                                                                  String memoryItem,
+                                                                  String replica,
+                                                                  String ruthless,
+                                                                  String seaRaceReward,
+                                                                  String searing,
+                                                                  String shaper,
+                                                                  String split,
+                                                                  String support,
+                                                                  String synthesised,
+                                                                  String tangled,
+                                                                  String thRaceReward,
+                                                                  String unmodifiable,
+                                                                  String veiled,
+                                                                  String verified,
+                                                                  String unmodifiableExceptChaos,
+                                                                  String foilVariation,
+                                                                  String ilvl,
+                                                                  String itemLevel,
+                                                                  String maxStackSize,
+                                                                  String stackSize,
+                                                                  String talismanTier,
+                                                                  String socket) {
         SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
-        PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO objects that contain items named "
-                + itemName + " and are in league " + league);
+        PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO objects with custom parameters");
 
-        ArrayList<PublicStashChangeDTO> stash = mapper.findStashesByItemNameAndLeague(itemName, league);
+        ArrayList<PublicStashChangeDTO> stash = mapper.findStashesByCustomParameters(accountName, artFilename, baseType,
+                colour, flavourTextNote, forum_note, icon, inventoryId, league, name, note, prophecyText, rarity,
+                secDescrText, stackSizeText, typeLine, abyssJewel, cisRaceReward, corrupted, delve, duplicated, elder,
+                foreseeing, fractured, identified, isRelic, lockedToAccount, lockedToCharacter, memoryItem, replica,
+                ruthless, seaRaceReward, searing, shaper, split, support, synthesised, tangled, thRaceReward,
+                unmodifiable, veiled, verified, unmodifiableExceptChaos, foilVariation, ilvl, itemLevel, maxStackSize,
+                stackSize, talismanTier, socket);
+
         if (stash != null) {
             PublicStashChangeDAOLogger.trace("Success!");
         }

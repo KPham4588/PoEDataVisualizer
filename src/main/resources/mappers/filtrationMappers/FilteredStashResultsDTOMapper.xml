@@ -20,7 +20,7 @@
                 resultMap="com.PhamKornbluhGroup.mybatismysqlimpl.IItemDTO.ItemDTOMap"/>
 </resultMap>
 
-    <select id="findStashesByItemNameAndLeague" resultMap="FilteredStashResultsDTOMap">
+    <select id="findStashesByCustomParameters" resultMap="FilteredStashResultsDTOMap">
         <![CDATA[
         SELECT
             p.dbId        AS psc_dbId,
@@ -90,8 +90,57 @@
         FROM PublicStashChange p
         JOIN Item i
         ON i.publicStashChangeId = p.dbId
-        WHERE i.name = #{itemName}
-        AND p.league = #{league}
+        WHERE
+            (#{accountName} IS NULL OR p.accountName = #{accountName})
+            AND (#{artFilename} IS NULL OR i.artFilename = #{artFilename})
+            AND (#{baseType} IS NULL OR i.baseType = #{baseType})
+            AND (#{colour} IS NULL OR i.colour = #{colour})
+            AND (#{flavourTextNote} IS NULL OR i.flavourTextNote = #{flavourTextNote})
+            AND (#{forum_note} IS NULL OR i.forum_note = #{forum_note})
+            AND (#{icon} IS NULL OR i.icon = #{icon})
+            AND (#{inventoryId} IS NULL OR i.inventoryId = #{inventoryId})
+            AND (#{league} IS NULL OR i.league = #{league})
+            AND (#{name} IS NULL OR i.name = #{name})
+            AND (#{note} IS NULL OR i.note = #{note})
+            AND (#{prophecyText} IS NULL OR i.prophecyText = #{prophecyText})
+            AND (#{rarity} IS NULL OR i.rarity = #{rarity})
+            AND (#{secDescrText} IS NULL OR i.secDescrText = #{secDescrText})
+            AND (#{stackSizeText} IS NULL OR i.stackSizeText = #{stackSizeText})
+            AND (#{typeLine} IS NULL OR i.typeLine = #{typeLine})
+            AND (#{abyssJewel} IS NULL OR i.abyssJewel = #{abyssJewel})
+            AND (#{cisRaceReward} IS NULL OR i.cisRaceReward = #{cisRaceReward})
+            AND (#{corrupted} IS NULL OR i.corrupted = #{corrupted})
+            AND (#{delve} IS NULL OR i.delve = #{delve})
+            AND (#{duplicated} IS NULL OR i.duplicated = #{duplicated})
+            AND (#{elder} IS NULL OR i.elder = #{elder})
+            AND (#{foreseeing} IS NULL OR i.foreseeing = #{foreseeing})
+            AND (#{fractured} IS NULL OR i.fractured = #{fractured})
+            AND (#{identified} IS NULL OR i.identified = #{identified})
+            AND (#{isRelic} IS NULL OR i.isRelic = #{isRelic})
+            AND (#{lockedToAccount} IS NULL OR i.lockedToAccount = #{lockedToAccount})
+            AND (#{lockedToCharacter} IS NULL OR i.lockedToCharacter = #{lockedToCharacter})
+            AND (#{memoryItem} IS NULL OR i.memoryItem = #{memoryItem})
+            AND (#{replica} IS NULL OR i.replica = #{replica})
+            AND (#{ruthless} IS NULL OR i.ruthless = #{ruthless})
+            AND (#{seaRaceReward} IS NULL OR i.seaRaceReward = #{seaRaceReward})
+            AND (#{searing} IS NULL OR i.searing = #{searing})
+            AND (#{shaper} IS NULL OR i.shaper = #{shaper})
+            AND (#{split} IS NULL OR i.split = #{split})
+            AND (#{support} IS NULL OR i.support = #{support})
+            AND (#{synthesised} IS NULL OR i.synthesised = #{synthesised})
+            AND (#{tangled} IS NULL OR i.tangled = #{tangled})
+            AND (#{thRaceReward} IS NULL OR i.thRaceReward = #{thRaceReward})
+            AND (#{unmodifiable} IS NULL OR i.unmodifiable = #{unmodifiable})
+            AND (#{veiled} IS NULL OR i.veiled = #{veiled})
+            AND (#{verified} IS NULL OR i.verified = #{verified})
+            AND (#{unmodifiableExceptChaos} IS NULL OR i.unmodifiableExceptChaos = #{unmodifiableExceptChaos})
+            AND (#{foilVariation} IS NULL OR i.foilVariation = #{foilVariation})
+            AND (#{ilvl} IS NULL OR i.ilvl = #{ilvl})
+            AND (#{itemLevel} IS NULL OR i.itemLevel = #{itemLevel})
+            AND (#{maxStackSize} IS NULL OR i.maxStackSize = #{maxStackSize})
+            AND (#{stackSize} IS NULL OR i.stackSize = #{stackSize})
+            AND (#{talismanTier} IS NULL OR i.talismanTier = #{talismanTier})
+            AND (#{socket} IS NULL OR i.socket = #{socket})
         ORDER BY p.dbId, i.dbId
         ]]>
     </select>
