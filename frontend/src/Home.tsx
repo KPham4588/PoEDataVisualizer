@@ -9,24 +9,18 @@ import Attributions from "./Attributions.tsx";
 
 export default function Home() {
     return (
-        <html className="root">
-            <head>
-                <title>POE Oracle</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            </head>
-            <body>
-                <div className="parent">
-                    <Header/>
-                    <div className="main-body">
-                        <Routes>
-                            <Route path="/greatest-hits" element={<GreatestHits/>} />
-                            <Route path="/about" element={<About/>} />
-                            <Route path="/attributions" element={<Attributions/>} />
-                        </Routes>
-                    </div>
-                <Footer/>
+        <div className="root">
+            <div className="parent">
+                <Header/>
+                <div className="main-body">
+                    <Routes>
+                        <Route path="/greatest-hits" element={<GreatestHits/>} />
+                        <Route path="/about" element={<About/>} />
+                        <Route path="/attributions" element={<Attributions/>} />
+                    </Routes>
                 </div>
-            </body>
-        </html>
+                <Footer/>
+            </div>
+        </div>
     )
 }
