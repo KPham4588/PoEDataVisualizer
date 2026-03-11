@@ -8,8 +8,6 @@ import Footer from "./Footer";
 import Attributions from "./Attributions.tsx";
 
 export default function Home() {
-    const headerElement = Header();
-    const footerElement = Footer();
     return (
         <html className="root">
             <head>
@@ -18,15 +16,15 @@ export default function Home() {
             </head>
             <body>
                 <div className="parent">
-                    {headerElement}
+                    <Header/>
                     <div className="main-body">
                         <Routes>
-                            <Route path="/greatest-hits" element={GreatestHits()}/>
-                            <Route path="/about" element={About()}/>
-                            <Route path="/attributions" element={Attributions()}/>
+                            <Route path="/greatest-hits" element={<GreatestHits/>} />
+                            <Route path="/about" element={<About/>} />
+                            <Route path="/attributions" element={<Attributions/>} />
                         </Routes>
                     </div>
-                {footerElement}
+                <Footer/>
                 </div>
             </body>
         </html>
