@@ -1,0 +1,23 @@
+.footer {
+    /*Place at top*/
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    /*Sizing*/
+    width: 100vw;
+    height: auto;
+    min-height: 2.5vh;
+
+    /*Place elements into left to right row*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    align-items: center;
+
+    /*Misc*/
+    background-color: rgb(27, 24, 24);
+    overflow: hidden;
+    z-index: 1000;  /* make sure it’s above everything else */
+}
