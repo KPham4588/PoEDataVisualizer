@@ -14,7 +14,8 @@ export default function GreatestHits() {
             autoSize: true,
             layout: {
                 textColor: 'black',
-                background: {type: ColorType.Solid, color: '#ffffff'}
+                background: {type: ColorType.Solid, color: 'rgba(158,157,157,0.6)'},
+                fontSize: 24,
             },
             grid: {
                 vertLines: {visible: false},
@@ -22,13 +23,6 @@ export default function GreatestHits() {
 
             },
         });
-
-        // chart.applyOptions({
-        //     grid: {
-        //         vertLines: {visible: true},
-        //         horzLines: {visible: true},
-        //     },
-        // });
 
         const areaSeries = chart.addSeries(AreaSeries, {
             lineColor: '#0043fa',
@@ -65,11 +59,12 @@ export default function GreatestHits() {
         areaSeries.setData(data);
         chart.timeScale().fitContent();
 
-        return () => chart.remove(); // cleanup
+        return () =>
+            chart.remove(); // cleanup
     }, []);
 
     return (
-        <div>
+        <div className="greatest-hits">
             <p>The absolute greatest hits of all time!</p>
             <div ref={containerRef} className="container"></div>
         </div>

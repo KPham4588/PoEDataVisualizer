@@ -13,7 +13,7 @@
 
 .parent {
     /*Height and Dimensions*/
-    height: auto;
+    height: 94vh;
     min-height: 94vh;
     width: 90vw;
     margin: 0 auto;
@@ -25,7 +25,6 @@
     /*Color and Alignment*/
     background-color: rgba(55, 57, 54, 0.15);
     justify-content: center;
-    align-items: center;
 
     /*Border*/
     box-sizing: border-box;
@@ -41,7 +40,8 @@
 .main-body {
     box-sizing: border-box;
     display: flex;
-    flex: auto;
+    flex: 1;
+    min-height: 0;
     position: relative;
     overflow-y: visible;
     top: 0;
