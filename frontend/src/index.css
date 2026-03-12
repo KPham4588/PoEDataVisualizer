@@ -26,11 +26,17 @@ a:hover {
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
+    /*display: flex;*/
+    /*place-items: center;*/
     min-width: 320px;
     min-height: 100vh;
-}
+
+    font-size: 16px;
+    background-image: url("/assets/pexels-eberhardgross-1743392.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    color: rgb(237, 236, 236);}
 
 h1 {
     font-size: 3.2em;
