@@ -1,13 +1,15 @@
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import './index.css'
-import {BrowserRouter} from "react-router-dom";
-import Home from "./Home.tsx"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import {createRouter, RouterProvider} from '@tanstack/react-router';
+import { Route as RootRoute } from './routes/__root';
 
-createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <BrowserRouter>
-            <Home/>
-        </BrowserRouter>
-    </StrictMode>,
+const router = createRouter({
+    routeTree: RootRoute,
+    context: {}
+});
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
 )
