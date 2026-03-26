@@ -7,9 +7,8 @@ function About() {
             <p className="body-block">
                 We know we can get the About page via File-based routing!
             </p>
-
             <p className="body-block">sdasadsadsa dsadsadsads adsadsadsa dsadsadsad sadsadsadsa</p>
-    </div>
+        </div>
     )
 }
 

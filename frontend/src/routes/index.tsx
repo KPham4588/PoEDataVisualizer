@@ -1,23 +1,15 @@
 // src/routes/index.tsx
 import { createFileRoute } from '@tanstack/react-router'
-import Header from "../Header.tsx";
-import Footer from "../Footer.tsx";
-import '../css/Home.css';
-import '../css/index.css';
 
-function Home() {
+function Index() {
     return (
-        <div className="root">
-            <div className="parent">
-                <Header/>
-                <div className="main-body">
-                </div>
-                <Footer/>
-            </div>
+        <div className="main-body">
+            <h1>Welcome to the Home Page!</h1>
+            <p>This content is inside main-body.</p>
         </div>
     )
 }
 
 export const Route = createFileRoute('/')({
-    component: Home,
+    component: Index,
 })

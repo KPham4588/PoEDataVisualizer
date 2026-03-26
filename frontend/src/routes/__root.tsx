@@ -6,11 +6,14 @@ import {
     Scripts,
 } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
+import Header from "../Header.tsx";
+import Footer from "../Footer.tsx";
+import '../css/root.css';
 
 function RootComponent() {
     return (
         <RootDocument>
-            <Outlet />
+            <PageLayout/>
         </RootDocument>
     )
 }
@@ -26,6 +29,20 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             <Scripts />
         </body>
         </html>
+    )
+}
+
+function PageLayout() {
+    return (
+        <div className="root">
+            <div className="parent">
+                <Header/>
+                <div className="main-body">
+                    <Outlet/>
+                </div>
+                <Footer/>
+            </div>
+        </div>
     )
 }
 
