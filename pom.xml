@@ -207,8 +207,6 @@
 					<installDirectory>target</installDirectory>
 
 					<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
-					<!-- If you update the node/npm versions here, make sure to also update them in the GitHub
-					workflow.yaml file for consistency-->
                     <nodeVersion>v24.13.1</nodeVersion>
 					<npmVersion>11.8.0</npmVersion>
 				</configuration>

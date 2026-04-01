@@ -8,7 +8,11 @@ export default defineConfig({
     plugins: [
       tsConfigPaths(),
       tanstackStart(),
-      viteReact(),
+      viteReact({
+          babel: {
+              plugins: [['babel-plugin-react-compiler']],
+          },
+      }),
     ],
 //   This specifies that vite should build into the default location
 //   where Spring Boot is expecting static resources to be located
