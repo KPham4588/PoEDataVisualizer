@@ -1,5 +1,5 @@
-import './Header.css';
-import {Link} from "react-router-dom";
+import './css/Header.css';
+import { Link } from '@tanstack/react-router';
 
 export default function Header() {
     return (
@@ -7,9 +7,9 @@ export default function Header() {
             <Link to="/">
                 <img src="/assets/Oracle-Orb-Logo.png" className="header-menu-icon"/>
             </Link>
-            <Link to="/greatest-hits" className="header-menu-button">Greatest Hits</Link>
-            <Link to="/divine-orbs" className="header-menu-button">Divine Orbs</Link>
-            <Link to="/about" className="header-menu-button">About</Link>
+            <Link to="/GreatestHits" className="header-menu-button">Greatest Hits</Link>
+            <div className="header-menu-button">Divine Orbs</div>
+            <Link to="/About" className="header-menu-button">About</Link>
         </header>
     )
 }
