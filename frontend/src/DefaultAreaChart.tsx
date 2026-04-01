@@ -7,7 +7,7 @@ interface ChartData {
     time: UTCTimestamp;
 }
 
-export default function DivineOrbChart() {
+export default function DefaultAreaChart() {
     const containerRef: React.RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
