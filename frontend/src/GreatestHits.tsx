@@ -1,5 +1,5 @@
 import './GreatestHits.css';
-import DivineOrbChart from "./DivineOrbChart.tsx";
+import DefaultAreaChart from "./DefaultAreaChart.tsx";
 // import {AreaSeries, ColorType, createChart, type UTCTimestamp} from "lightweight-charts";
 // import {useEffect, useRef} from "react";
 
@@ -68,7 +68,7 @@ export default function GreatestHits() {
         <div className="greatest-hits">
             <p>The absolute greatest hits of all time!</p>
             {/*<div ref={containerRef} className="container"></div>*/}
-            <DivineOrbChart/>
+            <DefaultAreaChart/>
         </div>
     );
 }
