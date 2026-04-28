@@ -1,4 +1,3 @@
-import './DivineOrbChart.css';
 import {AreaSeries, ColorType, createChart, type IChartApi, type UTCTimestamp} from "lightweight-charts";
 import {useEffect, useRef} from "react";
 
