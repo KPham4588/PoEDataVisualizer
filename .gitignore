@@ -58,3 +58,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# IGNORE THE BUILD OUTPUT
+src/main/resources/static
