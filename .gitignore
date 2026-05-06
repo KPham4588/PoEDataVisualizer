@@ -61,3 +61,5 @@ build/
 
 # IGNORE THE BUILD OUTPUT
 src/main/resources/static
+frontend/package-lock.json
+frontend/src/routeTree.gen.ts
