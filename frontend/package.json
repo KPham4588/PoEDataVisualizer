@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lightweight-charts": "^5.1.0",
+    "@tanstack/react-query": "^5.100.6",
     "@tanstack/react-router": "^1.166.7",
     "@tanstack/react-start": "^1.166.7",
+    "lightweight-charts": "^5.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
