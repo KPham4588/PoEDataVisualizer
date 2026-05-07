@@ -220,6 +220,31 @@
 						<phase>generate-resources</phase>
 					</execution>
 
+                    <!-- this "npm install" command checks the package.json and installs the packages, as well as
+                    generating a package-lock.json, thereby removing the need to keep a package-lock.json in version
+                    control-->
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+
+                    <!-- this "@tanstack/router-cli generate" generates the routetree.gen.ts
+                    and enables file-based routing-->
+                    <execution>
+                        <id>npx @tanstack/router-cli generate</id>
+                        <goals>
+                            <goal>npx</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>@tanstack/router-cli generate</arguments>
+                        </configuration>
+                    </execution>
+
 					<!-- This "npm ci" command is necessary in order for tests to run correctly on the GitHub workflow
 					That runs during pull requests, per the config we have in .github/workflows/main.yml-->
 					<execution>
@@ -227,7 +252,6 @@
 						<goals>
 							<goal>npm</goal>
 						</goals>
-						<!-- Optional configuration which provides for running any npm command -->
 						<configuration>
 							<arguments>ci</arguments>
 						</configuration>
