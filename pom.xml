@@ -228,7 +228,6 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
-                        <!-- Optional configuration which provides for running any npm command -->
                         <configuration>
                             <arguments>install</arguments>
                         </configuration>
@@ -241,7 +240,6 @@
                         <goals>
                             <goal>npx</goal>
                         </goals>
-                        <!-- Optional configuration which provides for running any npm command -->
                         <configuration>
                             <arguments>@tanstack/router-cli generate</arguments>
                         </configuration>
