@@ -65,10 +65,14 @@ public class SessionPool {
             try {
                 resource.close();
             }
-            // TODO: Add a better multi-catch and implement logging
+            catch (IOException e) {
+                sessionPoolLogger.error("IOException while closing resource in SessionPool.close. Message: {}", e.getMessage());
+            }
+            catch (RuntimeException e) {
+                sessionPoolLogger.error("RuntimeException while closing resource in SessionPool.close. Message: {}", e.getMessage());
+            }
             catch (Exception e) {
-                sessionPoolLogger.error("Exception in SessionPool.getSession. Message: " + e.getMessage());
-                System.out.println("could not close the sql session " + e.getMessage());
+                sessionPoolLogger.error("Unexpected exception while closing resource in SessionPool.close. Message: {}", e.getMessage());
             }
         }
     }
