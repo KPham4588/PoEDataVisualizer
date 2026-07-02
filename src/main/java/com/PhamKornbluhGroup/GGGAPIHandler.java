@@ -47,12 +47,7 @@ public class GGGAPIHandler {
         String currentPageChangeId = pageChangeId;
         ResultDAO dao = new ResultDAO();
         for (int i = 0; i < numberOfResults; i++) {
-            GGGAPIHandlerLogger.info(
-                    "Calling handler.getPOEDataFromServer(currentPageChangeId) with currentPageChangeId of "
-                    + "\""
-                    + currentPageChangeId
-                    + "\""
-            );
+            GGGAPIHandlerLogger.info("Calling handler.getPOEDataFromServer(currentPageChangeId) with currentPageChangeId of \"{}\"", currentPageChangeId);
 
             APIResultData apiResultData = this.getPOEDataFromServer(currentPageChangeId);
 
