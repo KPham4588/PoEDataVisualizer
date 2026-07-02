@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const d=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write(d.tool_input.file_path||'')\" | { read -r f; git add -- \"$f\"; } 2>/dev/null || true",
+            "statusMessage": "Staging new file with git add..."
+          }
+        ]
+      }
+    ]
+  }
+}
