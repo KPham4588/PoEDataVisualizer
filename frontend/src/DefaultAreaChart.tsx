@@ -1,5 +1,6 @@
 import {AreaSeries, ColorType, createChart, type IChartApi, type UTCTimestamp} from "lightweight-charts";
 import {useEffect, useRef} from "react";
+import {useChartData} from "./hooks/fetchChartInfo.ts";
 
 interface ChartData {
     value: number;
@@ -9,7 +10,14 @@ interface ChartData {
 export default function DefaultAreaChart() {
     const containerRef: React.RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
 
+    const { data, isLoading, isError } = useChartData("Mageblood", "Keepers");
+
+
     useEffect(() => {
+        if (isLoading) return;
+        if (isError) return;
+        if (!data) return;
+
         if (!containerRef.current) return;
         // This is a chart. It defines the box, gridlines, etc.
         // We can also consider it as a container. We represent data within, for example by attaching a data series
@@ -27,49 +35,53 @@ export default function DefaultAreaChart() {
         const areaSeries = chart.addSeries(AreaSeries, areaSeriesOptions);
 
         // Now that the areaSeries is attached to the chart, we get the data
-        const data: ChartData[] = getExampleChartData();
+        // const data: ChartData[] = getExampleChartData();
+
+        //FIXME: test getting chart data from fetchChartInfo.ts
+        console.log("data in defaultareachart is" + data);
+        const dataForChart: ChartData[] = data;
 
         // Represent the data using the areaSeries
-        areaSeries.setData(data);
+        areaSeries.setData(dataForChart);
 
         // Let Lightweight Charts handle default zoom-level to make the chart clean upon first-load
         chart.timeScale().fitContent();
 
         return () =>
             chart.remove(); // cleanup
-    }, []);
+    }, [data, isError, isLoading]);
 
     return (
         <div ref={containerRef} className="container"></div>
     );
 }
 
-const getExampleChartData = (): ChartData[] => {
-    return [
-        {value: 1, time: 1642425322 as UTCTimestamp},
-        {value: 8, time: 1642511722 as UTCTimestamp},
-        {value: 10, time: 1642598122 as UTCTimestamp},
-        {value: 20, time: 1642684522 as UTCTimestamp},
-        {value: 3, time: 1642770922 as UTCTimestamp},
-        {value: 43, time: 1642857322 as UTCTimestamp},
-        {value: 41, time: 1642943722 as UTCTimestamp},
-        {value: 43, time: 1643030122 as UTCTimestamp},
-        {value: 56, time: 1643116522 as UTCTimestamp},
-        {value: 46, time: 1643202922 as UTCTimestamp},
-        {value: 85, time: 1693302922 as UTCTimestamp},
-        {value: 86, time: 1693402922 as UTCTimestamp},
-        {value: 88, time: 1693502922 as UTCTimestamp},
-        {value: 92, time: 1694202922 as UTCTimestamp},
-        {value: 84, time: 1694302922 as UTCTimestamp},
-        {value: 82, time: 1694602922 as UTCTimestamp},
-        {value: 103, time: 1705802922 as UTCTimestamp},
-        {value: 55, time: 1707802922 as UTCTimestamp},
-        {value: 98, time: 1715802922 as UTCTimestamp},
-        {value: 185, time: 1725802922 as UTCTimestamp},
-        {value: 278, time: 1736902922 as UTCTimestamp},
-        {value: 467, time: 1747202922 as UTCTimestamp},
-    ];
-}
+// const getExampleChartData = (): ChartData[] => {
+//     return [
+//         {value: 1, time: 1642425322 as UTCTimestamp},
+//         {value: 8, time: 1642511722 as UTCTimestamp},
+//         {value: 10, time: 1642598122 as UTCTimestamp},
+//         {value: 20, time: 1642684522 as UTCTimestamp},
+//         {value: 3, time: 1642770922 as UTCTimestamp},
+//         {value: 43, time: 1642857322 as UTCTimestamp},
+//         {value: 41, time: 1642943722 as UTCTimestamp},
+//         {value: 43, time: 1643030122 as UTCTimestamp},
+//         {value: 56, time: 1643116522 as UTCTimestamp},
+//         {value: 46, time: 1643202922 as UTCTimestamp},
+//         {value: 85, time: 1693302922 as UTCTimestamp},
+//         {value: 86, time: 1693402922 as UTCTimestamp},
+//         {value: 88, time: 1693502922 as UTCTimestamp},
+//         {value: 92, time: 1694202922 as UTCTimestamp},
+//         {value: 84, time: 1694302922 as UTCTimestamp},
+//         {value: 82, time: 1694602922 as UTCTimestamp},
+//         {value: 103, time: 1705802922 as UTCTimestamp},
+//         {value: 55, time: 1707802922 as UTCTimestamp},
+//         {value: 98, time: 1715802922 as UTCTimestamp},
+//         {value: 185, time: 1725802922 as UTCTimestamp},
+//         {value: 278, time: 1736902922 as UTCTimestamp},
+//         {value: 467, time: 1747202922 as UTCTimestamp},
+//     ];
+// }
 
 const getDefaultChart = (referenceCurrent: HTMLDivElement) => {
     return createChart(referenceCurrent, {
