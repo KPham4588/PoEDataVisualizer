@@ -90,3 +90,11 @@ frontend/*.sln
 frontend/*.sw?
 
 .claude/worktrees/
+
+# Root-level npm artifacts (frontend/ is the actual npm project)
+/node_modules/
+/package-lock.json
+/package.json
+
+# TanStack Router generated cache
+frontend/.tanstack/
