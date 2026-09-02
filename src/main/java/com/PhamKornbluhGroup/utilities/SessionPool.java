@@ -1,6 +1,7 @@
 package com.PhamKornbluhGroup.utilities;
 
 import com.PhamKornbluhGroup.SecretsHelper;
+import com.zaxxer.hikari.HikariConfig;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
@@ -13,63 +14,93 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Properties;
 
+/**
+ * <h3> Description: </h3>
+ * <ul> - SessionPool's purpose is open instances of {@link SqlSession} to the POE Oracle DB in a thread-safe way.</ul>
+ *
+ * @apiNote Settings are configured in resource file {@value #MYBATIS_URI}. In that file, the "dataSource
+ * type" is set to {@link HikariDataSourceFactory}, where more configuration like {@link HikariConfig#setMaximumPoolSize} takes place
+ */
 public class SessionPool {
     private final static Logger sessionPoolLogger = LogManager.getLogger(SessionPool.class);
-
     private static final String MYBATIS_URI = "mybatisconfig.xml";
-
-    private static SqlSessionFactory factory;
-    private static Reader reader;
-    private static SqlSession session;
+    private static volatile SqlSessionFactory factory = null;
 
     private SessionPool() {
     }
 
-    public static SqlSession getSession() {
-        if (session != null) {
-            sessionPoolLogger.trace("Returning a copy of already-created SqlSession at SessionPool.getSession");
-            return session;
+
+    /**
+     * <h3> Description: </h3>
+     * <ul> - This will run when factory is null, the first time a user calls one of the getSession methods.</ul>
+     *
+     * <h3> Implementation: </h3>
+     * <ul> - Credentials (User/Pass/Driver/URL) comes from {@link SecretsHelper#getDBInformation()}.</ul>
+     * <ul> - SessionPool Config comes from resource file {@value #MYBATIS_URI}, which links to {@link HikariDataSourceFactory} through
+     * the "dataSource type" setting </ul>
+     *
+     * @apiNote Since buildFactory is synchronized, "factory == null" should still be checked before calling this
+     * method, for increased efficiency
+     */
+    private static synchronized void buildFactory() {
+        if (factory != null) {
+            return;
         }
         Properties databaseSecrets = SecretsHelper.getDBInformation();
-        // Session does not automatically close - CALLER NEEDS TO CLOSE THE SESSION
-
-        /* TODO: UPDATE -- Since we're using the Singleton, we should check to see if session has already been initialized
-         * If it has, we should return the pre-existing object, not overwrite it with a new one */
-
-        //r SESSION MUST BE CLOSED BY THE CALLER DOWNSTREAM
-        // Other Notes:    Update / Make sure not to create extra unneeded builders
-        try {
-            sessionPoolLogger.trace("Setting reader in SessionPool");
-            reader = Resources.getResourceAsReader(MYBATIS_URI);
-
+        sessionPoolLogger.trace("Setting reader in SessionPool");
+        try (Reader reader = Resources.getResourceAsReader(MYBATIS_URI)) {
             sessionPoolLogger.trace("Setting factory in SessionPool");
             factory = new SqlSessionFactoryBuilder().build(reader, databaseSecrets);
-
-            //r SESSION MUST BE CLOSED BY THE CALLER DOWNSTREAM
-            sessionPoolLogger.trace("Setting session in SessionPool");
-            session = factory.openSession(ExecutorType.BATCH);
-            return session;
         }
         catch (IOException e) {
-            sessionPoolLogger.error("IOException in SessionPool.getSession. Message: " + e.getMessage());
-        }
-        finally {
-            close(reader);
-        }
-        return session;
+            sessionPoolLogger.error("IOException in SessionPool.buildFactory. Message: " + e.getMessage());
+            throw new RuntimeException("Failed to initialize MyBatis SqlSessionFactory", e);
 
+        }
     }
 
-    public static void close(AutoCloseable resource) {
-        if (resource != null) {
-            try {
-                resource.close();
-            }
-            // TODO: Add a better multi-catch and implement logging
-            catch (Exception e) {
-                sessionPoolLogger.error("Exception in SessionPool.getSession. Message: " + e.getMessage());
-                System.out.println("could not close the sql session " + e.getMessage());
-            }
+    /**
+     * <h3>Implementation:</h3>
+     * <ul> - Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </ul>
+     * <ul> - Open a new {@link SqlSession} connected to the POE Oracle DB. </ul>
+     * <ul> - This uses the default (non-batched) {@link ExecutorType}, intended for {@code SELECT} queries </ul>
+     *
+     * @return a new {@link SqlSession} connected to the POE Oracle DB
+     *
+     * @apiNote The returned session is not closed automatically. Callers are responsible
+     *          for closing it, typically via try-with-resources.
+     */
+    public static SqlSession getSession() {
+        if (factory == null) {
+            buildFactory();
         }
+        sessionPoolLogger.trace("Setting session in getSession");
+        return factory.openSession();
+    }
+
+    /**
+     * <h3>Implementation:</h3>
+     * <ul> - Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </ul>
+     * <ul> - Open a new {@link SqlSession} connected to the POE Oracle DB. </ul>
+     * <ul> - This uses the {@link ExecutorType#BATCH} config, intended for bulk {@code INSERT}, {@code UPDATE}, or {@code DELETE} operations </ul>
+     *
+     * @return a new batched {@link SqlSession} connected to the POE Oracle DB
+     *
+     * @apiNote <ul>
+     *              -The returned session is not closed automatically. Callers are responsible for closing it, typically
+     *              via try-with-resources.
+     *          </ul>
+     *          </p>
+     *          <ul>
+     *              - Batched statements are not sent to the database until {@link SqlSession#commit()} or
+     *              {@link SqlSession#flushStatements()} is called.
+     *          </ul>
+     */
+    public static SqlSession getBatchedSession() {
+        if (factory == null) {
+            buildFactory();
+        }
+        sessionPoolLogger.trace("Setting session in getBatchedSession");
+        return factory.openSession(ExecutorType.BATCH);
     }
 }
