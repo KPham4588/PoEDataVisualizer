@@ -16,7 +16,9 @@ import java.util.Properties;
 
 /**
  * <h3> Description: </h3>
- * <ul> - SessionPool's purpose is open instances of {@link SqlSession} to the POE Oracle DB in a thread-safe way.</ul>
+ * <ul>
+ *     <li> SessionPool's purpose is to open instances of {@link SqlSession} to the POE Oracle DB in a thread-safe way. </li>
+ * </ul>
  *
  * @apiNote Settings are configured in resource file {@value #MYBATIS_URI}. In that file, the "dataSource
  * type" is set to {@link HikariDataSourceFactory}, where more configuration like {@link HikariConfig#setMaximumPoolSize} takes place
@@ -32,12 +34,16 @@ public class SessionPool {
 
     /**
      * <h3> Description: </h3>
-     * <ul> - This will run when factory is null, the first time a user calls one of the getSession methods.</ul>
+     * <ul>
+     *     <li> This will run when factory is null, the first time a user calls one of the getSession methods. </li>
+     * </ul>
      *
      * <h3> Implementation: </h3>
-     * <ul> - Credentials (User/Pass/Driver/URL) comes from {@link SecretsHelper#getDBInformation()}.</ul>
-     * <ul> - SessionPool Config comes from resource file {@value #MYBATIS_URI}, which links to {@link HikariDataSourceFactory} through
-     * the "dataSource type" setting </ul>
+     * <ul>
+     *     <li> Credentials (User/Pass/Driver/URL) comes from {@link SecretsHelper#getDBInformation()}.</li>
+     *     <li> SessionPool Config comes from resource file {@value #MYBATIS_URI}, which links to
+     *     {@link HikariDataSourceFactory} through the "dataSource type" setting </li>
+     * </ul>
      *
      * @apiNote Since buildFactory is synchronized, "factory == null" should still be checked before calling this
      * method, for increased efficiency
@@ -61,14 +67,16 @@ public class SessionPool {
 
     /**
      * <h3>Implementation:</h3>
-     * <ul> - Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </ul>
-     * <ul> - Open a new {@link SqlSession} connected to the POE Oracle DB. </ul>
-     * <ul> - This uses the default (non-batched) {@link ExecutorType}, intended for {@code SELECT} queries </ul>
+     * <ul>
+     *     <li> Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </li>
+     *     <li> Open a new {@link SqlSession} connected to the POE Oracle DB. </li>
+     *     <li> This uses the default (non-batched) {@link ExecutorType}, intended for {@code SELECT} queries </li>
+     * </ul>
      *
-     * @return a new {@link SqlSession} connected to the POE Oracle DB
+     * @return A new {@link SqlSession} connected to the POE Oracle DB
      *
      * @apiNote The returned session is not closed automatically. Callers are responsible
-     *          for closing it, typically via try-with-resources.
+     * for closing it, typically via try-with-resources.
      */
     public static SqlSession getSession() {
         if (factory == null) {
@@ -80,21 +88,22 @@ public class SessionPool {
 
     /**
      * <h3>Implementation:</h3>
-     * <ul> - Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </ul>
-     * <ul> - Open a new {@link SqlSession} connected to the POE Oracle DB. </ul>
-     * <ul> - This uses the {@link ExecutorType#BATCH} config, intended for bulk {@code INSERT}, {@code UPDATE}, or {@code DELETE} operations </ul>
+     * <ul>
+     *     <li> Lazily initialize static field {@link #factory} via {@link #buildFactory()}, if not done yet </li>
+     *     <li> Open a new {@link SqlSession} connected to the POE Oracle DB </li>
+     *     <li> This session uses the {@link ExecutorType#BATCH} config, intended for bulk {@code INSERT}, {@code UPDATE},
+     *     or {@code DELETE} operations </li>
+     * </ul>
      *
-     * @return a new batched {@link SqlSession} connected to the POE Oracle DB
+     * @return A new batched {@link SqlSession} connected to the POE Oracle DB
      *
-     * @apiNote <ul>
-     *              -The returned session is not closed automatically. Callers are responsible for closing it, typically
-     *              via try-with-resources.
-     *          </ul>
-     *          </p>
-     *          <ul>
-     *              - Batched statements are not sent to the database until {@link SqlSession#commit()} or
-     *              {@link SqlSession#flushStatements()} is called.
-     *          </ul>
+     * @apiNote
+     *     <ul>
+     *         <li> The returned session is not closed automatically. Callers are responsible for closing it,
+     *         typically via try-with-resources </li>
+     *         <li> Batched statements are not sent to the database until {@link SqlSession#commit()} or
+     *         {@link SqlSession#flushStatements()} is called </li>
+     *     </ul>
      */
     public static SqlSession getBatchedSession() {
         if (factory == null) {
