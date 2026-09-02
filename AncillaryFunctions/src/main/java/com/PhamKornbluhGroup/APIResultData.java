@@ -20,7 +20,7 @@ public final class APIResultData {
     }
 
     public void initResultData(HttpURLConnection connection) {
-        try (InputStream responseStream = (InputStream) connection.getContent();
+        try (InputStream responseStream = (InputStream) connection.getContent(); // TODO: see if better --> connection.getInputStream()
              BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8))) {
             this.responseCode = connection.getResponseCode();
             this.responseMessage = connection.getResponseMessage();
@@ -35,6 +35,7 @@ public final class APIResultData {
         }
         catch (Exception e) {
             System.out.println("Failure in initResultData for APIResultData object. Message = " + e.getMessage());
+            // TODO - Add logging & fix Exception to multi-catch block of all possible exceptions
         }
         this.pageChangeID = parsePageChangeId();
     }

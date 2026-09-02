@@ -10,6 +10,9 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRespon
 import java.util.Properties;
 
 public class SecretsHelper {
+    // If you need more information about configurations or implementing the sample
+    // code, visit the AWS docs:
+    // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
     public static String[] getFormattedGGGBearerToken() {
         //p For this method to work, the name of the secret must be the same as the secret's key
@@ -70,6 +73,8 @@ public class SecretsHelper {
             parsedToken = node.get(key).asText();
         }
         catch (Exception e) {
+            // TODO: Add Logging
+            // TODO: Specify which exceptions
             System.out.println(e.getMessage());
         }
         return parsedToken;
