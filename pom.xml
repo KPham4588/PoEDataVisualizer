@@ -47,6 +47,7 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+
 			<dependency>
 				<groupId>software.amazon.awssdk</groupId>
 				<artifactId>bom</artifactId>
@@ -114,6 +115,7 @@
 			<version>2.25.0</version>
 		</dependency>
 		<!-- Add SLF4j Logging Abstraction support -->
+		<!-- Check to see if this is causing double-logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
