@@ -16,6 +16,8 @@ public class SecretsHelper {
     // code, visit the AWS docs:
     // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html
 
+    private final static Logger SecretsHelperLogger = LogManager.getLogger(SecretsHelper.class);
+
     public static String[] getFormattedGGGBearerToken() {
         //p For this method to work, the name of the secret must be the same as the secret's key
         String tokenName = "GGGBearerToken";
