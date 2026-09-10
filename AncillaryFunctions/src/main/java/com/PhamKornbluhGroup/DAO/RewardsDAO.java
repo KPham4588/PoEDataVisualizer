@@ -15,7 +15,7 @@ public class RewardsDAO {
     private final static Logger RewardsDAOLogger = LogManager.getLogger(RewardsDAO.class);
 
     public RewardsDTO getRewardsById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IRewardsDTO mapper = session.getMapper(IRewardsDTO.class);
         RewardsDAOLogger.trace("Attempting to get RewardsDTO object with ID " + id);
         RewardsDTO newNode = mapper.getEntityById(id);
@@ -46,7 +46,7 @@ public class RewardsDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IRewardsDTO mapper = session.getMapper(IRewardsDTO.class);
         RewardsDAOLogger.trace("Attempting to insert RewardsDTO object");
 

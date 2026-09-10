@@ -1,11 +1,13 @@
 package com.PhamKornbluhGroup;
 
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.Properties;
 
@@ -60,7 +62,7 @@ public class SecretsHelper {
         catch (Exception e) {
             // For a list of exceptions thrown, see
             // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-            System.err.println("Error retrieving the secret: " + e.getMessage());
+            SecretsHelperLogger.error("Error getting the secret from AWS");
         }
         return "TOKEN_DEFAULT_RETURN";
     }
@@ -73,9 +75,7 @@ public class SecretsHelper {
             parsedToken = node.get(key).asText();
         }
         catch (Exception e) {
-            // TODO: Add Logging
-            // TODO: Specify which exceptions
-            System.out.println(e.getMessage());
+            SecretsHelperLogger.error("Error parsing JSON token");
         }
         return parsedToken;
     }

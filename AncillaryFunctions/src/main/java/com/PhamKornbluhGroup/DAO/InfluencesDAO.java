@@ -43,7 +43,7 @@ public class InfluencesDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to insert InfluencesDTO object.");
         mapper.saveEntity(insertObject);
@@ -52,7 +52,7 @@ public class InfluencesDAO {
     }
 
     public void deleteInfluencesById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to delete InfluenceDTO object with ID " + id);
         mapper.removeEntity(id);

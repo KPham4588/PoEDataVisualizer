@@ -57,7 +57,7 @@ public class HybridDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
 
         for (String mod : explicitMods) {
@@ -67,7 +67,7 @@ public class HybridDAO {
     }
 
     public void updateHybrid(HybridDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to update HybridDTO entry.");
         mapper.updateEntity(updateObject);
@@ -76,7 +76,7 @@ public class HybridDAO {
     }
 
     public void deleteHybridById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to delete HybridDTO object with ID " + id);
         mapper.removeEntity(id);

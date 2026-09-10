@@ -14,7 +14,7 @@ public class UltimatumModsDAO {
     private final static Logger UltimatumModsDAOLogger = LogManager.getLogger(UltimatumModsDAO.class);
 
     public UltimatumModsDTO getUltimatumModsById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IUltimatumModsDTO mapper = session.getMapper(IUltimatumModsDTO.class);
         UltimatumModsDAOLogger.trace("Attempting to get UltimatumModsDTO object with ID " + id);
         UltimatumModsDTO newNode = mapper.getEntityById(id);
@@ -28,7 +28,7 @@ public class UltimatumModsDAO {
     }
 
     public UltimatumModsDTO getEntityByItemId(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IUltimatumModsDTO mapper = session.getMapper(IUltimatumModsDTO.class);
         UltimatumModsDAOLogger.trace("Attempting to get UltimatumModsDTO object by item ID " + id);
         UltimatumModsDTO newNode = mapper.getEntityByItemId(id);
@@ -46,7 +46,7 @@ public class UltimatumModsDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IUltimatumModsDTO mapper = session.getMapper(IUltimatumModsDTO.class);
         UltimatumModsDAOLogger.trace("Attempting to insert UltimatumModsDTO object in list.");
         for (UltimatumModsDTO node : insertObjects) {

@@ -14,7 +14,7 @@ public class ItemPropertyValuesDAO {
     private final static Logger ItemPropertyValuesDAOLogger = LogManager.getLogger(ItemPropertyValuesDAO.class);
 
     public ItemPropertyValuesDTO getItemPropertyValuesById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to get ItemPropertyValuesDTO object with ID " + id);
         ItemPropertyValuesDTO newNode = mapper.getEntityById(id);
@@ -32,7 +32,7 @@ public class ItemPropertyValuesDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to insert ItemPropertyValuesDTO object.");
         mapper.saveEntity(insertObject);
@@ -45,7 +45,7 @@ public class ItemPropertyValuesDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to insert ItemPropertyValuesDTO object in list.");
         for (ItemPropertyValuesDTO node : insertObjects) {
@@ -56,7 +56,7 @@ public class ItemPropertyValuesDAO {
     }
 
     public void updateItemPropertyValues(ItemPropertyValuesDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to update ItemPropertyValuesDTO entry.");
         mapper.updateEntity(updateObject);
@@ -65,7 +65,7 @@ public class ItemPropertyValuesDAO {
     }
 
     public void deleteItemPropertyValuesById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         System.out.println("Attempting to delete ItemPropertyValuesDTO object with ID " + id);
         mapper.removeEntity(id);

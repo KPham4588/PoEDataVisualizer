@@ -14,7 +14,7 @@ public class ItemDAO {
     private final static Logger ItemDAOLogger = LogManager.getLogger(ItemDAO.class);
 
     public ItemDTO getItemById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
         ItemDAOLogger.trace("Attempting to get ItemDTO object with ID " + id);
         ItemDTO newNode = mapper.getEntityById(id);
@@ -45,7 +45,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : cosmeticMods) {
@@ -59,7 +59,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : craftedMods) {
@@ -73,7 +73,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : enchantMods) {
@@ -87,7 +87,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : explicitMods) {
@@ -101,7 +101,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String text : flavourText) {
@@ -115,7 +115,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : fracturedMod) {
@@ -129,7 +129,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : implicitMod) {
@@ -143,7 +143,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : scourgeMods) {
@@ -157,7 +157,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : utilityMods) {
@@ -171,7 +171,7 @@ public class ItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : veiledMods) {
@@ -182,7 +182,7 @@ public class ItemDAO {
 
     // TODO: figure out how to insert FrameType, influences
     public void insertItem(ItemDTO item) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
         ItemDAOLogger.trace("Attempting to insert ItemDTO object.");
         mapper.saveEntity(item);

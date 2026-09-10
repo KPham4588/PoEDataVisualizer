@@ -14,7 +14,7 @@ public class LogbookModsDAO {
     private final static Logger LogbookModsDAOLogger = LogManager.getLogger(LogbookModsDAO.class);
 
     public LogbookModsDTO getLogbookModsById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
         LogbookModsDAOLogger.trace("Attempting to get LogbookModsDTO object with ID " + id);
         LogbookModsDTO newNode = mapper.getEntityById(id);
@@ -44,7 +44,7 @@ public class LogbookModsDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object.");
         mapper.saveEntity(insertObject);
@@ -65,7 +65,7 @@ public class LogbookModsDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
 
         for (String mod : logbookMods) {

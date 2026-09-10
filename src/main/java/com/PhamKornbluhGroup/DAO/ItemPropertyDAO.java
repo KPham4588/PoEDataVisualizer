@@ -19,7 +19,7 @@ public class ItemPropertyDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
         System.out.println("Attempting to insert ItemPropertyDTO object.");
         mapper.saveEntity(insertObject);

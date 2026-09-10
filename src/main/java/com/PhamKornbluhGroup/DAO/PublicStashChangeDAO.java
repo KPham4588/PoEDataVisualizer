@@ -15,7 +15,7 @@ public class PublicStashChangeDAO {
     private final static Logger PublicStashChangeDAOLogger = LogManager.getLogger(PublicStashChangeDAO.class);
 
     public PublicStashChangeDTO getPublicStashChangeById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to get PublicStashChangeDTO object with ID " + id);
         PublicStashChangeDTO stash = mapper.getEntityById(id);
@@ -33,7 +33,7 @@ public class PublicStashChangeDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
         System.out.println("Attempting to insert PublicStashChangeDTO object.");
@@ -70,7 +70,7 @@ public class PublicStashChangeDAO {
     }
 
     public void updatePublicStashChange(PublicStashChangeDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to update PublicStashChangeDTO entry.");
         mapper.updateEntity(updateObject);
@@ -79,7 +79,7 @@ public class PublicStashChangeDAO {
     }
 
     public void deletePublicStashChangeById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to delete PublicStashChangeDTO object with ID " + id);
         mapper.removeEntity(id);
@@ -137,7 +137,7 @@ public class PublicStashChangeDAO {
                                                                   String stackSize,
                                                                   String talismanTier,
                                                                   String socket) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
         PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO objects with custom parameters");

@@ -25,7 +25,7 @@ public class SessionPool {
     private SessionPool() {
     }
 
-    public static SqlSession getSession() {
+    public static SqlSession initSession() {
         if (session != null) {
             sessionPoolLogger.trace("Returning a copy of already-created SqlSession at SessionPool.getSession");
             return session;

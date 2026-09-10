@@ -47,7 +47,7 @@ public class IncubatedItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
         IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
         mapper.saveEntity(insertObject);

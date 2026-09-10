@@ -15,7 +15,7 @@ public class ResultDAO {
     private final static Logger ResultDAOLogger = LogManager.getLogger(ResultDAO.class);
 
     public ResultDTO getResultById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
         System.out.println("Attempting to get ResultDTO object with ID " + id);
         ResultDTO result = mapper.getEntityById(id);
@@ -37,7 +37,7 @@ public class ResultDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
 
         System.out.println("Attempting to insert ResultDTO object.");
@@ -57,7 +57,7 @@ public class ResultDAO {
     }
 
     public void updateResult(ResultDTO updateObject) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
         System.out.println("Attempting to update ResultDTO entry.");
         mapper.updateEntity(updateObject);
@@ -66,7 +66,7 @@ public class ResultDAO {
     }
 
     public void deleteResultById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
         System.out.println("Attempting to delete ResultDTO object with ID " + id);
         mapper.removeEntity(id);
