@@ -47,12 +47,7 @@ public class GGGAPIHandler {
         String currentPageChangeId = pageChangeId;
         ResultDAO dao = new ResultDAO();
         for (int i = 0; i < numberOfResults; i++) {
-            GGGAPIHandlerLogger.info(
-                    "Calling handler.getPOEDataFromServer(currentPageChangeId) with currentPageChangeId of "
-                    + "\""
-                    + currentPageChangeId
-                    + "\""
-            );
+            GGGAPIHandlerLogger.info("Calling handler.getPOEDataFromServer(currentPageChangeId) with currentPageChangeId of \"{}\"", currentPageChangeId);
 
             APIResultData apiResultData = this.getPOEDataFromServer(currentPageChangeId);
 
@@ -75,7 +70,7 @@ public class GGGAPIHandler {
         }
 
 
-        SqlSession pool = SessionPool.getSession();
+        SqlSession pool = SessionPool.initSession();
         GGGAPIHandlerLogger.trace("Committing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");
         pool.commit();
         GGGAPIHandlerLogger.trace("Closing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");
