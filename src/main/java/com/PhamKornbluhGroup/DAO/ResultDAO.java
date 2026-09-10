@@ -15,17 +15,20 @@ public class ResultDAO {
     private final static Logger ResultDAOLogger = LogManager.getLogger(ResultDAO.class);
 
     public ResultDTO getResultById(int id) {
-        SqlSession session = SessionPool.getSession();
-        IResultDTO mapper = session.getMapper(IResultDTO.class);
-        System.out.println("Attempting to get ResultDTO object with ID " + id);
-        ResultDTO result = mapper.getEntityById(id);
-        if (result != null) {
-            ResultDAOLogger.trace("Success!");
+        try (SqlSession session = SessionPool.getSession()) {
+            IResultDTO mapper = session.getMapper(IResultDTO.class);
+
+            ResultDAOLogger.trace("Attempting to get ResultDTO object with ID " + id);
+            ResultDTO result = mapper.getEntityById(id);
+
+            if (result != null) {
+                ResultDAOLogger.trace("Success!");
+            }
+            else {
+                ResultDAOLogger.debug("Result is null!");
+            }
+            return result;
         }
-        else {
-            ResultDAOLogger.error("Result is null!");
-        }
-        return result;
     }
 
     /** Insert a result object and assigns ResultID to the child {@code PublicStashChangeDTO}
