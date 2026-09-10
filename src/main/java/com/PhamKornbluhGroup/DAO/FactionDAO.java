@@ -13,7 +13,7 @@ public class FactionDAO {
     private final static Logger FactionDAOLogger = LogManager.getLogger(FactionDAO.class);
 
     public FactionDTO getFactionById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IFactionDTO mapper = session.getMapper(IFactionDTO.class);
         System.out.println("Attempting to get FactionDTO object with ID " + id);
         FactionDTO faction = mapper.getEntityById(id);
@@ -31,7 +31,7 @@ public class FactionDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IFactionDTO mapper = session.getMapper(IFactionDTO.class);
         System.out.println("Attempting to save FactionDTO object");
         mapper.saveEntity(insertObject);

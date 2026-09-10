@@ -1,7 +1,7 @@
 package com.PhamKornbluhGroup;
 
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,11 +10,12 @@ import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 
 public final class APIResultData {
+
+    private final static Logger APIResultDataLogger = LogManager.getLogger(APIResultData.class);
     private int responseCode;
     private String responseMessage;
     private String encoding;
     private String content;
-    private String pageChangeID;
 
     public APIResultData() {
     }
@@ -34,22 +35,9 @@ public final class APIResultData {
             this.content = builder.toString();
         }
         catch (Exception e) {
-            System.out.println("Failure in initResultData for APIResultData object. Message = " + e.getMessage());
+            APIResultDataLogger.error("Failure in initResultData for APIResultData object. Message = {}", e.getMessage());
             // TODO - Add logging & fix Exception to multi-catch block of all possible exceptions
         }
-        this.pageChangeID = parsePageChangeId();
-    }
-
-    private String parsePageChangeId() {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            JsonNode rootNode = mapper.readTree(this.content);
-            return rootNode.get("next_change_id").asText();
-        }
-        catch (Exception e) {
-            System.out.println("Failure to set pageChangeId");
-        }
-        return "";
     }
 
     public int getResponseCode() {
@@ -82,13 +70,5 @@ public final class APIResultData {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getPageChangeID() {
-        return pageChangeID;
-    }
-
-    public void setPageChangeID(String pageChangeID) {
-        this.pageChangeID = pageChangeID;
     }
 }

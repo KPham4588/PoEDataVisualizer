@@ -14,7 +14,7 @@ public class IncubatedItemDAO {
     private final static Logger IncubatedItemDAOLogger = LogManager.getLogger(IncubatedItemDAO.class);
 
     public IncubatedItemDTO getIncubatedItemById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
         IncubatedItemDAOLogger.trace("Attempting to get IncubatedItemDTO object with ID " + id);
         IncubatedItemDTO newNode = mapper.getEntityById(id);
@@ -32,7 +32,7 @@ public class IncubatedItemDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
         IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
         for (IncubatedItemDTO node : insertObjects) {

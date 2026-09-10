@@ -70,7 +70,7 @@ public class GGGAPIHandler {
         }
 
 
-        SqlSession pool = SessionPool.getSession();
+        SqlSession pool = SessionPool.initSession();
         GGGAPIHandlerLogger.trace("Committing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");
         pool.commit();
         GGGAPIHandlerLogger.trace("Closing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");

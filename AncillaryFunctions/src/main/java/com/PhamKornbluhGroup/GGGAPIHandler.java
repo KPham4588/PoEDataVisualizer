@@ -12,6 +12,10 @@ public class GGGAPIHandler {
 
     private final static Logger GGGAPIHandlerLogger = LogManager.getLogger(GGGAPIHandler.class);
 
+    /**
+     * Returns an HttpURLConnection object that takes an page change ID and
+     * connects to the PoE public stash tab API. The caller should close this connection
+     */
     private HttpURLConnection createAndOpenGETConnection(String pageChangeId) throws IOException {
         String requestURL = String.format("https://api.pathofexile.com/public-stash-tabs?id=%s", pageChangeId);
 
@@ -29,8 +33,7 @@ public class GGGAPIHandler {
         return connection;
     }
 
-    // TODO: make functionalities to actually get and store pageChangeId to pass in here
-    public APIResultData getPublicStashData(String pageChangeId) {
+    public APIResultData fetchPublicStashData(String pageChangeId) {
         HttpURLConnection connection = null;
         APIResultData resultData = new APIResultData();
 

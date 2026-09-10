@@ -14,7 +14,7 @@ public class HybridDAO {
     private final static Logger HybridDAOLogger = LogManager.getLogger(HybridDAO.class);
 
     public HybridDTO getHybridById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to get HybridDTO object with ID " + id);
         HybridDTO newNode = mapper.getEntityById(id);
@@ -32,7 +32,7 @@ public class HybridDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         System.out.println("Attempting to insert HybridDTO object.");
         mapper.saveEntity(insertObject);

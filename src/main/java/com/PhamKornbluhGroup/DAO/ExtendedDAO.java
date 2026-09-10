@@ -12,7 +12,7 @@ public class ExtendedDAO {
     private final static Logger ExtendedDAOLogger = LogManager.getLogger(ExtendedDAO.class);
 
     public ExtendedDTO getExtendedById(int id) {
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         ExtendedDAOLogger.trace("Attempting to get ExtendedDTO object with ID " + id);
         ExtendedDTO newNode = mapper.getEntityById(id);
@@ -30,7 +30,7 @@ public class ExtendedDAO {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
+        SqlSession session = SessionPool.initSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         System.out.println("Attempting to insert ExtendedDTO object in list.");
         mapper.saveEntity(insertObject);

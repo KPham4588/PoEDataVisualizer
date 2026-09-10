@@ -8,34 +8,35 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 public class ChangeIdService {
-    private final String _changeIdUrl;
+    private final String changeIdUrl;
 
-    public ChangeIdService(String _changeIdUrl) {
-        this._changeIdUrl = _changeIdUrl;
+    public ChangeIdService(String changeIdUrl) {
+        this.changeIdUrl = changeIdUrl;
     }
 
-    public String getLatestChangeId() {
+    public String fetchLatestPageChangeId() {
         try {
-            String rawChangeIdBody = getChangeId();
+            String rawChangeIdBody = fetchChangeId();
             return extractChangeId(rawChangeIdBody);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String getChangeId() throws IOException {
-        URL url = new URL(_changeIdUrl);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(url.openStream()));
-        StringBuilder urlContent = new StringBuilder();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            urlContent.append(inputLine);
-        }
-        String stringToDeserialize = urlContent.toString();
+    private String fetchChangeId() throws IOException {
+        URL url = new URL(changeIdUrl);
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(url.openStream()))) {
+            StringBuilder urlContent = new StringBuilder();
 
-        in.close();
-        return stringToDeserialize;
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                urlContent.append(inputLine);
+            }
+            String apiResult = urlContent.toString();
+
+            return apiResult;
+        }
     }
 
     private String extractChangeId(String rawChangeIdBody) {
@@ -45,5 +46,7 @@ public class ChangeIdService {
         return changeIdModel.psapi;
     }
 
+    // We only use "psapi" - public stash api - it is the latest page change ID for the API
+    // forum is included for completeness to completely map what we get from the GGG URL
     private record ChangeIdModel (String psapi, String forum) { }
 }
