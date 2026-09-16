@@ -14,14 +14,13 @@ public class ItemPropertyDAO {
 
     private final static Logger ItemPropertyDAOLogger = LogManager.getLogger(ItemPropertyDAO.class);
 
-    public void insertItemProperty(ItemPropertyDTO insertObject) {
+    public void insertItemProperty(ItemPropertyDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
-        System.out.println("Attempting to insert ItemPropertyDTO object.");
+        ItemPropertyDAOLogger.trace("Attempting to insert ItemPropertyDTO object.");
         mapper.saveEntity(insertObject);
         session.commit();
 
@@ -31,22 +30,22 @@ public class ItemPropertyDAO {
         }
         insertObject.setValues(values);
 
-        System.out.println("Attempting to insert item property values.");
+        ItemPropertyDAOLogger.trace("Attempting to insert item property values.");
         ItemPropertyValuesDAO insertValues = new ItemPropertyValuesDAO();
-        insertValues.insertItemPropertyValues(values);
+        insertValues.insertItemPropertyValues(values, session);
 
-        System.out.println("Attempt finished.");
+        ItemPropertyDAOLogger.trace("Attempt finished.");
     }
 
-    public void insertItemProperties(ArrayList<ItemPropertyDTO> insertObjects) {
+    public void insertItemProperties(ArrayList<ItemPropertyDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        System.out.println("Attempting to insert ItemPropertyDTO objects in list.");
+        ItemPropertyDAOLogger.trace("Attempting to insert ItemPropertyDTO objects in list.");
         for (ItemPropertyDTO node : insertObjects) {
-            insertItemProperty(node);
+            insertItemProperty(node, session);
         }
-        System.out.println("Attempt finished.");
+        ItemPropertyDAOLogger.trace("Attempt finished.");
     }
 }

@@ -1,5 +1,6 @@
 package com.PhamKornbluhGroup.DAO;
 
+import com.PhamKornbluhGroup.DTO.FactionDTO;
 import com.PhamKornbluhGroup.DTO.LogbookModsDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.ILogbookModsDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
@@ -27,45 +28,43 @@ public class LogbookModsDAO {
         return newNode;
     }
 
-    public void insertLogbookMods(ArrayList<LogbookModsDTO> insertObjects) {
+    public void insertLogbookMods(ArrayList<LogbookModsDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object in list.");
         for (LogbookModsDTO node : insertObjects) {
-            insertLogbookMod(node);
+            insertLogbookMod(node, session);
         }
         LogbookModsDAOLogger.trace("LogbookModsDTO List Insert Attempt finished.");
     }
 
-    public void insertLogbookMod(LogbookModsDTO insertObject) {
+    public void insertLogbookMod(LogbookModsDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object.");
         mapper.saveEntity(insertObject);
         session.commit();
 
-        insertMods(insertObject.getDbId(), insertObject.getMods());
+        insertMods(insertObject.getDbId(), insertObject.getMods(), session);
 
-        var faction = insertObject.getFaction();
+        FactionDTO faction = insertObject.getFaction();
         faction.setLogbookModsId(insertObject.getDbId());
         FactionDAO factionDAO = new FactionDAO();
-        factionDAO.saveFaction(faction);
+        factionDAO.saveFaction(faction, session);
 
         LogbookModsDAOLogger.trace("LogbookModsDTO Insert Attempt finished.");
     }
 
-    private void insertMods(int logbookModsId, ArrayList<String> logbookMods) {
+    private void insertMods(int logbookModsId, ArrayList<String> logbookMods, SqlSession session) {
         if (logbookMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
 
         for (String mod : logbookMods) {

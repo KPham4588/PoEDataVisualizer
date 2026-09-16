@@ -41,12 +41,11 @@ public class UltimatumModsDAO {
         return newNode;
     }
 
-    public void insertUltimatumModsById(ArrayList<UltimatumModsDTO> insertObjects) {
+    public void insertUltimatumModsById(ArrayList<UltimatumModsDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IUltimatumModsDTO mapper = session.getMapper(IUltimatumModsDTO.class);
         UltimatumModsDAOLogger.trace("Attempting to insert UltimatumModsDTO object in list.");
         for (UltimatumModsDTO node : insertObjects) {

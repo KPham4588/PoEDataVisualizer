@@ -27,12 +27,11 @@ public class RewardsCollectionDAO {
         return newNode;
     }
 
-    public void insertRewardsCollections(ArrayList<RewardsCollectionDTO> insertObjects) {
+    public void insertRewardsCollections(ArrayList<RewardsCollectionDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IRewardsCollectionDTO mapper = session.getMapper(IRewardsCollectionDTO.class);
         RewardsCollectionDAOLogger.trace("Attempting to insert RewardsCollectionDTO objects in list.");
         for (RewardsCollectionDTO rewardsCollection : insertObjects) {

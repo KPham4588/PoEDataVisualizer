@@ -26,17 +26,17 @@ public class FactionDAO {
         return faction;
     }
 
-    public void saveFaction(FactionDTO insertObject) {
+    // TODO: name is inconsistent with other DAOs. Insert or Save
+    public void saveFaction(FactionDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IFactionDTO mapper = session.getMapper(IFactionDTO.class);
-        System.out.println("Attempting to save FactionDTO object");
+        FactionDAOLogger.trace("Attempting to save FactionDTO object");
         mapper.saveEntity(insertObject);
         session.commit();
 
-        System.out.println("Attempt finished.");
+        FactionDAOLogger.trace("Attempt finished.");
     }
 }

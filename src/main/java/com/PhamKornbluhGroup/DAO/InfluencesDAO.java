@@ -38,12 +38,12 @@ public class InfluencesDAO {
         return influences;
     }
 
-    public void insertInfluences(InfluencesDTO insertObject) {
+    // TODO: Figure out why we aren't using this. Shouldnt this be called as part of ItemDAO, etc?
+    public void insertInfluences(InfluencesDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to insert InfluencesDTO object.");
         mapper.saveEntity(insertObject);

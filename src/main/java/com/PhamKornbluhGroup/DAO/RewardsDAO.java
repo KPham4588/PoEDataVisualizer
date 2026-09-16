@@ -28,25 +28,23 @@ public class RewardsDAO {
         return newNode;
     }
 
-    public void insertRewards(ArrayList<RewardsDTO> insertObjects) {
+    public void insertRewards(ArrayList<RewardsDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
         RewardsDAOLogger.trace("Attempting to insert list of rewards");
-        for (var insertObject : insertObjects)
-        {
-            insertReward(insertObject);
+        for (RewardsDTO nextObject : insertObjects) {
+            insertReward(nextObject, session);
         }
         RewardsDAOLogger.trace("Finished inserting list of rewards");
     }
 
-    public void insertReward(RewardsDTO reward) {
+    public void insertReward(RewardsDTO reward, SqlSession session) {
         if (reward == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IRewardsDTO mapper = session.getMapper(IRewardsDTO.class);
         RewardsDAOLogger.trace("Attempting to insert RewardsDTO object");
 
@@ -54,14 +52,16 @@ public class RewardsDAO {
         session.commit();
 
         ArrayList<RewardsCollectionDTO> rewardsCollectionDTOS = reward.getRewards();
-        for (var rewardCollection : rewardsCollectionDTOS) {
-            rewardCollection.setRewardsId(reward.getDbId());
+        for (RewardsCollectionDTO nextRewardCollection : rewardsCollectionDTOS) {
+            nextRewardCollection.setRewardsId(reward.getDbId());
         }
+        // TODO: Delete redundant setter here and in all similar cases where we're directly modifying a mutable complex
+        //  object held as an instance var in a DTO
         reward.setRewards(rewardsCollectionDTOS);
 
         RewardsDAOLogger.trace("Attempting to insert rewards collection.");
         RewardsCollectionDAO rewardsCollectionDAO = new RewardsCollectionDAO();
-        rewardsCollectionDAO.insertRewardsCollections(rewardsCollectionDTOS);
+        rewardsCollectionDAO.insertRewardsCollections(rewardsCollectionDTOS, session);
 
         RewardsDAOLogger.trace("RewardsDTO Insert Attempt finished.");
     }

@@ -27,12 +27,11 @@ public class ItemSocketDAO {
         return newNode;
     }
 
-    public void insertItemSocketById(ArrayList<ItemSocketDTO> insertObjects) {
+    public void insertItemSocketById(ArrayList<ItemSocketDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemSocketDTO mapper = session.getMapper(IItemSocketDTO.class);
         ItemSocketDAOLogger.trace("Attempting to insert ItemSocketDTO object in list.");
         for (ItemSocketDTO node : insertObjects) {

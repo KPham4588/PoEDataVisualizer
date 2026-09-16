@@ -16,60 +16,60 @@ public class ItemPropertyValuesDAO {
     public ItemPropertyValuesDTO getItemPropertyValuesById(int id) {
         SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
-        System.out.println("Attempting to get ItemPropertyValuesDTO object with ID " + id);
+        ItemPropertyValuesDAOLogger.trace("Attempting to get ItemPropertyValuesDTO object with ID {}", id);
         ItemPropertyValuesDTO newNode = mapper.getEntityById(id);
         if (newNode != null) {
-            ItemPropertyValuesDAOLogger.trace("Success!");
+            ItemPropertyValuesDAOLogger.trace("getItemPropertyValuesById Success!");
         }
         else {
-            ItemPropertyValuesDAOLogger.trace("Failure!");
+            ItemPropertyValuesDAOLogger.trace("getItemPropertyValuesById Failure!");
         }
         return newNode;
     }
 
-    public void insertItemPropertyValues(ItemPropertyValuesDTO insertObject) {
+    // TODO: Figure out if we really need this. Do we ever insert one itemPropertyValues object at a time?
+    //  or does it always come in the form of an ArrayList<ItemPropertyValuesDTO>
+    public void insertItemPropertyValues(ItemPropertyValuesDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
-        System.out.println("Attempting to insert ItemPropertyValuesDTO object.");
+        ItemPropertyValuesDAOLogger.trace("Attempting to insert ItemPropertyValuesDTO object.");
         mapper.saveEntity(insertObject);
         session.commit();
-        System.out.println("Attempt finished.");
+        ItemPropertyValuesDAOLogger.trace("insertItemPropertyValues Attempt finished.");
     }
 
-    public void insertItemPropertyValues(ArrayList<ItemPropertyValuesDTO> insertObjects) {
+    public void insertItemPropertyValues(ArrayList<ItemPropertyValuesDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
-        System.out.println("Attempting to insert ItemPropertyValuesDTO object in list.");
+        ItemPropertyValuesDAOLogger.trace("Attempting to insert ItemPropertyValuesDTO object in list.");
         for (ItemPropertyValuesDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
         session.commit();
-        System.out.println("Attempt finished.");
+        ItemPropertyValuesDAOLogger.trace("insertItemPropertyValues Attempt finished.");
     }
 
     public void updateItemPropertyValues(ItemPropertyValuesDTO updateObject) {
         SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
-        System.out.println("Attempting to update ItemPropertyValuesDTO entry.");
+        ItemPropertyValuesDAOLogger.trace("Attempting to update ItemPropertyValuesDTO entry.");
         mapper.updateEntity(updateObject);
         session.commit();
-        System.out.println("Attempt finished.");
+        ItemPropertyValuesDAOLogger.trace("updateItemPropertyValues Attempt finished.");
     }
 
     public void deleteItemPropertyValuesById(int id) {
         SqlSession session = SessionPool.getSession();
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
-        System.out.println("Attempting to delete ItemPropertyValuesDTO object with ID " + id);
+        ItemPropertyValuesDAOLogger.trace("Attempting to delete ItemPropertyValuesDTO object with ID " + id);
         mapper.removeEntity(id);
         session.commit();
-        System.out.println("Attempt finished.");
+        ItemPropertyValuesDAOLogger.trace("Attempt finished.");
     }
 }
