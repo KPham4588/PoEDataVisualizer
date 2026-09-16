@@ -14,7 +14,7 @@ public class ScourgedDAO {
     private final static Logger ScourgedDAOLogger = LogManager.getLogger(ScourgedDAO.class);
 
     public ScourgedDTO getScourgedById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to get ScourgedDTO object with ID " + id);
         ScourgedDTO newNode = mapper.getEntityById(id);
@@ -27,12 +27,11 @@ public class ScourgedDAO {
         return newNode;
     }
 
-    public void insertScourgedById(ArrayList<ScourgedDTO> insertObjects) {
+    public void insertScourgedById(ArrayList<ScourgedDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
         for (ScourgedDTO node : insertObjects) {
@@ -42,12 +41,11 @@ public class ScourgedDAO {
         ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
     }
 
-    public void insertScourged(ScourgedDTO insertObject) {
+    public void insertScourged(ScourgedDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IScourgedDTO mapper = session.getMapper(IScourgedDTO.class);
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
         mapper.saveEntity(insertObject);

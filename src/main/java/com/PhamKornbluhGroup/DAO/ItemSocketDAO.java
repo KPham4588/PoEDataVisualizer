@@ -14,7 +14,7 @@ public class ItemSocketDAO {
     private final static Logger ItemSocketDAOLogger = LogManager.getLogger(ItemSocketDAO.class);
 
     public ItemSocketDTO getItemSocketById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IItemSocketDTO mapper = session.getMapper(IItemSocketDTO.class);
         ItemSocketDAOLogger.trace("Attempting to get ItemSocketDTO object with ID " + id);
         ItemSocketDTO newNode = mapper.getEntityById(id);
@@ -27,12 +27,11 @@ public class ItemSocketDAO {
         return newNode;
     }
 
-    public void insertItemSocketById(ArrayList<ItemSocketDTO> insertObjects) {
+    public void insertItemSocketById(ArrayList<ItemSocketDTO> insertObjects, SqlSession session) {
         if (insertObjects == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IItemSocketDTO mapper = session.getMapper(IItemSocketDTO.class);
         ItemSocketDAOLogger.trace("Attempting to insert ItemSocketDTO object in list.");
         for (ItemSocketDTO node : insertObjects) {

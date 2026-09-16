@@ -12,7 +12,7 @@ public class ExtendedDAO {
     private final static Logger ExtendedDAOLogger = LogManager.getLogger(ExtendedDAO.class);
 
     public ExtendedDTO getExtendedById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         ExtendedDAOLogger.trace("Attempting to get ExtendedDTO object with ID " + id);
         ExtendedDTO newNode = mapper.getEntityById(id);
@@ -25,17 +25,16 @@ public class ExtendedDAO {
         return newNode;
     }
 
-    public void insertExtended(ExtendedDTO insertObject) {
+    public void insertExtended(ExtendedDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
-        System.out.println("Attempting to insert ExtendedDTO object in list.");
+        ExtendedDAOLogger.trace("Attempting to insert ExtendedDTO object in list.");
         mapper.saveEntity(insertObject);
 
-        System.out.println("Saved initial extended properties. Attempting to insert subcategories.");
+        ExtendedDAOLogger.trace("Saved initial extended properties. Attempting to insert subcategories.");
         session.commit();
 
         for (String subcategory : insertObject.getSubcategories()) {
@@ -43,6 +42,6 @@ public class ExtendedDAO {
         }
 
         session.commit();
-        System.out.println("Attempt finished.");
+        ExtendedDAOLogger.trace("insertExtended Attempt finished.");
     }
 }
