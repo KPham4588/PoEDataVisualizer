@@ -37,7 +37,6 @@ public class ScourgedDAO {
         for (ScourgedDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
-        session.commit();
         ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
     }
 
@@ -50,7 +49,6 @@ public class ScourgedDAO {
         ScourgedDAOLogger.trace("Attempting to insert ScourgedDTO object in list.");
         mapper.saveEntity(insertObject);
 
-        session.commit();
         ScourgedDAOLogger.trace("ScourgedDTO Insert Attempt finished.");
     }
 }

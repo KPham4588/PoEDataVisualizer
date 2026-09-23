@@ -3,7 +3,6 @@ package com.PhamKornbluhGroup.DAO;
 import com.PhamKornbluhGroup.DTO.ItemPropertyDTO;
 import com.PhamKornbluhGroup.DTO.ItemPropertyValuesDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IItemPropertyDTO;
-import com.PhamKornbluhGroup.utilities.SessionPool;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +21,6 @@ public class ItemPropertyDAO {
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
         ItemPropertyDAOLogger.trace("Attempting to insert ItemPropertyDTO object.");
         mapper.saveEntity(insertObject);
-        session.commit();
 
         ArrayList<ItemPropertyValuesDTO> values = insertObject.getValues();
         for (ItemPropertyValuesDTO value : values) {

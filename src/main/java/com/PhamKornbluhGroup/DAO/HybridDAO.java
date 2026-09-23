@@ -36,7 +36,6 @@ public class HybridDAO {
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         HybridDAOLogger.trace("Attempting to insert HybridDTO object.");
         mapper.saveEntity(insertObject);
-        session.commit();
 
         ArrayList<String> explicitMods = insertObject.getExplicitMods();
         insertExplicitMods(insertObject.getDbId(), explicitMods, session);
@@ -57,11 +56,12 @@ public class HybridDAO {
             return;
         }
 
+        HybridDAOLogger.trace("Attempting to insert ExplicitMods");
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         for (String mod : explicitMods) {
             mapper.insertExplicitMod(hybridId, mod);
         }
-        session.commit();
+        HybridDAOLogger.trace("Attempt finished.");
     }
 
     public void updateHybrid(HybridDTO updateObject) {
@@ -69,7 +69,6 @@ public class HybridDAO {
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         HybridDAOLogger.trace("Attempting to update HybridDTO entry.");
         mapper.updateEntity(updateObject);
-        session.commit();
         HybridDAOLogger.trace("Attempt finished.");
     }
 
@@ -78,7 +77,6 @@ public class HybridDAO {
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
         HybridDAOLogger.trace("Attempting to delete HybridDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
         HybridDAOLogger.trace("Attempt finished.");
     }
 }

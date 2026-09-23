@@ -31,9 +31,11 @@ public class ResultDAO {
         }
     }
 
-    /** Insert a result object and assigns ResultID to the child {@code PublicStashChangeDTO}
-     * objects, then call a {@code PublicStashChangeDAO} to insert
+    /** Insert a result object and assigns ResultID to the child {@link PublicStashChangeDTO}
+     * objects, then call a {@link PublicStashChangeDAO} to insert
      * @param resultToInsert this is a ResultDTO object
+     * @apiNote This the top-level where a
+     * batched session is created, and this is the only DAO insert which calls {@link SqlSession#commit()}
      */
     public void insertResult(ResultDTO resultToInsert) {
         if (resultToInsert == null) {
@@ -58,7 +60,6 @@ public class ResultDAO {
             session.commit();
             ResultDAOLogger.trace("Attempt finished.");
         }
-
     }
 
     public void updateResult(ResultDTO updateObject) {
