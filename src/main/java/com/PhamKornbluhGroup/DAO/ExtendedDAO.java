@@ -29,19 +29,14 @@ public class ExtendedDAO {
         if (insertObject == null) {
             return;
         }
-
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
         ExtendedDAOLogger.trace("Attempting to insert ExtendedDTO object in list.");
         mapper.saveEntity(insertObject);
 
         ExtendedDAOLogger.trace("Saved initial extended properties. Attempting to insert subcategories.");
-        session.commit();
-
         for (String subcategory : insertObject.getSubcategories()) {
             mapper.saveSubcategory(insertObject.getDbId(), subcategory);
         }
-
-        session.commit();
         ExtendedDAOLogger.trace("insertExtended Attempt finished.");
     }
 }

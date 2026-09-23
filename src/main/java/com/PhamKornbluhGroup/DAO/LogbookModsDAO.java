@@ -48,7 +48,6 @@ public class LogbookModsDAO {
         ILogbookModsDTO mapper = session.getMapper(ILogbookModsDTO.class);
         LogbookModsDAOLogger.trace("Attempting to insert LogbookModsDTO object.");
         mapper.saveEntity(insertObject);
-        session.commit();
 
         insertMods(insertObject.getDbId(), insertObject.getMods(), session);
 
@@ -70,6 +69,5 @@ public class LogbookModsDAO {
         for (String mod : logbookMods) {
             mapper.insertMod(logbookModsId, mod);
         }
-        session.commit();
     }
 }

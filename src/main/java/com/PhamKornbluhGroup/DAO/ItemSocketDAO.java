@@ -37,7 +37,6 @@ public class ItemSocketDAO {
         for (ItemSocketDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
-        session.commit();
         ItemSocketDAOLogger.trace("ItemSocketDTO Insert Attempt finished.");
     }
 }

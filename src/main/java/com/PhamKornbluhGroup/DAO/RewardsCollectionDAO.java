@@ -37,7 +37,6 @@ public class RewardsCollectionDAO {
         for (RewardsCollectionDTO rewardsCollection : insertObjects) {
             mapper.saveEntity(rewardsCollection);
         }
-        session.commit();
         RewardsCollectionDAOLogger.trace("RewardsCollectionDTO Insert Attempt finished.");
     }
 }

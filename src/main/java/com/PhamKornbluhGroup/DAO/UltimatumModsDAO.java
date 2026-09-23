@@ -51,7 +51,6 @@ public class UltimatumModsDAO {
         for (UltimatumModsDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
-        session.commit();
         UltimatumModsDAOLogger.trace("UltimatumModsDTO Insert Attempt finished.");
     }
 }

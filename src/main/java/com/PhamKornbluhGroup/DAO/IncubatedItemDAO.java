@@ -38,7 +38,6 @@ public class IncubatedItemDAO {
         for (IncubatedItemDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
-        session.commit();
         IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
     }
 
@@ -50,7 +49,6 @@ public class IncubatedItemDAO {
         IIncubatedItemDTO mapper = session.getMapper(IIncubatedItemDTO.class);
         IncubatedItemDAOLogger.trace("Attempting to insert IncubatedItemDTO object in list.");
         mapper.saveEntity(insertObject);
-        session.commit();
         IncubatedItemDAOLogger.trace("IncubatedItemDTO Insert Attempt finished.");
     }
 }
