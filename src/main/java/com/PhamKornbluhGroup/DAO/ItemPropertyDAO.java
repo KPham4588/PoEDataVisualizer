@@ -21,6 +21,7 @@ public class ItemPropertyDAO {
         IItemPropertyDTO mapper = session.getMapper(IItemPropertyDTO.class);
         ItemPropertyDAOLogger.trace("Attempting to insert ItemPropertyDTO object.");
         mapper.saveEntity(insertObject);
+        session.flushStatements();
 
         ArrayList<ItemPropertyValuesDTO> values = insertObject.getValues();
         for (ItemPropertyValuesDTO value : values) {
