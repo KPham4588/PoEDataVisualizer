@@ -37,6 +37,7 @@ public class ItemPropertyValuesDAO {
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         ItemPropertyValuesDAOLogger.trace("Attempting to insert ItemPropertyValuesDTO object.");
         mapper.saveEntity(insertObject);
+
         ItemPropertyValuesDAOLogger.trace("insertItemPropertyValues Attempt finished.");
     }
 
@@ -50,6 +51,7 @@ public class ItemPropertyValuesDAO {
         for (ItemPropertyValuesDTO node : insertObjects) {
             mapper.saveEntity(node);
         }
+
         ItemPropertyValuesDAOLogger.trace("insertItemPropertyValues Attempt finished.");
     }
 
@@ -58,6 +60,7 @@ public class ItemPropertyValuesDAO {
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         ItemPropertyValuesDAOLogger.trace("Attempting to update ItemPropertyValuesDTO entry.");
         mapper.updateEntity(updateObject);
+
         ItemPropertyValuesDAOLogger.trace("updateItemPropertyValues Attempt finished.");
     }
 
@@ -66,6 +69,7 @@ public class ItemPropertyValuesDAO {
         IItemPropertyValuesDTO mapper = session.getMapper(IItemPropertyValuesDTO.class);
         ItemPropertyValuesDAOLogger.trace("Attempting to delete ItemPropertyValuesDTO object with ID " + id);
         mapper.removeEntity(id);
+
         ItemPropertyValuesDAOLogger.trace("Attempt finished.");
     }
 }

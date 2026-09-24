@@ -3,14 +3,9 @@ package com.PhamKornbluhGroup;
 import com.PhamKornbluhGroup.DAO.ResultDAO;
 import com.PhamKornbluhGroup.DTO.ResultDTO;
 import com.PhamKornbluhGroup.jsonParsing.JSONParser;
-import com.PhamKornbluhGroup.utilities.SessionPool;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -56,16 +51,6 @@ public class GGGAPIHandler {
 
             APIResultData apiResultData = this.getPOEDataFromServer(currentPageChangeId);
 
-            if (apiResultData == null) {
-                String errorMessage =
-                        """
-                        call to handler.getPOEDataFromServer() returned null data
-                        at page change number %d with pageChangeId of %s
-                        """;
-                GGGAPIHandlerLogger.error(String.format(errorMessage, i, currentPageChangeId));
-                throw new FileNotFoundException(String.format(errorMessage, i, currentPageChangeId));
-            }
-
             //b Parse and Insert page
             ResultDTO resultDTO = JSONParser.parseAPIResultData(apiResultData);
             dao.insertResult(resultDTO);
@@ -73,15 +58,6 @@ public class GGGAPIHandler {
             //b Update pageChangeId
             currentPageChangeId = resultDTO.getNextChangeId();
         }
-
-
-        SqlSession pool = SessionPool.getSession();
-        GGGAPIHandlerLogger.trace("Committing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");
-        pool.commit();
-        GGGAPIHandlerLogger.trace("Closing SessionPool in GGGAPIHandler.saveNumberOfResultsToDB");
-        SessionPool.close(pool);
-        GGGAPIHandlerLogger.trace("SessionPool is now closed in GGGAPIHandler.saveNumberOfResultsToDB");
-        GGGAPIHandlerLogger.trace("Final pageChangeId = " + currentPageChangeId);
     }
 
     private APIResultData getPOEDataFromServer(String pageChangeId) {
@@ -108,20 +84,5 @@ public class GGGAPIHandler {
             }
         }
         return resultData;
-    }
-
-    public void writeAPIResultToLocalFile(APIResultData resultData, File fileLocation) {
-        /*The following is how I've been calling this
-         *         //b writer auto-closes
-         *         File fileLocation = new File("C:\\Users\\Public\\Documents\\APIResult.txt");
-         *         this.writeAPIResultToLocalFile(resultData, fileLocation);
-         */
-        try (FileWriter writer = new FileWriter(fileLocation)) {
-            writer.write(resultData.getContent());
-        }
-        catch (Exception e) {
-            System.out.println("Failure to write API Result Data. Error Message = " + e.getMessage());
-            System.out.println("Full Message = " + Arrays.toString(e.getStackTrace()));
-        }
     }
 }

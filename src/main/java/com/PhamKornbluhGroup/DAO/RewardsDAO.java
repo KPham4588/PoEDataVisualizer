@@ -49,6 +49,7 @@ public class RewardsDAO {
         RewardsDAOLogger.trace("Attempting to insert RewardsDTO object");
 
         mapper.saveEntity(reward);
+        session.flushStatements();
 
         ArrayList<RewardsCollectionDTO> rewardsCollectionDTOS = reward.getRewards();
         for (RewardsCollectionDTO nextRewardCollection : rewardsCollectionDTOS) {

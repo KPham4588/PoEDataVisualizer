@@ -48,6 +48,8 @@ public class ResultDAO {
             ResultDAOLogger.trace("Attempting to insert ResultDTO object.");
             mapper.saveEntity(resultToInsert);
 
+            session.flushStatements();
+
             ArrayList<PublicStashChangeDTO> stashes = resultToInsert.getStashes();
             for (PublicStashChangeDTO nextStash : stashes) {
                 nextStash.setResultId(resultToInsert.getDbId());
@@ -67,7 +69,7 @@ public class ResultDAO {
         IResultDTO mapper = session.getMapper(IResultDTO.class);
         ResultDAOLogger.trace("Attempting to update ResultDTO entry.");
         mapper.updateEntity(updateObject);
-        session.commit();
+
         ResultDAOLogger.trace("Attempt finished.");
     }
 
@@ -76,7 +78,7 @@ public class ResultDAO {
         IResultDTO mapper = session.getMapper(IResultDTO.class);
         ResultDAOLogger.trace("Attempting to delete ResultDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
+
         ResultDAOLogger.trace("Attempt finished.");
     }
 }

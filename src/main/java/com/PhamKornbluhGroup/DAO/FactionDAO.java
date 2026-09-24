@@ -31,6 +31,7 @@ public class FactionDAO {
         if (insertObject == null) {
             return;
         }
+
         IFactionDTO mapper = session.getMapper(IFactionDTO.class);
         FactionDAOLogger.trace("Attempting to save FactionDTO object");
         mapper.saveEntity(insertObject);

@@ -50,6 +50,7 @@ public class ItemDAO {
         for (String mod : cosmeticMods) {
             mapper.insertCosmeticMod(itemId, mod);
         }
+
     }
 
     private void insertCraftedMods(int itemId, ArrayList<String> craftedMods, SqlSession session) {
@@ -62,6 +63,7 @@ public class ItemDAO {
         for (String mod : craftedMods) {
             mapper.insertCraftedMod(itemId, mod);
         }
+
     }
 
     private void insertEnchantMods(int itemId, ArrayList<String> enchantMods, SqlSession session) {
@@ -74,6 +76,7 @@ public class ItemDAO {
         for (String mod : enchantMods) {
             mapper.insertEnchantMod(itemId, mod);
         }
+
     }
 
     private void insertExplicitMods(int itemId, ArrayList<String> explicitMods, SqlSession session) {
@@ -86,6 +89,7 @@ public class ItemDAO {
         for (String mod : explicitMods) {
             mapper.insertExplicitMod(itemId, mod);
         }
+
     }
 
     private void insertFlavourText(int itemId, ArrayList<String> flavourText, SqlSession session) {
@@ -98,6 +102,7 @@ public class ItemDAO {
         for (String text : flavourText) {
             mapper.insertFlavourText(itemId, text);
         }
+
     }
 
     private void insertFracturedMods(int itemId, ArrayList<String> fracturedMod, SqlSession session) {
@@ -110,6 +115,7 @@ public class ItemDAO {
         for (String mod : fracturedMod) {
             mapper.insertFracturedMod(itemId, mod);
         }
+
     }
 
     private void insertImplicitMods(int itemId, ArrayList<String> implicitMod, SqlSession session) {
@@ -122,6 +128,7 @@ public class ItemDAO {
         for (String mod : implicitMod) {
             mapper.insertImplicitMod(itemId, mod);
         }
+
     }
 
     private void insertScourgeMods(int itemId, ArrayList<String> scourgeMods, SqlSession session) {
@@ -134,6 +141,7 @@ public class ItemDAO {
         for (String mod : scourgeMods) {
             mapper.insertScourgeMod(itemId, mod);
         }
+
     }
 
     private void insertUtilityMods(int itemId, ArrayList<String> utilityMods, SqlSession session) {
@@ -146,6 +154,7 @@ public class ItemDAO {
         for (String mod : utilityMods) {
             mapper.insertUtilityMod(itemId, mod);
         }
+
     }
 
     private void insertVeiledMods(int itemId, ArrayList<String> veiledMods, SqlSession session) {
@@ -158,6 +167,7 @@ public class ItemDAO {
         for (String mod : veiledMods) {
             mapper.insertVeiledMod(itemId, mod);
         }
+
     }
 
     // TODO: figure out how to insert FrameType, influences
@@ -165,15 +175,16 @@ public class ItemDAO {
         IItemDTO mapper = session.getMapper(IItemDTO.class);
         ItemDAOLogger.trace("Attempting to insert ItemDTO object.");
         mapper.saveEntity(item);
+        session.flushStatements();
         ItemDAOLogger.trace("ItemDTO insert attempt finished. Putting ItemID into child objects and inserting.");
 
         insertCosmeticMods(item.getDbId(), item.getCosmeticMods(), session);
         insertCraftedMods(item.getDbId(), item.getCraftedMods(), session);
         insertEnchantMods(item.getDbId(), item.getEnchantMods(), session);
-        insertExplicitMods(item.getDbId(), item.getExplicitMods(), session);
+        //insertExplicitMods(item.getDbId(), item.getExplicitMods(), session);
         insertFlavourText(item.getDbId(), item.getFlavourText(), session);
         insertFracturedMods(item.getDbId(), item.getFracturedMods(), session);
-        insertImplicitMods(item.getDbId(), item.getImplicitMods(), session);
+        //insertImplicitMods(item.getDbId(), item.getImplicitMods(), session);
         insertScourgeMods(item.getDbId(), item.getScourgeMods(), session);
         insertUtilityMods(item.getDbId(), item.getUtilityMods(), session);
         insertVeiledMods(item.getDbId(), item.getVeiledMods(), session);

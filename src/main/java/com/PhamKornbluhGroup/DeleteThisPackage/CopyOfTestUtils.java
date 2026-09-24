@@ -96,9 +96,9 @@ public class CopyOfTestUtils {
         fracturedMods.add(0, "Heya");
         fracturedMods.add(1, "It's a fractured mod");
 
-        ArrayList<String> implicitMods = new ArrayList<>();
-        implicitMods.add(0, "Heya");
-        implicitMods.add(1, "It's a implicit mod");
+//        ArrayList<String> implicitMods = new ArrayList<>();
+//        implicitMods.add(0, "Heya");
+//        implicitMods.add(1, "It's a implicit mod");
 
         ArrayList<String> scourgeMods = new ArrayList<>();
         scourgeMods.add(0, "Heya");
@@ -204,10 +204,10 @@ public class CopyOfTestUtils {
         item.setCosmeticMods(cosmeticMods);
         item.setCraftedMods(craftedMods);
         item.setEnchantMods(enchantMods);
-        item.setExplicitMods(explicitMods);
+        //item.setExplicitMods(explicitMods);
         item.setFlavourText(flavourText);
         item.setFracturedMods(fracturedMods);
-        item.setImplicitMods(implicitMods);
+        //item.setImplicitMods(implicitMods);
         item.setScourgeMods(scourgeMods);
         item.setUtilityMods(utilityMods);
         item.setVeiledMods(veiledMods);

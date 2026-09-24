@@ -77,10 +77,10 @@ public class ItemDTO {
     private ArrayList<String> cosmeticMods;   // Optional
     private ArrayList<String> craftedMods;    // Optional
     private ArrayList<String> enchantMods;    // Optional
-    private ArrayList<String> explicitMods;   // Optional
+    //private ArrayList<String> explicitMods;   // Optional
     private ArrayList<String> flavourText;    // Optional
     private ArrayList<String> fracturedMods;  // Optional
-    private ArrayList<String> implicitMods;   // Optional
+    //private ArrayList<String> implicitMods;   // Optional
     private ArrayList<String> scourgeMods;    // Optional
     private ArrayList<String> utilityMods;    // Optional
     private ArrayList<String> veiledMods;     // Optional  // random video identifier
@@ -633,13 +633,13 @@ public class ItemDTO {
         this.enchantMods = enchantMods;
     }
 
-    public ArrayList<String> getExplicitMods() {
-        return explicitMods;
-    }
+//    public ArrayList<String> getExplicitMods() {
+//        return explicitMods;
+//    }
 
-    public void setExplicitMods(ArrayList<String> explicitMods) {
-        this.explicitMods = explicitMods;
-    }
+//    public void setExplicitMods(ArrayList<String> explicitMods) {
+//        this.explicitMods = explicitMods;
+//    }
 
     public ArrayList<String> getFlavourText() {
         return flavourText;
@@ -657,13 +657,13 @@ public class ItemDTO {
         this.fracturedMods = fracturedMods;
     }
 
-    public ArrayList<String> getImplicitMods() {
-        return implicitMods;
-    }
+//    public ArrayList<String> getImplicitMods() {
+//        return implicitMods;
+//    }
 
-    public void setImplicitMods(ArrayList<String> implicitMods) {
-        this.implicitMods = implicitMods;
-    }
+//    public void setImplicitMods(ArrayList<String> implicitMods) {
+//        this.implicitMods = implicitMods;
+//    }
 
     public ArrayList<String> getScourgeMods() {
         return scourgeMods;
@@ -830,10 +830,10 @@ public class ItemDTO {
                 ", cosmeticMods=" + cosmeticMods +
                 ", craftedMods=" + craftedMods +
                 ", enchantMods=" + enchantMods +
-                ", explicitMods=" + explicitMods +
+//                ", explicitMods=" + explicitMods +
                 ", flavourText=" + flavourText +
                 ", fracturedMods=" + fracturedMods +
-                ", implicitMods=" + implicitMods +
+//                ", implicitMods=" + implicitMods +
                 ", scourgeMods=" + scourgeMods +
                 ", utilityMods=" + utilityMods +
                 ", veiledMods=" + veiledMods +

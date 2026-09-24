@@ -37,6 +37,7 @@ public class PublicStashChangeDAO {
 
         PublicStashChangeDAOLogger.trace("Attempting to insert PublicStashChangeDTO object.");
         mapper.saveEntity(publicStashChangeDTO);
+        session.flushStatements();
 
         ArrayList<ItemDTO> items = publicStashChangeDTO.getItems();
         for (ItemDTO nextItem : items) {
@@ -72,6 +73,7 @@ public class PublicStashChangeDAO {
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to update PublicStashChangeDTO entry.");
         mapper.updateEntity(updateObject);
+
         System.out.println("Attempt finished.");
     }
 
@@ -80,6 +82,7 @@ public class PublicStashChangeDAO {
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to delete PublicStashChangeDTO object with ID " + id);
         mapper.removeEntity(id);
+
         System.out.println("Attempt finished.");
     }
 

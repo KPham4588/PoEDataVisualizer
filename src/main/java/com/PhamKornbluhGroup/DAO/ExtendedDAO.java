@@ -34,9 +34,13 @@ public class ExtendedDAO {
         mapper.saveEntity(insertObject);
 
         ExtendedDAOLogger.trace("Saved initial extended properties. Attempting to insert subcategories.");
+        session.flushStatements();
+
         for (String subcategory : insertObject.getSubcategories()) {
             mapper.saveSubcategory(insertObject.getDbId(), subcategory);
         }
+
+
         ExtendedDAOLogger.trace("insertExtended Attempt finished.");
     }
 }

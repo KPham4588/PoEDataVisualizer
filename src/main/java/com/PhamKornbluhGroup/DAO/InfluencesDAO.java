@@ -47,6 +47,7 @@ public class InfluencesDAO {
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to insert InfluencesDTO object.");
         mapper.saveEntity(insertObject);
+
         InfluencesDAOLogger.trace("Attempt finished.");
     }
 
@@ -55,6 +56,7 @@ public class InfluencesDAO {
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to delete InfluenceDTO object with ID " + id);
         mapper.removeEntity(id);
+
         InfluencesDAOLogger.trace("Attempt finished.");
     }
 }
