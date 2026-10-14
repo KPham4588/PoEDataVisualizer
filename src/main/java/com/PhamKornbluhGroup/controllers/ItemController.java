@@ -196,29 +196,25 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
 
              // When querying for Magebloods in Kalandra league for example, you might get a list of
              // 5 publicStashChangeDTOs. But there might be 2 Magebloods in each of them, so grab all items
-             // from each tab. for each one, see if it has a valid sale price
+             // from each stash tab. for each one, see if it has a valid sale price
              ArrayList<ItemDTO> itemsInCurrentStash = currentStash.getItems();
              for (ItemDTO currentItem : itemsInCurrentStash) {
-                 itemControllerLogger.error("currentItem");
-                 itemControllerLogger.error(currentItem.toString());
-
+                 itemControllerLogger.trace("currentItem = {}", currentItem.toString());
 
                  PriceDTO parsedItem = StashAndItemPriceParser.parseItemPrice(currentStash, currentItem);
+                 itemControllerLogger.trace("parsedItem = {}", parsedItem.toString());
 
-                 itemControllerLogger.error("parsedItem");
-                 itemControllerLogger.error(parsedItem.toString());
 
-                 itemControllerLogger.error("parsedItem is valid?");
-                 itemControllerLogger.error(parsedItem.isPriceValid());
-
+                 itemControllerLogger.trace("parsedItem isPriceValid = {}", parsedItem.isPriceValid());
                  if (parsedItem.isPriceValid()) {
                      ChartData data = new ChartData();
+
                      data.setValue(parsedItem.calculatePriceInChaos());
-                     itemControllerLogger.error("parsedItem.calculatePriceInChaos()");
-                     itemControllerLogger.error(parsedItem.calculatePriceInChaos());
+                     itemControllerLogger.trace("parsedItem calculatePriceInChaos = {}", parsedItem.calculatePriceInChaos());
 
                      //data.setTimestamp(currentItem.getTimestamp());
-                     // TODO: Once we've added timestamp to the objects in DB, we can use real data instead of this fake data
+                     // TODO: We can update the DTOs to include timestamp, retrieve it in the DAO fetches, and
+                     //  use this real timestamp instead of generating fake data
                      Long randomTimestamp = new Random().nextLong(1577836800000L, 1577837400000L);
                      data.setTimeStamp(randomTimestamp);
 
@@ -227,12 +223,7 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
              }
          }
 
-
-         itemControllerLogger.error("About to return chartDataArrayList");
-         itemControllerLogger.error(chartDataArrayList);
-         itemControllerLogger.error("About to return chartDataArrayList as String");
-         itemControllerLogger.error(chartDataArrayList.toString());
-
+         itemControllerLogger.trace("chartDataArrayList = {}", chartDataArrayList.toString());
          return chartDataArrayList;
      }
 }
