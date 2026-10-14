@@ -121,7 +121,8 @@
                     select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
-        <!--
+        <!-- TODO: this now requires a DTO update, DAO update, database update, new mapper, etc.
+                because GGG changed the data type. The same goes for ImplicitMods
         <collection property="explicitMods"
                     column="dbId"
                     javaType="ArrayList"
