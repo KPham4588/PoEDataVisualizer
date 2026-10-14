@@ -15,9 +15,9 @@ public class PublicStashChangeDAO {
     private final static Logger PublicStashChangeDAOLogger = LogManager.getLogger(PublicStashChangeDAO.class);
 
     public PublicStashChangeDTO getPublicStashChangeById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
-        System.out.println("Attempting to get PublicStashChangeDTO object with ID " + id);
+        PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO object with ID " + id);
         PublicStashChangeDTO stash = mapper.getEntityById(id);
         if (stash != null) {
             PublicStashChangeDAOLogger.trace("Success!");
@@ -28,62 +28,61 @@ public class PublicStashChangeDAO {
         return stash;
     }
 
-    public void insertPublicStashChange(PublicStashChangeDTO insertObject) {
-        if (insertObject == null) {
+    public void insertPublicStashChange(PublicStashChangeDTO publicStashChangeDTO, SqlSession session) {
+        if (publicStashChangeDTO == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
-        System.out.println("Attempting to insert PublicStashChangeDTO object.");
-        mapper.saveEntity(insertObject);
-        session.commit();
+        PublicStashChangeDAOLogger.trace("Attempting to insert PublicStashChangeDTO object.");
+        mapper.saveEntity(publicStashChangeDTO);
+        session.flushStatements();
 
-        ArrayList<ItemDTO> items = insertObject.getItems();
-        for (ItemDTO node : items) {
-            node.setPublicStashChangeId(insertObject.getDbId());
+        ArrayList<ItemDTO> items = publicStashChangeDTO.getItems();
+        for (ItemDTO nextItem : items) {
+            nextItem.setPublicStashChangeId(publicStashChangeDTO.getDbId());
         }
 
-        System.out.println("Attempting to insert items.");
-        ItemDAO insertItems = new ItemDAO();
-        insertItems.insertItems(items);
+        PublicStashChangeDAOLogger.trace("Attempting to insert items.");
+        ItemDAO itemDAO = new ItemDAO();
+        itemDAO.insertItems(items, session);
 
-        System.out.println("Attempt finished.");
+        PublicStashChangeDAOLogger.trace("Attempt finished.");
     }
 
     /**
-     * @param insertObjects This is an ArrayList<PublicStashChangeDTO> that
+     * @param publicStashChangeDTOArrayList This is an ArrayList<PublicStashChangeDTO> that
      *                      gets inserted by the single saveEntity calls
      */
-    public void insertPublicStashChanges(ArrayList<PublicStashChangeDTO> insertObjects) {
-        if (insertObjects == null) {
+    public void insertPublicStashChanges(ArrayList<PublicStashChangeDTO> publicStashChangeDTOArrayList, SqlSession session) {
+        if (publicStashChangeDTOArrayList == null) {
             return;
         }
 
-        System.out.println("Attempting to insert PublicStashChangeDTO objects in list.");
-        for (PublicStashChangeDTO stash : insertObjects) {
-            insertPublicStashChange(stash);
+        PublicStashChangeDAOLogger.trace("Attempting to insert PublicStashChangeDTO objects in list.");
+        for (PublicStashChangeDTO nextStash : publicStashChangeDTOArrayList) {
+            insertPublicStashChange(nextStash, session);
         }
 
-        System.out.println("Finished inserting list of stashes.");
+        PublicStashChangeDAOLogger.trace("Finished inserting list of stashes.");
     }
 
     public void updatePublicStashChange(PublicStashChangeDTO updateObject) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to update PublicStashChangeDTO entry.");
         mapper.updateEntity(updateObject);
-        session.commit();
+
         System.out.println("Attempt finished.");
     }
 
     public void deletePublicStashChangeById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
         System.out.println("Attempting to delete PublicStashChangeDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
+
         System.out.println("Attempt finished.");
     }
 
@@ -137,7 +136,7 @@ public class PublicStashChangeDAO {
                                                                   String stackSize,
                                                                   String talismanTier,
                                                                   String socket) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IPublicStashChangeDTO mapper = session.getMapper(IPublicStashChangeDTO.class);
 
         PublicStashChangeDAOLogger.trace("Attempting to get PublicStashChangeDTO objects with custom parameters");

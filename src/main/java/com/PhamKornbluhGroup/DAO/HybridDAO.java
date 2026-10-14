@@ -1,6 +1,7 @@
 package com.PhamKornbluhGroup.DAO;
 
 import com.PhamKornbluhGroup.DTO.HybridDTO;
+import com.PhamKornbluhGroup.DTO.ItemPropertyDTO;
 import com.PhamKornbluhGroup.mybatismysqlimpl.IHybridDTO;
 import com.PhamKornbluhGroup.utilities.SessionPool;
 import org.apache.ibatis.session.SqlSession;
@@ -14,9 +15,9 @@ public class HybridDAO {
     private final static Logger HybridDAOLogger = LogManager.getLogger(HybridDAO.class);
 
     public HybridDTO getHybridById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-        System.out.println("Attempting to get HybridDTO object with ID " + id);
+        HybridDAOLogger.trace("Attempting to get HybridDTO object with ID " + id);
         HybridDTO newNode = mapper.getEntityById(id);
         if (newNode != null) {
             HybridDAOLogger.trace("Success!");
@@ -27,60 +28,59 @@ public class HybridDAO {
         return newNode;
     }
 
-    public void insertHybrid(HybridDTO insertObject) {
+    public void insertHybrid(HybridDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-        System.out.println("Attempting to insert HybridDTO object.");
+        HybridDAOLogger.trace("Attempting to insert HybridDTO object.");
         mapper.saveEntity(insertObject);
-        session.commit();
+        session.flushStatements();
 
-        var explicitMods = insertObject.getExplicitMods();
-        insertExplicitMods(insertObject.getDbId(), explicitMods);
+        ArrayList<String> explicitMods = insertObject.getExplicitMods();
+        insertExplicitMods(insertObject.getDbId(), explicitMods, session);
 
-        var properties = insertObject.getProperties();
-        for (var property : properties) {
-            property.setHybridId(insertObject.getDbId());
+        ArrayList<ItemPropertyDTO> properties = insertObject.getProperties();
+        for (ItemPropertyDTO nextProperty : properties) {
+            nextProperty.setHybridId(insertObject.getDbId());
         }
 
         ItemPropertyDAO itemProperty = new ItemPropertyDAO();
-        itemProperty.insertItemProperties(properties);
+        itemProperty.insertItemProperties(properties, session);
 
-        System.out.println("Attempt finished.");
+        HybridDAOLogger.trace("Attempt finished.");
     }
 
-    private void insertExplicitMods(int hybridId, ArrayList<String> explicitMods) {
+    private void insertExplicitMods(int hybridId, ArrayList<String> explicitMods, SqlSession session) {
         if (explicitMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
+        HybridDAOLogger.trace("Attempting to insert ExplicitMods");
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-
         for (String mod : explicitMods) {
             mapper.insertExplicitMod(hybridId, mod);
         }
-        session.commit();
+
+        HybridDAOLogger.trace("Attempt finished.");
     }
 
     public void updateHybrid(HybridDTO updateObject) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-        System.out.println("Attempting to update HybridDTO entry.");
+        HybridDAOLogger.trace("Attempting to update HybridDTO entry.");
         mapper.updateEntity(updateObject);
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        HybridDAOLogger.trace("Attempt finished.");
     }
 
     public void deleteHybridById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IHybridDTO mapper = session.getMapper(IHybridDTO.class);
-        System.out.println("Attempting to delete HybridDTO object with ID " + id);
+        HybridDAOLogger.trace("Attempting to delete HybridDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        HybridDAOLogger.trace("Attempt finished.");
     }
 }

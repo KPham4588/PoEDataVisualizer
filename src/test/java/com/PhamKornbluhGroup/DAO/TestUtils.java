@@ -204,10 +204,10 @@ class TestUtils {
         item.setCosmeticMods(cosmeticMods);
         item.setCraftedMods(craftedMods);
         item.setEnchantMods(enchantMods);
-        item.setExplicitMods(explicitMods);
+        //item.setExplicitMods(explicitMods);
         item.setFlavourText(flavourText);
         item.setFracturedMods(fracturedMods);
-        item.setImplicitMods(implicitMods);
+        //item.setImplicitMods(implicitMods);
         item.setScourgeMods(scourgeMods);
         item.setUtilityMods(utilityMods);
         item.setVeiledMods(veiledMods);

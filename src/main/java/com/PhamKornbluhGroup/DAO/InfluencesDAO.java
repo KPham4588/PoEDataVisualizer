@@ -11,7 +11,7 @@ public class InfluencesDAO {
     private final static Logger InfluencesDAOLogger = LogManager.getLogger(InfluencesDAO.class);
 
     public InfluencesDTO getInfluencesById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to get InfluencesDTO object with ID " + id);
         InfluencesDTO influences = mapper.getEntityById(id);
@@ -25,7 +25,7 @@ public class InfluencesDAO {
     }
 
     public InfluencesDTO getInfluencesByItemId(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to get InfluencesDTO object by association to itemId " + id);
         InfluencesDTO influences = mapper.getEntityByItemId(id);
@@ -38,25 +38,25 @@ public class InfluencesDAO {
         return influences;
     }
 
-    public void insertInfluences(InfluencesDTO insertObject) {
+    // TODO: Figure out why we aren't using this. Shouldnt this be called as part of ItemDAO, etc?
+    public void insertInfluences(InfluencesDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
 
-        SqlSession session = SessionPool.initSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to insert InfluencesDTO object.");
         mapper.saveEntity(insertObject);
-        session.commit();
+
         InfluencesDAOLogger.trace("Attempt finished.");
     }
 
     public void deleteInfluencesById(int id) {
-        SqlSession session = SessionPool.initSession();
+        SqlSession session = SessionPool.getSession();
         IInfluencesDTO mapper = session.getMapper(IInfluencesDTO.class);
         InfluencesDAOLogger.trace("Attempting to delete InfluenceDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
+
         InfluencesDAOLogger.trace("Attempt finished.");
     }
 }
