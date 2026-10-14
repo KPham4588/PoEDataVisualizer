@@ -25,10 +25,7 @@
 .header-menu-icon {
     display: flex;
 
-    margin-top: 0.75vh;
-    margin-bottom: 0.75vh;
-    margin-left: clamp(0px, 0.15vw, 0.15vw);
-    margin-right: clamp(0px, 0.15vw, 0.15vw);
+    margin: 0.75vh clamp(0px, 0.15vw, 0.15vw);
 
     min-height: 3vh;
     max-height: 15vh;
@@ -36,10 +33,7 @@
 }
 
 .header-menu-button {
-    margin-top: 0.75vh;
-    margin-bottom: 0.75vh;
-    margin-left: clamp(0px, 0.15vw, 0.15vw);
-    margin-right: clamp(0px, 0.15vw, 0.15vw);
+    margin: 0.75vh clamp(0px, 0.15vw, 0.15vw);
 
     min-height: 3vh;
     height: auto;
@@ -69,16 +63,21 @@
     text-size-adjust: 50%;
 }
 
+/* TODO: determine the color scheme we want for the header buttons, and the rest of the site */
 .header-menu-button:hover {
     background-color: rgb(28, 53, 104);
     color: rgb(124, 123, 123);
     box-shadow: #959191 0 2px;
-
 }
 
-.header-menu-button:active, .header-menu-button:focus {
+.header-menu-button:focus {
     background-color: rgb(68, 94, 158);
     color: rgb(124, 123, 123);
+}
+
+#active.header-menu-button {
+    background-color: rgb(68, 94, 158);
+    color: black;
 }
 
 .header-menu-button a {

@@ -8,15 +8,15 @@ function RootComponent() {
     const queryClient = new QueryClient()
     return (
         <QueryClientProvider client={queryClient}>
-        <div className="root">
-            <div className="parent">
-                <Header/>
-                <div className="main-body">
-                    <Outlet/>
+            <div className="root">
+                <div className="parent">
+                    <Header/>
+                    <div className="main-body">
+                        <Outlet/>
+                    </div>
+                    <Footer/>
                 </div>
-                <Footer/>
             </div>
-        </div>
         </QueryClientProvider>
     )
 }

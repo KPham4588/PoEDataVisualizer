@@ -121,6 +121,7 @@
                     select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
+        <!--
         <collection property="explicitMods"
                     column="dbId"
                     javaType="ArrayList"
@@ -128,6 +129,7 @@
                     select="getExplicitModsByExtendedId">
             <result property="explicitMod" column="explicitMod"/>
         </collection>
+        -->
         <!-- Having collection name and property name be the same might cause an issue. -->
         <collection property="flavourText"
                     column="dbId"
@@ -143,6 +145,7 @@
                     select="getFracturedModsByExtendedId">
             <result property="fracturedMod" column="fracturedMod"/>
         </collection>
+        <!--
         <collection property="implicitMods"
                     column="dbId"
                     javaType="ArrayList"
@@ -150,6 +153,7 @@
                     select="getImplicitModsByExtendedId">
             <result property="implicitMod" column="implicitMod"/>
         </collection>
+        -->
         <collection property="scourgeMods"
                     column="dbId"
                     javaType="ArrayList"

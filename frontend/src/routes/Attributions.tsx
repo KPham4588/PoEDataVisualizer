@@ -21,13 +21,16 @@ function Attributions() {
     console.log("im in attributions")
     return (
         <div>
-        <p className="attributions">
-            The following notice is in place due to this website's usage of TradingView for all charts and graphs:
-            <br/>
-            TradingView Lightweight Charts™
-            <br/>
-            Copyright (с) 2025 TradingView, Inc. https://www.tradingview.com/
-        </p>
+            <p className="attributions">
+                This product isn't affiliated with or endorsed by Grinding Gear Games in any way.
+            </p>
+            <p className="attributions">
+                The following notice is in place due to this website's usage of TradingView for all charts and graphs:
+                <br/>
+                TradingView Lightweight Charts™
+                <br/>
+                Copyright (с) 2025 TradingView, Inc. https://www.tradingview.com/
+            </p>
             <p>{placeHolder}</p>
             <p>{JSON.stringify(data)}</p>
             {/*<p>{children}</p>*/}
