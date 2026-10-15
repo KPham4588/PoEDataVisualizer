@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IScourgedDTO">
+
+    <resultMap id="ScourgedDTOMap" type="com.PhamKornbluhGroup.DTO.ScourgedDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="itemId" column="itemId"/>
+        <result property="scourgedTier" column="scourgedTier"/>
+        <result property="scourgedLevel" column="scourgedLevel"/>
+        <result property="scourgedProgress" column="scourgedProgress"/>
+        <result property="scourgedTotal" column="scourgedTotal"/>
+    </resultMap>
+
+    <!-- UNTESTED -->
+    <select id="getEntityById" resultMap="ScourgedDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM Scourged
+        WHERE Scourged.dbId = #{dbId}
+		]]>
+    </select>
+
+    <!-- UNTESTED as called by parent ItemMapper -->
+    <select id="getEntityByItemId" resultMap="ScourgedDTOMap">
+        <![CDATA[
+        SELECT *
+        FROM Scourged
+        WHERE Scourged.dbId = #{dbId}
+		]]>
+    </select>
+
+    <!-- UNTESTED -->
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        <![CDATA[
+			INSERT INTO Scourged
+			    (itemId, scourgedTier, scourgedLevel, scourgedProgress, scourgedTotal)
+			VALUES (#{itemId}, #{scourgedTier}, #{scourgedLevel}, #{scourgedProgress}, #{scourgedTotal})
+		]]>
+    </insert>
+
+    <!-- UNTESTED -->
+    <update id="updateEntity">
+        <![CDATA[
+			UPDATE Scourged
+			SET itemId = #{itemId},
+			    scourgedTier = #{scourgedTier},
+			    scourgedLevel = #{scourgedLevel},
+			    scourgedProgress = #{scourgedProgress},
+			    scourgedTotal = #{scourgedTotal}
+			WHERE dbId = #{dbId}
+		]]>
+    </update>
+
+    <!-- UNTESTED -->
+    <delete id="removeEntity">
+        <![CDATA[
+			DELETE FROM Scourged
+			WHERE dbId = #{dbId}
+		]]>
+    </delete>
+
+</mapper>

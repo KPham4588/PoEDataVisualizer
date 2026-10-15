@@ -25,24 +25,22 @@ public class ExtendedDAO {
         return newNode;
     }
 
-    public void insertExtended(ExtendedDTO insertObject) {
+    public void insertExtended(ExtendedDTO insertObject, SqlSession session) {
         if (insertObject == null) {
             return;
         }
-
-        SqlSession session = SessionPool.getSession();
         IExtendedDTO mapper = session.getMapper(IExtendedDTO.class);
-        System.out.println("Attempting to insert ExtendedDTO object in list.");
+        ExtendedDAOLogger.trace("Attempting to insert ExtendedDTO object in list.");
         mapper.saveEntity(insertObject);
 
-        System.out.println("Saved initial extended properties. Attempting to insert subcategories.");
-        session.commit();
+        ExtendedDAOLogger.trace("Saved initial extended properties. Attempting to insert subcategories.");
+        session.flushStatements();
 
         for (String subcategory : insertObject.getSubcategories()) {
             mapper.saveSubcategory(insertObject.getDbId(), subcategory);
         }
 
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        ExtendedDAOLogger.trace("insertExtended Attempt finished.");
     }
 }

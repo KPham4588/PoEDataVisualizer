@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.5.19//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.PhamKornbluhGroup.mybatismysqlimpl.IRewardsCollectionDTO">
+
+    <resultMap id="RewardsCollectionDTOMap" type="com.PhamKornbluhGroup.DTO.RewardsCollectionDTO" autoMapping="false">
+        <id property="dbId" column="dbId"/>
+        <result property="rewardsId" column="rewardsId"/>
+        <result property="rewardsType" column="rewardsType"/>
+        <result property="rewardsAmount" column="rewardsAmount"/>
+    </resultMap>
+
+    <select id="getEntityById" resultMap="RewardsCollectionDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            rewardsId,
+            rewardsType,
+            rewardsAmount
+        FROM RewardsCollection
+        WHERE RewardsCollection.dbId = #{dbId}
+		]]>
+    </select>
+
+    <select id="getEntityByRewardsId" resultMap="RewardsCollectionDTOMap">
+        <![CDATA[
+        SELECT
+            dbId,
+            rewardsId,
+            rewardsType,
+            rewardsAmount
+        FROM RewardsCollection
+        WHERE RewardsCollection.rewardsId = #{dbId}
+		]]>
+    </select>
+
+    <insert id="saveEntity" useGeneratedKeys="true" keyProperty="dbId">
+        INSERT INTO RewardsCollection (rewardsId, rewardsType, rewardsAmount)
+        VALUES (#{rewardsId}, #{rewardsType}, #{rewardsAmount})
+    </insert>
+</mapper>

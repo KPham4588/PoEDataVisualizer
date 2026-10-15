@@ -27,187 +27,176 @@ public class ItemDAO {
         return newNode;
     }
 
-    public void insertItems(ArrayList<ItemDTO> items) {
+    public void insertItems(ArrayList<ItemDTO> items, SqlSession session) {
         if (items == null) {
             return;
         }
 
-        System.out.println("Attempting to insert ItemDTO objects in list.");
-        for (ItemDTO item : items) {
-            insertItem(item);
+        ItemDAOLogger.trace("Attempting to insert ItemDTO objects in list.");
+        for (ItemDTO nextItem : items) {
+            insertItem(nextItem, session);
         }
 
-        System.out.println("Finished inserting list of items.");
+        ItemDAOLogger.trace("Finished inserting list of items.");
     }
 
-    private void insertCosmeticMods(int itemId, ArrayList<String> cosmeticMods) {
+    private void insertCosmeticMods(int itemId, ArrayList<String> cosmeticMods, SqlSession session) {
         if (cosmeticMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : cosmeticMods) {
             mapper.insertCosmeticMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertCraftedMods(int itemId, ArrayList<String> craftedMods) {
+    private void insertCraftedMods(int itemId, ArrayList<String> craftedMods, SqlSession session) {
         if (craftedMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : craftedMods) {
             mapper.insertCraftedMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertEnchantMods(int itemId, ArrayList<String> enchantMods) {
+    private void insertEnchantMods(int itemId, ArrayList<String> enchantMods, SqlSession session) {
         if (enchantMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : enchantMods) {
             mapper.insertEnchantMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertExplicitMods(int itemId, ArrayList<String> explicitMods) {
+    private void insertExplicitMods(int itemId, ArrayList<String> explicitMods, SqlSession session) {
         if (explicitMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : explicitMods) {
             mapper.insertExplicitMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertFlavourText(int itemId, ArrayList<String> flavourText) {
+    private void insertFlavourText(int itemId, ArrayList<String> flavourText, SqlSession session) {
         if (flavourText == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String text : flavourText) {
             mapper.insertFlavourText(itemId, text);
         }
-        session.commit();
+
     }
 
-    private void insertFracturedMods(int itemId, ArrayList<String> fracturedMod) {
+    private void insertFracturedMods(int itemId, ArrayList<String> fracturedMod, SqlSession session) {
         if (fracturedMod == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : fracturedMod) {
             mapper.insertFracturedMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertImplicitMods(int itemId, ArrayList<String> implicitMod) {
+    private void insertImplicitMods(int itemId, ArrayList<String> implicitMod, SqlSession session) {
         if (implicitMod == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : implicitMod) {
             mapper.insertImplicitMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertScourgeMods(int itemId, ArrayList<String> scourgeMods) {
+    private void insertScourgeMods(int itemId, ArrayList<String> scourgeMods, SqlSession session) {
         if (scourgeMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : scourgeMods) {
             mapper.insertScourgeMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertUtilityMods(int itemId, ArrayList<String> utilityMods) {
+    private void insertUtilityMods(int itemId, ArrayList<String> utilityMods, SqlSession session) {
         if (utilityMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : utilityMods) {
             mapper.insertUtilityMod(itemId, mod);
         }
-        session.commit();
+
     }
 
-    private void insertVeiledMods(int itemId, ArrayList<String> veiledMods) {
+    private void insertVeiledMods(int itemId, ArrayList<String> veiledMods, SqlSession session) {
         if (veiledMods == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
         IItemDTO mapper = session.getMapper(IItemDTO.class);
 
         for (String mod : veiledMods) {
             mapper.insertVeiledMod(itemId, mod);
         }
-        session.commit();
+
     }
 
     // TODO: figure out how to insert FrameType, influences
-    public void insertItem(ItemDTO item) {
-        SqlSession session = SessionPool.getSession();
+    public void insertItem(ItemDTO item, SqlSession session) {
         IItemDTO mapper = session.getMapper(IItemDTO.class);
         ItemDAOLogger.trace("Attempting to insert ItemDTO object.");
         mapper.saveEntity(item);
-        session.commit();
+        session.flushStatements();
         ItemDAOLogger.trace("ItemDTO insert attempt finished. Putting ItemID into child objects and inserting.");
 
-        insertCosmeticMods(item.getDbId(), item.getCosmeticMods());
-        insertCraftedMods(item.getDbId(), item.getCraftedMods());
-        insertEnchantMods(item.getDbId(), item.getEnchantMods());
-        insertExplicitMods(item.getDbId(), item.getExplicitMods());
-        insertFlavourText(item.getDbId(), item.getFlavourText());
-        insertFracturedMods(item.getDbId(), item.getFracturedMods());
-        insertImplicitMods(item.getDbId(), item.getImplicitMods());
-        insertScourgeMods(item.getDbId(), item.getScourgeMods());
-        insertUtilityMods(item.getDbId(), item.getUtilityMods());
-        insertVeiledMods(item.getDbId(), item.getVeiledMods());
+        insertCosmeticMods(item.getDbId(), item.getCosmeticMods(), session);
+        insertCraftedMods(item.getDbId(), item.getCraftedMods(), session);
+        insertEnchantMods(item.getDbId(), item.getEnchantMods(), session);
+        //insertExplicitMods(item.getDbId(), item.getExplicitMods(), session);
+        insertFlavourText(item.getDbId(), item.getFlavourText(), session);
+        insertFracturedMods(item.getDbId(), item.getFracturedMods(), session);
+        //insertImplicitMods(item.getDbId(), item.getImplicitMods(), session);
+        insertScourgeMods(item.getDbId(), item.getScourgeMods(), session);
+        insertUtilityMods(item.getDbId(), item.getUtilityMods(), session);
+        insertVeiledMods(item.getDbId(), item.getVeiledMods(), session);
 
         //item socket
         ArrayList<ItemSocketDTO> itemSockets = item.getSockets();
         if (itemSockets != null) {
-            for (ItemSocketDTO socket : itemSockets) {
-                socket.setItemId(item.getDbId());
+            for (ItemSocketDTO nextSocket : itemSockets) {
+                nextSocket.setItemId(item.getDbId());
             }
             ItemSocketDAO itemSocketDAO = new ItemSocketDAO();
-            itemSocketDAO.insertItemSocketById(itemSockets);
+            itemSocketDAO.insertItemSocketById(itemSockets, session);
         }
 
         ItemPropertyDAO itemPropertyDAO = new ItemPropertyDAO();
@@ -218,7 +207,7 @@ public class ItemDAO {
             for (ItemPropertyDTO property : properties) {
                 property.setItemId(item.getDbId());
             }
-            itemPropertyDAO.insertItemProperties(properties);
+            itemPropertyDAO.insertItemProperties(properties, session);
         }
 
         // notable properties
@@ -227,7 +216,7 @@ public class ItemDAO {
             for (ItemPropertyDTO notableProperty : notableProperties) {
                 notableProperty.setItemId(item.getDbId());
             }
-            itemPropertyDAO.insertItemProperties(notableProperties);
+            itemPropertyDAO.insertItemProperties(notableProperties, session);
         }
 
         // item requirements
@@ -236,7 +225,7 @@ public class ItemDAO {
             for (ItemPropertyDTO requirement : requirements) {
                 requirement.setItemId(item.getDbId());
             }
-            itemPropertyDAO.insertItemProperties(requirements);
+            itemPropertyDAO.insertItemProperties(requirements, session);
         }
 
         // additional properties
@@ -245,7 +234,7 @@ public class ItemDAO {
             for (ItemPropertyDTO additionalProperty : additionalProperties) {
                 additionalProperty.setItemId(item.getDbId());
             }
-            itemPropertyDAO.insertItemProperties(additionalProperties);
+            itemPropertyDAO.insertItemProperties(additionalProperties, session);
         }
 
         //next level requirements
@@ -254,21 +243,20 @@ public class ItemDAO {
             for (ItemPropertyDTO nextlevelRequirement : nextLevelRequirements) {
                 nextlevelRequirement.setItemId(item.getDbId());
             }
-            itemPropertyDAO.insertItemProperties(nextLevelRequirements);
+            itemPropertyDAO.insertItemProperties(nextLevelRequirements, session);
         }
 
         //rewards
         ItemDAOLogger.trace("Planning to insert rewards");
         ArrayList<RewardsDTO> rewards = item.getRewards();
         if (rewards != null) {
-            ItemDAOLogger.error("rewards is not null for item id = " + item.getId());
-            ItemDAOLogger.error("rewards = " + rewards);
-            for (RewardsDTO reward : rewards) {
-                reward.setItemId(item.getDbId());
+            ItemDAOLogger.trace("rewards is not null for item id = {} where rewards == {}", item.getId(), rewards);
+            for (RewardsDTO nextReward : rewards) {
+                nextReward.setItemId(item.getDbId());
             }
             RewardsDAO rewardsDAO = new RewardsDAO();
-            rewardsDAO.insertRewards(rewards);
-            ItemDAOLogger.error("inserted reward");
+            rewardsDAO.insertRewards(rewards, session);
+            ItemDAOLogger.trace("inserted reward");
         }
 
         //logbook mods
@@ -278,7 +266,7 @@ public class ItemDAO {
                 logbookMod.setItemId(item.getDbId());
             }
             LogbookModsDAO logbookModsDAO = new LogbookModsDAO();
-            logbookModsDAO.insertLogbookMods(logbookMods);
+            logbookModsDAO.insertLogbookMods(logbookMods, session);
         }
 
         //ultimatum mods
@@ -288,35 +276,35 @@ public class ItemDAO {
                 ultimatumMod.setItemId(item.getDbId());
             }
             UltimatumModsDAO ultimatumModsDAO = new UltimatumModsDAO();
-            ultimatumModsDAO.insertUltimatumModsById(ultimatumMods);
+            ultimatumModsDAO.insertUltimatumModsById(ultimatumMods, session);
         }
 
         IncubatedItemDTO incubatedItem = item.getIncubatedItem();
         if (incubatedItem != null) {
             incubatedItem.setItemId(item.getDbId());
             IncubatedItemDAO incubatedItemDAO = new IncubatedItemDAO();
-            incubatedItemDAO.insertIncubatedItem(incubatedItem);
+            incubatedItemDAO.insertIncubatedItem(incubatedItem, session);
         }
 
         ScourgedDTO scourged = item.getScourged();
         if (scourged != null) {
             scourged.setItemId(item.getDbId());
             ScourgedDAO scourgedDAO = new ScourgedDAO();
-            scourgedDAO.insertScourged(scourged);
+            scourgedDAO.insertScourged(scourged, session);
         }
 
         HybridDTO hybrid = item.getHybrid();
         if (hybrid != null) {
             hybrid.setItemId(item.getDbId());
             HybridDAO hybridDAO = new HybridDAO();
-            hybridDAO.insertHybrid(hybrid);
+            hybridDAO.insertHybrid(hybrid, session);
         }
 
         ExtendedDTO extended = item.getExtended();
         if (extended != null) {
             extended.setItemId(item.getDbId());
             ExtendedDAO extendedDAO = new ExtendedDAO();
-            extendedDAO.insertExtended(extended);
+            extendedDAO.insertExtended(extended, session);
         }
     }
 }

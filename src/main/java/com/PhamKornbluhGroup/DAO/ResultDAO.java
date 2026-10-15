@@ -15,62 +15,70 @@ public class ResultDAO {
     private final static Logger ResultDAOLogger = LogManager.getLogger(ResultDAO.class);
 
     public ResultDTO getResultById(int id) {
-        SqlSession session = SessionPool.getSession();
-        IResultDTO mapper = session.getMapper(IResultDTO.class);
-        System.out.println("Attempting to get ResultDTO object with ID " + id);
-        ResultDTO result = mapper.getEntityById(id);
-        if (result != null) {
-            ResultDAOLogger.trace("Success!");
+        try (SqlSession session = SessionPool.getSession()) {
+            IResultDTO mapper = session.getMapper(IResultDTO.class);
+
+            ResultDAOLogger.trace("Attempting to get ResultDTO object with ID " + id);
+            ResultDTO result = mapper.getEntityById(id);
+
+            if (result != null) {
+                ResultDAOLogger.trace("Success!");
+            }
+            else {
+                ResultDAOLogger.debug("Result is null!");
+            }
+            return result;
         }
-        else {
-            ResultDAOLogger.error("Result is null!");
-        }
-        return result;
     }
 
-    /** Insert a result object and assigns ResultID to the child {@code PublicStashChangeDTO}
-     * objects, then call a {@code PublicStashChangeDAO} to insert
-     * @param insertObject this is a ResultDTO object
+    /** Insert a result object and assigns ResultID to the child {@link PublicStashChangeDTO}
+     * objects, then call a {@link PublicStashChangeDAO} to insert
+     * @param resultToInsert this is a ResultDTO object
+     * @apiNote This the top-level where a
+     * batched session is created, and this is the only DAO insert which calls {@link SqlSession#commit()}
      */
-    public void insertResult(ResultDTO insertObject) {
-        if (insertObject == null) {
+    public void insertResult(ResultDTO resultToInsert) {
+        if (resultToInsert == null) {
             return;
         }
 
-        SqlSession session = SessionPool.getSession();
-        IResultDTO mapper = session.getMapper(IResultDTO.class);
+        try (SqlSession session = SessionPool.getBatchedSession()) {
+            IResultDTO mapper = session.getMapper(IResultDTO.class);
 
-        System.out.println("Attempting to insert ResultDTO object.");
-        mapper.saveEntity(insertObject);
-        session.commit();
+            ResultDAOLogger.trace("Attempting to insert ResultDTO object.");
+            mapper.saveEntity(resultToInsert);
 
-        ArrayList<PublicStashChangeDTO> stashes = insertObject.getStashes();
-        for (PublicStashChangeDTO node : stashes) {
-            node.setResultId(insertObject.getDbId());
+            session.flushStatements();
+
+            ArrayList<PublicStashChangeDTO> stashes = resultToInsert.getStashes();
+            for (PublicStashChangeDTO nextStash : stashes) {
+                nextStash.setResultId(resultToInsert.getDbId());
+            }
+
+            ResultDAOLogger.trace("Attempting to insert stashes.");
+            PublicStashChangeDAO stashChangeDAO = new PublicStashChangeDAO();
+            stashChangeDAO.insertPublicStashChanges(stashes, session);
+
+            session.commit();
+            ResultDAOLogger.trace("Attempt finished.");
         }
-
-        System.out.println("Attempting to insert stashes.");
-        PublicStashChangeDAO insertStashes = new PublicStashChangeDAO();
-        insertStashes.insertPublicStashChanges(stashes);
-
-        System.out.println("Attempt finished.");
     }
 
     public void updateResult(ResultDTO updateObject) {
         SqlSession session = SessionPool.getSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
-        System.out.println("Attempting to update ResultDTO entry.");
+        ResultDAOLogger.trace("Attempting to update ResultDTO entry.");
         mapper.updateEntity(updateObject);
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        ResultDAOLogger.trace("Attempt finished.");
     }
 
     public void deleteResultById(int id) {
         SqlSession session = SessionPool.getSession();
         IResultDTO mapper = session.getMapper(IResultDTO.class);
-        System.out.println("Attempting to delete ResultDTO object with ID " + id);
+        ResultDAOLogger.trace("Attempting to delete ResultDTO object with ID " + id);
         mapper.removeEntity(id);
-        session.commit();
-        System.out.println("Attempt finished.");
+
+        ResultDAOLogger.trace("Attempt finished.");
     }
 }

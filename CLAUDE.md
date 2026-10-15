@@ -78,3 +78,18 @@ TanStack Router uses file-based routing. Route files live in `frontend/src/route
 | `src/main/resources/log4j2.xml` | Logging config |
 | `frontend/vite.config.ts` | Build output target, TanStack Router plugin, React Compiler |
 | `.github/workflows/main.yml` | CI: runs `mvn validate` (Checkstyle) then `mvn test` |
+
+## Available Skills
+
+<available_skills>
+    <skill>
+        <name>find-references</name>
+        <description>
+        Use this skill BEFORE writing any new function, class, utility, or helper.
+        Triggers when the user asks to implement, add, or create code — search existing
+        codebase first for reusable code, similar patterns, or functions to extend instead
+        of writing from scratch.
+        </description>
+        <location>.claude/skills/find-references/SKILL.md</location>
+    </skill>
+</available_skills>
