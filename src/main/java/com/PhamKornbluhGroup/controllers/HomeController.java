@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "forward:/index.html";
     }
 }
