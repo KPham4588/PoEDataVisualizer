@@ -95,7 +95,7 @@ public class StashAndItemPriceParser {
         //    https://www.pathofexile.com/trade/about
         // Note that these can only contain letters and hyphens, so that's the basic pattern we expect
         String currencyType = noteRegex[2];
-        if (!currencyType.matches("[a-zA-Z\\-]+]")) {
+        if (!currencyType.matches("[a-zA-Z\\-]+")) {
             StashAndItemPriceParserLogger.trace("note's currencyType of \"{}\" contains unsupported symbols", currencyType);
             return result;
         }

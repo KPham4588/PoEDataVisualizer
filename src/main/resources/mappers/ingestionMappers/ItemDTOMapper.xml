@@ -121,13 +121,13 @@
                     select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
-        <collection property="explicitMods"
-                    column="dbId"
-                    javaType="ArrayList"
-                    ofType="java.lang.String"
-                    select="getExplicitModsByExtendedId">
-            <result property="explicitMod" column="explicitMod"/>
-        </collection>
+<!--        <collection property="explicitMods"-->
+<!--                    column="dbId"-->
+<!--                    javaType="ArrayList"-->
+<!--                    ofType="java.lang.String"-->
+<!--                    select="getExplicitModsByExtendedId">-->
+<!--            <result property="explicitMod" column="explicitMod"/>-->
+<!--        </collection>-->
         <!-- Having collection name and property name be the same might cause an issue. -->
         <collection property="flavourText"
                     column="dbId"
@@ -143,13 +143,13 @@
                     select="getFracturedModsByExtendedId">
             <result property="fracturedMod" column="fracturedMod"/>
         </collection>
-        <collection property="implicitMods"
-                    column="dbId"
-                    javaType="ArrayList"
-                    ofType="java.lang.String"
-                    select="getImplicitModsByExtendedId">
-            <result property="implicitMod" column="implicitMod"/>
-        </collection>
+<!--        <collection property="implicitMods"-->
+<!--                    column="dbId"-->
+<!--                    javaType="ArrayList"-->
+<!--                    ofType="java.lang.String"-->
+<!--                    select="getImplicitModsByExtendedId">-->
+<!--            <result property="implicitMod" column="implicitMod"/>-->
+<!--        </collection>-->
         <collection property="scourgeMods"
                     column="dbId"
                     javaType="ArrayList"
@@ -290,13 +290,13 @@
 		]]>
     </select>
 
-    <select id="getExplicitModsByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT ExplicitMods.explicitMod
-        FROM ExplicitMods
-        WHERE ExplicitMods.itemId = #{dbId}
-		]]>
-    </select>
+<!--    <select id="getExplicitModsByExtendedId" resultType="java.lang.String">-->
+<!--        <![CDATA[-->
+<!--        SELECT ExplicitMods.explicitMod-->
+<!--        FROM ExplicitMods-->
+<!--        WHERE ExplicitMods.itemId = #{dbId}-->
+<!--		]]>-->
+<!--    </select>-->
 
     <select id="getFlavourTextByExtendedId" resultType="java.lang.String">
         <![CDATA[
@@ -314,13 +314,13 @@
 		]]>
     </select>
 
-    <select id="getImplicitModsByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT ImplicitMods.implicitMod
-        FROM ImplicitMods
-        WHERE ImplicitMods.itemId = #{dbId}
-		]]>
-    </select>
+<!--    <select id="getImplicitModsByExtendedId" resultType="java.lang.String">-->
+<!--        <![CDATA[-->
+<!--        SELECT ImplicitMods.implicitMod-->
+<!--        FROM ImplicitMods-->
+<!--        WHERE ImplicitMods.itemId = #{dbId}-->
+<!--		]]>-->
+<!--    </select>-->
 
     <select id="getScourgeModsByExtendedId" resultType="java.lang.String">
         <![CDATA[
