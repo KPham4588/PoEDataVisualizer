@@ -60,6 +60,7 @@ public class ItemDTO {
     private Integer publicStashChangeId;
     private int stackSize = -1;             // Optional
     private int talismanTier = -1;          // Optional
+    private int timeStamp;
     private long h;
     private long socket = -1;               // Optional
     private long w;
@@ -521,6 +522,14 @@ public class ItemDTO {
         this.talismanTier = talismanTier;
     }
 
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(int timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     public long getH() {
         return h;
     }
@@ -816,6 +825,7 @@ public class ItemDTO {
                 ", publicStashChangeId=" + publicStashChangeId +
                 ", stackSize=" + stackSize +
                 ", talismanTier=" + talismanTier +
+                ", timeStamp=" + timeStamp +
                 ", h=" + h +
                 ", socket=" + socket +
                 ", w=" + w +
@@ -830,10 +840,8 @@ public class ItemDTO {
                 ", cosmeticMods=" + cosmeticMods +
                 ", craftedMods=" + craftedMods +
                 ", enchantMods=" + enchantMods +
-//                ", explicitMods=" + explicitMods +
                 ", flavourText=" + flavourText +
                 ", fracturedMods=" + fracturedMods +
-//                ", implicitMods=" + implicitMods +
                 ", scourgeMods=" + scourgeMods +
                 ", utilityMods=" + utilityMods +
                 ", veiledMods=" + veiledMods +

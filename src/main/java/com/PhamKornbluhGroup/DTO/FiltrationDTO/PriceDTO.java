@@ -5,6 +5,7 @@ import java.util.Objects;
 public class PriceDTO {
     private String currencyType = "";
     private int quantity;
+    private long timestamp;
 
     public PriceDTO() {
     }
@@ -17,6 +18,14 @@ public class PriceDTO {
         this.currencyType = currencyType;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -27,15 +36,13 @@ public class PriceDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PriceDTO)) return false;
-        PriceDTO priceDTO = (PriceDTO) o;
-        return quantity == priceDTO.quantity && Objects.equals(currencyType, priceDTO.currencyType);
+        if (!(o instanceof PriceDTO priceDTO)) return false;
+        return quantity == priceDTO.quantity && timestamp == priceDTO.timestamp && Objects.equals(currencyType, priceDTO.currencyType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currencyType, quantity);
+        return Objects.hash(currencyType, quantity, timestamp);
     }
 
     @Override
@@ -43,8 +50,8 @@ public class PriceDTO {
         return "PriceDTO{" +
                 "currencyType='" + currencyType + '\'' +
                 ", quantity=" + quantity +
-                '}' +
-                "and isvalid status is: " + this.isPriceValid();
+                ", timestamp=" + timestamp +
+                '}';
     }
 
     public boolean isPriceValid() {

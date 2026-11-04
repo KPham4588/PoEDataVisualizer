@@ -62,6 +62,7 @@
         <result property="publicStashChangeId" column="publicStashChangeId"/>
         <result property="stackSize" column="stackSize"/>
         <result property="talismanTier" column="talismanTier"/>
+        <result property="timeStamp" column="timeStamp"/>
         <!--========== long ==========-->
         <result property="h" column="h"/>
         <result property="socket" column="socket"/>
@@ -256,6 +257,7 @@
             publicStashChangeId,
             stackSize,
             talismanTier,
+            timeStamp,
             h,
             socket,
             w,
