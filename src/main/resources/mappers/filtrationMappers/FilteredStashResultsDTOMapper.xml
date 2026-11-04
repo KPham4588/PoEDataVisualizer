@@ -82,6 +82,7 @@
             i.publicStashChangeId,
             i.stackSize,
             i.talismanTier,
+            UNIX_TIMESTAMP(i.timeStamp) AS timeStamp,
             i.h,
             i.socket,
             i.w,

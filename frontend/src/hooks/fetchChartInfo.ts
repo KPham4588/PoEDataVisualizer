@@ -22,7 +22,7 @@ const fetchChartData = async (name: string, league: string): Promise<ChartData[]
     //b Fetch data
     console.log("Checkpoint 1 - Inside fetchChartData before doing anything");
     const res = await fetch(
-        `http://localhost:8080/items/getItemsAsChartDataByCustomParametersAsCostInChaos?name=${name}&league=${league}`);
+        `/items/getItemsAsChartDataByCustomParametersAsCostInChaos?name=${name}&league=${league}`);
     console.log("res = ", res);
 
     console.log("Checkpoint 2 - turning response into json as \"listOfItems\"");
