@@ -122,13 +122,16 @@
                     select="getEnchantModsByExtendedId">
             <result property="enchantMod" column="enchantMod"/>
         </collection>
-<!--        <collection property="explicitMods"-->
-<!--                    column="dbId"-->
-<!--                    javaType="ArrayList"-->
-<!--                    ofType="java.lang.String"-->
-<!--                    select="getExplicitModsByExtendedId">-->
-<!--            <result property="explicitMod" column="explicitMod"/>-->
-<!--        </collection>-->
+        <!-- TODO: this now requires a DTO update, DAO update, database update, new mapper, etc.
+                because GGG changed the data type. The same goes for ImplicitMods
+        <collection property="explicitMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getExplicitModsByExtendedId">
+            <result property="explicitMod" column="explicitMod"/>
+        </collection>
+        -->
         <!-- Having collection name and property name be the same might cause an issue. -->
         <collection property="flavourText"
                     column="dbId"
@@ -144,13 +147,15 @@
                     select="getFracturedModsByExtendedId">
             <result property="fracturedMod" column="fracturedMod"/>
         </collection>
-<!--        <collection property="implicitMods"-->
-<!--                    column="dbId"-->
-<!--                    javaType="ArrayList"-->
-<!--                    ofType="java.lang.String"-->
-<!--                    select="getImplicitModsByExtendedId">-->
-<!--            <result property="implicitMod" column="implicitMod"/>-->
-<!--        </collection>-->
+        <!--
+        <collection property="implicitMods"
+                    column="dbId"
+                    javaType="ArrayList"
+                    ofType="java.lang.String"
+                    select="getImplicitModsByExtendedId">
+            <result property="implicitMod" column="implicitMod"/>
+        </collection>
+        -->
         <collection property="scourgeMods"
                     column="dbId"
                     javaType="ArrayList"
