@@ -17,4 +17,9 @@ export default defineConfig({
         outDir: '../src/main/resources/static',
         emptyOutDir: true,
     },
+    server: {
+        proxy: {
+            '/items': 'http://localhost:8080',
+        },
+    },
 })

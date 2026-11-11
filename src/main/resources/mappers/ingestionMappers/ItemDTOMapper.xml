@@ -62,6 +62,7 @@
         <result property="publicStashChangeId" column="publicStashChangeId"/>
         <result property="stackSize" column="stackSize"/>
         <result property="talismanTier" column="talismanTier"/>
+        <result property="timeStamp" column="timeStamp"/>
         <!--========== long ==========-->
         <result property="h" column="h"/>
         <result property="socket" column="socket"/>
@@ -261,6 +262,7 @@
             publicStashChangeId,
             stackSize,
             talismanTier,
+            timeStamp,
             h,
             socket,
             w,
@@ -295,13 +297,13 @@
 		]]>
     </select>
 
-    <select id="getExplicitModsByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT ExplicitMods.explicitMod
-        FROM ExplicitMods
-        WHERE ExplicitMods.itemId = #{dbId}
-		]]>
-    </select>
+<!--    <select id="getExplicitModsByExtendedId" resultType="java.lang.String">-->
+<!--        <![CDATA[-->
+<!--        SELECT ExplicitMods.explicitMod-->
+<!--        FROM ExplicitMods-->
+<!--        WHERE ExplicitMods.itemId = #{dbId}-->
+<!--		]]>-->
+<!--    </select>-->
 
     <select id="getFlavourTextByExtendedId" resultType="java.lang.String">
         <![CDATA[
@@ -319,13 +321,13 @@
 		]]>
     </select>
 
-    <select id="getImplicitModsByExtendedId" resultType="java.lang.String">
-        <![CDATA[
-        SELECT ImplicitMods.implicitMod
-        FROM ImplicitMods
-        WHERE ImplicitMods.itemId = #{dbId}
-		]]>
-    </select>
+<!--    <select id="getImplicitModsByExtendedId" resultType="java.lang.String">-->
+<!--        <![CDATA[-->
+<!--        SELECT ImplicitMods.implicitMod-->
+<!--        FROM ImplicitMods-->
+<!--        WHERE ImplicitMods.itemId = #{dbId}-->
+<!--		]]>-->
+<!--    </select>-->
 
     <select id="getScourgeModsByExtendedId" resultType="java.lang.String">
         <![CDATA[

@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 @RestController
@@ -201,7 +200,7 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
              for (ItemDTO currentItem : itemsInCurrentStash) {
                  itemControllerLogger.trace("currentItem = {}", currentItem.toString());
 
-                 PriceDTO parsedItem = StashAndItemPriceParser.parseItemPrice(currentStash, currentItem);
+                 PriceDTO parsedItem = StashAndItemPriceParser.parseItemPriceAndTimestamp(currentStash, currentItem);
                  itemControllerLogger.trace("parsedItem = {}", parsedItem.toString());
 
 
@@ -210,13 +209,8 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
                      ChartData data = new ChartData();
 
                      data.setValue(parsedItem.calculatePriceInChaos());
+                     data.setTimeStamp(parsedItem.getTimestamp());
                      itemControllerLogger.trace("parsedItem calculatePriceInChaos = {}", parsedItem.calculatePriceInChaos());
-
-                     //data.setTimestamp(currentItem.getTimestamp());
-                     // TODO: We can update the DTOs to include timestamp, retrieve it in the DAO fetches, and
-                     //  use this real timestamp instead of generating fake data
-                     Long randomTimestamp = new Random().nextLong(1577836800000L, 1577837400000L);
-                     data.setTimeStamp(randomTimestamp);
 
                      chartDataArrayList.add(data);
                  }

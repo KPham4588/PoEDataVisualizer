@@ -10,7 +10,7 @@ public class StashAndItemPriceParser {
 
     private final static Logger StashAndItemPriceParserLogger = LogManager.getLogger(StashAndItemPriceParser.class);
 
-    public static PriceDTO parseItemPrice(PublicStashChangeDTO stashChangeDTO, ItemDTO itemDTO) {
+    public static PriceDTO parseItemPriceAndTimestamp(PublicStashChangeDTO stashChangeDTO, ItemDTO itemDTO) {
 
         //b Get item note, see if it's valid, and if so thats the price
         String itemNote = itemDTO.getNote();
@@ -20,6 +20,7 @@ public class StashAndItemPriceParser {
         StashAndItemPriceParserLogger.trace("itemnote is: {}", itemNote);
         StashAndItemPriceParserLogger.trace("itemprice is: {}", itemPrice);
         if (itemPrice.isPriceValid()) {
+            itemPrice.setTimestamp(itemDTO.getTimeStamp());
             return itemPrice;
         }
 
@@ -28,6 +29,7 @@ public class StashAndItemPriceParser {
         PriceDTO stashPrice = parsePrice(stashNote);
 
         if (stashPrice.isPriceValid()) {
+            stashPrice.setTimestamp(itemDTO.getTimeStamp());
             return stashPrice;
         }
 
@@ -95,7 +97,7 @@ public class StashAndItemPriceParser {
         //    https://www.pathofexile.com/trade/about
         // Note that these can only contain letters and hyphens, so that's the basic pattern we expect
         String currencyType = noteRegex[2];
-        if (!currencyType.matches("[a-zA-Z\\-]+]")) {
+        if (!currencyType.matches("[a-zA-Z\\-]+")) {
             StashAndItemPriceParserLogger.trace("note's currencyType of \"{}\" contains unsupported symbols", currencyType);
             return result;
         }
