@@ -5,7 +5,7 @@ import com.PhamKornbluhGroup.DAO.PublicStashChangeDAO;
 import com.PhamKornbluhGroup.DTO.FiltrationDTO.ChartData;
 import com.PhamKornbluhGroup.DTO.ItemDTO;
 import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
-import com.PhamKornbluhGroup.utilities.StashAndItemPriceParser;
+import com.PhamKornbluhGroup.services.ItemChartDataService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
@@ -144,8 +144,6 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
              @RequestParam(name = "stackSize",               required = false) String stackSize,
              @RequestParam(name = "talismanTier",            required = false) String talismanTier,
              @RequestParam(name = "socket",                  required = false) String socket) {
-        ArrayList<ChartData> chartDataArrayList = new ArrayList<>();
-
         // Make a list of relevant objects
          PublicStashChangeDAO dao = new PublicStashChangeDAO();
          ArrayList<PublicStashChangeDTO> publicStashChangeDTOS = dao.findByCustomParameters(accountName, artFilename,
@@ -156,35 +154,8 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
                  unmodifiable, veiled, verified, unmodifiableExceptChaos, foilVariation, ilvl, itemLevel, maxStackSize,
                  stackSize, talismanTier, socket);
 
-         // Go through the list converting relevant objects into ChartData format
-         // ChartData is the format expected by "Lightweight Charts" on the front-end
-         for (PublicStashChangeDTO currentStash : publicStashChangeDTOS) {
-
-             // When querying for Magebloods in Kalandra league for example, you might get a list of
-             // 5 publicStashChangeDTOs. But there might be 2 Magebloods in each of them, so grab all items
-             // from each stash tab. for each one, see if it has a valid sale price
-             ArrayList<ItemDTO> itemsInCurrentStash = currentStash.getItems();
-             for (ItemDTO currentItem : itemsInCurrentStash) {
-                 itemControllerLogger.trace("currentItem = {}", currentItem.toString());
-
-                 PriceDTO parsedItem = StashAndItemPriceParser.parseItemPriceAndTimestamp(currentStash, currentItem);
-                 itemControllerLogger.trace("parsedItem = {}", parsedItem.toString());
-
-
-                 itemControllerLogger.trace("parsedItem isPriceValid = {}", parsedItem.isPriceValid());
-                 if (parsedItem.isPriceValid()) {
-                     ChartData data = new ChartData();
-
-                     data.setValue(parsedItem.calculatePriceInChaos());
-                     data.setTimeStamp(parsedItem.getTimestamp());
-                     itemControllerLogger.trace("parsedItem calculatePriceInChaos = {}", parsedItem.calculatePriceInChaos());
-
-                     chartDataArrayList.add(data);
-                 }
-             }
-         }
-
-         itemControllerLogger.trace("chartDataArrayList = {}", chartDataArrayList.toString());
+         ArrayList<ChartData> chartDataArrayList = new ItemChartDataService()
+                 .getItemsAsChartDataByCustomParametersAsCostInChaos(publicStashChangeDTOS);
          return chartDataArrayList;
      }
 }
