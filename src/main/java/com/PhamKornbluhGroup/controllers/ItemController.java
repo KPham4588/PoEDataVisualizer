@@ -2,7 +2,7 @@ package com.PhamKornbluhGroup.controllers;
 
 import com.PhamKornbluhGroup.DAO.ItemDAO;
 import com.PhamKornbluhGroup.DAO.PublicStashChangeDAO;
-import com.PhamKornbluhGroup.DTO.FiltrationDTO.PriceDTO;
+import com.PhamKornbluhGroup.DTO.FiltrationDTO.ChartData;
 import com.PhamKornbluhGroup.DTO.ItemDTO;
 import com.PhamKornbluhGroup.DTO.PublicStashChangeDTO;
 import com.PhamKornbluhGroup.utilities.StashAndItemPriceParser;
@@ -90,39 +90,6 @@ private final static Logger itemControllerLogger = LogManager.getLogger(ItemCont
                 isRelic, lockedToAccount, lockedToCharacter, memoryItem, replica, ruthless, seaRaceReward, searing,
                 shaper, split, support, synthesised, tangled, thRaceReward, unmodifiable, veiled, verified,
                 unmodifiableExceptChaos, foilVariation, ilvl, itemLevel, maxStackSize, stackSize, talismanTier, socket);
-    }
-
-
-    private class ChartData {
-        double value;
-        Long timeStamp;
-
-        public ChartData() {
-        }
-
-        public void setValue(double value) {
-            this.value = value;
-        }
-
-        public void setTimeStamp(Long timeStamp) {
-            this.timeStamp = timeStamp;
-        }
-
-        public double getValue() {
-            return value;
-        }
-
-        public Long getTimeStamp() {
-            return timeStamp;
-        }
-
-        @Override
-        public String toString() {
-            return "ChartData{" +
-                    "value=" + value +
-                    ", timeStamp=" + timeStamp +
-                    '}';
-        }
     }
 
      @GetMapping("/getItemsAsChartDataByCustomParametersAsCostInChaos")
